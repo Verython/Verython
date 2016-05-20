@@ -22,12 +22,12 @@ tokens { INDENT, DEDENT }
           tokens.remove(i);
         }
       }
-      this.emit(commonToken(Python3Parser.NEWLINE, "\n"));
+      this.emit(commonToken(VerythonParser.NEWLINE, "\n"));
       while (!indents.isEmpty()) {
         this.emit(createDedent());
         indents.pop();
       }
-      this.emit(commonToken(Python3Parser.EOF, "<EOF>"));
+      this.emit(commonToken(VerythonParser.EOF, "<EOF>"));
     }
     Token next = super.nextToken();
     if (next.getChannel() == Token.DEFAULT_CHANNEL) {
@@ -37,7 +37,7 @@ tokens { INDENT, DEDENT }
   }
 
   private Token createDedent() {
-    CommonToken dedent = commonToken(Python3Parser.DEDENT, "");
+    CommonToken dedent = commonToken(VerythonParser.DEDENT, "");
     dedent.setLine(this.lastToken.getLine());
     return dedent;
   }
@@ -116,23 +116,6 @@ typedargslist
 /// tfpdef: NAME [':' test]
 tfpdef
  : NAME ( ':' test )?
- ;
-
-/// varargslist: (vfpdef ['=' test] (',' vfpdef ['=' test])* [','
-///       ['*' [vfpdef] (',' vfpdef ['=' test])* [',' '**' vfpdef] | '**' vfpdef]]
-///     |  '*' [vfpdef] (',' vfpdef ['=' test])* [',' '**' vfpdef] | '**' vfpdef)
-varargslist
- : vfpdef ( '=' test )? ( ',' vfpdef ( '=' test )? )* ( ',' ( '*' vfpdef? ( ',' vfpdef ( '=' test )? )* ( ',' '**' vfpdef )?
-                                                            | '**' vfpdef
-                                                            )?
-                                                      )?
- | '*' vfpdef? ( ',' vfpdef ( '=' test )? )* ( ',' '**' vfpdef )?
- | '**' vfpdef
- ;
-
-/// vfpdef: NAME
-vfpdef
- : NAME
  ;
 
 /// stmt: simple_stmt | compound_stmt
@@ -217,11 +200,6 @@ continue_stmt
 /// return_stmt: 'return' [testlist]
 return_stmt
  : RETURN testlist?
- ;
-
-/// dotted_as_name: dotted_name ['as' NAME]
-dotted_as_name
- : dotted_name ( AS NAME )?
  ;
 
 
@@ -555,7 +533,7 @@ NEWLINE
        }
        else if (indent > previous) {
          indents.push(indent);
-         emit(commonToken(Python3Parser.INDENT, spaces));
+         emit(commonToken(VerythonParser.INDENT, spaces));
        }
        else {
          // Possibly emit more than 1 DEDENT token.

@@ -4,11 +4,11 @@ This project translates from a pseudo-Python to Verilog, simplifying the notatio
 
 ## Development documentation
   - [MyHDL](http://www.myhdl.org/): turns Python into a hardware description and verification language.
-  - [Python grammar](https://docs.python.org/2.7/reference/grammar.html): Version 2.7 Python grammar specification.
+  - [Python grammar](https://github.com/antlr/grammars-v4/tree/master/python3): Version 3.3.5 Python grammar specification.
 
 ## How to compile?
 ```
-antlr4 Verython.g4
+antlr4 Verython.g4 -visitor
 javac Verython*.java
 grun Verython initial -gui
 ```
