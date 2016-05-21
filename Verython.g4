@@ -81,14 +81,9 @@ decorator
  : '@' dotted_name ( '(' arglist? ')' )? NEWLINE
  ;
 
-/// decorators: decorator+
-decorators
- : decorator+
- ;
-
 /// decorated: decorators (classdef | funcdef)
 decorated
- : decorators funcdef
+ : decorator funcdef
  ;
 
 /// funcdef: 'def' NAME parameters ['->' test] ':' suite
@@ -136,7 +131,6 @@ small_stmt
  | del_stmt
  | pass_stmt
  | flow_stmt
- | nonlocal_stmt
  ;
 
 /// expr_stmt: testlist_star_expr (augassign (yield_expr|testlist) |
@@ -206,11 +200,6 @@ return_stmt
 /// dotted_name: NAME ('.' NAME)*
 dotted_name
  : NAME ( '.' NAME )*
- ;
-
-/// nonlocal_stmt: 'nonlocal' NAME (',' NAME)*
-nonlocal_stmt
- : NONLOCAL NAME ( ',' NAME )*
  ;
 
 /// compound_stmt: if_stmt | while_stmt | for_stmt | try_stmt | with_stmt | funcdef | classdef | decorated
@@ -358,7 +347,6 @@ atom
  | '{' dictorsetmaker? '}'
  | NAME
  | number
- | string+
  | '...'
  | NONE
  | TRUE
@@ -450,11 +438,6 @@ comp_if
  : IF test_nocond comp_iter?
  ;
 
-string
- : STRING_LITERAL
- | BYTES_LITERAL
- ;
-
 number
  : integer
  | FLOAT_NUMBER
@@ -475,24 +458,12 @@ integer
 
 DEF : 'def';
 RETURN : 'return';
-RAISE : 'raise';
-FROM : 'from';
-IMPORT : 'import';
-AS : 'as';
-GLOBAL : 'global';
-NONLOCAL : 'nonlocal';
-ASSERT : 'assert';
 IF : 'if';
 ELIF : 'elif';
 ELSE : 'else';
 WHILE : 'while';
 FOR : 'for';
 IN : 'in';
-TRY : 'try';
-FINALLY : 'finally';
-WITH : 'with';
-EXCEPT : 'except';
-LAMBDA : 'lambda';
 OR : 'or';
 AND : 'and';
 NOT : 'not';
@@ -500,8 +471,6 @@ IS : 'is';
 NONE : 'None';
 TRUE : 'True';
 FALSE : 'False';
-CLASS : 'class';
-YIELD : 'yield';
 DEL : 'del';
 PASS : 'pass';
 CONTINUE : 'continue';
@@ -549,18 +518,6 @@ NEWLINE
 /// identifier   ::=  id_start id_continue*
 NAME
  : ID_START ID_CONTINUE*
- ;
-
-/// stringliteral   ::=  [stringprefix](shortstring | longstring)
-/// stringprefix    ::=  "r" | "R"
-STRING_LITERAL
- : [uU]? [rR]? ( SHORT_STRING | LONG_STRING )
- ;
-
-/// bytesliteral   ::=  bytesprefix(shortbytes | longbytes)
-/// bytesprefix    ::=  "b" | "B" | "br" | "Br" | "bR" | "BR"
-BYTES_LITERAL
- : [bB] [rR]? ( SHORT_BYTES | LONG_BYTES )
  ;
 
 /// decimalinteger ::=  nonzerodigit digit* | "0"+
@@ -655,36 +612,6 @@ UNKNOWN_CHAR
  * fragments
  */
 
-/// shortstring     ::=  "'" shortstringitem* "'" | '"' shortstringitem* '"'
-/// shortstringitem ::=  shortstringchar | stringescapeseq
-/// shortstringchar ::=  <any source character except "\" or newline or the quote>
-fragment SHORT_STRING
- : '\'' ( STRING_ESCAPE_SEQ | ~[\\\r\n'] )* '\''
- | '"' ( STRING_ESCAPE_SEQ | ~[\\\r\n"] )* '"'
- ;
-
-/// longstring      ::=  "'''" longstringitem* "'''" | '"""' longstringitem* '"""'
-fragment LONG_STRING
- : '\'\'\'' LONG_STRING_ITEM*? '\'\'\''
- | '"""' LONG_STRING_ITEM*? '"""'
- ;
-
-/// longstringitem  ::=  longstringchar | stringescapeseq
-fragment LONG_STRING_ITEM
- : LONG_STRING_CHAR
- | STRING_ESCAPE_SEQ
- ;
-
-/// longstringchar  ::=  <any source character except "\">
-fragment LONG_STRING_CHAR
- : ~'\\'
- ;
-
-/// stringescapeseq ::=  "\" <any source character>
-fragment STRING_ESCAPE_SEQ
- : '\\' .
- ;
-
 /// nonzerodigit   ::=  "1"..."9"
 fragment NON_ZERO_DIGIT
  : [1-9]
@@ -734,53 +661,6 @@ fragment FRACTION
 /// exponent      ::=  ("e" | "E") ["+" | "-"] digit+
 fragment EXPONENT
  : [eE] [+-]? DIGIT+
- ;
-
-/// shortbytes     ::=  "'" shortbytesitem* "'" | '"' shortbytesitem* '"'
-/// shortbytesitem ::=  shortbyteschar | bytesescapeseq
-fragment SHORT_BYTES
- : '\'' ( SHORT_BYTES_CHAR_NO_SINGLE_QUOTE | BYTES_ESCAPE_SEQ )* '\''
- | '"' ( SHORT_BYTES_CHAR_NO_DOUBLE_QUOTE | BYTES_ESCAPE_SEQ )* '"'
- ;
-
-/// longbytes      ::=  "'''" longbytesitem* "'''" | '"""' longbytesitem* '"""'
-fragment LONG_BYTES
- : '\'\'\'' LONG_BYTES_ITEM*? '\'\'\''
- | '"""' LONG_BYTES_ITEM*? '"""'
- ;
-
-/// longbytesitem  ::=  longbyteschar | bytesescapeseq
-fragment LONG_BYTES_ITEM
- : LONG_BYTES_CHAR
- | BYTES_ESCAPE_SEQ
- ;
-
-/// shortbyteschar ::=  <any ASCII character except "\" or newline or the quote>
-fragment SHORT_BYTES_CHAR_NO_SINGLE_QUOTE
- : [\u0000-\u0009]
- | [\u000B-\u000C]
- | [\u000E-\u0026]
- | [\u0028-\u005B]
- | [\u005D-\u007F]
- ;
-
-fragment SHORT_BYTES_CHAR_NO_DOUBLE_QUOTE
- : [\u0000-\u0009]
- | [\u000B-\u000C]
- | [\u000E-\u0021]
- | [\u0023-\u005B]
- | [\u005D-\u007F]
- ;
-
-/// longbyteschar  ::=  <any ASCII character except "\">
-fragment LONG_BYTES_CHAR
- : [\u0000-\u005B]
- | [\u005D-\u007F]
- ;
-
-/// bytesescapeseq ::=  "\" <any ASCII character>
-fragment BYTES_ESCAPE_SEQ
- : '\\' [\u0000-\u007F]
  ;
 
 fragment SPACES

@@ -27,16 +27,6 @@ public interface VerythonListener extends ParseTreeListener {
 	 */
 	void exitDecorator(VerythonParser.DecoratorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link VerythonParser#decorators}.
-	 * @param ctx the parse tree
-	 */
-	void enterDecorators(VerythonParser.DecoratorsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link VerythonParser#decorators}.
-	 * @param ctx the parse tree
-	 */
-	void exitDecorators(VerythonParser.DecoratorsContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link VerythonParser#decorated}.
 	 * @param ctx the parse tree
 	 */
@@ -216,16 +206,6 @@ public interface VerythonListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDotted_name(VerythonParser.Dotted_nameContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link VerythonParser#nonlocal_stmt}.
-	 * @param ctx the parse tree
-	 */
-	void enterNonlocal_stmt(VerythonParser.Nonlocal_stmtContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link VerythonParser#nonlocal_stmt}.
-	 * @param ctx the parse tree
-	 */
-	void exitNonlocal_stmt(VerythonParser.Nonlocal_stmtContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link VerythonParser#compound_stmt}.
 	 * @param ctx the parse tree
@@ -576,16 +556,6 @@ public interface VerythonListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitComp_if(VerythonParser.Comp_ifContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link VerythonParser#string}.
-	 * @param ctx the parse tree
-	 */
-	void enterString(VerythonParser.StringContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link VerythonParser#string}.
-	 * @param ctx the parse tree
-	 */
-	void exitString(VerythonParser.StringContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link VerythonParser#number}.
 	 * @param ctx the parse tree

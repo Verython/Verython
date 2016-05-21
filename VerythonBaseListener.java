@@ -39,18 +39,6 @@ public class VerythonBaseListener implements VerythonListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDecorators(VerythonParser.DecoratorsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitDecorators(VerythonParser.DecoratorsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterDecorated(VerythonParser.DecoratedContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -262,18 +250,6 @@ public class VerythonBaseListener implements VerythonListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDotted_name(VerythonParser.Dotted_nameContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNonlocal_stmt(VerythonParser.Nonlocal_stmtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNonlocal_stmt(VerythonParser.Nonlocal_stmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -694,18 +670,6 @@ public class VerythonBaseListener implements VerythonListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitComp_if(VerythonParser.Comp_ifContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterString(VerythonParser.StringContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitString(VerythonParser.StringContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -22,12 +22,6 @@ public interface VerythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDecorator(VerythonParser.DecoratorContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link VerythonParser#decorators}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDecorators(VerythonParser.DecoratorsContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link VerythonParser#decorated}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -135,12 +129,6 @@ public interface VerythonVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitDotted_name(VerythonParser.Dotted_nameContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link VerythonParser#nonlocal_stmt}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNonlocal_stmt(VerythonParser.Nonlocal_stmtContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link VerythonParser#compound_stmt}.
 	 * @param ctx the parse tree
@@ -351,12 +339,6 @@ public interface VerythonVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitComp_if(VerythonParser.Comp_ifContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link VerythonParser#string}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitString(VerythonParser.StringContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link VerythonParser#number}.
 	 * @param ctx the parse tree
