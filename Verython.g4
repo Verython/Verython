@@ -71,61 +71,46 @@ tokens { INDENT, DEDENT }
  * parser rules
  */
 
-/// file_input: (NEWLINE | stmt)* ENDMARKER
 initial
  : ( NEWLINE | stmt )* EOF
  ;
 
-/// decorator: '@' dotted_name [ '(' [arglist] ')' ] NEWLINE
-decorator
- : '@' dotted_name ( '(' arglist? ')' )? NEWLINE
- ;
-
-/// decorated: decorators (classdef | funcdef)
 decorated
- : decorator funcdef
+ : decorator NEWLINE funcdef
  ;
 
-/// funcdef: 'def' NAME parameters ['->' test] ':' suite
+decorator
+ : TOP
+ | INITAL
+ | ALWAYS '(' arglist? ')'
+ ;
+
 funcdef
- : DEF NAME parameters ( '->' test )? ':' suite
+ : DEF NAME parameters ':' suite
  ;
 
-/// parameters: '(' [typedargslist] ')'
 parameters
  : '(' typedargslist? ')'
  ;
 
-/// typedargslist: (tfpdef ['=' test] (',' tfpdef ['=' test])* [','
-///                ['*' [tfpdef] (',' tfpdef ['=' test])* [',' '**' tfpdef] | '**' tfpdef]]
-///              |  '*' [tfpdef] (',' tfpdef ['=' test])* [',' '**' tfpdef] | '**' tfpdef)
 typedargslist
- : tfpdef ( '=' test )? ( ',' tfpdef ( '=' test )? )* ( ',' ( '*' tfpdef? ( ',' tfpdef ( '=' test )? )* ( ',' '**' tfpdef )?
-                                                            | '**' tfpdef
-                                                            )?
-                                                      )?
- | '*' tfpdef? ( ',' tfpdef ( '=' test )? )* ( ',' '**' tfpdef )?
- | '**' tfpdef
+ : tfpdef ( '=' test )? ( ',' tfpdef ( '=' test )? )* ( ',' ( '*' tfpdef? ( ',' tfpdef ( '=' test )? )* )?)?
+ | '*' tfpdef? ( ',' tfpdef ( '=' test )? )*
  ;
 
-/// tfpdef: NAME [':' test]
 tfpdef
  : NAME ( ':' test )?
  ;
 
-/// stmt: simple_stmt | compound_stmt
 stmt
  : simple_stmt
  | compound_stmt
  ;
 
-/// simple_stmt: small_stmt (';' small_stmt)* [';'] NEWLINE
 simple_stmt
  : small_stmt ( ';' small_stmt )* ';'? NEWLINE
  ;
 
-/// small_stmt: (expr_stmt | del_stmt | pass_stmt | flow_stmt |
-///              import_stmt | global_stmt | nonlocal_stmt | assert_stmt)
 small_stmt
  : expr_stmt
  | del_stmt
@@ -133,76 +118,53 @@ small_stmt
  | flow_stmt
  ;
 
-/// expr_stmt: testlist_star_expr (augassign (yield_expr|testlist) |
-///                      ('=' (yield_expr|testlist_star_expr))*)
 expr_stmt
- : testlist_star_expr ( augassign testlist
-                      | ( '=' testlist_star_expr )*
-                      )
+ : testlist_star_expr ( augassign testlist | ( '=' testlist_star_expr )*)
  ;
 
-/// testlist_star_expr: (test|star_expr) (',' (test|star_expr))* [',']
 testlist_star_expr
  : ( test | star_expr ) ( ',' ( test |  star_expr ) )* ','?
  ;
 
-/// augassign: ('+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=' | '^=' |
-///             '<<=' | '>>=' | '**=' | '//=')
 augassign
- : '+='
- | '-='
- | '*='
- | '@=' // PEP 465
- | '/='
- | '%='
- | '&='
- | '|='
- | '^='
- | '<<='
- | '>>='
- | '**='
- | '//='
+ : ADD_ASSIGN
+ | SUB_ASSIGN
+ | MULT_ASSIGN
+ | DIV_ASSIGN
+ | MOD_ASSIGN
+ | AND_ASSIGN
+ | OR_ASSIGN
+ | XOR_ASSIGN
+ | LEFT_SHIFT_ASSIGN
+ | RIGHT_SHIFT_ASSIGN
  ;
 
-/// del_stmt: 'del' exprlist
 del_stmt
  : DEL exprlist
  ;
 
-/// pass_stmt: 'pass'
 pass_stmt
  : PASS
  ;
 
-/// flow_stmt: break_stmt | continue_stmt | return_stmt | raise_stmt | yield_stmt
 flow_stmt
  : break_stmt
  | continue_stmt
  | return_stmt
  ;
 
-/// break_stmt: 'break'
 break_stmt
  : BREAK
  ;
 
-/// continue_stmt: 'continue'
 continue_stmt
  : CONTINUE
  ;
 
-/// return_stmt: 'return' [testlist]
 return_stmt
  : RETURN testlist?
  ;
 
-
-/// dotted_name: NAME ('.' NAME)*
-dotted_name
- : NAME ( '.' NAME )*
- ;
-
-/// compound_stmt: if_stmt | while_stmt | for_stmt | try_stmt | with_stmt | funcdef | classdef | decorated
 compound_stmt
  : if_stmt
  | while_stmt
@@ -211,120 +173,93 @@ compound_stmt
  | decorated
  ;
 
-/// if_stmt: 'if' test ':' suite ('elif' test ':' suite)* ['else' ':' suite]
 if_stmt
  : IF test ':' suite ( ELIF test ':' suite )* ( ELSE ':' suite )?
  ;
 
-/// while_stmt: 'while' test ':' suite ['else' ':' suite]
 while_stmt
  : WHILE test ':' suite ( ELSE ':' suite )?
  ;
 
-/// for_stmt: 'for' exprlist 'in' testlist ':' suite ['else' ':' suite]
 for_stmt
  : FOR exprlist IN testlist ':' suite ( ELSE ':' suite )?
  ;
 
-/// suite: simple_stmt | NEWLINE INDENT stmt+ DEDENT
 suite
  : simple_stmt
  | NEWLINE INDENT stmt+ DEDENT
  ;
 
-/// test: or_test ['if' or_test 'else' test] | lambdef
 test
  : or_test ( IF or_test ELSE test )?
  ;
 
-/// test_nocond: or_test | lambdef_nocond
-test_nocond
- : or_test
- ;
-
-/// or_test: and_test ('or' and_test)*
 or_test
  : and_test ( OR and_test )*
  ;
 
-/// and_test: not_test ('and' not_test)*
 and_test
  : not_test ( AND not_test )*
  ;
 
-/// not_test: 'not' not_test | comparison
 not_test
  : NOT not_test
  | comparison
  ;
 
-/// comparison: star_expr (comp_op star_expr)*
 comparison
  : star_expr ( comp_op star_expr )*
  ;
 
-/// # <> isn't actually a valid comparison operator in Python. It's here for the
-/// # sake of a __future__ import described in PEP 401
-/// comp_op: '<'|'>'|'=='|'>='|'<='|'<>'|'!='|'in'|'not' 'in'|'is'|'is' 'not'
 comp_op
- : '<'
- | '>'
- | '=='
- | '>='
- | '<='
- | '<>'
- | '!='
+ : LESS_THAN
+ | GREATER_THAN
+ | EQUALS
+ | GT_EQ
+ | LT_EQ
+ | NOT_EQ_1
+ | NOT_EQ_2
  | IN
  | NOT IN
  | IS
  | IS NOT
  ;
 
-/// star_expr: ['*'] expr
 star_expr
  : '*'? expr
  ;
 
-/// expr: xor_expr ('|' xor_expr)*
 expr
  : xor_expr ( '|' xor_expr )*
  ;
 
-/// xor_expr: and_expr ('^' and_expr)*
 xor_expr
  : and_expr ( '^' and_expr )*
  ;
 
-/// and_expr: shift_expr ('&' shift_expr)*
 and_expr
  : shift_expr ( '&' shift_expr )*
  ;
 
-/// shift_expr: arith_expr (('<<'|'>>') arith_expr)*
 shift_expr
  : arith_expr ( '<<' arith_expr
               | '>>' arith_expr
               )*
  ;
 
-/// arith_expr: term (('+'|'-') term)*
 arith_expr
  : term ( '+' term
         | '-' term
         )*
  ;
 
-/// term: factor (('*'|'/'|'%'|'//') factor)*
 term
  : factor ( '*' factor
           | '/' factor
           | '%' factor
-          | '//' factor
-          | '@' factor // PEP 465
           )*
  ;
 
-/// factor: ('+'|'-'|'~') factor | power
 factor
  : '+' factor
  | '-' factor
@@ -332,15 +267,10 @@ factor
  | power
  ;
 
-/// power: atom trailer* ['**' factor]
 power
- : atom trailer* ( '**' factor )?
+ : atom trailer*
  ;
 
-/// atom: ('(' [yield_expr|testlist_comp] ')' |
-///        '[' [testlist_comp] ']' |
-///        '{' [dictorsetmaker] '}' |
-///        NAME | NUMBER | STRING+ | '...' | 'None' | 'True' | 'False')
 atom
  : '(' testlist_comp? ')'
  | '[' testlist_comp? ']'
@@ -353,48 +283,39 @@ atom
  | FALSE
  ;
 
-/// testlist_comp: test ( comp_for | (',' test)* [','] )
 testlist_comp
  : test ( comp_for
         | ( ',' test )* ','?
         )
  ;
 
-/// trailer: '(' [arglist] ')' | '[' subscriptlist ']' | '.' NAME
 trailer
  : '(' arglist? ')'
  | '[' subscriptlist ']'
  | '.' NAME
  ;
 
-/// subscriptlist: subscript (',' subscript)* [',']
 subscriptlist
  : subscript ( ',' subscript )* ','?
  ;
 
-/// subscript: test | [test] ':' [test] [sliceop]
 subscript
  : test
  | test? ':' test? sliceop?
  ;
 
-/// sliceop: ':' [test]
 sliceop
  : ':' test?
  ;
 
-/// exprlist: star_expr (',' star_expr)* [',']
 exprlist
  : star_expr ( ',' star_expr )* ','?
  ;
 
-/// testlist: test (',' test)* [',']
 testlist
  : test ( ',' test )* ','?
  ;
 
-/// dictorsetmaker: ( (test ':' test (comp_for | (',' test ':' test)* [','])) |
-///                   (test (comp_for | (',' test)* [','])) )
 dictorsetmaker
  : test ':' test ( comp_for
                  | ( ',' test ':' test )* ','?
@@ -404,48 +325,31 @@ dictorsetmaker
         )
  ;
 
-/// arglist: (argument ',')* (argument [',']
-///                          |'*' test (',' argument)* [',' '**' test]
-///                          |'**' test)
 arglist
  : ( argument ',' )* ( argument ','?
-                     | '*' test ( ',' argument )* ( ',' '**' test )?
-                     | '**' test
+                     | '*' test ( ',' argument )*
                      )
  ;
 
-/// # The reason that keywords are test nodes instead of NAME is that using NAME
-/// # results in an ambiguity. ast.c makes sure it's a NAME.
-/// argument: test [comp_for] | test '=' test  # Really [keyword '='] test
 argument
  : test comp_for?
  | test '=' test
  ;
 
-/// comp_iter: comp_for | comp_if
 comp_iter
  : comp_for
  | comp_if
  ;
 
-/// comp_for: 'for' exprlist 'in' or_test [comp_iter]
 comp_for
  : FOR exprlist IN or_test comp_iter?
  ;
 
-/// comp_if: 'if' test_nocond [comp_iter]
 comp_if
- : IF test_nocond comp_iter?
+ : IF or_test comp_iter?
  ;
 
 number
- : integer
- | FLOAT_NUMBER
- | IMAG_NUMBER
- ;
-
-/// integer        ::=  decimalinteger | octinteger | hexinteger | bininteger
-integer
  : DECIMAL_INTEGER
  | OCT_INTEGER
  | HEX_INTEGER
@@ -515,52 +419,34 @@ NEWLINE
    }
  ;
 
-/// identifier   ::=  id_start id_continue*
 NAME
  : ID_START ID_CONTINUE*
  ;
 
-/// decimalinteger ::=  nonzerodigit digit* | "0"+
 DECIMAL_INTEGER
  : NON_ZERO_DIGIT DIGIT*
  | '0'+
  ;
 
-/// octinteger     ::=  "0" ("o" | "O") octdigit+
 OCT_INTEGER
  : '0' [oO] OCT_DIGIT+
  ;
 
-/// hexinteger     ::=  "0" ("x" | "X") hexdigit+
 HEX_INTEGER
  : '0' [xX] HEX_DIGIT+
  ;
 
-/// bininteger     ::=  "0" ("b" | "B") bindigit+
 BIN_INTEGER
  : '0' [bB] BIN_DIGIT+
  ;
 
-/// floatnumber   ::=  pointfloat | exponentfloat
-FLOAT_NUMBER
- : POINT_FLOAT
- | EXPONENT_FLOAT
- ;
-
-/// imagnumber ::=  (floatnumber | intpart) ("j" | "J")
-IMAG_NUMBER
- : ( FLOAT_NUMBER | INT_PART ) [jJ]
- ;
-
 DOT : '.';
-ELLIPSIS : '...';
 STAR : '*';
 OPEN_PAREN : '(' {opened++;};
 CLOSE_PAREN : ')' {opened--;};
 COMMA : ',';
 COLON : ':';
 SEMI_COLON : ';';
-POWER : '**';
 ASSIGN : '=';
 OPEN_BRACK : '[' {opened++;};
 CLOSE_BRACK : ']' {opened--;};
@@ -573,7 +459,6 @@ ADD : '+';
 MINUS : '-';
 DIV : '/';
 MOD : '%';
-IDIV : '//';
 NOT_OP : '~';
 OPEN_BRACE : '{' {opened++;};
 CLOSE_BRACE : '}' {opened--;};
@@ -584,12 +469,9 @@ GT_EQ : '>=';
 LT_EQ : '<=';
 NOT_EQ_1 : '<>';
 NOT_EQ_2 : '!=';
-AT : '@';
-ARROW : '->';
 ADD_ASSIGN : '+=';
 SUB_ASSIGN : '-=';
 MULT_ASSIGN : '*=';
-AT_ASSIGN : '@=';
 DIV_ASSIGN : '/=';
 MOD_ASSIGN : '%=';
 AND_ASSIGN : '&=';
@@ -597,8 +479,9 @@ OR_ASSIGN : '|=';
 XOR_ASSIGN : '^=';
 LEFT_SHIFT_ASSIGN : '<<=';
 RIGHT_SHIFT_ASSIGN : '>>=';
-POWER_ASSIGN : '**=';
-IDIV_ASSIGN : '//=';
+TOP: '@top';
+INITAL: '@initial';
+ALWAYS: '@always';
 
 SKIP_
  : ( SPACES | COMMENT | LINE_JOINING ) -> skip
@@ -612,55 +495,24 @@ UNKNOWN_CHAR
  * fragments
  */
 
-/// nonzerodigit   ::=  "1"..."9"
 fragment NON_ZERO_DIGIT
  : [1-9]
  ;
 
-/// digit          ::=  "0"..."9"
 fragment DIGIT
  : [0-9]
  ;
 
-/// octdigit       ::=  "0"..."7"
 fragment OCT_DIGIT
  : [0-7]
  ;
 
-/// hexdigit       ::=  digit | "a"..."f" | "A"..."F"
 fragment HEX_DIGIT
  : [0-9a-fA-F]
  ;
 
-/// bindigit       ::=  "0" | "1"
 fragment BIN_DIGIT
  : [01]
- ;
-
-/// pointfloat    ::=  [intpart] fraction | intpart "."
-fragment POINT_FLOAT
- : INT_PART? FRACTION
- | INT_PART '.'
- ;
-
-/// exponentfloat ::=  (intpart | pointfloat) exponent
-fragment EXPONENT_FLOAT
- : ( INT_PART | POINT_FLOAT ) EXPONENT
- ;
-
-/// intpart       ::=  digit+
-fragment INT_PART
- : DIGIT+
- ;
-
-/// fraction      ::=  "." digit+
-fragment FRACTION
- : '.' DIGIT+
- ;
-
-/// exponent      ::=  ("e" | "E") ["+" | "-"] digit+
-fragment EXPONENT
- : [eE] [+-]? DIGIT+
  ;
 
 fragment SPACES
@@ -675,7 +527,6 @@ fragment LINE_JOINING
  : '\\' SPACES? ( '\r'? '\n' | '\r' )
  ;
 
-/// id_start     ::=  <all characters in general categories Lu, Ll, Lt, Lm, Lo, Nl, the underscore, and characters with the Other_ID_Start property>
 fragment ID_START
  : '_'
  | [A-Z]
@@ -1006,7 +857,6 @@ fragment ID_START
  | [\uFFDA-\uFFDC]
  ;
 
-/// id_continue  ::=  <all characters in id_start, plus characters in the categories Mn, Mc, Nd, Pc and others with the Other_ID_Continue property>
 fragment ID_CONTINUE
  : ID_START
  | [0-9]

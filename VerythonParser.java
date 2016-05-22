@@ -16,72 +16,66 @@ public class VerythonParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		DEF=1, RETURN=2, IF=3, ELIF=4, ELSE=5, WHILE=6, FOR=7, IN=8, OR=9, AND=10, 
-		NOT=11, IS=12, NONE=13, TRUE=14, FALSE=15, DEL=16, PASS=17, CONTINUE=18, 
-		BREAK=19, NEWLINE=20, NAME=21, DECIMAL_INTEGER=22, OCT_INTEGER=23, HEX_INTEGER=24, 
-		BIN_INTEGER=25, FLOAT_NUMBER=26, IMAG_NUMBER=27, DOT=28, ELLIPSIS=29, 
-		STAR=30, OPEN_PAREN=31, CLOSE_PAREN=32, COMMA=33, COLON=34, SEMI_COLON=35, 
-		POWER=36, ASSIGN=37, OPEN_BRACK=38, CLOSE_BRACK=39, OR_OP=40, XOR=41, 
-		AND_OP=42, LEFT_SHIFT=43, RIGHT_SHIFT=44, ADD=45, MINUS=46, DIV=47, MOD=48, 
-		IDIV=49, NOT_OP=50, OPEN_BRACE=51, CLOSE_BRACE=52, LESS_THAN=53, GREATER_THAN=54, 
-		EQUALS=55, GT_EQ=56, LT_EQ=57, NOT_EQ_1=58, NOT_EQ_2=59, AT=60, ARROW=61, 
-		ADD_ASSIGN=62, SUB_ASSIGN=63, MULT_ASSIGN=64, AT_ASSIGN=65, DIV_ASSIGN=66, 
-		MOD_ASSIGN=67, AND_ASSIGN=68, OR_ASSIGN=69, XOR_ASSIGN=70, LEFT_SHIFT_ASSIGN=71, 
-		RIGHT_SHIFT_ASSIGN=72, POWER_ASSIGN=73, IDIV_ASSIGN=74, SKIP_=75, UNKNOWN_CHAR=76, 
-		INDENT=77, DEDENT=78;
+		T__0=1, DEF=2, RETURN=3, IF=4, ELIF=5, ELSE=6, WHILE=7, FOR=8, IN=9, OR=10, 
+		AND=11, NOT=12, IS=13, NONE=14, TRUE=15, FALSE=16, DEL=17, PASS=18, CONTINUE=19, 
+		BREAK=20, NEWLINE=21, NAME=22, DECIMAL_INTEGER=23, OCT_INTEGER=24, HEX_INTEGER=25, 
+		BIN_INTEGER=26, DOT=27, STAR=28, OPEN_PAREN=29, CLOSE_PAREN=30, COMMA=31, 
+		COLON=32, SEMI_COLON=33, ASSIGN=34, OPEN_BRACK=35, CLOSE_BRACK=36, OR_OP=37, 
+		XOR=38, AND_OP=39, LEFT_SHIFT=40, RIGHT_SHIFT=41, ADD=42, MINUS=43, DIV=44, 
+		MOD=45, NOT_OP=46, OPEN_BRACE=47, CLOSE_BRACE=48, LESS_THAN=49, GREATER_THAN=50, 
+		EQUALS=51, GT_EQ=52, LT_EQ=53, NOT_EQ_1=54, NOT_EQ_2=55, ADD_ASSIGN=56, 
+		SUB_ASSIGN=57, MULT_ASSIGN=58, DIV_ASSIGN=59, MOD_ASSIGN=60, AND_ASSIGN=61, 
+		OR_ASSIGN=62, XOR_ASSIGN=63, LEFT_SHIFT_ASSIGN=64, RIGHT_SHIFT_ASSIGN=65, 
+		TOP=66, INITAL=67, ALWAYS=68, SKIP_=69, UNKNOWN_CHAR=70, INDENT=71, DEDENT=72;
 	public static final int
-		RULE_initial = 0, RULE_decorator = 1, RULE_decorated = 2, RULE_funcdef = 3, 
+		RULE_initial = 0, RULE_decorated = 1, RULE_decorator = 2, RULE_funcdef = 3, 
 		RULE_parameters = 4, RULE_typedargslist = 5, RULE_tfpdef = 6, RULE_stmt = 7, 
 		RULE_simple_stmt = 8, RULE_small_stmt = 9, RULE_expr_stmt = 10, RULE_testlist_star_expr = 11, 
 		RULE_augassign = 12, RULE_del_stmt = 13, RULE_pass_stmt = 14, RULE_flow_stmt = 15, 
 		RULE_break_stmt = 16, RULE_continue_stmt = 17, RULE_return_stmt = 18, 
-		RULE_dotted_name = 19, RULE_compound_stmt = 20, RULE_if_stmt = 21, RULE_while_stmt = 22, 
-		RULE_for_stmt = 23, RULE_suite = 24, RULE_test = 25, RULE_test_nocond = 26, 
-		RULE_or_test = 27, RULE_and_test = 28, RULE_not_test = 29, RULE_comparison = 30, 
-		RULE_comp_op = 31, RULE_star_expr = 32, RULE_expr = 33, RULE_xor_expr = 34, 
-		RULE_and_expr = 35, RULE_shift_expr = 36, RULE_arith_expr = 37, RULE_term = 38, 
-		RULE_factor = 39, RULE_power = 40, RULE_atom = 41, RULE_testlist_comp = 42, 
-		RULE_trailer = 43, RULE_subscriptlist = 44, RULE_subscript = 45, RULE_sliceop = 46, 
-		RULE_exprlist = 47, RULE_testlist = 48, RULE_dictorsetmaker = 49, RULE_arglist = 50, 
-		RULE_argument = 51, RULE_comp_iter = 52, RULE_comp_for = 53, RULE_comp_if = 54, 
-		RULE_number = 55, RULE_integer = 56;
+		RULE_compound_stmt = 19, RULE_if_stmt = 20, RULE_while_stmt = 21, RULE_for_stmt = 22, 
+		RULE_suite = 23, RULE_test = 24, RULE_or_test = 25, RULE_and_test = 26, 
+		RULE_not_test = 27, RULE_comparison = 28, RULE_comp_op = 29, RULE_star_expr = 30, 
+		RULE_expr = 31, RULE_xor_expr = 32, RULE_and_expr = 33, RULE_shift_expr = 34, 
+		RULE_arith_expr = 35, RULE_term = 36, RULE_factor = 37, RULE_power = 38, 
+		RULE_atom = 39, RULE_testlist_comp = 40, RULE_trailer = 41, RULE_subscriptlist = 42, 
+		RULE_subscript = 43, RULE_sliceop = 44, RULE_exprlist = 45, RULE_testlist = 46, 
+		RULE_dictorsetmaker = 47, RULE_arglist = 48, RULE_argument = 49, RULE_comp_iter = 50, 
+		RULE_comp_for = 51, RULE_comp_if = 52, RULE_number = 53;
 	public static final String[] ruleNames = {
-		"initial", "decorator", "decorated", "funcdef", "parameters", "typedargslist", 
+		"initial", "decorated", "decorator", "funcdef", "parameters", "typedargslist", 
 		"tfpdef", "stmt", "simple_stmt", "small_stmt", "expr_stmt", "testlist_star_expr", 
 		"augassign", "del_stmt", "pass_stmt", "flow_stmt", "break_stmt", "continue_stmt", 
-		"return_stmt", "dotted_name", "compound_stmt", "if_stmt", "while_stmt", 
-		"for_stmt", "suite", "test", "test_nocond", "or_test", "and_test", "not_test", 
-		"comparison", "comp_op", "star_expr", "expr", "xor_expr", "and_expr", 
-		"shift_expr", "arith_expr", "term", "factor", "power", "atom", "testlist_comp", 
-		"trailer", "subscriptlist", "subscript", "sliceop", "exprlist", "testlist", 
-		"dictorsetmaker", "arglist", "argument", "comp_iter", "comp_for", "comp_if", 
-		"number", "integer"
+		"return_stmt", "compound_stmt", "if_stmt", "while_stmt", "for_stmt", "suite", 
+		"test", "or_test", "and_test", "not_test", "comparison", "comp_op", "star_expr", 
+		"expr", "xor_expr", "and_expr", "shift_expr", "arith_expr", "term", "factor", 
+		"power", "atom", "testlist_comp", "trailer", "subscriptlist", "subscript", 
+		"sliceop", "exprlist", "testlist", "dictorsetmaker", "arglist", "argument", 
+		"comp_iter", "comp_for", "comp_if", "number"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'def'", "'return'", "'if'", "'elif'", "'else'", "'while'", "'for'", 
-		"'in'", "'or'", "'and'", "'not'", "'is'", "'None'", "'True'", "'False'", 
-		"'del'", "'pass'", "'continue'", "'break'", null, null, null, null, null, 
-		null, null, null, "'.'", "'...'", "'*'", "'('", "')'", "','", "':'", "';'", 
-		"'**'", "'='", "'['", "']'", "'|'", "'^'", "'&'", "'<<'", "'>>'", "'+'", 
-		"'-'", "'/'", "'%'", "'//'", "'~'", "'{'", "'}'", "'<'", "'>'", "'=='", 
-		"'>='", "'<='", "'<>'", "'!='", "'@'", "'->'", "'+='", "'-='", "'*='", 
-		"'@='", "'/='", "'%='", "'&='", "'|='", "'^='", "'<<='", "'>>='", "'**='", 
-		"'//='"
+		null, "'...'", "'def'", "'return'", "'if'", "'elif'", "'else'", "'while'", 
+		"'for'", "'in'", "'or'", "'and'", "'not'", "'is'", "'None'", "'True'", 
+		"'False'", "'del'", "'pass'", "'continue'", "'break'", null, null, null, 
+		null, null, null, "'.'", "'*'", "'('", "')'", "','", "':'", "';'", "'='", 
+		"'['", "']'", "'|'", "'^'", "'&'", "'<<'", "'>>'", "'+'", "'-'", "'/'", 
+		"'%'", "'~'", "'{'", "'}'", "'<'", "'>'", "'=='", "'>='", "'<='", "'<>'", 
+		"'!='", "'+='", "'-='", "'*='", "'/='", "'%='", "'&='", "'|='", "'^='", 
+		"'<<='", "'>>='", "'@top'", "'@initial'", "'@always'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, "DEF", "RETURN", "IF", "ELIF", "ELSE", "WHILE", "FOR", "IN", "OR", 
-		"AND", "NOT", "IS", "NONE", "TRUE", "FALSE", "DEL", "PASS", "CONTINUE", 
+		null, null, "DEF", "RETURN", "IF", "ELIF", "ELSE", "WHILE", "FOR", "IN", 
+		"OR", "AND", "NOT", "IS", "NONE", "TRUE", "FALSE", "DEL", "PASS", "CONTINUE", 
 		"BREAK", "NEWLINE", "NAME", "DECIMAL_INTEGER", "OCT_INTEGER", "HEX_INTEGER", 
-		"BIN_INTEGER", "FLOAT_NUMBER", "IMAG_NUMBER", "DOT", "ELLIPSIS", "STAR", 
-		"OPEN_PAREN", "CLOSE_PAREN", "COMMA", "COLON", "SEMI_COLON", "POWER", 
-		"ASSIGN", "OPEN_BRACK", "CLOSE_BRACK", "OR_OP", "XOR", "AND_OP", "LEFT_SHIFT", 
-		"RIGHT_SHIFT", "ADD", "MINUS", "DIV", "MOD", "IDIV", "NOT_OP", "OPEN_BRACE", 
+		"BIN_INTEGER", "DOT", "STAR", "OPEN_PAREN", "CLOSE_PAREN", "COMMA", "COLON", 
+		"SEMI_COLON", "ASSIGN", "OPEN_BRACK", "CLOSE_BRACK", "OR_OP", "XOR", "AND_OP", 
+		"LEFT_SHIFT", "RIGHT_SHIFT", "ADD", "MINUS", "DIV", "MOD", "NOT_OP", "OPEN_BRACE", 
 		"CLOSE_BRACE", "LESS_THAN", "GREATER_THAN", "EQUALS", "GT_EQ", "LT_EQ", 
-		"NOT_EQ_1", "NOT_EQ_2", "AT", "ARROW", "ADD_ASSIGN", "SUB_ASSIGN", "MULT_ASSIGN", 
-		"AT_ASSIGN", "DIV_ASSIGN", "MOD_ASSIGN", "AND_ASSIGN", "OR_ASSIGN", "XOR_ASSIGN", 
-		"LEFT_SHIFT_ASSIGN", "RIGHT_SHIFT_ASSIGN", "POWER_ASSIGN", "IDIV_ASSIGN", 
-		"SKIP_", "UNKNOWN_CHAR", "INDENT", "DEDENT"
+		"NOT_EQ_1", "NOT_EQ_2", "ADD_ASSIGN", "SUB_ASSIGN", "MULT_ASSIGN", "DIV_ASSIGN", 
+		"MOD_ASSIGN", "AND_ASSIGN", "OR_ASSIGN", "XOR_ASSIGN", "LEFT_SHIFT_ASSIGN", 
+		"RIGHT_SHIFT_ASSIGN", "TOP", "INITAL", "ALWAYS", "SKIP_", "UNKNOWN_CHAR", 
+		"INDENT", "DEDENT"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -170,19 +164,20 @@ public class VerythonParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(118);
+			setState(112);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << DEF) | (1L << RETURN) | (1L << IF) | (1L << WHILE) | (1L << FOR) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << DEL) | (1L << PASS) | (1L << CONTINUE) | (1L << BREAK) | (1L << NEWLINE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << FLOAT_NUMBER) | (1L << IMAG_NUMBER) | (1L << ELLIPSIS) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE) | (1L << AT))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << DEF) | (1L << RETURN) | (1L << IF) | (1L << WHILE) | (1L << FOR) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << DEL) | (1L << PASS) | (1L << CONTINUE) | (1L << BREAK) | (1L << NEWLINE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0) || ((((_la - 66)) & ~0x3f) == 0 && ((1L << (_la - 66)) & ((1L << (TOP - 66)) | (1L << (INITAL - 66)) | (1L << (ALWAYS - 66)))) != 0)) {
 				{
-				setState(116);
+				setState(110);
 				switch (_input.LA(1)) {
 				case NEWLINE:
 					{
-					setState(114);
+					setState(108);
 					match(NEWLINE);
 					}
 					break;
+				case T__0:
 				case DEF:
 				case RETURN:
 				case IF:
@@ -201,9 +196,6 @@ public class VerythonParser extends Parser {
 				case OCT_INTEGER:
 				case HEX_INTEGER:
 				case BIN_INTEGER:
-				case FLOAT_NUMBER:
-				case IMAG_NUMBER:
-				case ELLIPSIS:
 				case STAR:
 				case OPEN_PAREN:
 				case OPEN_BRACK:
@@ -211,9 +203,11 @@ public class VerythonParser extends Parser {
 				case MINUS:
 				case NOT_OP:
 				case OPEN_BRACE:
-				case AT:
+				case TOP:
+				case INITAL:
+				case ALWAYS:
 					{
-					setState(115);
+					setState(109);
 					stmt();
 					}
 					break;
@@ -221,85 +215,12 @@ public class VerythonParser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(120);
+				setState(114);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(121);
+			setState(115);
 			match(EOF);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class DecoratorContext extends ParserRuleContext {
-		public Dotted_nameContext dotted_name() {
-			return getRuleContext(Dotted_nameContext.class,0);
-		}
-		public TerminalNode NEWLINE() { return getToken(VerythonParser.NEWLINE, 0); }
-		public ArglistContext arglist() {
-			return getRuleContext(ArglistContext.class,0);
-		}
-		public DecoratorContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_decorator; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterDecorator(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitDecorator(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitDecorator(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final DecoratorContext decorator() throws RecognitionException {
-		DecoratorContext _localctx = new DecoratorContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_decorator);
-		int _la;
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(123);
-			match(AT);
-			setState(124);
-			dotted_name();
-			setState(130);
-			_la = _input.LA(1);
-			if (_la==OPEN_PAREN) {
-				{
-				setState(125);
-				match(OPEN_PAREN);
-				setState(127);
-				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << FLOAT_NUMBER) | (1L << IMAG_NUMBER) | (1L << ELLIPSIS) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << POWER) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
-					{
-					setState(126);
-					arglist();
-					}
-				}
-
-				setState(129);
-				match(CLOSE_PAREN);
-				}
-			}
-
-			setState(132);
-			match(NEWLINE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -317,6 +238,7 @@ public class VerythonParser extends Parser {
 		public DecoratorContext decorator() {
 			return getRuleContext(DecoratorContext.class,0);
 		}
+		public TerminalNode NEWLINE() { return getToken(VerythonParser.NEWLINE, 0); }
 		public FuncdefContext funcdef() {
 			return getRuleContext(FuncdefContext.class,0);
 		}
@@ -341,14 +263,98 @@ public class VerythonParser extends Parser {
 
 	public final DecoratedContext decorated() throws RecognitionException {
 		DecoratedContext _localctx = new DecoratedContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_decorated);
+		enterRule(_localctx, 2, RULE_decorated);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(134);
+			setState(117);
 			decorator();
-			setState(135);
+			setState(118);
+			match(NEWLINE);
+			setState(119);
 			funcdef();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class DecoratorContext extends ParserRuleContext {
+		public TerminalNode TOP() { return getToken(VerythonParser.TOP, 0); }
+		public TerminalNode INITAL() { return getToken(VerythonParser.INITAL, 0); }
+		public TerminalNode ALWAYS() { return getToken(VerythonParser.ALWAYS, 0); }
+		public ArglistContext arglist() {
+			return getRuleContext(ArglistContext.class,0);
+		}
+		public DecoratorContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_decorator; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterDecorator(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitDecorator(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitDecorator(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final DecoratorContext decorator() throws RecognitionException {
+		DecoratorContext _localctx = new DecoratorContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_decorator);
+		int _la;
+		try {
+			setState(129);
+			switch (_input.LA(1)) {
+			case TOP:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(121);
+				match(TOP);
+				}
+				break;
+			case INITAL:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(122);
+				match(INITAL);
+				}
+				break;
+			case ALWAYS:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(123);
+				match(ALWAYS);
+				setState(124);
+				match(OPEN_PAREN);
+				setState(126);
+				_la = _input.LA(1);
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
+					{
+					setState(125);
+					arglist();
+					}
+				}
+
+				setState(128);
+				match(CLOSE_PAREN);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -370,9 +376,6 @@ public class VerythonParser extends Parser {
 		}
 		public SuiteContext suite() {
 			return getRuleContext(SuiteContext.class,0);
-		}
-		public TestContext test() {
-			return getRuleContext(TestContext.class,0);
 		}
 		public FuncdefContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -396,30 +399,18 @@ public class VerythonParser extends Parser {
 	public final FuncdefContext funcdef() throws RecognitionException {
 		FuncdefContext _localctx = new FuncdefContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_funcdef);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(137);
+			setState(131);
 			match(DEF);
-			setState(138);
+			setState(132);
 			match(NAME);
-			setState(139);
+			setState(133);
 			parameters();
-			setState(142);
-			_la = _input.LA(1);
-			if (_la==ARROW) {
-				{
-				setState(140);
-				match(ARROW);
-				setState(141);
-				test();
-				}
-			}
-
-			setState(144);
+			setState(134);
 			match(COLON);
-			setState(145);
+			setState(135);
 			suite();
 			}
 		}
@@ -464,18 +455,18 @@ public class VerythonParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(147);
+			setState(137);
 			match(OPEN_PAREN);
-			setState(149);
+			setState(139);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NAME) | (1L << STAR) | (1L << POWER))) != 0)) {
+			if (_la==NAME || _la==STAR) {
 				{
-				setState(148);
+				setState(138);
 				typedargslist();
 				}
 			}
 
-			setState(151);
+			setState(141);
 			match(CLOSE_PAREN);
 			}
 		}
@@ -528,42 +519,42 @@ public class VerythonParser extends Parser {
 		int _la;
 		try {
 			int _alt;
-			setState(218);
+			setState(194);
 			switch (_input.LA(1)) {
 			case NAME:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(153);
+				setState(143);
 				tfpdef();
-				setState(156);
+				setState(146);
 				_la = _input.LA(1);
 				if (_la==ASSIGN) {
 					{
-					setState(154);
+					setState(144);
 					match(ASSIGN);
-					setState(155);
+					setState(145);
 					test();
 					}
 				}
 
-				setState(166);
+				setState(156);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
 				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
-						setState(158);
+						setState(148);
 						match(COMMA);
-						setState(159);
+						setState(149);
 						tfpdef();
-						setState(162);
+						setState(152);
 						_la = _input.LA(1);
 						if (_la==ASSIGN) {
 							{
-							setState(160);
+							setState(150);
 							match(ASSIGN);
-							setState(161);
+							setState(151);
 							test();
 							}
 						}
@@ -571,88 +562,61 @@ public class VerythonParser extends Parser {
 						}
 						} 
 					}
-					setState(168);
+					setState(158);
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
+					_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
 				}
-				setState(194);
+				setState(177);
 				_la = _input.LA(1);
 				if (_la==COMMA) {
 					{
-					setState(169);
+					setState(159);
 					match(COMMA);
-					setState(192);
-					switch (_input.LA(1)) {
-					case STAR:
+					setState(175);
+					_la = _input.LA(1);
+					if (_la==STAR) {
 						{
-						setState(170);
+						setState(160);
 						match(STAR);
-						setState(172);
+						setState(162);
 						_la = _input.LA(1);
 						if (_la==NAME) {
 							{
-							setState(171);
+							setState(161);
 							tfpdef();
 							}
 						}
 
-						setState(182);
+						setState(172);
 						_errHandler.sync(this);
-						_alt = getInterpreter().adaptivePredict(_input,11,_ctx);
-						while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-							if ( _alt==1 ) {
-								{
-								{
-								setState(174);
-								match(COMMA);
-								setState(175);
-								tfpdef();
-								setState(178);
-								_la = _input.LA(1);
-								if (_la==ASSIGN) {
-									{
-									setState(176);
-									match(ASSIGN);
-									setState(177);
-									test();
-									}
-								}
-
-								}
-								} 
-							}
-							setState(184);
-							_errHandler.sync(this);
-							_alt = getInterpreter().adaptivePredict(_input,11,_ctx);
-						}
-						setState(188);
 						_la = _input.LA(1);
-						if (_la==COMMA) {
+						while (_la==COMMA) {
 							{
-							setState(185);
+							{
+							setState(164);
 							match(COMMA);
-							setState(186);
-							match(POWER);
-							setState(187);
+							setState(165);
 							tfpdef();
+							setState(168);
+							_la = _input.LA(1);
+							if (_la==ASSIGN) {
+								{
+								setState(166);
+								match(ASSIGN);
+								setState(167);
+								test();
+								}
 							}
-						}
 
+							}
+							}
+							setState(174);
+							_errHandler.sync(this);
+							_la = _input.LA(1);
 						}
-						break;
-					case POWER:
-						{
-						setState(190);
-						match(POWER);
-						setState(191);
-						tfpdef();
 						}
-						break;
-					case CLOSE_PAREN:
-						break;
-					default:
-						throw new NoViableAltException(this);
 					}
+
 					}
 				}
 
@@ -661,68 +625,44 @@ public class VerythonParser extends Parser {
 			case STAR:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(196);
+				setState(179);
 				match(STAR);
-				setState(198);
+				setState(181);
 				_la = _input.LA(1);
 				if (_la==NAME) {
 					{
-					setState(197);
+					setState(180);
 					tfpdef();
 					}
 				}
 
-				setState(208);
+				setState(191);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
-				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-					if ( _alt==1 ) {
-						{
-						{
-						setState(200);
-						match(COMMA);
-						setState(201);
-						tfpdef();
-						setState(204);
-						_la = _input.LA(1);
-						if (_la==ASSIGN) {
-							{
-							setState(202);
-							match(ASSIGN);
-							setState(203);
-							test();
-							}
-						}
-
-						}
-						} 
-					}
-					setState(210);
-					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
-				}
-				setState(214);
 				_la = _input.LA(1);
-				if (_la==COMMA) {
+				while (_la==COMMA) {
 					{
-					setState(211);
+					{
+					setState(183);
 					match(COMMA);
-					setState(212);
-					match(POWER);
-					setState(213);
+					setState(184);
 					tfpdef();
+					setState(187);
+					_la = _input.LA(1);
+					if (_la==ASSIGN) {
+						{
+						setState(185);
+						match(ASSIGN);
+						setState(186);
+						test();
+						}
 					}
-				}
 
+					}
+					}
+					setState(193);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
 				}
-				break;
-			case POWER:
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(216);
-				match(POWER);
-				setState(217);
-				tfpdef();
 				}
 				break;
 			default:
@@ -771,15 +711,15 @@ public class VerythonParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(220);
+			setState(196);
 			match(NAME);
-			setState(223);
+			setState(199);
 			_la = _input.LA(1);
 			if (_la==COLON) {
 				{
-				setState(221);
+				setState(197);
 				match(COLON);
-				setState(222);
+				setState(198);
 				test();
 				}
 			}
@@ -827,8 +767,9 @@ public class VerythonParser extends Parser {
 		StmtContext _localctx = new StmtContext(_ctx, getState());
 		enterRule(_localctx, 14, RULE_stmt);
 		try {
-			setState(227);
+			setState(203);
 			switch (_input.LA(1)) {
+			case T__0:
 			case RETURN:
 			case NOT:
 			case NONE:
@@ -843,9 +784,6 @@ public class VerythonParser extends Parser {
 			case OCT_INTEGER:
 			case HEX_INTEGER:
 			case BIN_INTEGER:
-			case FLOAT_NUMBER:
-			case IMAG_NUMBER:
-			case ELLIPSIS:
 			case STAR:
 			case OPEN_PAREN:
 			case OPEN_BRACK:
@@ -855,7 +793,7 @@ public class VerythonParser extends Parser {
 			case OPEN_BRACE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(225);
+				setState(201);
 				simple_stmt();
 				}
 				break;
@@ -863,10 +801,12 @@ public class VerythonParser extends Parser {
 			case IF:
 			case WHILE:
 			case FOR:
-			case AT:
+			case TOP:
+			case INITAL:
+			case ALWAYS:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(226);
+				setState(202);
 				compound_stmt();
 				}
 				break;
@@ -920,36 +860,36 @@ public class VerythonParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(229);
+			setState(205);
 			small_stmt();
-			setState(234);
+			setState(210);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,22,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(230);
+					setState(206);
 					match(SEMI_COLON);
-					setState(231);
+					setState(207);
 					small_stmt();
 					}
 					} 
 				}
-				setState(236);
+				setState(212);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,22,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
 			}
-			setState(238);
+			setState(214);
 			_la = _input.LA(1);
 			if (_la==SEMI_COLON) {
 				{
-				setState(237);
+				setState(213);
 				match(SEMI_COLON);
 				}
 			}
 
-			setState(240);
+			setState(216);
 			match(NEWLINE);
 			}
 		}
@@ -1000,8 +940,9 @@ public class VerythonParser extends Parser {
 		Small_stmtContext _localctx = new Small_stmtContext(_ctx, getState());
 		enterRule(_localctx, 18, RULE_small_stmt);
 		try {
-			setState(246);
+			setState(222);
 			switch (_input.LA(1)) {
+			case T__0:
 			case NOT:
 			case NONE:
 			case TRUE:
@@ -1011,9 +952,6 @@ public class VerythonParser extends Parser {
 			case OCT_INTEGER:
 			case HEX_INTEGER:
 			case BIN_INTEGER:
-			case FLOAT_NUMBER:
-			case IMAG_NUMBER:
-			case ELLIPSIS:
 			case STAR:
 			case OPEN_PAREN:
 			case OPEN_BRACK:
@@ -1023,21 +961,21 @@ public class VerythonParser extends Parser {
 			case OPEN_BRACE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(242);
+				setState(218);
 				expr_stmt();
 				}
 				break;
 			case DEL:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(243);
+				setState(219);
 				del_stmt();
 				}
 				break;
 			case PASS:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(244);
+				setState(220);
 				pass_stmt();
 				}
 				break;
@@ -1046,7 +984,7 @@ public class VerythonParser extends Parser {
 			case BREAK:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(245);
+				setState(221);
 				flow_stmt();
 				}
 				break;
@@ -1104,14 +1042,13 @@ public class VerythonParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(248);
+			setState(224);
 			testlist_star_expr();
-			setState(259);
+			setState(235);
 			switch (_input.LA(1)) {
 			case ADD_ASSIGN:
 			case SUB_ASSIGN:
 			case MULT_ASSIGN:
-			case AT_ASSIGN:
 			case DIV_ASSIGN:
 			case MOD_ASSIGN:
 			case AND_ASSIGN:
@@ -1119,12 +1056,10 @@ public class VerythonParser extends Parser {
 			case XOR_ASSIGN:
 			case LEFT_SHIFT_ASSIGN:
 			case RIGHT_SHIFT_ASSIGN:
-			case POWER_ASSIGN:
-			case IDIV_ASSIGN:
 				{
-				setState(249);
+				setState(225);
 				augassign();
-				setState(250);
+				setState(226);
 				testlist();
 				}
 				break;
@@ -1132,19 +1067,19 @@ public class VerythonParser extends Parser {
 			case SEMI_COLON:
 			case ASSIGN:
 				{
-				setState(256);
+				setState(232);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==ASSIGN) {
 					{
 					{
-					setState(252);
+					setState(228);
 					match(ASSIGN);
-					setState(253);
+					setState(229);
 					testlist_star_expr();
 					}
 					}
-					setState(258);
+					setState(234);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -1206,43 +1141,43 @@ public class VerythonParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(263);
+			setState(239);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,27,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,24,_ctx) ) {
 			case 1:
 				{
-				setState(261);
+				setState(237);
 				test();
 				}
 				break;
 			case 2:
 				{
-				setState(262);
+				setState(238);
 				star_expr();
 				}
 				break;
 			}
-			setState(272);
+			setState(248);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,29,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,26,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(265);
+					setState(241);
 					match(COMMA);
-					setState(268);
+					setState(244);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,28,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,25,_ctx) ) {
 					case 1:
 						{
-						setState(266);
+						setState(242);
 						test();
 						}
 						break;
 					case 2:
 						{
-						setState(267);
+						setState(243);
 						star_expr();
 						}
 						break;
@@ -1250,15 +1185,15 @@ public class VerythonParser extends Parser {
 					}
 					} 
 				}
-				setState(274);
+				setState(250);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,29,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,26,_ctx);
 			}
-			setState(276);
+			setState(252);
 			_la = _input.LA(1);
 			if (_la==COMMA) {
 				{
-				setState(275);
+				setState(251);
 				match(COMMA);
 				}
 			}
@@ -1277,6 +1212,16 @@ public class VerythonParser extends Parser {
 	}
 
 	public static class AugassignContext extends ParserRuleContext {
+		public TerminalNode ADD_ASSIGN() { return getToken(VerythonParser.ADD_ASSIGN, 0); }
+		public TerminalNode SUB_ASSIGN() { return getToken(VerythonParser.SUB_ASSIGN, 0); }
+		public TerminalNode MULT_ASSIGN() { return getToken(VerythonParser.MULT_ASSIGN, 0); }
+		public TerminalNode DIV_ASSIGN() { return getToken(VerythonParser.DIV_ASSIGN, 0); }
+		public TerminalNode MOD_ASSIGN() { return getToken(VerythonParser.MOD_ASSIGN, 0); }
+		public TerminalNode AND_ASSIGN() { return getToken(VerythonParser.AND_ASSIGN, 0); }
+		public TerminalNode OR_ASSIGN() { return getToken(VerythonParser.OR_ASSIGN, 0); }
+		public TerminalNode XOR_ASSIGN() { return getToken(VerythonParser.XOR_ASSIGN, 0); }
+		public TerminalNode LEFT_SHIFT_ASSIGN() { return getToken(VerythonParser.LEFT_SHIFT_ASSIGN, 0); }
+		public TerminalNode RIGHT_SHIFT_ASSIGN() { return getToken(VerythonParser.RIGHT_SHIFT_ASSIGN, 0); }
 		public AugassignContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1303,9 +1248,9 @@ public class VerythonParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(278);
+			setState(254);
 			_la = _input.LA(1);
-			if ( !(((((_la - 62)) & ~0x3f) == 0 && ((1L << (_la - 62)) & ((1L << (ADD_ASSIGN - 62)) | (1L << (SUB_ASSIGN - 62)) | (1L << (MULT_ASSIGN - 62)) | (1L << (AT_ASSIGN - 62)) | (1L << (DIV_ASSIGN - 62)) | (1L << (MOD_ASSIGN - 62)) | (1L << (AND_ASSIGN - 62)) | (1L << (OR_ASSIGN - 62)) | (1L << (XOR_ASSIGN - 62)) | (1L << (LEFT_SHIFT_ASSIGN - 62)) | (1L << (RIGHT_SHIFT_ASSIGN - 62)) | (1L << (POWER_ASSIGN - 62)) | (1L << (IDIV_ASSIGN - 62)))) != 0)) ) {
+			if ( !(((((_la - 56)) & ~0x3f) == 0 && ((1L << (_la - 56)) & ((1L << (ADD_ASSIGN - 56)) | (1L << (SUB_ASSIGN - 56)) | (1L << (MULT_ASSIGN - 56)) | (1L << (DIV_ASSIGN - 56)) | (1L << (MOD_ASSIGN - 56)) | (1L << (AND_ASSIGN - 56)) | (1L << (OR_ASSIGN - 56)) | (1L << (XOR_ASSIGN - 56)) | (1L << (LEFT_SHIFT_ASSIGN - 56)) | (1L << (RIGHT_SHIFT_ASSIGN - 56)))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			} else {
 				consume();
@@ -1353,9 +1298,9 @@ public class VerythonParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(280);
+			setState(256);
 			match(DEL);
-			setState(281);
+			setState(257);
 			exprlist();
 			}
 		}
@@ -1397,7 +1342,7 @@ public class VerythonParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(283);
+			setState(259);
 			match(PASS);
 			}
 		}
@@ -1445,26 +1390,26 @@ public class VerythonParser extends Parser {
 		Flow_stmtContext _localctx = new Flow_stmtContext(_ctx, getState());
 		enterRule(_localctx, 30, RULE_flow_stmt);
 		try {
-			setState(288);
+			setState(264);
 			switch (_input.LA(1)) {
 			case BREAK:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(285);
+				setState(261);
 				break_stmt();
 				}
 				break;
 			case CONTINUE:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(286);
+				setState(262);
 				continue_stmt();
 				}
 				break;
 			case RETURN:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(287);
+				setState(263);
 				return_stmt();
 				}
 				break;
@@ -1510,7 +1455,7 @@ public class VerythonParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(290);
+			setState(266);
 			match(BREAK);
 			}
 		}
@@ -1552,7 +1497,7 @@ public class VerythonParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(292);
+			setState(268);
 			match(CONTINUE);
 			}
 		}
@@ -1598,79 +1543,17 @@ public class VerythonParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(294);
+			setState(270);
 			match(RETURN);
-			setState(296);
+			setState(272);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << FLOAT_NUMBER) | (1L << IMAG_NUMBER) | (1L << ELLIPSIS) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 				{
-				setState(295);
+				setState(271);
 				testlist();
 				}
 			}
 
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class Dotted_nameContext extends ParserRuleContext {
-		public List<TerminalNode> NAME() { return getTokens(VerythonParser.NAME); }
-		public TerminalNode NAME(int i) {
-			return getToken(VerythonParser.NAME, i);
-		}
-		public Dotted_nameContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_dotted_name; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterDotted_name(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitDotted_name(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitDotted_name(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final Dotted_nameContext dotted_name() throws RecognitionException {
-		Dotted_nameContext _localctx = new Dotted_nameContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_dotted_name);
-		int _la;
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(298);
-			match(NAME);
-			setState(303);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			while (_la==DOT) {
-				{
-				{
-				setState(299);
-				match(DOT);
-				setState(300);
-				match(NAME);
-				}
-				}
-				setState(305);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -1721,42 +1604,44 @@ public class VerythonParser extends Parser {
 
 	public final Compound_stmtContext compound_stmt() throws RecognitionException {
 		Compound_stmtContext _localctx = new Compound_stmtContext(_ctx, getState());
-		enterRule(_localctx, 40, RULE_compound_stmt);
+		enterRule(_localctx, 38, RULE_compound_stmt);
 		try {
-			setState(311);
+			setState(279);
 			switch (_input.LA(1)) {
 			case IF:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(306);
+				setState(274);
 				if_stmt();
 				}
 				break;
 			case WHILE:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(307);
+				setState(275);
 				while_stmt();
 				}
 				break;
 			case FOR:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(308);
+				setState(276);
 				for_stmt();
 				}
 				break;
 			case DEF:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(309);
+				setState(277);
 				funcdef();
 				}
 				break;
-			case AT:
+			case TOP:
+			case INITAL:
+			case ALWAYS:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(310);
+				setState(278);
 				decorated();
 				}
 				break;
@@ -1815,48 +1700,48 @@ public class VerythonParser extends Parser {
 
 	public final If_stmtContext if_stmt() throws RecognitionException {
 		If_stmtContext _localctx = new If_stmtContext(_ctx, getState());
-		enterRule(_localctx, 42, RULE_if_stmt);
+		enterRule(_localctx, 40, RULE_if_stmt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(313);
+			setState(281);
 			match(IF);
-			setState(314);
+			setState(282);
 			test();
-			setState(315);
+			setState(283);
 			match(COLON);
-			setState(316);
+			setState(284);
 			suite();
-			setState(324);
+			setState(292);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==ELIF) {
 				{
 				{
-				setState(317);
+				setState(285);
 				match(ELIF);
-				setState(318);
+				setState(286);
 				test();
-				setState(319);
+				setState(287);
 				match(COLON);
-				setState(320);
+				setState(288);
 				suite();
 				}
 				}
-				setState(326);
+				setState(294);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(330);
+			setState(298);
 			_la = _input.LA(1);
 			if (_la==ELSE) {
 				{
-				setState(327);
+				setState(295);
 				match(ELSE);
-				setState(328);
+				setState(296);
 				match(COLON);
-				setState(329);
+				setState(297);
 				suite();
 				}
 			}
@@ -1907,28 +1792,28 @@ public class VerythonParser extends Parser {
 
 	public final While_stmtContext while_stmt() throws RecognitionException {
 		While_stmtContext _localctx = new While_stmtContext(_ctx, getState());
-		enterRule(_localctx, 44, RULE_while_stmt);
+		enterRule(_localctx, 42, RULE_while_stmt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(332);
+			setState(300);
 			match(WHILE);
-			setState(333);
+			setState(301);
 			test();
-			setState(334);
+			setState(302);
 			match(COLON);
-			setState(335);
+			setState(303);
 			suite();
-			setState(339);
+			setState(307);
 			_la = _input.LA(1);
 			if (_la==ELSE) {
 				{
-				setState(336);
+				setState(304);
 				match(ELSE);
-				setState(337);
+				setState(305);
 				match(COLON);
-				setState(338);
+				setState(306);
 				suite();
 				}
 			}
@@ -1983,32 +1868,32 @@ public class VerythonParser extends Parser {
 
 	public final For_stmtContext for_stmt() throws RecognitionException {
 		For_stmtContext _localctx = new For_stmtContext(_ctx, getState());
-		enterRule(_localctx, 46, RULE_for_stmt);
+		enterRule(_localctx, 44, RULE_for_stmt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(341);
+			setState(309);
 			match(FOR);
-			setState(342);
+			setState(310);
 			exprlist();
-			setState(343);
+			setState(311);
 			match(IN);
-			setState(344);
+			setState(312);
 			testlist();
-			setState(345);
+			setState(313);
 			match(COLON);
-			setState(346);
+			setState(314);
 			suite();
-			setState(350);
+			setState(318);
 			_la = _input.LA(1);
 			if (_la==ELSE) {
 				{
-				setState(347);
+				setState(315);
 				match(ELSE);
-				setState(348);
+				setState(316);
 				match(COLON);
-				setState(349);
+				setState(317);
 				suite();
 				}
 			}
@@ -2060,11 +1945,12 @@ public class VerythonParser extends Parser {
 
 	public final SuiteContext suite() throws RecognitionException {
 		SuiteContext _localctx = new SuiteContext(_ctx, getState());
-		enterRule(_localctx, 48, RULE_suite);
+		enterRule(_localctx, 46, RULE_suite);
 		int _la;
 		try {
-			setState(362);
+			setState(330);
 			switch (_input.LA(1)) {
+			case T__0:
 			case RETURN:
 			case NOT:
 			case NONE:
@@ -2079,9 +1965,6 @@ public class VerythonParser extends Parser {
 			case OCT_INTEGER:
 			case HEX_INTEGER:
 			case BIN_INTEGER:
-			case FLOAT_NUMBER:
-			case IMAG_NUMBER:
-			case ELLIPSIS:
 			case STAR:
 			case OPEN_PAREN:
 			case OPEN_BRACK:
@@ -2091,32 +1974,32 @@ public class VerythonParser extends Parser {
 			case OPEN_BRACE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(352);
+				setState(320);
 				simple_stmt();
 				}
 				break;
 			case NEWLINE:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(353);
+				setState(321);
 				match(NEWLINE);
-				setState(354);
+				setState(322);
 				match(INDENT);
-				setState(356); 
+				setState(324); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(355);
+					setState(323);
 					stmt();
 					}
 					}
-					setState(358); 
+					setState(326); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << DEF) | (1L << RETURN) | (1L << IF) | (1L << WHILE) | (1L << FOR) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << DEL) | (1L << PASS) | (1L << CONTINUE) | (1L << BREAK) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << FLOAT_NUMBER) | (1L << IMAG_NUMBER) | (1L << ELLIPSIS) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE) | (1L << AT))) != 0) );
-				setState(360);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << DEF) | (1L << RETURN) | (1L << IF) | (1L << WHILE) | (1L << FOR) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << DEL) | (1L << PASS) | (1L << CONTINUE) | (1L << BREAK) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0) || ((((_la - 66)) & ~0x3f) == 0 && ((1L << (_la - 66)) & ((1L << (TOP - 66)) | (1L << (INITAL - 66)) | (1L << (ALWAYS - 66)))) != 0) );
+				setState(328);
 				match(DEDENT);
 				}
 				break;
@@ -2168,72 +2051,28 @@ public class VerythonParser extends Parser {
 
 	public final TestContext test() throws RecognitionException {
 		TestContext _localctx = new TestContext(_ctx, getState());
-		enterRule(_localctx, 50, RULE_test);
+		enterRule(_localctx, 48, RULE_test);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(364);
+			setState(332);
 			or_test();
-			setState(370);
+			setState(338);
 			_la = _input.LA(1);
 			if (_la==IF) {
 				{
-				setState(365);
+				setState(333);
 				match(IF);
-				setState(366);
+				setState(334);
 				or_test();
-				setState(367);
+				setState(335);
 				match(ELSE);
-				setState(368);
+				setState(336);
 				test();
 				}
 			}
 
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class Test_nocondContext extends ParserRuleContext {
-		public Or_testContext or_test() {
-			return getRuleContext(Or_testContext.class,0);
-		}
-		public Test_nocondContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_test_nocond; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTest_nocond(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTest_nocond(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTest_nocond(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final Test_nocondContext test_nocond() throws RecognitionException {
-		Test_nocondContext _localctx = new Test_nocondContext(_ctx, getState());
-		enterRule(_localctx, 52, RULE_test_nocond);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(372);
-			or_test();
 			}
 		}
 		catch (RecognitionException re) {
@@ -2279,26 +2118,26 @@ public class VerythonParser extends Parser {
 
 	public final Or_testContext or_test() throws RecognitionException {
 		Or_testContext _localctx = new Or_testContext(_ctx, getState());
-		enterRule(_localctx, 54, RULE_or_test);
+		enterRule(_localctx, 50, RULE_or_test);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(374);
+			setState(340);
 			and_test();
-			setState(379);
+			setState(345);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==OR) {
 				{
 				{
-				setState(375);
+				setState(341);
 				match(OR);
-				setState(376);
+				setState(342);
 				and_test();
 				}
 				}
-				setState(381);
+				setState(347);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2347,26 +2186,26 @@ public class VerythonParser extends Parser {
 
 	public final And_testContext and_test() throws RecognitionException {
 		And_testContext _localctx = new And_testContext(_ctx, getState());
-		enterRule(_localctx, 56, RULE_and_test);
+		enterRule(_localctx, 52, RULE_and_test);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(382);
+			setState(348);
 			not_test();
-			setState(387);
+			setState(353);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==AND) {
 				{
 				{
-				setState(383);
+				setState(349);
 				match(AND);
-				setState(384);
+				setState(350);
 				not_test();
 				}
 				}
-				setState(389);
+				setState(355);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2412,19 +2251,20 @@ public class VerythonParser extends Parser {
 
 	public final Not_testContext not_test() throws RecognitionException {
 		Not_testContext _localctx = new Not_testContext(_ctx, getState());
-		enterRule(_localctx, 58, RULE_not_test);
+		enterRule(_localctx, 54, RULE_not_test);
 		try {
-			setState(393);
+			setState(359);
 			switch (_input.LA(1)) {
 			case NOT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(390);
+				setState(356);
 				match(NOT);
-				setState(391);
+				setState(357);
 				not_test();
 				}
 				break;
+			case T__0:
 			case NONE:
 			case TRUE:
 			case FALSE:
@@ -2433,9 +2273,6 @@ public class VerythonParser extends Parser {
 			case OCT_INTEGER:
 			case HEX_INTEGER:
 			case BIN_INTEGER:
-			case FLOAT_NUMBER:
-			case IMAG_NUMBER:
-			case ELLIPSIS:
 			case STAR:
 			case OPEN_PAREN:
 			case OPEN_BRACK:
@@ -2445,7 +2282,7 @@ public class VerythonParser extends Parser {
 			case OPEN_BRACE:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(392);
+				setState(358);
 				comparison();
 				}
 				break;
@@ -2498,26 +2335,26 @@ public class VerythonParser extends Parser {
 
 	public final ComparisonContext comparison() throws RecognitionException {
 		ComparisonContext _localctx = new ComparisonContext(_ctx, getState());
-		enterRule(_localctx, 60, RULE_comparison);
+		enterRule(_localctx, 56, RULE_comparison);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(395);
+			setState(361);
 			star_expr();
-			setState(401);
+			setState(367);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IN) | (1L << NOT) | (1L << IS) | (1L << LESS_THAN) | (1L << GREATER_THAN) | (1L << EQUALS) | (1L << GT_EQ) | (1L << LT_EQ) | (1L << NOT_EQ_1) | (1L << NOT_EQ_2))) != 0)) {
 				{
 				{
-				setState(396);
+				setState(362);
 				comp_op();
-				setState(397);
+				setState(363);
 				star_expr();
 				}
 				}
-				setState(403);
+				setState(369);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2535,6 +2372,13 @@ public class VerythonParser extends Parser {
 	}
 
 	public static class Comp_opContext extends ParserRuleContext {
+		public TerminalNode LESS_THAN() { return getToken(VerythonParser.LESS_THAN, 0); }
+		public TerminalNode GREATER_THAN() { return getToken(VerythonParser.GREATER_THAN, 0); }
+		public TerminalNode EQUALS() { return getToken(VerythonParser.EQUALS, 0); }
+		public TerminalNode GT_EQ() { return getToken(VerythonParser.GT_EQ, 0); }
+		public TerminalNode LT_EQ() { return getToken(VerythonParser.LT_EQ, 0); }
+		public TerminalNode NOT_EQ_1() { return getToken(VerythonParser.NOT_EQ_1, 0); }
+		public TerminalNode NOT_EQ_2() { return getToken(VerythonParser.NOT_EQ_2, 0); }
 		public TerminalNode IN() { return getToken(VerythonParser.IN, 0); }
 		public TerminalNode NOT() { return getToken(VerythonParser.NOT, 0); }
 		public TerminalNode IS() { return getToken(VerythonParser.IS, 0); }
@@ -2559,89 +2403,89 @@ public class VerythonParser extends Parser {
 
 	public final Comp_opContext comp_op() throws RecognitionException {
 		Comp_opContext _localctx = new Comp_opContext(_ctx, getState());
-		enterRule(_localctx, 62, RULE_comp_op);
+		enterRule(_localctx, 58, RULE_comp_op);
 		try {
-			setState(417);
+			setState(383);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,46,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,42,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(404);
+				setState(370);
 				match(LESS_THAN);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(405);
+				setState(371);
 				match(GREATER_THAN);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(406);
+				setState(372);
 				match(EQUALS);
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(407);
+				setState(373);
 				match(GT_EQ);
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(408);
+				setState(374);
 				match(LT_EQ);
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(409);
+				setState(375);
 				match(NOT_EQ_1);
 				}
 				break;
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(410);
+				setState(376);
 				match(NOT_EQ_2);
 				}
 				break;
 			case 8:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(411);
+				setState(377);
 				match(IN);
 				}
 				break;
 			case 9:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(412);
+				setState(378);
 				match(NOT);
-				setState(413);
+				setState(379);
 				match(IN);
 				}
 				break;
 			case 10:
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(414);
+				setState(380);
 				match(IS);
 				}
 				break;
 			case 11:
 				enterOuterAlt(_localctx, 11);
 				{
-				setState(415);
+				setState(381);
 				match(IS);
-				setState(416);
+				setState(382);
 				match(NOT);
 				}
 				break;
@@ -2683,21 +2527,21 @@ public class VerythonParser extends Parser {
 
 	public final Star_exprContext star_expr() throws RecognitionException {
 		Star_exprContext _localctx = new Star_exprContext(_ctx, getState());
-		enterRule(_localctx, 64, RULE_star_expr);
+		enterRule(_localctx, 60, RULE_star_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(420);
+			setState(386);
 			_la = _input.LA(1);
 			if (_la==STAR) {
 				{
-				setState(419);
+				setState(385);
 				match(STAR);
 				}
 			}
 
-			setState(422);
+			setState(388);
 			expr();
 			}
 		}
@@ -2740,26 +2584,26 @@ public class VerythonParser extends Parser {
 
 	public final ExprContext expr() throws RecognitionException {
 		ExprContext _localctx = new ExprContext(_ctx, getState());
-		enterRule(_localctx, 66, RULE_expr);
+		enterRule(_localctx, 62, RULE_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(424);
+			setState(390);
 			xor_expr();
-			setState(429);
+			setState(395);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==OR_OP) {
 				{
 				{
-				setState(425);
+				setState(391);
 				match(OR_OP);
-				setState(426);
+				setState(392);
 				xor_expr();
 				}
 				}
-				setState(431);
+				setState(397);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2804,26 +2648,26 @@ public class VerythonParser extends Parser {
 
 	public final Xor_exprContext xor_expr() throws RecognitionException {
 		Xor_exprContext _localctx = new Xor_exprContext(_ctx, getState());
-		enterRule(_localctx, 68, RULE_xor_expr);
+		enterRule(_localctx, 64, RULE_xor_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(432);
+			setState(398);
 			and_expr();
-			setState(437);
+			setState(403);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==XOR) {
 				{
 				{
-				setState(433);
+				setState(399);
 				match(XOR);
-				setState(434);
+				setState(400);
 				and_expr();
 				}
 				}
-				setState(439);
+				setState(405);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2868,26 +2712,26 @@ public class VerythonParser extends Parser {
 
 	public final And_exprContext and_expr() throws RecognitionException {
 		And_exprContext _localctx = new And_exprContext(_ctx, getState());
-		enterRule(_localctx, 70, RULE_and_expr);
+		enterRule(_localctx, 66, RULE_and_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(440);
+			setState(406);
 			shift_expr();
-			setState(445);
+			setState(411);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==AND_OP) {
 				{
 				{
-				setState(441);
+				setState(407);
 				match(AND_OP);
-				setState(442);
+				setState(408);
 				shift_expr();
 				}
 				}
-				setState(447);
+				setState(413);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2932,33 +2776,33 @@ public class VerythonParser extends Parser {
 
 	public final Shift_exprContext shift_expr() throws RecognitionException {
 		Shift_exprContext _localctx = new Shift_exprContext(_ctx, getState());
-		enterRule(_localctx, 72, RULE_shift_expr);
+		enterRule(_localctx, 68, RULE_shift_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(448);
+			setState(414);
 			arith_expr();
-			setState(455);
+			setState(421);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==LEFT_SHIFT || _la==RIGHT_SHIFT) {
 				{
-				setState(453);
+				setState(419);
 				switch (_input.LA(1)) {
 				case LEFT_SHIFT:
 					{
-					setState(449);
+					setState(415);
 					match(LEFT_SHIFT);
-					setState(450);
+					setState(416);
 					arith_expr();
 					}
 					break;
 				case RIGHT_SHIFT:
 					{
-					setState(451);
+					setState(417);
 					match(RIGHT_SHIFT);
-					setState(452);
+					setState(418);
 					arith_expr();
 					}
 					break;
@@ -2966,7 +2810,7 @@ public class VerythonParser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(457);
+				setState(423);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -3011,33 +2855,33 @@ public class VerythonParser extends Parser {
 
 	public final Arith_exprContext arith_expr() throws RecognitionException {
 		Arith_exprContext _localctx = new Arith_exprContext(_ctx, getState());
-		enterRule(_localctx, 74, RULE_arith_expr);
+		enterRule(_localctx, 70, RULE_arith_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(458);
+			setState(424);
 			term();
-			setState(465);
+			setState(431);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==ADD || _la==MINUS) {
 				{
-				setState(463);
+				setState(429);
 				switch (_input.LA(1)) {
 				case ADD:
 					{
-					setState(459);
+					setState(425);
 					match(ADD);
-					setState(460);
+					setState(426);
 					term();
 					}
 					break;
 				case MINUS:
 					{
-					setState(461);
+					setState(427);
 					match(MINUS);
-					setState(462);
+					setState(428);
 					term();
 					}
 					break;
@@ -3045,7 +2889,7 @@ public class VerythonParser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(467);
+				setState(433);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -3090,57 +2934,41 @@ public class VerythonParser extends Parser {
 
 	public final TermContext term() throws RecognitionException {
 		TermContext _localctx = new TermContext(_ctx, getState());
-		enterRule(_localctx, 76, RULE_term);
+		enterRule(_localctx, 72, RULE_term);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(468);
+			setState(434);
 			factor();
-			setState(481);
+			setState(443);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << STAR) | (1L << DIV) | (1L << MOD) | (1L << IDIV) | (1L << AT))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << STAR) | (1L << DIV) | (1L << MOD))) != 0)) {
 				{
-				setState(479);
+				setState(441);
 				switch (_input.LA(1)) {
 				case STAR:
 					{
-					setState(469);
+					setState(435);
 					match(STAR);
-					setState(470);
+					setState(436);
 					factor();
 					}
 					break;
 				case DIV:
 					{
-					setState(471);
+					setState(437);
 					match(DIV);
-					setState(472);
+					setState(438);
 					factor();
 					}
 					break;
 				case MOD:
 					{
-					setState(473);
+					setState(439);
 					match(MOD);
-					setState(474);
-					factor();
-					}
-					break;
-				case IDIV:
-					{
-					setState(475);
-					match(IDIV);
-					setState(476);
-					factor();
-					}
-					break;
-				case AT:
-					{
-					setState(477);
-					match(AT);
-					setState(478);
+					setState(440);
 					factor();
 					}
 					break;
@@ -3148,7 +2976,7 @@ public class VerythonParser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(483);
+				setState(445);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -3193,37 +3021,38 @@ public class VerythonParser extends Parser {
 
 	public final FactorContext factor() throws RecognitionException {
 		FactorContext _localctx = new FactorContext(_ctx, getState());
-		enterRule(_localctx, 78, RULE_factor);
+		enterRule(_localctx, 74, RULE_factor);
 		try {
-			setState(491);
+			setState(453);
 			switch (_input.LA(1)) {
 			case ADD:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(484);
+				setState(446);
 				match(ADD);
-				setState(485);
+				setState(447);
 				factor();
 				}
 				break;
 			case MINUS:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(486);
+				setState(448);
 				match(MINUS);
-				setState(487);
+				setState(449);
 				factor();
 				}
 				break;
 			case NOT_OP:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(488);
+				setState(450);
 				match(NOT_OP);
-				setState(489);
+				setState(451);
 				factor();
 				}
 				break;
+			case T__0:
 			case NONE:
 			case TRUE:
 			case FALSE:
@@ -3232,15 +3061,12 @@ public class VerythonParser extends Parser {
 			case OCT_INTEGER:
 			case HEX_INTEGER:
 			case BIN_INTEGER:
-			case FLOAT_NUMBER:
-			case IMAG_NUMBER:
-			case ELLIPSIS:
 			case OPEN_PAREN:
 			case OPEN_BRACK:
 			case OPEN_BRACE:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(490);
+				setState(452);
 				power();
 				}
 				break;
@@ -3269,9 +3095,6 @@ public class VerythonParser extends Parser {
 		public TrailerContext trailer(int i) {
 			return getRuleContext(TrailerContext.class,i);
 		}
-		public FactorContext factor() {
-			return getRuleContext(FactorContext.class,0);
-		}
 		public PowerContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3293,38 +3116,27 @@ public class VerythonParser extends Parser {
 
 	public final PowerContext power() throws RecognitionException {
 		PowerContext _localctx = new PowerContext(_ctx, getState());
-		enterRule(_localctx, 80, RULE_power);
+		enterRule(_localctx, 76, RULE_power);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(493);
+			setState(455);
 			atom();
-			setState(497);
+			setState(459);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << DOT) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK))) != 0)) {
 				{
 				{
-				setState(494);
+				setState(456);
 				trailer();
 				}
 				}
-				setState(499);
+				setState(461);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(502);
-			_la = _input.LA(1);
-			if (_la==POWER) {
-				{
-				setState(500);
-				match(POWER);
-				setState(501);
-				factor();
-				}
-			}
-
 			}
 		}
 		catch (RecognitionException re) {
@@ -3373,69 +3185,69 @@ public class VerythonParser extends Parser {
 
 	public final AtomContext atom() throws RecognitionException {
 		AtomContext _localctx = new AtomContext(_ctx, getState());
-		enterRule(_localctx, 82, RULE_atom);
+		enterRule(_localctx, 78, RULE_atom);
 		int _la;
 		try {
-			setState(525);
+			setState(483);
 			switch (_input.LA(1)) {
 			case OPEN_PAREN:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(504);
+				setState(462);
 				match(OPEN_PAREN);
-				setState(506);
+				setState(464);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << FLOAT_NUMBER) | (1L << IMAG_NUMBER) | (1L << ELLIPSIS) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 					{
-					setState(505);
+					setState(463);
 					testlist_comp();
 					}
 				}
 
-				setState(508);
+				setState(466);
 				match(CLOSE_PAREN);
 				}
 				break;
 			case OPEN_BRACK:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(509);
+				setState(467);
 				match(OPEN_BRACK);
-				setState(511);
+				setState(469);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << FLOAT_NUMBER) | (1L << IMAG_NUMBER) | (1L << ELLIPSIS) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 					{
-					setState(510);
+					setState(468);
 					testlist_comp();
 					}
 				}
 
-				setState(513);
+				setState(471);
 				match(CLOSE_BRACK);
 				}
 				break;
 			case OPEN_BRACE:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(514);
+				setState(472);
 				match(OPEN_BRACE);
-				setState(516);
+				setState(474);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << FLOAT_NUMBER) | (1L << IMAG_NUMBER) | (1L << ELLIPSIS) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 					{
-					setState(515);
+					setState(473);
 					dictorsetmaker();
 					}
 				}
 
-				setState(518);
+				setState(476);
 				match(CLOSE_BRACE);
 				}
 				break;
 			case NAME:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(519);
+				setState(477);
 				match(NAME);
 				}
 				break;
@@ -3443,39 +3255,37 @@ public class VerythonParser extends Parser {
 			case OCT_INTEGER:
 			case HEX_INTEGER:
 			case BIN_INTEGER:
-			case FLOAT_NUMBER:
-			case IMAG_NUMBER:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(520);
+				setState(478);
 				number();
 				}
 				break;
-			case ELLIPSIS:
+			case T__0:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(521);
-				match(ELLIPSIS);
+				setState(479);
+				match(T__0);
 				}
 				break;
 			case NONE:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(522);
+				setState(480);
 				match(NONE);
 				}
 				break;
 			case TRUE:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(523);
+				setState(481);
 				match(TRUE);
 				}
 				break;
 			case FALSE:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(524);
+				setState(482);
 				match(FALSE);
 				}
 				break;
@@ -3525,19 +3335,19 @@ public class VerythonParser extends Parser {
 
 	public final Testlist_compContext testlist_comp() throws RecognitionException {
 		Testlist_compContext _localctx = new Testlist_compContext(_ctx, getState());
-		enterRule(_localctx, 84, RULE_testlist_comp);
+		enterRule(_localctx, 80, RULE_testlist_comp);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(527);
+			setState(485);
 			test();
-			setState(539);
+			setState(497);
 			switch (_input.LA(1)) {
 			case FOR:
 				{
-				setState(528);
+				setState(486);
 				comp_for();
 				}
 				break;
@@ -3545,29 +3355,29 @@ public class VerythonParser extends Parser {
 			case COMMA:
 			case CLOSE_BRACK:
 				{
-				setState(533);
+				setState(491);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,64,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,59,_ctx);
 				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
-						setState(529);
+						setState(487);
 						match(COMMA);
-						setState(530);
+						setState(488);
 						test();
 						}
 						} 
 					}
-					setState(535);
+					setState(493);
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,64,_ctx);
+					_alt = getInterpreter().adaptivePredict(_input,59,_ctx);
 				}
-				setState(537);
+				setState(495);
 				_la = _input.LA(1);
 				if (_la==COMMA) {
 					{
-					setState(536);
+					setState(494);
 					match(COMMA);
 					}
 				}
@@ -3619,46 +3429,46 @@ public class VerythonParser extends Parser {
 
 	public final TrailerContext trailer() throws RecognitionException {
 		TrailerContext _localctx = new TrailerContext(_ctx, getState());
-		enterRule(_localctx, 86, RULE_trailer);
+		enterRule(_localctx, 82, RULE_trailer);
 		int _la;
 		try {
-			setState(552);
+			setState(510);
 			switch (_input.LA(1)) {
 			case OPEN_PAREN:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(541);
+				setState(499);
 				match(OPEN_PAREN);
-				setState(543);
+				setState(501);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << FLOAT_NUMBER) | (1L << IMAG_NUMBER) | (1L << ELLIPSIS) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << POWER) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 					{
-					setState(542);
+					setState(500);
 					arglist();
 					}
 				}
 
-				setState(545);
+				setState(503);
 				match(CLOSE_PAREN);
 				}
 				break;
 			case OPEN_BRACK:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(546);
+				setState(504);
 				match(OPEN_BRACK);
-				setState(547);
+				setState(505);
 				subscriptlist();
-				setState(548);
+				setState(506);
 				match(CLOSE_BRACK);
 				}
 				break;
 			case DOT:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(550);
+				setState(508);
 				match(DOT);
-				setState(551);
+				setState(509);
 				match(NAME);
 				}
 				break;
@@ -3705,37 +3515,37 @@ public class VerythonParser extends Parser {
 
 	public final SubscriptlistContext subscriptlist() throws RecognitionException {
 		SubscriptlistContext _localctx = new SubscriptlistContext(_ctx, getState());
-		enterRule(_localctx, 88, RULE_subscriptlist);
+		enterRule(_localctx, 84, RULE_subscriptlist);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(554);
+			setState(512);
 			subscript();
-			setState(559);
+			setState(517);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,69,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,64,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(555);
+					setState(513);
 					match(COMMA);
-					setState(556);
+					setState(514);
 					subscript();
 					}
 					} 
 				}
-				setState(561);
+				setState(519);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,69,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,64,_ctx);
 			}
-			setState(563);
+			setState(521);
 			_la = _input.LA(1);
 			if (_la==COMMA) {
 				{
-				setState(562);
+				setState(520);
 				match(COMMA);
 				}
 			}
@@ -3784,47 +3594,47 @@ public class VerythonParser extends Parser {
 
 	public final SubscriptContext subscript() throws RecognitionException {
 		SubscriptContext _localctx = new SubscriptContext(_ctx, getState());
-		enterRule(_localctx, 90, RULE_subscript);
+		enterRule(_localctx, 86, RULE_subscript);
 		int _la;
 		try {
-			setState(576);
+			setState(534);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,74,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,69,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(565);
+				setState(523);
 				test();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(567);
+				setState(525);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << FLOAT_NUMBER) | (1L << IMAG_NUMBER) | (1L << ELLIPSIS) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 					{
-					setState(566);
+					setState(524);
 					test();
 					}
 				}
 
-				setState(569);
+				setState(527);
 				match(COLON);
-				setState(571);
+				setState(529);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << FLOAT_NUMBER) | (1L << IMAG_NUMBER) | (1L << ELLIPSIS) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 					{
-					setState(570);
+					setState(528);
 					test();
 					}
 				}
 
-				setState(574);
+				setState(532);
 				_la = _input.LA(1);
 				if (_la==COLON) {
 					{
-					setState(573);
+					setState(531);
 					sliceop();
 					}
 				}
@@ -3869,18 +3679,18 @@ public class VerythonParser extends Parser {
 
 	public final SliceopContext sliceop() throws RecognitionException {
 		SliceopContext _localctx = new SliceopContext(_ctx, getState());
-		enterRule(_localctx, 92, RULE_sliceop);
+		enterRule(_localctx, 88, RULE_sliceop);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(578);
+			setState(536);
 			match(COLON);
-			setState(580);
+			setState(538);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << FLOAT_NUMBER) | (1L << IMAG_NUMBER) | (1L << ELLIPSIS) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 				{
-				setState(579);
+				setState(537);
 				test();
 				}
 			}
@@ -3926,37 +3736,37 @@ public class VerythonParser extends Parser {
 
 	public final ExprlistContext exprlist() throws RecognitionException {
 		ExprlistContext _localctx = new ExprlistContext(_ctx, getState());
-		enterRule(_localctx, 94, RULE_exprlist);
+		enterRule(_localctx, 90, RULE_exprlist);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(582);
+			setState(540);
 			star_expr();
-			setState(587);
+			setState(545);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,76,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,71,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(583);
+					setState(541);
 					match(COMMA);
-					setState(584);
+					setState(542);
 					star_expr();
 					}
 					} 
 				}
-				setState(589);
+				setState(547);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,76,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,71,_ctx);
 			}
-			setState(591);
+			setState(549);
 			_la = _input.LA(1);
 			if (_la==COMMA) {
 				{
-				setState(590);
+				setState(548);
 				match(COMMA);
 				}
 			}
@@ -4002,37 +3812,37 @@ public class VerythonParser extends Parser {
 
 	public final TestlistContext testlist() throws RecognitionException {
 		TestlistContext _localctx = new TestlistContext(_ctx, getState());
-		enterRule(_localctx, 96, RULE_testlist);
+		enterRule(_localctx, 92, RULE_testlist);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(593);
+			setState(551);
 			test();
-			setState(598);
+			setState(556);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,78,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,73,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(594);
+					setState(552);
 					match(COMMA);
-					setState(595);
+					setState(553);
 					test();
 					}
 					} 
 				}
-				setState(600);
+				setState(558);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,78,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,73,_ctx);
 			}
-			setState(602);
+			setState(560);
 			_la = _input.LA(1);
 			if (_la==COMMA) {
 				{
-				setState(601);
+				setState(559);
 				match(COMMA);
 				}
 			}
@@ -4081,60 +3891,60 @@ public class VerythonParser extends Parser {
 
 	public final DictorsetmakerContext dictorsetmaker() throws RecognitionException {
 		DictorsetmakerContext _localctx = new DictorsetmakerContext(_ctx, getState());
-		enterRule(_localctx, 98, RULE_dictorsetmaker);
+		enterRule(_localctx, 94, RULE_dictorsetmaker);
 		int _la;
 		try {
 			int _alt;
-			setState(637);
+			setState(595);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,86,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,81,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(604);
+				setState(562);
 				test();
-				setState(605);
+				setState(563);
 				match(COLON);
-				setState(606);
+				setState(564);
 				test();
-				setState(621);
+				setState(579);
 				switch (_input.LA(1)) {
 				case FOR:
 					{
-					setState(607);
+					setState(565);
 					comp_for();
 					}
 					break;
 				case COMMA:
 				case CLOSE_BRACE:
 					{
-					setState(615);
+					setState(573);
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,80,_ctx);
+					_alt = getInterpreter().adaptivePredict(_input,75,_ctx);
 					while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 						if ( _alt==1 ) {
 							{
 							{
-							setState(608);
+							setState(566);
 							match(COMMA);
-							setState(609);
+							setState(567);
 							test();
-							setState(610);
+							setState(568);
 							match(COLON);
-							setState(611);
+							setState(569);
 							test();
 							}
 							} 
 						}
-						setState(617);
+						setState(575);
 						_errHandler.sync(this);
-						_alt = getInterpreter().adaptivePredict(_input,80,_ctx);
+						_alt = getInterpreter().adaptivePredict(_input,75,_ctx);
 					}
-					setState(619);
+					setState(577);
 					_la = _input.LA(1);
 					if (_la==COMMA) {
 						{
-						setState(618);
+						setState(576);
 						match(COMMA);
 						}
 					}
@@ -4149,42 +3959,42 @@ public class VerythonParser extends Parser {
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(623);
+				setState(581);
 				test();
-				setState(635);
+				setState(593);
 				switch (_input.LA(1)) {
 				case FOR:
 					{
-					setState(624);
+					setState(582);
 					comp_for();
 					}
 					break;
 				case COMMA:
 				case CLOSE_BRACE:
 					{
-					setState(629);
+					setState(587);
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,83,_ctx);
+					_alt = getInterpreter().adaptivePredict(_input,78,_ctx);
 					while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 						if ( _alt==1 ) {
 							{
 							{
-							setState(625);
+							setState(583);
 							match(COMMA);
-							setState(626);
+							setState(584);
 							test();
 							}
 							} 
 						}
-						setState(631);
+						setState(589);
 						_errHandler.sync(this);
-						_alt = getInterpreter().adaptivePredict(_input,83,_ctx);
+						_alt = getInterpreter().adaptivePredict(_input,78,_ctx);
 					}
-					setState(633);
+					setState(591);
 					_la = _input.LA(1);
 					if (_la==COMMA) {
 						{
-						setState(632);
+						setState(590);
 						match(COMMA);
 						}
 					}
@@ -4216,11 +4026,8 @@ public class VerythonParser extends Parser {
 		public ArgumentContext argument(int i) {
 			return getRuleContext(ArgumentContext.class,i);
 		}
-		public List<TestContext> test() {
-			return getRuleContexts(TestContext.class);
-		}
-		public TestContext test(int i) {
-			return getRuleContext(TestContext.class,i);
+		public TestContext test() {
+			return getRuleContext(TestContext.class,0);
 		}
 		public ArglistContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -4243,42 +4050,42 @@ public class VerythonParser extends Parser {
 
 	public final ArglistContext arglist() throws RecognitionException {
 		ArglistContext _localctx = new ArglistContext(_ctx, getState());
-		enterRule(_localctx, 100, RULE_arglist);
+		enterRule(_localctx, 96, RULE_arglist);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(644);
+			setState(602);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,87,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,82,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(639);
+					setState(597);
 					argument();
-					setState(640);
+					setState(598);
 					match(COMMA);
 					}
 					} 
 				}
-				setState(646);
+				setState(604);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,87,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,82,_ctx);
 			}
-			setState(667);
+			setState(618);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,91,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,85,_ctx) ) {
 			case 1:
 				{
-				setState(647);
+				setState(605);
 				argument();
-				setState(649);
+				setState(607);
 				_la = _input.LA(1);
 				if (_la==COMMA) {
 					{
-					setState(648);
+					setState(606);
 					match(COMMA);
 					}
 				}
@@ -4287,49 +4094,26 @@ public class VerythonParser extends Parser {
 				break;
 			case 2:
 				{
-				setState(651);
+				setState(609);
 				match(STAR);
-				setState(652);
+				setState(610);
 				test();
-				setState(657);
+				setState(615);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,89,_ctx);
-				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-					if ( _alt==1 ) {
-						{
-						{
-						setState(653);
-						match(COMMA);
-						setState(654);
-						argument();
-						}
-						} 
-					}
-					setState(659);
-					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,89,_ctx);
-				}
-				setState(663);
 				_la = _input.LA(1);
-				if (_la==COMMA) {
+				while (_la==COMMA) {
 					{
-					setState(660);
+					{
+					setState(611);
 					match(COMMA);
-					setState(661);
-					match(POWER);
-					setState(662);
-					test();
+					setState(612);
+					argument();
 					}
+					}
+					setState(617);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
 				}
-
-				}
-				break;
-			case 3:
-				{
-				setState(665);
-				match(POWER);
-				setState(666);
-				test();
 				}
 				break;
 			}
@@ -4377,22 +4161,22 @@ public class VerythonParser extends Parser {
 
 	public final ArgumentContext argument() throws RecognitionException {
 		ArgumentContext _localctx = new ArgumentContext(_ctx, getState());
-		enterRule(_localctx, 102, RULE_argument);
+		enterRule(_localctx, 98, RULE_argument);
 		int _la;
 		try {
-			setState(677);
+			setState(628);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,93,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,87,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(669);
+				setState(620);
 				test();
-				setState(671);
+				setState(622);
 				_la = _input.LA(1);
 				if (_la==FOR) {
 					{
-					setState(670);
+					setState(621);
 					comp_for();
 					}
 				}
@@ -4402,11 +4186,11 @@ public class VerythonParser extends Parser {
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(673);
+				setState(624);
 				test();
-				setState(674);
+				setState(625);
 				match(ASSIGN);
-				setState(675);
+				setState(626);
 				test();
 				}
 				break;
@@ -4451,21 +4235,21 @@ public class VerythonParser extends Parser {
 
 	public final Comp_iterContext comp_iter() throws RecognitionException {
 		Comp_iterContext _localctx = new Comp_iterContext(_ctx, getState());
-		enterRule(_localctx, 104, RULE_comp_iter);
+		enterRule(_localctx, 100, RULE_comp_iter);
 		try {
-			setState(681);
+			setState(632);
 			switch (_input.LA(1)) {
 			case FOR:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(679);
+				setState(630);
 				comp_for();
 				}
 				break;
 			case IF:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(680);
+				setState(631);
 				comp_if();
 				}
 				break;
@@ -4517,24 +4301,24 @@ public class VerythonParser extends Parser {
 
 	public final Comp_forContext comp_for() throws RecognitionException {
 		Comp_forContext _localctx = new Comp_forContext(_ctx, getState());
-		enterRule(_localctx, 106, RULE_comp_for);
+		enterRule(_localctx, 102, RULE_comp_for);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(683);
+			setState(634);
 			match(FOR);
-			setState(684);
+			setState(635);
 			exprlist();
-			setState(685);
+			setState(636);
 			match(IN);
-			setState(686);
+			setState(637);
 			or_test();
-			setState(688);
+			setState(639);
 			_la = _input.LA(1);
 			if (_la==IF || _la==FOR) {
 				{
-				setState(687);
+				setState(638);
 				comp_iter();
 				}
 			}
@@ -4554,8 +4338,8 @@ public class VerythonParser extends Parser {
 
 	public static class Comp_ifContext extends ParserRuleContext {
 		public TerminalNode IF() { return getToken(VerythonParser.IF, 0); }
-		public Test_nocondContext test_nocond() {
-			return getRuleContext(Test_nocondContext.class,0);
+		public Or_testContext or_test() {
+			return getRuleContext(Or_testContext.class,0);
 		}
 		public Comp_iterContext comp_iter() {
 			return getRuleContext(Comp_iterContext.class,0);
@@ -4581,20 +4365,20 @@ public class VerythonParser extends Parser {
 
 	public final Comp_ifContext comp_if() throws RecognitionException {
 		Comp_ifContext _localctx = new Comp_ifContext(_ctx, getState());
-		enterRule(_localctx, 108, RULE_comp_if);
+		enterRule(_localctx, 104, RULE_comp_if);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(690);
+			setState(641);
 			match(IF);
-			setState(691);
-			test_nocond();
-			setState(693);
+			setState(642);
+			or_test();
+			setState(644);
 			_la = _input.LA(1);
 			if (_la==IF || _la==FOR) {
 				{
-				setState(692);
+				setState(643);
 				comp_iter();
 				}
 			}
@@ -4613,11 +4397,10 @@ public class VerythonParser extends Parser {
 	}
 
 	public static class NumberContext extends ParserRuleContext {
-		public IntegerContext integer() {
-			return getRuleContext(IntegerContext.class,0);
-		}
-		public TerminalNode FLOAT_NUMBER() { return getToken(VerythonParser.FLOAT_NUMBER, 0); }
-		public TerminalNode IMAG_NUMBER() { return getToken(VerythonParser.IMAG_NUMBER, 0); }
+		public TerminalNode DECIMAL_INTEGER() { return getToken(VerythonParser.DECIMAL_INTEGER, 0); }
+		public TerminalNode OCT_INTEGER() { return getToken(VerythonParser.OCT_INTEGER, 0); }
+		public TerminalNode HEX_INTEGER() { return getToken(VerythonParser.HEX_INTEGER, 0); }
+		public TerminalNode BIN_INTEGER() { return getToken(VerythonParser.BIN_INTEGER, 0); }
 		public NumberContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4639,81 +4422,12 @@ public class VerythonParser extends Parser {
 
 	public final NumberContext number() throws RecognitionException {
 		NumberContext _localctx = new NumberContext(_ctx, getState());
-		enterRule(_localctx, 110, RULE_number);
-		try {
-			setState(698);
-			switch (_input.LA(1)) {
-			case DECIMAL_INTEGER:
-			case OCT_INTEGER:
-			case HEX_INTEGER:
-			case BIN_INTEGER:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(695);
-				integer();
-				}
-				break;
-			case FLOAT_NUMBER:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(696);
-				match(FLOAT_NUMBER);
-				}
-				break;
-			case IMAG_NUMBER:
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(697);
-				match(IMAG_NUMBER);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class IntegerContext extends ParserRuleContext {
-		public TerminalNode DECIMAL_INTEGER() { return getToken(VerythonParser.DECIMAL_INTEGER, 0); }
-		public TerminalNode OCT_INTEGER() { return getToken(VerythonParser.OCT_INTEGER, 0); }
-		public TerminalNode HEX_INTEGER() { return getToken(VerythonParser.HEX_INTEGER, 0); }
-		public TerminalNode BIN_INTEGER() { return getToken(VerythonParser.BIN_INTEGER, 0); }
-		public IntegerContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_integer; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterInteger(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitInteger(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitInteger(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final IntegerContext integer() throws RecognitionException {
-		IntegerContext _localctx = new IntegerContext(_ctx, getState());
-		enterRule(_localctx, 112, RULE_integer);
+		enterRule(_localctx, 106, RULE_number);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(700);
+			setState(646);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -4734,279 +4448,258 @@ public class VerythonParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3P\u02c1\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3J\u028b\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
 		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\4\37\t\37\4 \t \4!"+
 		"\t!\4\"\t\"\4#\t#\4$\t$\4%\t%\4&\t&\4\'\t\'\4(\t(\4)\t)\4*\t*\4+\t+\4"+
 		",\t,\4-\t-\4.\t.\4/\t/\4\60\t\60\4\61\t\61\4\62\t\62\4\63\t\63\4\64\t"+
-		"\64\4\65\t\65\4\66\t\66\4\67\t\67\48\t8\49\t9\4:\t:\3\2\3\2\7\2w\n\2\f"+
-		"\2\16\2z\13\2\3\2\3\2\3\3\3\3\3\3\3\3\5\3\u0082\n\3\3\3\5\3\u0085\n\3"+
-		"\3\3\3\3\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\5\5\u0091\n\5\3\5\3\5\3\5\3\6"+
-		"\3\6\5\6\u0098\n\6\3\6\3\6\3\7\3\7\3\7\5\7\u009f\n\7\3\7\3\7\3\7\3\7\5"+
-		"\7\u00a5\n\7\7\7\u00a7\n\7\f\7\16\7\u00aa\13\7\3\7\3\7\3\7\5\7\u00af\n"+
-		"\7\3\7\3\7\3\7\3\7\5\7\u00b5\n\7\7\7\u00b7\n\7\f\7\16\7\u00ba\13\7\3\7"+
-		"\3\7\3\7\5\7\u00bf\n\7\3\7\3\7\5\7\u00c3\n\7\5\7\u00c5\n\7\3\7\3\7\5\7"+
-		"\u00c9\n\7\3\7\3\7\3\7\3\7\5\7\u00cf\n\7\7\7\u00d1\n\7\f\7\16\7\u00d4"+
-		"\13\7\3\7\3\7\3\7\5\7\u00d9\n\7\3\7\3\7\5\7\u00dd\n\7\3\b\3\b\3\b\5\b"+
-		"\u00e2\n\b\3\t\3\t\5\t\u00e6\n\t\3\n\3\n\3\n\7\n\u00eb\n\n\f\n\16\n\u00ee"+
-		"\13\n\3\n\5\n\u00f1\n\n\3\n\3\n\3\13\3\13\3\13\3\13\5\13\u00f9\n\13\3"+
-		"\f\3\f\3\f\3\f\3\f\3\f\7\f\u0101\n\f\f\f\16\f\u0104\13\f\5\f\u0106\n\f"+
-		"\3\r\3\r\5\r\u010a\n\r\3\r\3\r\3\r\5\r\u010f\n\r\7\r\u0111\n\r\f\r\16"+
-		"\r\u0114\13\r\3\r\5\r\u0117\n\r\3\16\3\16\3\17\3\17\3\17\3\20\3\20\3\21"+
-		"\3\21\3\21\5\21\u0123\n\21\3\22\3\22\3\23\3\23\3\24\3\24\5\24\u012b\n"+
-		"\24\3\25\3\25\3\25\7\25\u0130\n\25\f\25\16\25\u0133\13\25\3\26\3\26\3"+
-		"\26\3\26\3\26\5\26\u013a\n\26\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27"+
-		"\3\27\7\27\u0145\n\27\f\27\16\27\u0148\13\27\3\27\3\27\3\27\5\27\u014d"+
-		"\n\27\3\30\3\30\3\30\3\30\3\30\3\30\3\30\5\30\u0156\n\30\3\31\3\31\3\31"+
-		"\3\31\3\31\3\31\3\31\3\31\3\31\5\31\u0161\n\31\3\32\3\32\3\32\3\32\6\32"+
-		"\u0167\n\32\r\32\16\32\u0168\3\32\3\32\5\32\u016d\n\32\3\33\3\33\3\33"+
-		"\3\33\3\33\3\33\5\33\u0175\n\33\3\34\3\34\3\35\3\35\3\35\7\35\u017c\n"+
-		"\35\f\35\16\35\u017f\13\35\3\36\3\36\3\36\7\36\u0184\n\36\f\36\16\36\u0187"+
-		"\13\36\3\37\3\37\3\37\5\37\u018c\n\37\3 \3 \3 \3 \7 \u0192\n \f \16 \u0195"+
-		"\13 \3!\3!\3!\3!\3!\3!\3!\3!\3!\3!\3!\3!\3!\5!\u01a4\n!\3\"\5\"\u01a7"+
-		"\n\"\3\"\3\"\3#\3#\3#\7#\u01ae\n#\f#\16#\u01b1\13#\3$\3$\3$\7$\u01b6\n"+
-		"$\f$\16$\u01b9\13$\3%\3%\3%\7%\u01be\n%\f%\16%\u01c1\13%\3&\3&\3&\3&\3"+
-		"&\7&\u01c8\n&\f&\16&\u01cb\13&\3\'\3\'\3\'\3\'\3\'\7\'\u01d2\n\'\f\'\16"+
-		"\'\u01d5\13\'\3(\3(\3(\3(\3(\3(\3(\3(\3(\3(\3(\7(\u01e2\n(\f(\16(\u01e5"+
-		"\13(\3)\3)\3)\3)\3)\3)\3)\5)\u01ee\n)\3*\3*\7*\u01f2\n*\f*\16*\u01f5\13"+
-		"*\3*\3*\5*\u01f9\n*\3+\3+\5+\u01fd\n+\3+\3+\3+\5+\u0202\n+\3+\3+\3+\5"+
-		"+\u0207\n+\3+\3+\3+\3+\3+\3+\3+\5+\u0210\n+\3,\3,\3,\3,\7,\u0216\n,\f"+
-		",\16,\u0219\13,\3,\5,\u021c\n,\5,\u021e\n,\3-\3-\5-\u0222\n-\3-\3-\3-"+
-		"\3-\3-\3-\3-\5-\u022b\n-\3.\3.\3.\7.\u0230\n.\f.\16.\u0233\13.\3.\5.\u0236"+
-		"\n.\3/\3/\5/\u023a\n/\3/\3/\5/\u023e\n/\3/\5/\u0241\n/\5/\u0243\n/\3\60"+
-		"\3\60\5\60\u0247\n\60\3\61\3\61\3\61\7\61\u024c\n\61\f\61\16\61\u024f"+
-		"\13\61\3\61\5\61\u0252\n\61\3\62\3\62\3\62\7\62\u0257\n\62\f\62\16\62"+
-		"\u025a\13\62\3\62\5\62\u025d\n\62\3\63\3\63\3\63\3\63\3\63\3\63\3\63\3"+
-		"\63\3\63\7\63\u0268\n\63\f\63\16\63\u026b\13\63\3\63\5\63\u026e\n\63\5"+
-		"\63\u0270\n\63\3\63\3\63\3\63\3\63\7\63\u0276\n\63\f\63\16\63\u0279\13"+
-		"\63\3\63\5\63\u027c\n\63\5\63\u027e\n\63\5\63\u0280\n\63\3\64\3\64\3\64"+
-		"\7\64\u0285\n\64\f\64\16\64\u0288\13\64\3\64\3\64\5\64\u028c\n\64\3\64"+
-		"\3\64\3\64\3\64\7\64\u0292\n\64\f\64\16\64\u0295\13\64\3\64\3\64\3\64"+
-		"\5\64\u029a\n\64\3\64\3\64\5\64\u029e\n\64\3\65\3\65\5\65\u02a2\n\65\3"+
-		"\65\3\65\3\65\3\65\5\65\u02a8\n\65\3\66\3\66\5\66\u02ac\n\66\3\67\3\67"+
-		"\3\67\3\67\3\67\5\67\u02b3\n\67\38\38\38\58\u02b8\n8\39\39\39\59\u02bd"+
-		"\n9\3:\3:\3:\2\2;\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62"+
-		"\64\668:<>@BDFHJLNPRTVXZ\\^`bdfhjlnpr\2\4\3\2@L\3\2\30\33\u0309\2x\3\2"+
-		"\2\2\4}\3\2\2\2\6\u0088\3\2\2\2\b\u008b\3\2\2\2\n\u0095\3\2\2\2\f\u00dc"+
-		"\3\2\2\2\16\u00de\3\2\2\2\20\u00e5\3\2\2\2\22\u00e7\3\2\2\2\24\u00f8\3"+
-		"\2\2\2\26\u00fa\3\2\2\2\30\u0109\3\2\2\2\32\u0118\3\2\2\2\34\u011a\3\2"+
-		"\2\2\36\u011d\3\2\2\2 \u0122\3\2\2\2\"\u0124\3\2\2\2$\u0126\3\2\2\2&\u0128"+
-		"\3\2\2\2(\u012c\3\2\2\2*\u0139\3\2\2\2,\u013b\3\2\2\2.\u014e\3\2\2\2\60"+
-		"\u0157\3\2\2\2\62\u016c\3\2\2\2\64\u016e\3\2\2\2\66\u0176\3\2\2\28\u0178"+
-		"\3\2\2\2:\u0180\3\2\2\2<\u018b\3\2\2\2>\u018d\3\2\2\2@\u01a3\3\2\2\2B"+
-		"\u01a6\3\2\2\2D\u01aa\3\2\2\2F\u01b2\3\2\2\2H\u01ba\3\2\2\2J\u01c2\3\2"+
-		"\2\2L\u01cc\3\2\2\2N\u01d6\3\2\2\2P\u01ed\3\2\2\2R\u01ef\3\2\2\2T\u020f"+
-		"\3\2\2\2V\u0211\3\2\2\2X\u022a\3\2\2\2Z\u022c\3\2\2\2\\\u0242\3\2\2\2"+
-		"^\u0244\3\2\2\2`\u0248\3\2\2\2b\u0253\3\2\2\2d\u027f\3\2\2\2f\u0286\3"+
-		"\2\2\2h\u02a7\3\2\2\2j\u02ab\3\2\2\2l\u02ad\3\2\2\2n\u02b4\3\2\2\2p\u02bc"+
-		"\3\2\2\2r\u02be\3\2\2\2tw\7\26\2\2uw\5\20\t\2vt\3\2\2\2vu\3\2\2\2wz\3"+
-		"\2\2\2xv\3\2\2\2xy\3\2\2\2y{\3\2\2\2zx\3\2\2\2{|\7\2\2\3|\3\3\2\2\2}~"+
-		"\7>\2\2~\u0084\5(\25\2\177\u0081\7!\2\2\u0080\u0082\5f\64\2\u0081\u0080"+
-		"\3\2\2\2\u0081\u0082\3\2\2\2\u0082\u0083\3\2\2\2\u0083\u0085\7\"\2\2\u0084"+
-		"\177\3\2\2\2\u0084\u0085\3\2\2\2\u0085\u0086\3\2\2\2\u0086\u0087\7\26"+
-		"\2\2\u0087\5\3\2\2\2\u0088\u0089\5\4\3\2\u0089\u008a\5\b\5\2\u008a\7\3"+
-		"\2\2\2\u008b\u008c\7\3\2\2\u008c\u008d\7\27\2\2\u008d\u0090\5\n\6\2\u008e"+
-		"\u008f\7?\2\2\u008f\u0091\5\64\33\2\u0090\u008e\3\2\2\2\u0090\u0091\3"+
-		"\2\2\2\u0091\u0092\3\2\2\2\u0092\u0093\7$\2\2\u0093\u0094\5\62\32\2\u0094"+
-		"\t\3\2\2\2\u0095\u0097\7!\2\2\u0096\u0098\5\f\7\2\u0097\u0096\3\2\2\2"+
-		"\u0097\u0098\3\2\2\2\u0098\u0099\3\2\2\2\u0099\u009a\7\"\2\2\u009a\13"+
-		"\3\2\2\2\u009b\u009e\5\16\b\2\u009c\u009d\7\'\2\2\u009d\u009f\5\64\33"+
-		"\2\u009e\u009c\3\2\2\2\u009e\u009f\3\2\2\2\u009f\u00a8\3\2\2\2\u00a0\u00a1"+
-		"\7#\2\2\u00a1\u00a4\5\16\b\2\u00a2\u00a3\7\'\2\2\u00a3\u00a5\5\64\33\2"+
-		"\u00a4\u00a2\3\2\2\2\u00a4\u00a5\3\2\2\2\u00a5\u00a7\3\2\2\2\u00a6\u00a0"+
-		"\3\2\2\2\u00a7\u00aa\3\2\2\2\u00a8\u00a6\3\2\2\2\u00a8\u00a9\3\2\2\2\u00a9"+
-		"\u00c4\3\2\2\2\u00aa\u00a8\3\2\2\2\u00ab\u00c2\7#\2\2\u00ac\u00ae\7 \2"+
-		"\2\u00ad\u00af\5\16\b\2\u00ae\u00ad\3\2\2\2\u00ae\u00af\3\2\2\2\u00af"+
-		"\u00b8\3\2\2\2\u00b0\u00b1\7#\2\2\u00b1\u00b4\5\16\b\2\u00b2\u00b3\7\'"+
-		"\2\2\u00b3\u00b5\5\64\33\2\u00b4\u00b2\3\2\2\2\u00b4\u00b5\3\2\2\2\u00b5"+
-		"\u00b7\3\2\2\2\u00b6\u00b0\3\2\2\2\u00b7\u00ba\3\2\2\2\u00b8\u00b6\3\2"+
-		"\2\2\u00b8\u00b9\3\2\2\2\u00b9\u00be\3\2\2\2\u00ba\u00b8\3\2\2\2\u00bb"+
-		"\u00bc\7#\2\2\u00bc\u00bd\7&\2\2\u00bd\u00bf\5\16\b\2\u00be\u00bb\3\2"+
-		"\2\2\u00be\u00bf\3\2\2\2\u00bf\u00c3\3\2\2\2\u00c0\u00c1\7&\2\2\u00c1"+
-		"\u00c3\5\16\b\2\u00c2\u00ac\3\2\2\2\u00c2\u00c0\3\2\2\2\u00c2\u00c3\3"+
-		"\2\2\2\u00c3\u00c5\3\2\2\2\u00c4\u00ab\3\2\2\2\u00c4\u00c5\3\2\2\2\u00c5"+
-		"\u00dd\3\2\2\2\u00c6\u00c8\7 \2\2\u00c7\u00c9\5\16\b\2\u00c8\u00c7\3\2"+
-		"\2\2\u00c8\u00c9\3\2\2\2\u00c9\u00d2\3\2\2\2\u00ca\u00cb\7#\2\2\u00cb"+
-		"\u00ce\5\16\b\2\u00cc\u00cd\7\'\2\2\u00cd\u00cf\5\64\33\2\u00ce\u00cc"+
-		"\3\2\2\2\u00ce\u00cf\3\2\2\2\u00cf\u00d1\3\2\2\2\u00d0\u00ca\3\2\2\2\u00d1"+
-		"\u00d4\3\2\2\2\u00d2\u00d0\3\2\2\2\u00d2\u00d3\3\2\2\2\u00d3\u00d8\3\2"+
-		"\2\2\u00d4\u00d2\3\2\2\2\u00d5\u00d6\7#\2\2\u00d6\u00d7\7&\2\2\u00d7\u00d9"+
-		"\5\16\b\2\u00d8\u00d5\3\2\2\2\u00d8\u00d9\3\2\2\2\u00d9\u00dd\3\2\2\2"+
-		"\u00da\u00db\7&\2\2\u00db\u00dd\5\16\b\2\u00dc\u009b\3\2\2\2\u00dc\u00c6"+
-		"\3\2\2\2\u00dc\u00da\3\2\2\2\u00dd\r\3\2\2\2\u00de\u00e1\7\27\2\2\u00df"+
-		"\u00e0\7$\2\2\u00e0\u00e2\5\64\33\2\u00e1\u00df\3\2\2\2\u00e1\u00e2\3"+
-		"\2\2\2\u00e2\17\3\2\2\2\u00e3\u00e6\5\22\n\2\u00e4\u00e6\5*\26\2\u00e5"+
-		"\u00e3\3\2\2\2\u00e5\u00e4\3\2\2\2\u00e6\21\3\2\2\2\u00e7\u00ec\5\24\13"+
-		"\2\u00e8\u00e9\7%\2\2\u00e9\u00eb\5\24\13\2\u00ea\u00e8\3\2\2\2\u00eb"+
-		"\u00ee\3\2\2\2\u00ec\u00ea\3\2\2\2\u00ec\u00ed\3\2\2\2\u00ed\u00f0\3\2"+
-		"\2\2\u00ee\u00ec\3\2\2\2\u00ef\u00f1\7%\2\2\u00f0\u00ef\3\2\2\2\u00f0"+
-		"\u00f1\3\2\2\2\u00f1\u00f2\3\2\2\2\u00f2\u00f3\7\26\2\2\u00f3\23\3\2\2"+
-		"\2\u00f4\u00f9\5\26\f\2\u00f5\u00f9\5\34\17\2\u00f6\u00f9\5\36\20\2\u00f7"+
-		"\u00f9\5 \21\2\u00f8\u00f4\3\2\2\2\u00f8\u00f5\3\2\2\2\u00f8\u00f6\3\2"+
-		"\2\2\u00f8\u00f7\3\2\2\2\u00f9\25\3\2\2\2\u00fa\u0105\5\30\r\2\u00fb\u00fc"+
-		"\5\32\16\2\u00fc\u00fd\5b\62\2\u00fd\u0106\3\2\2\2\u00fe\u00ff\7\'\2\2"+
-		"\u00ff\u0101\5\30\r\2\u0100\u00fe\3\2\2\2\u0101\u0104\3\2\2\2\u0102\u0100"+
-		"\3\2\2\2\u0102\u0103\3\2\2\2\u0103\u0106\3\2\2\2\u0104\u0102\3\2\2\2\u0105"+
-		"\u00fb\3\2\2\2\u0105\u0102\3\2\2\2\u0106\27\3\2\2\2\u0107\u010a\5\64\33"+
-		"\2\u0108\u010a\5B\"\2\u0109\u0107\3\2\2\2\u0109\u0108\3\2\2\2\u010a\u0112"+
-		"\3\2\2\2\u010b\u010e\7#\2\2\u010c\u010f\5\64\33\2\u010d\u010f\5B\"\2\u010e"+
-		"\u010c\3\2\2\2\u010e\u010d\3\2\2\2\u010f\u0111\3\2\2\2\u0110\u010b\3\2"+
-		"\2\2\u0111\u0114\3\2\2\2\u0112\u0110\3\2\2\2\u0112\u0113\3\2\2\2\u0113"+
-		"\u0116\3\2\2\2\u0114\u0112\3\2\2\2\u0115\u0117\7#\2\2\u0116\u0115\3\2"+
-		"\2\2\u0116\u0117\3\2\2\2\u0117\31\3\2\2\2\u0118\u0119\t\2\2\2\u0119\33"+
-		"\3\2\2\2\u011a\u011b\7\22\2\2\u011b\u011c\5`\61\2\u011c\35\3\2\2\2\u011d"+
-		"\u011e\7\23\2\2\u011e\37\3\2\2\2\u011f\u0123\5\"\22\2\u0120\u0123\5$\23"+
-		"\2\u0121\u0123\5&\24\2\u0122\u011f\3\2\2\2\u0122\u0120\3\2\2\2\u0122\u0121"+
-		"\3\2\2\2\u0123!\3\2\2\2\u0124\u0125\7\25\2\2\u0125#\3\2\2\2\u0126\u0127"+
-		"\7\24\2\2\u0127%\3\2\2\2\u0128\u012a\7\4\2\2\u0129\u012b\5b\62\2\u012a"+
-		"\u0129\3\2\2\2\u012a\u012b\3\2\2\2\u012b\'\3\2\2\2\u012c\u0131\7\27\2"+
-		"\2\u012d\u012e\7\36\2\2\u012e\u0130\7\27\2\2\u012f\u012d\3\2\2\2\u0130"+
-		"\u0133\3\2\2\2\u0131\u012f\3\2\2\2\u0131\u0132\3\2\2\2\u0132)\3\2\2\2"+
-		"\u0133\u0131\3\2\2\2\u0134\u013a\5,\27\2\u0135\u013a\5.\30\2\u0136\u013a"+
-		"\5\60\31\2\u0137\u013a\5\b\5\2\u0138\u013a\5\6\4\2\u0139\u0134\3\2\2\2"+
-		"\u0139\u0135\3\2\2\2\u0139\u0136\3\2\2\2\u0139\u0137\3\2\2\2\u0139\u0138"+
-		"\3\2\2\2\u013a+\3\2\2\2\u013b\u013c\7\5\2\2\u013c\u013d\5\64\33\2\u013d"+
-		"\u013e\7$\2\2\u013e\u0146\5\62\32\2\u013f\u0140\7\6\2\2\u0140\u0141\5"+
-		"\64\33\2\u0141\u0142\7$\2\2\u0142\u0143\5\62\32\2\u0143\u0145\3\2\2\2"+
-		"\u0144\u013f\3\2\2\2\u0145\u0148\3\2\2\2\u0146\u0144\3\2\2\2\u0146\u0147"+
-		"\3\2\2\2\u0147\u014c\3\2\2\2\u0148\u0146\3\2\2\2\u0149\u014a\7\7\2\2\u014a"+
-		"\u014b\7$\2\2\u014b\u014d\5\62\32\2\u014c\u0149\3\2\2\2\u014c\u014d\3"+
-		"\2\2\2\u014d-\3\2\2\2\u014e\u014f\7\b\2\2\u014f\u0150\5\64\33\2\u0150"+
-		"\u0151\7$\2\2\u0151\u0155\5\62\32\2\u0152\u0153\7\7\2\2\u0153\u0154\7"+
-		"$\2\2\u0154\u0156\5\62\32\2\u0155\u0152\3\2\2\2\u0155\u0156\3\2\2\2\u0156"+
-		"/\3\2\2\2\u0157\u0158\7\t\2\2\u0158\u0159\5`\61\2\u0159\u015a\7\n\2\2"+
-		"\u015a\u015b\5b\62\2\u015b\u015c\7$\2\2\u015c\u0160\5\62\32\2\u015d\u015e"+
-		"\7\7\2\2\u015e\u015f\7$\2\2\u015f\u0161\5\62\32\2\u0160\u015d\3\2\2\2"+
-		"\u0160\u0161\3\2\2\2\u0161\61\3\2\2\2\u0162\u016d\5\22\n\2\u0163\u0164"+
-		"\7\26\2\2\u0164\u0166\7O\2\2\u0165\u0167\5\20\t\2\u0166\u0165\3\2\2\2"+
-		"\u0167\u0168\3\2\2\2\u0168\u0166\3\2\2\2\u0168\u0169\3\2\2\2\u0169\u016a"+
-		"\3\2\2\2\u016a\u016b\7P\2\2\u016b\u016d\3\2\2\2\u016c\u0162\3\2\2\2\u016c"+
-		"\u0163\3\2\2\2\u016d\63\3\2\2\2\u016e\u0174\58\35\2\u016f\u0170\7\5\2"+
-		"\2\u0170\u0171\58\35\2\u0171\u0172\7\7\2\2\u0172\u0173\5\64\33\2\u0173"+
-		"\u0175\3\2\2\2\u0174\u016f\3\2\2\2\u0174\u0175\3\2\2\2\u0175\65\3\2\2"+
-		"\2\u0176\u0177\58\35\2\u0177\67\3\2\2\2\u0178\u017d\5:\36\2\u0179\u017a"+
-		"\7\13\2\2\u017a\u017c\5:\36\2\u017b\u0179\3\2\2\2\u017c\u017f\3\2\2\2"+
-		"\u017d\u017b\3\2\2\2\u017d\u017e\3\2\2\2\u017e9\3\2\2\2\u017f\u017d\3"+
-		"\2\2\2\u0180\u0185\5<\37\2\u0181\u0182\7\f\2\2\u0182\u0184\5<\37\2\u0183"+
-		"\u0181\3\2\2\2\u0184\u0187\3\2\2\2\u0185\u0183\3\2\2\2\u0185\u0186\3\2"+
-		"\2\2\u0186;\3\2\2\2\u0187\u0185\3\2\2\2\u0188\u0189\7\r\2\2\u0189\u018c"+
-		"\5<\37\2\u018a\u018c\5> \2\u018b\u0188\3\2\2\2\u018b\u018a\3\2\2\2\u018c"+
-		"=\3\2\2\2\u018d\u0193\5B\"\2\u018e\u018f\5@!\2\u018f\u0190\5B\"\2\u0190"+
-		"\u0192\3\2\2\2\u0191\u018e\3\2\2\2\u0192\u0195\3\2\2\2\u0193\u0191\3\2"+
-		"\2\2\u0193\u0194\3\2\2\2\u0194?\3\2\2\2\u0195\u0193\3\2\2\2\u0196\u01a4"+
-		"\7\67\2\2\u0197\u01a4\78\2\2\u0198\u01a4\79\2\2\u0199\u01a4\7:\2\2\u019a"+
-		"\u01a4\7;\2\2\u019b\u01a4\7<\2\2\u019c\u01a4\7=\2\2\u019d\u01a4\7\n\2"+
-		"\2\u019e\u019f\7\r\2\2\u019f\u01a4\7\n\2\2\u01a0\u01a4\7\16\2\2\u01a1"+
-		"\u01a2\7\16\2\2\u01a2\u01a4\7\r\2\2\u01a3\u0196\3\2\2\2\u01a3\u0197\3"+
-		"\2\2\2\u01a3\u0198\3\2\2\2\u01a3\u0199\3\2\2\2\u01a3\u019a\3\2\2\2\u01a3"+
-		"\u019b\3\2\2\2\u01a3\u019c\3\2\2\2\u01a3\u019d\3\2\2\2\u01a3\u019e\3\2"+
-		"\2\2\u01a3\u01a0\3\2\2\2\u01a3\u01a1\3\2\2\2\u01a4A\3\2\2\2\u01a5\u01a7"+
-		"\7 \2\2\u01a6\u01a5\3\2\2\2\u01a6\u01a7\3\2\2\2\u01a7\u01a8\3\2\2\2\u01a8"+
-		"\u01a9\5D#\2\u01a9C\3\2\2\2\u01aa\u01af\5F$\2\u01ab\u01ac\7*\2\2\u01ac"+
-		"\u01ae\5F$\2\u01ad\u01ab\3\2\2\2\u01ae\u01b1\3\2\2\2\u01af\u01ad\3\2\2"+
-		"\2\u01af\u01b0\3\2\2\2\u01b0E\3\2\2\2\u01b1\u01af\3\2\2\2\u01b2\u01b7"+
-		"\5H%\2\u01b3\u01b4\7+\2\2\u01b4\u01b6\5H%\2\u01b5\u01b3\3\2\2\2\u01b6"+
-		"\u01b9\3\2\2\2\u01b7\u01b5\3\2\2\2\u01b7\u01b8\3\2\2\2\u01b8G\3\2\2\2"+
-		"\u01b9\u01b7\3\2\2\2\u01ba\u01bf\5J&\2\u01bb\u01bc\7,\2\2\u01bc\u01be"+
-		"\5J&\2\u01bd\u01bb\3\2\2\2\u01be\u01c1\3\2\2\2\u01bf\u01bd\3\2\2\2\u01bf"+
-		"\u01c0\3\2\2\2\u01c0I\3\2\2\2\u01c1\u01bf\3\2\2\2\u01c2\u01c9\5L\'\2\u01c3"+
-		"\u01c4\7-\2\2\u01c4\u01c8\5L\'\2\u01c5\u01c6\7.\2\2\u01c6\u01c8\5L\'\2"+
-		"\u01c7\u01c3\3\2\2\2\u01c7\u01c5\3\2\2\2\u01c8\u01cb\3\2\2\2\u01c9\u01c7"+
-		"\3\2\2\2\u01c9\u01ca\3\2\2\2\u01caK\3\2\2\2\u01cb\u01c9\3\2\2\2\u01cc"+
-		"\u01d3\5N(\2\u01cd\u01ce\7/\2\2\u01ce\u01d2\5N(\2\u01cf\u01d0\7\60\2\2"+
-		"\u01d0\u01d2\5N(\2\u01d1\u01cd\3\2\2\2\u01d1\u01cf\3\2\2\2\u01d2\u01d5"+
-		"\3\2\2\2\u01d3\u01d1\3\2\2\2\u01d3\u01d4\3\2\2\2\u01d4M\3\2\2\2\u01d5"+
-		"\u01d3\3\2\2\2\u01d6\u01e3\5P)\2\u01d7\u01d8\7 \2\2\u01d8\u01e2\5P)\2"+
-		"\u01d9\u01da\7\61\2\2\u01da\u01e2\5P)\2\u01db\u01dc\7\62\2\2\u01dc\u01e2"+
-		"\5P)\2\u01dd\u01de\7\63\2\2\u01de\u01e2\5P)\2\u01df\u01e0\7>\2\2\u01e0"+
-		"\u01e2\5P)\2\u01e1\u01d7\3\2\2\2\u01e1\u01d9\3\2\2\2\u01e1\u01db\3\2\2"+
-		"\2\u01e1\u01dd\3\2\2\2\u01e1\u01df\3\2\2\2\u01e2\u01e5\3\2\2\2\u01e3\u01e1"+
-		"\3\2\2\2\u01e3\u01e4\3\2\2\2\u01e4O\3\2\2\2\u01e5\u01e3\3\2\2\2\u01e6"+
-		"\u01e7\7/\2\2\u01e7\u01ee\5P)\2\u01e8\u01e9\7\60\2\2\u01e9\u01ee\5P)\2"+
-		"\u01ea\u01eb\7\64\2\2\u01eb\u01ee\5P)\2\u01ec\u01ee\5R*\2\u01ed\u01e6"+
-		"\3\2\2\2\u01ed\u01e8\3\2\2\2\u01ed\u01ea\3\2\2\2\u01ed\u01ec\3\2\2\2\u01ee"+
-		"Q\3\2\2\2\u01ef\u01f3\5T+\2\u01f0\u01f2\5X-\2\u01f1\u01f0\3\2\2\2\u01f2"+
-		"\u01f5\3\2\2\2\u01f3\u01f1\3\2\2\2\u01f3\u01f4\3\2\2\2\u01f4\u01f8\3\2"+
-		"\2\2\u01f5\u01f3\3\2\2\2\u01f6\u01f7\7&\2\2\u01f7\u01f9\5P)\2\u01f8\u01f6"+
-		"\3\2\2\2\u01f8\u01f9\3\2\2\2\u01f9S\3\2\2\2\u01fa\u01fc\7!\2\2\u01fb\u01fd"+
-		"\5V,\2\u01fc\u01fb\3\2\2\2\u01fc\u01fd\3\2\2\2\u01fd\u01fe\3\2\2\2\u01fe"+
-		"\u0210\7\"\2\2\u01ff\u0201\7(\2\2\u0200\u0202\5V,\2\u0201\u0200\3\2\2"+
-		"\2\u0201\u0202\3\2\2\2\u0202\u0203\3\2\2\2\u0203\u0210\7)\2\2\u0204\u0206"+
-		"\7\65\2\2\u0205\u0207\5d\63\2\u0206\u0205\3\2\2\2\u0206\u0207\3\2\2\2"+
-		"\u0207\u0208\3\2\2\2\u0208\u0210\7\66\2\2\u0209\u0210\7\27\2\2\u020a\u0210"+
-		"\5p9\2\u020b\u0210\7\37\2\2\u020c\u0210\7\17\2\2\u020d\u0210\7\20\2\2"+
-		"\u020e\u0210\7\21\2\2\u020f\u01fa\3\2\2\2\u020f\u01ff\3\2\2\2\u020f\u0204"+
-		"\3\2\2\2\u020f\u0209\3\2\2\2\u020f\u020a\3\2\2\2\u020f\u020b\3\2\2\2\u020f"+
-		"\u020c\3\2\2\2\u020f\u020d\3\2\2\2\u020f\u020e\3\2\2\2\u0210U\3\2\2\2"+
-		"\u0211\u021d\5\64\33\2\u0212\u021e\5l\67\2\u0213\u0214\7#\2\2\u0214\u0216"+
-		"\5\64\33\2\u0215\u0213\3\2\2\2\u0216\u0219\3\2\2\2\u0217\u0215\3\2\2\2"+
-		"\u0217\u0218\3\2\2\2\u0218\u021b\3\2\2\2\u0219\u0217\3\2\2\2\u021a\u021c"+
-		"\7#\2\2\u021b\u021a\3\2\2\2\u021b\u021c\3\2\2\2\u021c\u021e\3\2\2\2\u021d"+
-		"\u0212\3\2\2\2\u021d\u0217\3\2\2\2\u021eW\3\2\2\2\u021f\u0221\7!\2\2\u0220"+
-		"\u0222\5f\64\2\u0221\u0220\3\2\2\2\u0221\u0222\3\2\2\2\u0222\u0223\3\2"+
-		"\2\2\u0223\u022b\7\"\2\2\u0224\u0225\7(\2\2\u0225\u0226\5Z.\2\u0226\u0227"+
-		"\7)\2\2\u0227\u022b\3\2\2\2\u0228\u0229\7\36\2\2\u0229\u022b\7\27\2\2"+
-		"\u022a\u021f\3\2\2\2\u022a\u0224\3\2\2\2\u022a\u0228\3\2\2\2\u022bY\3"+
-		"\2\2\2\u022c\u0231\5\\/\2\u022d\u022e\7#\2\2\u022e\u0230\5\\/\2\u022f"+
-		"\u022d\3\2\2\2\u0230\u0233\3\2\2\2\u0231\u022f\3\2\2\2\u0231\u0232\3\2"+
-		"\2\2\u0232\u0235\3\2\2\2\u0233\u0231\3\2\2\2\u0234\u0236\7#\2\2\u0235"+
-		"\u0234\3\2\2\2\u0235\u0236\3\2\2\2\u0236[\3\2\2\2\u0237\u0243\5\64\33"+
-		"\2\u0238\u023a\5\64\33\2\u0239\u0238\3\2\2\2\u0239\u023a\3\2\2\2\u023a"+
-		"\u023b\3\2\2\2\u023b\u023d\7$\2\2\u023c\u023e\5\64\33\2\u023d\u023c\3"+
-		"\2\2\2\u023d\u023e\3\2\2\2\u023e\u0240\3\2\2\2\u023f\u0241\5^\60\2\u0240"+
-		"\u023f\3\2\2\2\u0240\u0241\3\2\2\2\u0241\u0243\3\2\2\2\u0242\u0237\3\2"+
-		"\2\2\u0242\u0239\3\2\2\2\u0243]\3\2\2\2\u0244\u0246\7$\2\2\u0245\u0247"+
-		"\5\64\33\2\u0246\u0245\3\2\2\2\u0246\u0247\3\2\2\2\u0247_\3\2\2\2\u0248"+
-		"\u024d\5B\"\2\u0249\u024a\7#\2\2\u024a\u024c\5B\"\2\u024b\u0249\3\2\2"+
-		"\2\u024c\u024f\3\2\2\2\u024d\u024b\3\2\2\2\u024d\u024e\3\2\2\2\u024e\u0251"+
-		"\3\2\2\2\u024f\u024d\3\2\2\2\u0250\u0252\7#\2\2\u0251\u0250\3\2\2\2\u0251"+
-		"\u0252\3\2\2\2\u0252a\3\2\2\2\u0253\u0258\5\64\33\2\u0254\u0255\7#\2\2"+
-		"\u0255\u0257\5\64\33\2\u0256\u0254\3\2\2\2\u0257\u025a\3\2\2\2\u0258\u0256"+
-		"\3\2\2\2\u0258\u0259\3\2\2\2\u0259\u025c\3\2\2\2\u025a\u0258\3\2\2\2\u025b"+
-		"\u025d\7#\2\2\u025c\u025b\3\2\2\2\u025c\u025d\3\2\2\2\u025dc\3\2\2\2\u025e"+
-		"\u025f\5\64\33\2\u025f\u0260\7$\2\2\u0260\u026f\5\64\33\2\u0261\u0270"+
-		"\5l\67\2\u0262\u0263\7#\2\2\u0263\u0264\5\64\33\2\u0264\u0265\7$\2\2\u0265"+
-		"\u0266\5\64\33\2\u0266\u0268\3\2\2\2\u0267\u0262\3\2\2\2\u0268\u026b\3"+
-		"\2\2\2\u0269\u0267\3\2\2\2\u0269\u026a\3\2\2\2\u026a\u026d\3\2\2\2\u026b"+
-		"\u0269\3\2\2\2\u026c\u026e\7#\2\2\u026d\u026c\3\2\2\2\u026d\u026e\3\2"+
-		"\2\2\u026e\u0270\3\2\2\2\u026f\u0261\3\2\2\2\u026f\u0269\3\2\2\2\u0270"+
-		"\u0280\3\2\2\2\u0271\u027d\5\64\33\2\u0272\u027e\5l\67\2\u0273\u0274\7"+
-		"#\2\2\u0274\u0276\5\64\33\2\u0275\u0273\3\2\2\2\u0276\u0279\3\2\2\2\u0277"+
-		"\u0275\3\2\2\2\u0277\u0278\3\2\2\2\u0278\u027b\3\2\2\2\u0279\u0277\3\2"+
-		"\2\2\u027a\u027c\7#\2\2\u027b\u027a\3\2\2\2\u027b\u027c\3\2\2\2\u027c"+
-		"\u027e\3\2\2\2\u027d\u0272\3\2\2\2\u027d\u0277\3\2\2\2\u027e\u0280\3\2"+
-		"\2\2\u027f\u025e\3\2\2\2\u027f\u0271\3\2\2\2\u0280e\3\2\2\2\u0281\u0282"+
-		"\5h\65\2\u0282\u0283\7#\2\2\u0283\u0285\3\2\2\2\u0284\u0281\3\2\2\2\u0285"+
-		"\u0288\3\2\2\2\u0286\u0284\3\2\2\2\u0286\u0287\3\2\2\2\u0287\u029d\3\2"+
-		"\2\2\u0288\u0286\3\2\2\2\u0289\u028b\5h\65\2\u028a\u028c\7#\2\2\u028b"+
-		"\u028a\3\2\2\2\u028b\u028c\3\2\2\2\u028c\u029e\3\2\2\2\u028d\u028e\7 "+
-		"\2\2\u028e\u0293\5\64\33\2\u028f\u0290\7#\2\2\u0290\u0292\5h\65\2\u0291"+
-		"\u028f\3\2\2\2\u0292\u0295\3\2\2\2\u0293\u0291\3\2\2\2\u0293\u0294\3\2"+
-		"\2\2\u0294\u0299\3\2\2\2\u0295\u0293\3\2\2\2\u0296\u0297\7#\2\2\u0297"+
-		"\u0298\7&\2\2\u0298\u029a\5\64\33\2\u0299\u0296\3\2\2\2\u0299\u029a\3"+
-		"\2\2\2\u029a\u029e\3\2\2\2\u029b\u029c\7&\2\2\u029c\u029e\5\64\33\2\u029d"+
-		"\u0289\3\2\2\2\u029d\u028d\3\2\2\2\u029d\u029b\3\2\2\2\u029eg\3\2\2\2"+
-		"\u029f\u02a1\5\64\33\2\u02a0\u02a2\5l\67\2\u02a1\u02a0\3\2\2\2\u02a1\u02a2"+
-		"\3\2\2\2\u02a2\u02a8\3\2\2\2\u02a3\u02a4\5\64\33\2\u02a4\u02a5\7\'\2\2"+
-		"\u02a5\u02a6\5\64\33\2\u02a6\u02a8\3\2\2\2\u02a7\u029f\3\2\2\2\u02a7\u02a3"+
-		"\3\2\2\2\u02a8i\3\2\2\2\u02a9\u02ac\5l\67\2\u02aa\u02ac\5n8\2\u02ab\u02a9"+
-		"\3\2\2\2\u02ab\u02aa\3\2\2\2\u02ack\3\2\2\2\u02ad\u02ae\7\t\2\2\u02ae"+
-		"\u02af\5`\61\2\u02af\u02b0\7\n\2\2\u02b0\u02b2\58\35\2\u02b1\u02b3\5j"+
-		"\66\2\u02b2\u02b1\3\2\2\2\u02b2\u02b3\3\2\2\2\u02b3m\3\2\2\2\u02b4\u02b5"+
-		"\7\5\2\2\u02b5\u02b7\5\66\34\2\u02b6\u02b8\5j\66\2\u02b7\u02b6\3\2\2\2"+
-		"\u02b7\u02b8\3\2\2\2\u02b8o\3\2\2\2\u02b9\u02bd\5r:\2\u02ba\u02bd\7\34"+
-		"\2\2\u02bb\u02bd\7\35\2\2\u02bc\u02b9\3\2\2\2\u02bc\u02ba\3\2\2\2\u02bc"+
-		"\u02bb\3\2\2\2\u02bdq\3\2\2\2\u02be\u02bf\t\3\2\2\u02bfs\3\2\2\2dvx\u0081"+
-		"\u0084\u0090\u0097\u009e\u00a4\u00a8\u00ae\u00b4\u00b8\u00be\u00c2\u00c4"+
-		"\u00c8\u00ce\u00d2\u00d8\u00dc\u00e1\u00e5\u00ec\u00f0\u00f8\u0102\u0105"+
-		"\u0109\u010e\u0112\u0116\u0122\u012a\u0131\u0139\u0146\u014c\u0155\u0160"+
-		"\u0168\u016c\u0174\u017d\u0185\u018b\u0193\u01a3\u01a6\u01af\u01b7\u01bf"+
-		"\u01c7\u01c9\u01d1\u01d3\u01e1\u01e3\u01ed\u01f3\u01f8\u01fc\u0201\u0206"+
-		"\u020f\u0217\u021b\u021d\u0221\u022a\u0231\u0235\u0239\u023d\u0240\u0242"+
-		"\u0246\u024d\u0251\u0258\u025c\u0269\u026d\u026f\u0277\u027b\u027d\u027f"+
-		"\u0286\u028b\u0293\u0299\u029d\u02a1\u02a7\u02ab\u02b2\u02b7\u02bc";
+		"\64\4\65\t\65\4\66\t\66\4\67\t\67\3\2\3\2\7\2q\n\2\f\2\16\2t\13\2\3\2"+
+		"\3\2\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\5\4\u0081\n\4\3\4\5\4\u0084\n"+
+		"\4\3\5\3\5\3\5\3\5\3\5\3\5\3\6\3\6\5\6\u008e\n\6\3\6\3\6\3\7\3\7\3\7\5"+
+		"\7\u0095\n\7\3\7\3\7\3\7\3\7\5\7\u009b\n\7\7\7\u009d\n\7\f\7\16\7\u00a0"+
+		"\13\7\3\7\3\7\3\7\5\7\u00a5\n\7\3\7\3\7\3\7\3\7\5\7\u00ab\n\7\7\7\u00ad"+
+		"\n\7\f\7\16\7\u00b0\13\7\5\7\u00b2\n\7\5\7\u00b4\n\7\3\7\3\7\5\7\u00b8"+
+		"\n\7\3\7\3\7\3\7\3\7\5\7\u00be\n\7\7\7\u00c0\n\7\f\7\16\7\u00c3\13\7\5"+
+		"\7\u00c5\n\7\3\b\3\b\3\b\5\b\u00ca\n\b\3\t\3\t\5\t\u00ce\n\t\3\n\3\n\3"+
+		"\n\7\n\u00d3\n\n\f\n\16\n\u00d6\13\n\3\n\5\n\u00d9\n\n\3\n\3\n\3\13\3"+
+		"\13\3\13\3\13\5\13\u00e1\n\13\3\f\3\f\3\f\3\f\3\f\3\f\7\f\u00e9\n\f\f"+
+		"\f\16\f\u00ec\13\f\5\f\u00ee\n\f\3\r\3\r\5\r\u00f2\n\r\3\r\3\r\3\r\5\r"+
+		"\u00f7\n\r\7\r\u00f9\n\r\f\r\16\r\u00fc\13\r\3\r\5\r\u00ff\n\r\3\16\3"+
+		"\16\3\17\3\17\3\17\3\20\3\20\3\21\3\21\3\21\5\21\u010b\n\21\3\22\3\22"+
+		"\3\23\3\23\3\24\3\24\5\24\u0113\n\24\3\25\3\25\3\25\3\25\3\25\5\25\u011a"+
+		"\n\25\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\7\26\u0125\n\26\f\26"+
+		"\16\26\u0128\13\26\3\26\3\26\3\26\5\26\u012d\n\26\3\27\3\27\3\27\3\27"+
+		"\3\27\3\27\3\27\5\27\u0136\n\27\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30"+
+		"\3\30\5\30\u0141\n\30\3\31\3\31\3\31\3\31\6\31\u0147\n\31\r\31\16\31\u0148"+
+		"\3\31\3\31\5\31\u014d\n\31\3\32\3\32\3\32\3\32\3\32\3\32\5\32\u0155\n"+
+		"\32\3\33\3\33\3\33\7\33\u015a\n\33\f\33\16\33\u015d\13\33\3\34\3\34\3"+
+		"\34\7\34\u0162\n\34\f\34\16\34\u0165\13\34\3\35\3\35\3\35\5\35\u016a\n"+
+		"\35\3\36\3\36\3\36\3\36\7\36\u0170\n\36\f\36\16\36\u0173\13\36\3\37\3"+
+		"\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37\5\37\u0182"+
+		"\n\37\3 \5 \u0185\n \3 \3 \3!\3!\3!\7!\u018c\n!\f!\16!\u018f\13!\3\"\3"+
+		"\"\3\"\7\"\u0194\n\"\f\"\16\"\u0197\13\"\3#\3#\3#\7#\u019c\n#\f#\16#\u019f"+
+		"\13#\3$\3$\3$\3$\3$\7$\u01a6\n$\f$\16$\u01a9\13$\3%\3%\3%\3%\3%\7%\u01b0"+
+		"\n%\f%\16%\u01b3\13%\3&\3&\3&\3&\3&\3&\3&\7&\u01bc\n&\f&\16&\u01bf\13"+
+		"&\3\'\3\'\3\'\3\'\3\'\3\'\3\'\5\'\u01c8\n\'\3(\3(\7(\u01cc\n(\f(\16(\u01cf"+
+		"\13(\3)\3)\5)\u01d3\n)\3)\3)\3)\5)\u01d8\n)\3)\3)\3)\5)\u01dd\n)\3)\3"+
+		")\3)\3)\3)\3)\3)\5)\u01e6\n)\3*\3*\3*\3*\7*\u01ec\n*\f*\16*\u01ef\13*"+
+		"\3*\5*\u01f2\n*\5*\u01f4\n*\3+\3+\5+\u01f8\n+\3+\3+\3+\3+\3+\3+\3+\5+"+
+		"\u0201\n+\3,\3,\3,\7,\u0206\n,\f,\16,\u0209\13,\3,\5,\u020c\n,\3-\3-\5"+
+		"-\u0210\n-\3-\3-\5-\u0214\n-\3-\5-\u0217\n-\5-\u0219\n-\3.\3.\5.\u021d"+
+		"\n.\3/\3/\3/\7/\u0222\n/\f/\16/\u0225\13/\3/\5/\u0228\n/\3\60\3\60\3\60"+
+		"\7\60\u022d\n\60\f\60\16\60\u0230\13\60\3\60\5\60\u0233\n\60\3\61\3\61"+
+		"\3\61\3\61\3\61\3\61\3\61\3\61\3\61\7\61\u023e\n\61\f\61\16\61\u0241\13"+
+		"\61\3\61\5\61\u0244\n\61\5\61\u0246\n\61\3\61\3\61\3\61\3\61\7\61\u024c"+
+		"\n\61\f\61\16\61\u024f\13\61\3\61\5\61\u0252\n\61\5\61\u0254\n\61\5\61"+
+		"\u0256\n\61\3\62\3\62\3\62\7\62\u025b\n\62\f\62\16\62\u025e\13\62\3\62"+
+		"\3\62\5\62\u0262\n\62\3\62\3\62\3\62\3\62\7\62\u0268\n\62\f\62\16\62\u026b"+
+		"\13\62\5\62\u026d\n\62\3\63\3\63\5\63\u0271\n\63\3\63\3\63\3\63\3\63\5"+
+		"\63\u0277\n\63\3\64\3\64\5\64\u027b\n\64\3\65\3\65\3\65\3\65\3\65\5\65"+
+		"\u0282\n\65\3\66\3\66\3\66\5\66\u0287\n\66\3\67\3\67\3\67\2\28\2\4\6\b"+
+		"\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNPRTVX"+
+		"Z\\^`bdfhjl\2\4\3\2:C\3\2\31\34\u02ca\2r\3\2\2\2\4w\3\2\2\2\6\u0083\3"+
+		"\2\2\2\b\u0085\3\2\2\2\n\u008b\3\2\2\2\f\u00c4\3\2\2\2\16\u00c6\3\2\2"+
+		"\2\20\u00cd\3\2\2\2\22\u00cf\3\2\2\2\24\u00e0\3\2\2\2\26\u00e2\3\2\2\2"+
+		"\30\u00f1\3\2\2\2\32\u0100\3\2\2\2\34\u0102\3\2\2\2\36\u0105\3\2\2\2 "+
+		"\u010a\3\2\2\2\"\u010c\3\2\2\2$\u010e\3\2\2\2&\u0110\3\2\2\2(\u0119\3"+
+		"\2\2\2*\u011b\3\2\2\2,\u012e\3\2\2\2.\u0137\3\2\2\2\60\u014c\3\2\2\2\62"+
+		"\u014e\3\2\2\2\64\u0156\3\2\2\2\66\u015e\3\2\2\28\u0169\3\2\2\2:\u016b"+
+		"\3\2\2\2<\u0181\3\2\2\2>\u0184\3\2\2\2@\u0188\3\2\2\2B\u0190\3\2\2\2D"+
+		"\u0198\3\2\2\2F\u01a0\3\2\2\2H\u01aa\3\2\2\2J\u01b4\3\2\2\2L\u01c7\3\2"+
+		"\2\2N\u01c9\3\2\2\2P\u01e5\3\2\2\2R\u01e7\3\2\2\2T\u0200\3\2\2\2V\u0202"+
+		"\3\2\2\2X\u0218\3\2\2\2Z\u021a\3\2\2\2\\\u021e\3\2\2\2^\u0229\3\2\2\2"+
+		"`\u0255\3\2\2\2b\u025c\3\2\2\2d\u0276\3\2\2\2f\u027a\3\2\2\2h\u027c\3"+
+		"\2\2\2j\u0283\3\2\2\2l\u0288\3\2\2\2nq\7\27\2\2oq\5\20\t\2pn\3\2\2\2p"+
+		"o\3\2\2\2qt\3\2\2\2rp\3\2\2\2rs\3\2\2\2su\3\2\2\2tr\3\2\2\2uv\7\2\2\3"+
+		"v\3\3\2\2\2wx\5\6\4\2xy\7\27\2\2yz\5\b\5\2z\5\3\2\2\2{\u0084\7D\2\2|\u0084"+
+		"\7E\2\2}~\7F\2\2~\u0080\7\37\2\2\177\u0081\5b\62\2\u0080\177\3\2\2\2\u0080"+
+		"\u0081\3\2\2\2\u0081\u0082\3\2\2\2\u0082\u0084\7 \2\2\u0083{\3\2\2\2\u0083"+
+		"|\3\2\2\2\u0083}\3\2\2\2\u0084\7\3\2\2\2\u0085\u0086\7\4\2\2\u0086\u0087"+
+		"\7\30\2\2\u0087\u0088\5\n\6\2\u0088\u0089\7\"\2\2\u0089\u008a\5\60\31"+
+		"\2\u008a\t\3\2\2\2\u008b\u008d\7\37\2\2\u008c\u008e\5\f\7\2\u008d\u008c"+
+		"\3\2\2\2\u008d\u008e\3\2\2\2\u008e\u008f\3\2\2\2\u008f\u0090\7 \2\2\u0090"+
+		"\13\3\2\2\2\u0091\u0094\5\16\b\2\u0092\u0093\7$\2\2\u0093\u0095\5\62\32"+
+		"\2\u0094\u0092\3\2\2\2\u0094\u0095\3\2\2\2\u0095\u009e\3\2\2\2\u0096\u0097"+
+		"\7!\2\2\u0097\u009a\5\16\b\2\u0098\u0099\7$\2\2\u0099\u009b\5\62\32\2"+
+		"\u009a\u0098\3\2\2\2\u009a\u009b\3\2\2\2\u009b\u009d\3\2\2\2\u009c\u0096"+
+		"\3\2\2\2\u009d\u00a0\3\2\2\2\u009e\u009c\3\2\2\2\u009e\u009f\3\2\2\2\u009f"+
+		"\u00b3\3\2\2\2\u00a0\u009e\3\2\2\2\u00a1\u00b1\7!\2\2\u00a2\u00a4\7\36"+
+		"\2\2\u00a3\u00a5\5\16\b\2\u00a4\u00a3\3\2\2\2\u00a4\u00a5\3\2\2\2\u00a5"+
+		"\u00ae\3\2\2\2\u00a6\u00a7\7!\2\2\u00a7\u00aa\5\16\b\2\u00a8\u00a9\7$"+
+		"\2\2\u00a9\u00ab\5\62\32\2\u00aa\u00a8\3\2\2\2\u00aa\u00ab\3\2\2\2\u00ab"+
+		"\u00ad\3\2\2\2\u00ac\u00a6\3\2\2\2\u00ad\u00b0\3\2\2\2\u00ae\u00ac\3\2"+
+		"\2\2\u00ae\u00af\3\2\2\2\u00af\u00b2\3\2\2\2\u00b0\u00ae\3\2\2\2\u00b1"+
+		"\u00a2\3\2\2\2\u00b1\u00b2\3\2\2\2\u00b2\u00b4\3\2\2\2\u00b3\u00a1\3\2"+
+		"\2\2\u00b3\u00b4\3\2\2\2\u00b4\u00c5\3\2\2\2\u00b5\u00b7\7\36\2\2\u00b6"+
+		"\u00b8\5\16\b\2\u00b7\u00b6\3\2\2\2\u00b7\u00b8\3\2\2\2\u00b8\u00c1\3"+
+		"\2\2\2\u00b9\u00ba\7!\2\2\u00ba\u00bd\5\16\b\2\u00bb\u00bc\7$\2\2\u00bc"+
+		"\u00be\5\62\32\2\u00bd\u00bb\3\2\2\2\u00bd\u00be\3\2\2\2\u00be\u00c0\3"+
+		"\2\2\2\u00bf\u00b9\3\2\2\2\u00c0\u00c3\3\2\2\2\u00c1\u00bf\3\2\2\2\u00c1"+
+		"\u00c2\3\2\2\2\u00c2\u00c5\3\2\2\2\u00c3\u00c1\3\2\2\2\u00c4\u0091\3\2"+
+		"\2\2\u00c4\u00b5\3\2\2\2\u00c5\r\3\2\2\2\u00c6\u00c9\7\30\2\2\u00c7\u00c8"+
+		"\7\"\2\2\u00c8\u00ca\5\62\32\2\u00c9\u00c7\3\2\2\2\u00c9\u00ca\3\2\2\2"+
+		"\u00ca\17\3\2\2\2\u00cb\u00ce\5\22\n\2\u00cc\u00ce\5(\25\2\u00cd\u00cb"+
+		"\3\2\2\2\u00cd\u00cc\3\2\2\2\u00ce\21\3\2\2\2\u00cf\u00d4\5\24\13\2\u00d0"+
+		"\u00d1\7#\2\2\u00d1\u00d3\5\24\13\2\u00d2\u00d0\3\2\2\2\u00d3\u00d6\3"+
+		"\2\2\2\u00d4\u00d2\3\2\2\2\u00d4\u00d5\3\2\2\2\u00d5\u00d8\3\2\2\2\u00d6"+
+		"\u00d4\3\2\2\2\u00d7\u00d9\7#\2\2\u00d8\u00d7\3\2\2\2\u00d8\u00d9\3\2"+
+		"\2\2\u00d9\u00da\3\2\2\2\u00da\u00db\7\27\2\2\u00db\23\3\2\2\2\u00dc\u00e1"+
+		"\5\26\f\2\u00dd\u00e1\5\34\17\2\u00de\u00e1\5\36\20\2\u00df\u00e1\5 \21"+
+		"\2\u00e0\u00dc\3\2\2\2\u00e0\u00dd\3\2\2\2\u00e0\u00de\3\2\2\2\u00e0\u00df"+
+		"\3\2\2\2\u00e1\25\3\2\2\2\u00e2\u00ed\5\30\r\2\u00e3\u00e4\5\32\16\2\u00e4"+
+		"\u00e5\5^\60\2\u00e5\u00ee\3\2\2\2\u00e6\u00e7\7$\2\2\u00e7\u00e9\5\30"+
+		"\r\2\u00e8\u00e6\3\2\2\2\u00e9\u00ec\3\2\2\2\u00ea\u00e8\3\2\2\2\u00ea"+
+		"\u00eb\3\2\2\2\u00eb\u00ee\3\2\2\2\u00ec\u00ea\3\2\2\2\u00ed\u00e3\3\2"+
+		"\2\2\u00ed\u00ea\3\2\2\2\u00ee\27\3\2\2\2\u00ef\u00f2\5\62\32\2\u00f0"+
+		"\u00f2\5> \2\u00f1\u00ef\3\2\2\2\u00f1\u00f0\3\2\2\2\u00f2\u00fa\3\2\2"+
+		"\2\u00f3\u00f6\7!\2\2\u00f4\u00f7\5\62\32\2\u00f5\u00f7\5> \2\u00f6\u00f4"+
+		"\3\2\2\2\u00f6\u00f5\3\2\2\2\u00f7\u00f9\3\2\2\2\u00f8\u00f3\3\2\2\2\u00f9"+
+		"\u00fc\3\2\2\2\u00fa\u00f8\3\2\2\2\u00fa\u00fb\3\2\2\2\u00fb\u00fe\3\2"+
+		"\2\2\u00fc\u00fa\3\2\2\2\u00fd\u00ff\7!\2\2\u00fe\u00fd\3\2\2\2\u00fe"+
+		"\u00ff\3\2\2\2\u00ff\31\3\2\2\2\u0100\u0101\t\2\2\2\u0101\33\3\2\2\2\u0102"+
+		"\u0103\7\23\2\2\u0103\u0104\5\\/\2\u0104\35\3\2\2\2\u0105\u0106\7\24\2"+
+		"\2\u0106\37\3\2\2\2\u0107\u010b\5\"\22\2\u0108\u010b\5$\23\2\u0109\u010b"+
+		"\5&\24\2\u010a\u0107\3\2\2\2\u010a\u0108\3\2\2\2\u010a\u0109\3\2\2\2\u010b"+
+		"!\3\2\2\2\u010c\u010d\7\26\2\2\u010d#\3\2\2\2\u010e\u010f\7\25\2\2\u010f"+
+		"%\3\2\2\2\u0110\u0112\7\5\2\2\u0111\u0113\5^\60\2\u0112\u0111\3\2\2\2"+
+		"\u0112\u0113\3\2\2\2\u0113\'\3\2\2\2\u0114\u011a\5*\26\2\u0115\u011a\5"+
+		",\27\2\u0116\u011a\5.\30\2\u0117\u011a\5\b\5\2\u0118\u011a\5\4\3\2\u0119"+
+		"\u0114\3\2\2\2\u0119\u0115\3\2\2\2\u0119\u0116\3\2\2\2\u0119\u0117\3\2"+
+		"\2\2\u0119\u0118\3\2\2\2\u011a)\3\2\2\2\u011b\u011c\7\6\2\2\u011c\u011d"+
+		"\5\62\32\2\u011d\u011e\7\"\2\2\u011e\u0126\5\60\31\2\u011f\u0120\7\7\2"+
+		"\2\u0120\u0121\5\62\32\2\u0121\u0122\7\"\2\2\u0122\u0123\5\60\31\2\u0123"+
+		"\u0125\3\2\2\2\u0124\u011f\3\2\2\2\u0125\u0128\3\2\2\2\u0126\u0124\3\2"+
+		"\2\2\u0126\u0127\3\2\2\2\u0127\u012c\3\2\2\2\u0128\u0126\3\2\2\2\u0129"+
+		"\u012a\7\b\2\2\u012a\u012b\7\"\2\2\u012b\u012d\5\60\31\2\u012c\u0129\3"+
+		"\2\2\2\u012c\u012d\3\2\2\2\u012d+\3\2\2\2\u012e\u012f\7\t\2\2\u012f\u0130"+
+		"\5\62\32\2\u0130\u0131\7\"\2\2\u0131\u0135\5\60\31\2\u0132\u0133\7\b\2"+
+		"\2\u0133\u0134\7\"\2\2\u0134\u0136\5\60\31\2\u0135\u0132\3\2\2\2\u0135"+
+		"\u0136\3\2\2\2\u0136-\3\2\2\2\u0137\u0138\7\n\2\2\u0138\u0139\5\\/\2\u0139"+
+		"\u013a\7\13\2\2\u013a\u013b\5^\60\2\u013b\u013c\7\"\2\2\u013c\u0140\5"+
+		"\60\31\2\u013d\u013e\7\b\2\2\u013e\u013f\7\"\2\2\u013f\u0141\5\60\31\2"+
+		"\u0140\u013d\3\2\2\2\u0140\u0141\3\2\2\2\u0141/\3\2\2\2\u0142\u014d\5"+
+		"\22\n\2\u0143\u0144\7\27\2\2\u0144\u0146\7I\2\2\u0145\u0147\5\20\t\2\u0146"+
+		"\u0145\3\2\2\2\u0147\u0148\3\2\2\2\u0148\u0146\3\2\2\2\u0148\u0149\3\2"+
+		"\2\2\u0149\u014a\3\2\2\2\u014a\u014b\7J\2\2\u014b\u014d\3\2\2\2\u014c"+
+		"\u0142\3\2\2\2\u014c\u0143\3\2\2\2\u014d\61\3\2\2\2\u014e\u0154\5\64\33"+
+		"\2\u014f\u0150\7\6\2\2\u0150\u0151\5\64\33\2\u0151\u0152\7\b\2\2\u0152"+
+		"\u0153\5\62\32\2\u0153\u0155\3\2\2\2\u0154\u014f\3\2\2\2\u0154\u0155\3"+
+		"\2\2\2\u0155\63\3\2\2\2\u0156\u015b\5\66\34\2\u0157\u0158\7\f\2\2\u0158"+
+		"\u015a\5\66\34\2\u0159\u0157\3\2\2\2\u015a\u015d\3\2\2\2\u015b\u0159\3"+
+		"\2\2\2\u015b\u015c\3\2\2\2\u015c\65\3\2\2\2\u015d\u015b\3\2\2\2\u015e"+
+		"\u0163\58\35\2\u015f\u0160\7\r\2\2\u0160\u0162\58\35\2\u0161\u015f\3\2"+
+		"\2\2\u0162\u0165\3\2\2\2\u0163\u0161\3\2\2\2\u0163\u0164\3\2\2\2\u0164"+
+		"\67\3\2\2\2\u0165\u0163\3\2\2\2\u0166\u0167\7\16\2\2\u0167\u016a\58\35"+
+		"\2\u0168\u016a\5:\36\2\u0169\u0166\3\2\2\2\u0169\u0168\3\2\2\2\u016a9"+
+		"\3\2\2\2\u016b\u0171\5> \2\u016c\u016d\5<\37\2\u016d\u016e\5> \2\u016e"+
+		"\u0170\3\2\2\2\u016f\u016c\3\2\2\2\u0170\u0173\3\2\2\2\u0171\u016f\3\2"+
+		"\2\2\u0171\u0172\3\2\2\2\u0172;\3\2\2\2\u0173\u0171\3\2\2\2\u0174\u0182"+
+		"\7\63\2\2\u0175\u0182\7\64\2\2\u0176\u0182\7\65\2\2\u0177\u0182\7\66\2"+
+		"\2\u0178\u0182\7\67\2\2\u0179\u0182\78\2\2\u017a\u0182\79\2\2\u017b\u0182"+
+		"\7\13\2\2\u017c\u017d\7\16\2\2\u017d\u0182\7\13\2\2\u017e\u0182\7\17\2"+
+		"\2\u017f\u0180\7\17\2\2\u0180\u0182\7\16\2\2\u0181\u0174\3\2\2\2\u0181"+
+		"\u0175\3\2\2\2\u0181\u0176\3\2\2\2\u0181\u0177\3\2\2\2\u0181\u0178\3\2"+
+		"\2\2\u0181\u0179\3\2\2\2\u0181\u017a\3\2\2\2\u0181\u017b\3\2\2\2\u0181"+
+		"\u017c\3\2\2\2\u0181\u017e\3\2\2\2\u0181\u017f\3\2\2\2\u0182=\3\2\2\2"+
+		"\u0183\u0185\7\36\2\2\u0184\u0183\3\2\2\2\u0184\u0185\3\2\2\2\u0185\u0186"+
+		"\3\2\2\2\u0186\u0187\5@!\2\u0187?\3\2\2\2\u0188\u018d\5B\"\2\u0189\u018a"+
+		"\7\'\2\2\u018a\u018c\5B\"\2\u018b\u0189\3\2\2\2\u018c\u018f\3\2\2\2\u018d"+
+		"\u018b\3\2\2\2\u018d\u018e\3\2\2\2\u018eA\3\2\2\2\u018f\u018d\3\2\2\2"+
+		"\u0190\u0195\5D#\2\u0191\u0192\7(\2\2\u0192\u0194\5D#\2\u0193\u0191\3"+
+		"\2\2\2\u0194\u0197\3\2\2\2\u0195\u0193\3\2\2\2\u0195\u0196\3\2\2\2\u0196"+
+		"C\3\2\2\2\u0197\u0195\3\2\2\2\u0198\u019d\5F$\2\u0199\u019a\7)\2\2\u019a"+
+		"\u019c\5F$\2\u019b\u0199\3\2\2\2\u019c\u019f\3\2\2\2\u019d\u019b\3\2\2"+
+		"\2\u019d\u019e\3\2\2\2\u019eE\3\2\2\2\u019f\u019d\3\2\2\2\u01a0\u01a7"+
+		"\5H%\2\u01a1\u01a2\7*\2\2\u01a2\u01a6\5H%\2\u01a3\u01a4\7+\2\2\u01a4\u01a6"+
+		"\5H%\2\u01a5\u01a1\3\2\2\2\u01a5\u01a3\3\2\2\2\u01a6\u01a9\3\2\2\2\u01a7"+
+		"\u01a5\3\2\2\2\u01a7\u01a8\3\2\2\2\u01a8G\3\2\2\2\u01a9\u01a7\3\2\2\2"+
+		"\u01aa\u01b1\5J&\2\u01ab\u01ac\7,\2\2\u01ac\u01b0\5J&\2\u01ad\u01ae\7"+
+		"-\2\2\u01ae\u01b0\5J&\2\u01af\u01ab\3\2\2\2\u01af\u01ad\3\2\2\2\u01b0"+
+		"\u01b3\3\2\2\2\u01b1\u01af\3\2\2\2\u01b1\u01b2\3\2\2\2\u01b2I\3\2\2\2"+
+		"\u01b3\u01b1\3\2\2\2\u01b4\u01bd\5L\'\2\u01b5\u01b6\7\36\2\2\u01b6\u01bc"+
+		"\5L\'\2\u01b7\u01b8\7.\2\2\u01b8\u01bc\5L\'\2\u01b9\u01ba\7/\2\2\u01ba"+
+		"\u01bc\5L\'\2\u01bb\u01b5\3\2\2\2\u01bb\u01b7\3\2\2\2\u01bb\u01b9\3\2"+
+		"\2\2\u01bc\u01bf\3\2\2\2\u01bd\u01bb\3\2\2\2\u01bd\u01be\3\2\2\2\u01be"+
+		"K\3\2\2\2\u01bf\u01bd\3\2\2\2\u01c0\u01c1\7,\2\2\u01c1\u01c8\5L\'\2\u01c2"+
+		"\u01c3\7-\2\2\u01c3\u01c8\5L\'\2\u01c4\u01c5\7\60\2\2\u01c5\u01c8\5L\'"+
+		"\2\u01c6\u01c8\5N(\2\u01c7\u01c0\3\2\2\2\u01c7\u01c2\3\2\2\2\u01c7\u01c4"+
+		"\3\2\2\2\u01c7\u01c6\3\2\2\2\u01c8M\3\2\2\2\u01c9\u01cd\5P)\2\u01ca\u01cc"+
+		"\5T+\2\u01cb\u01ca\3\2\2\2\u01cc\u01cf\3\2\2\2\u01cd\u01cb\3\2\2\2\u01cd"+
+		"\u01ce\3\2\2\2\u01ceO\3\2\2\2\u01cf\u01cd\3\2\2\2\u01d0\u01d2\7\37\2\2"+
+		"\u01d1\u01d3\5R*\2\u01d2\u01d1\3\2\2\2\u01d2\u01d3\3\2\2\2\u01d3\u01d4"+
+		"\3\2\2\2\u01d4\u01e6\7 \2\2\u01d5\u01d7\7%\2\2\u01d6\u01d8\5R*\2\u01d7"+
+		"\u01d6\3\2\2\2\u01d7\u01d8\3\2\2\2\u01d8\u01d9\3\2\2\2\u01d9\u01e6\7&"+
+		"\2\2\u01da\u01dc\7\61\2\2\u01db\u01dd\5`\61\2\u01dc\u01db\3\2\2\2\u01dc"+
+		"\u01dd\3\2\2\2\u01dd\u01de\3\2\2\2\u01de\u01e6\7\62\2\2\u01df\u01e6\7"+
+		"\30\2\2\u01e0\u01e6\5l\67\2\u01e1\u01e6\7\3\2\2\u01e2\u01e6\7\20\2\2\u01e3"+
+		"\u01e6\7\21\2\2\u01e4\u01e6\7\22\2\2\u01e5\u01d0\3\2\2\2\u01e5\u01d5\3"+
+		"\2\2\2\u01e5\u01da\3\2\2\2\u01e5\u01df\3\2\2\2\u01e5\u01e0\3\2\2\2\u01e5"+
+		"\u01e1\3\2\2\2\u01e5\u01e2\3\2\2\2\u01e5\u01e3\3\2\2\2\u01e5\u01e4\3\2"+
+		"\2\2\u01e6Q\3\2\2\2\u01e7\u01f3\5\62\32\2\u01e8\u01f4\5h\65\2\u01e9\u01ea"+
+		"\7!\2\2\u01ea\u01ec\5\62\32\2\u01eb\u01e9\3\2\2\2\u01ec\u01ef\3\2\2\2"+
+		"\u01ed\u01eb\3\2\2\2\u01ed\u01ee\3\2\2\2\u01ee\u01f1\3\2\2\2\u01ef\u01ed"+
+		"\3\2\2\2\u01f0\u01f2\7!\2\2\u01f1\u01f0\3\2\2\2\u01f1\u01f2\3\2\2\2\u01f2"+
+		"\u01f4\3\2\2\2\u01f3\u01e8\3\2\2\2\u01f3\u01ed\3\2\2\2\u01f4S\3\2\2\2"+
+		"\u01f5\u01f7\7\37\2\2\u01f6\u01f8\5b\62\2\u01f7\u01f6\3\2\2\2\u01f7\u01f8"+
+		"\3\2\2\2\u01f8\u01f9\3\2\2\2\u01f9\u0201\7 \2\2\u01fa\u01fb\7%\2\2\u01fb"+
+		"\u01fc\5V,\2\u01fc\u01fd\7&\2\2\u01fd\u0201\3\2\2\2\u01fe\u01ff\7\35\2"+
+		"\2\u01ff\u0201\7\30\2\2\u0200\u01f5\3\2\2\2\u0200\u01fa\3\2\2\2\u0200"+
+		"\u01fe\3\2\2\2\u0201U\3\2\2\2\u0202\u0207\5X-\2\u0203\u0204\7!\2\2\u0204"+
+		"\u0206\5X-\2\u0205\u0203\3\2\2\2\u0206\u0209\3\2\2\2\u0207\u0205\3\2\2"+
+		"\2\u0207\u0208\3\2\2\2\u0208\u020b\3\2\2\2\u0209\u0207\3\2\2\2\u020a\u020c"+
+		"\7!\2\2\u020b\u020a\3\2\2\2\u020b\u020c\3\2\2\2\u020cW\3\2\2\2\u020d\u0219"+
+		"\5\62\32\2\u020e\u0210\5\62\32\2\u020f\u020e\3\2\2\2\u020f\u0210\3\2\2"+
+		"\2\u0210\u0211\3\2\2\2\u0211\u0213\7\"\2\2\u0212\u0214\5\62\32\2\u0213"+
+		"\u0212\3\2\2\2\u0213\u0214\3\2\2\2\u0214\u0216\3\2\2\2\u0215\u0217\5Z"+
+		".\2\u0216\u0215\3\2\2\2\u0216\u0217\3\2\2\2\u0217\u0219\3\2\2\2\u0218"+
+		"\u020d\3\2\2\2\u0218\u020f\3\2\2\2\u0219Y\3\2\2\2\u021a\u021c\7\"\2\2"+
+		"\u021b\u021d\5\62\32\2\u021c\u021b\3\2\2\2\u021c\u021d\3\2\2\2\u021d["+
+		"\3\2\2\2\u021e\u0223\5> \2\u021f\u0220\7!\2\2\u0220\u0222\5> \2\u0221"+
+		"\u021f\3\2\2\2\u0222\u0225\3\2\2\2\u0223\u0221\3\2\2\2\u0223\u0224\3\2"+
+		"\2\2\u0224\u0227\3\2\2\2\u0225\u0223\3\2\2\2\u0226\u0228\7!\2\2\u0227"+
+		"\u0226\3\2\2\2\u0227\u0228\3\2\2\2\u0228]\3\2\2\2\u0229\u022e\5\62\32"+
+		"\2\u022a\u022b\7!\2\2\u022b\u022d\5\62\32\2\u022c\u022a\3\2\2\2\u022d"+
+		"\u0230\3\2\2\2\u022e\u022c\3\2\2\2\u022e\u022f\3\2\2\2\u022f\u0232\3\2"+
+		"\2\2\u0230\u022e\3\2\2\2\u0231\u0233\7!\2\2\u0232\u0231\3\2\2\2\u0232"+
+		"\u0233\3\2\2\2\u0233_\3\2\2\2\u0234\u0235\5\62\32\2\u0235\u0236\7\"\2"+
+		"\2\u0236\u0245\5\62\32\2\u0237\u0246\5h\65\2\u0238\u0239\7!\2\2\u0239"+
+		"\u023a\5\62\32\2\u023a\u023b\7\"\2\2\u023b\u023c\5\62\32\2\u023c\u023e"+
+		"\3\2\2\2\u023d\u0238\3\2\2\2\u023e\u0241\3\2\2\2\u023f\u023d\3\2\2\2\u023f"+
+		"\u0240\3\2\2\2\u0240\u0243\3\2\2\2\u0241\u023f\3\2\2\2\u0242\u0244\7!"+
+		"\2\2\u0243\u0242\3\2\2\2\u0243\u0244\3\2\2\2\u0244\u0246\3\2\2\2\u0245"+
+		"\u0237\3\2\2\2\u0245\u023f\3\2\2\2\u0246\u0256\3\2\2\2\u0247\u0253\5\62"+
+		"\32\2\u0248\u0254\5h\65\2\u0249\u024a\7!\2\2\u024a\u024c\5\62\32\2\u024b"+
+		"\u0249\3\2\2\2\u024c\u024f\3\2\2\2\u024d\u024b\3\2\2\2\u024d\u024e\3\2"+
+		"\2\2\u024e\u0251\3\2\2\2\u024f\u024d\3\2\2\2\u0250\u0252\7!\2\2\u0251"+
+		"\u0250\3\2\2\2\u0251\u0252\3\2\2\2\u0252\u0254\3\2\2\2\u0253\u0248\3\2"+
+		"\2\2\u0253\u024d\3\2\2\2\u0254\u0256\3\2\2\2\u0255\u0234\3\2\2\2\u0255"+
+		"\u0247\3\2\2\2\u0256a\3\2\2\2\u0257\u0258\5d\63\2\u0258\u0259\7!\2\2\u0259"+
+		"\u025b\3\2\2\2\u025a\u0257\3\2\2\2\u025b\u025e\3\2\2\2\u025c\u025a\3\2"+
+		"\2\2\u025c\u025d\3\2\2\2\u025d\u026c\3\2\2\2\u025e\u025c\3\2\2\2\u025f"+
+		"\u0261\5d\63\2\u0260\u0262\7!\2\2\u0261\u0260\3\2\2\2\u0261\u0262\3\2"+
+		"\2\2\u0262\u026d\3\2\2\2\u0263\u0264\7\36\2\2\u0264\u0269\5\62\32\2\u0265"+
+		"\u0266\7!\2\2\u0266\u0268\5d\63\2\u0267\u0265\3\2\2\2\u0268\u026b\3\2"+
+		"\2\2\u0269\u0267\3\2\2\2\u0269\u026a\3\2\2\2\u026a\u026d\3\2\2\2\u026b"+
+		"\u0269\3\2\2\2\u026c\u025f\3\2\2\2\u026c\u0263\3\2\2\2\u026dc\3\2\2\2"+
+		"\u026e\u0270\5\62\32\2\u026f\u0271\5h\65\2\u0270\u026f\3\2\2\2\u0270\u0271"+
+		"\3\2\2\2\u0271\u0277\3\2\2\2\u0272\u0273\5\62\32\2\u0273\u0274\7$\2\2"+
+		"\u0274\u0275\5\62\32\2\u0275\u0277\3\2\2\2\u0276\u026e\3\2\2\2\u0276\u0272"+
+		"\3\2\2\2\u0277e\3\2\2\2\u0278\u027b\5h\65\2\u0279\u027b\5j\66\2\u027a"+
+		"\u0278\3\2\2\2\u027a\u0279\3\2\2\2\u027bg\3\2\2\2\u027c\u027d\7\n\2\2"+
+		"\u027d\u027e\5\\/\2\u027e\u027f\7\13\2\2\u027f\u0281\5\64\33\2\u0280\u0282"+
+		"\5f\64\2\u0281\u0280\3\2\2\2\u0281\u0282\3\2\2\2\u0282i\3\2\2\2\u0283"+
+		"\u0284\7\6\2\2\u0284\u0286\5\64\33\2\u0285\u0287\5f\64\2\u0286\u0285\3"+
+		"\2\2\2\u0286\u0287\3\2\2\2\u0287k\3\2\2\2\u0288\u0289\t\3\2\2\u0289m\3"+
+		"\2\2\2]pr\u0080\u0083\u008d\u0094\u009a\u009e\u00a4\u00aa\u00ae\u00b1"+
+		"\u00b3\u00b7\u00bd\u00c1\u00c4\u00c9\u00cd\u00d4\u00d8\u00e0\u00ea\u00ed"+
+		"\u00f1\u00f6\u00fa\u00fe\u010a\u0112\u0119\u0126\u012c\u0135\u0140\u0148"+
+		"\u014c\u0154\u015b\u0163\u0169\u0171\u0181\u0184\u018d\u0195\u019d\u01a5"+
+		"\u01a7\u01af\u01b1\u01bb\u01bd\u01c7\u01cd\u01d2\u01d7\u01dc\u01e5\u01ed"+
+		"\u01f1\u01f3\u01f7\u0200\u0207\u020b\u020f\u0213\u0216\u0218\u021c\u0223"+
+		"\u0227\u022e\u0232\u023f\u0243\u0245\u024d\u0251\u0253\u0255\u025c\u0261"+
+		"\u0269\u026c\u0270\u0276\u027a\u0281\u0286";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
