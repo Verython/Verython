@@ -166,6 +166,7 @@ return_stmt
 
 compound_stmt
  : if_stmt
+ | switch_stmt
  | while_stmt
  | for_stmt
  | funcdef
@@ -174,6 +175,18 @@ compound_stmt
 
 if_stmt
  : IF test ':' suite ( ELIF test ':' suite )* ( ELSE ':' suite )?
+ ;
+
+switch_stmt
+ : SWITCH '(' NAME ')' ':' switch_suite
+ ;
+
+switch_suite
+ : NEWLINE INDENT case_stmt DEDENT
+ ;
+
+case_stmt
+ : CASE number ':' ( RETURN (NAME | number) | expr_stmt ) (NEWLINE CASE number ':' ( RETURN (NAME | number) | expr_stmt ))* NEWLINE DEFAULT  ':' ( RETURN (NAME | number) | expr_stmt ) DEDENT NEWLINE
  ;
 
 while_stmt
@@ -364,6 +377,9 @@ RETURN : 'return';
 IF : 'if';
 ELIF : 'elif';
 ELSE : 'else';
+SWITCH : 'switch';
+CASE : 'case';
+DEFAULT: 'default';
 WHILE : 'while';
 FOR : 'for';
 IN : 'in';
