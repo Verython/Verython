@@ -4,7 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class EvalVisitor extends VerythonBaseVisitor<String> {
-    /** "memory" for our calculator; variable/value pairs go here */
+    /**
+     * "memory" for our calculator; variable/value pairs go here
+     */
     Map<String, String> memory = new HashMap<String, String>();
 
     /*
@@ -34,7 +36,7 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
     public String visitDecorator(VerythonParser.DecoratorContext ctx) {
         if (ctx.INITAL() == null) {
             System.out.print("    always @(");
-            System.out.print(ctx.arglist().getText().replaceAll(","," or "));
+            System.out.print(ctx.arglist().getText().replaceAll(",", " or "));
             System.out.println(")");
         }
         return visitChildren(ctx);
@@ -90,16 +92,39 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
     */
     @Override
     public String visitSwitch_stmt(VerythonParser.Switch_stmtContext ctx) {
-        System.out.println("case(" + ctx.NAME() + ")");
+        System.out.println("        case(" + ctx.NAME() + ")");
         visit(ctx.switch_suite());
-        System.out.println("endcase");
+        System.out.println("        endcase");
         return "";
     }
 
     /*
     switch_suite: NEWLINE INDENT case_stmt DEDENT;
-    case_stmt: CASE number ':' ( RETURN (NAME | number) | expr_stmt ) (NEWLINE CASE number ':' ( RETURN (NAME | number) | expr_stmt ))* NEWLINE DEFAULT  ':' ( RETURN (NAME | number) | expr_stmt ) NEWLINE DEDENT;
     */
+    @Override
+    public String visitSwitch_suite(VerythonParser.Switch_suiteContext ctx) {
+        ctx.NEWLINE();
+        ctx.INDENT();
+        visit(ctx.case_stmt());
+        ctx.DEDENT();
+        return "";
+    }
+
+    /*
+    case_stmt
+     : CASE number ':' ( RETURN (NAME | number) | expr_stmt ) (NEWLINE CASE number ':' ( RETURN (NAME | number) | expr_stmt ))* NEWLINE DEFAULT  ':' ( RETURN (NAME | number) | expr_stmt ) NEWLINE
+     ;
+    */
+    @Override
+    public String visitCase_stmt(VerythonParser.Case_stmtContext ctx) {
+        String index = "            " + visit(ctx.number(0));
+        String result_case = index + " : " ;
+        if (ctx.RETURN() != null){
+            result_case = result_case + memory.get("output").charAt(0) + " <= " + ctx.NAME(0) + ";";
+        }
+        System.out.println(result_case);
+        return "";
+    }
 
     /*
     expr_stmt : testlist_star_expr ( augassign testlist | ( '=' testlist_star_expr )*);
@@ -109,4 +134,33 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
         //System.out.println(ctx.testlist_star_expr().toString() + ctx.augassign().getText() + ctx.testlist().getText());
         return "";
     }
+
+    /*
+    number
+    : DECIMAL_INTEGER
+    | OCT_INTEGER
+    | HEX_INTEGER
+    | BIN_INTEGER
+    ;
+    */
+    @Override
+    public String visitNumber(VerythonParser.NumberContext ctx) {
+        if (ctx.DECIMAL_INTEGER() == null) {
+            if (ctx.OCT_INTEGER() == null) {
+                if (ctx.HEX_INTEGER() == null) {
+                    return ("'b" + ctx.BIN_INTEGER().getText());
+                } else return ("'h" + ctx.HEX_INTEGER().getText());
+            } else return ("'o" + ctx.OCT_INTEGER().getText());
+        } else return ("'d" + ctx.DECIMAL_INTEGER().getText());
+    }
+
+    /*
+    expr_stmt
+     : testlist_star_expr ( augassign testlist | ( '=' testlist_star_expr )*)
+     ;
+
+    @Override public String visitExpr_stmt(VerythonParser.Expr_stmtContext ctx) {
+        return "";
+    }
+    */
 }
