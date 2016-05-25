@@ -93,12 +93,16 @@ funcdef
  ;
 
 blocks
- : INDENT decorator NEWLINE block DEDENT
- //| assign TODO
+ : INDENT block_element+ DEDENT
+ ;
+
+block_element
+ : decorator NEWLINE block
+ | expr_stmt NEWLINE
  ;
 
 parameters
- : '(' typedargslist ')'
+ : '(' typedargslist ';' typedargslist  ')'
  ;
 
 typedargslist
