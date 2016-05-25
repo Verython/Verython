@@ -49,24 +49,29 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
         String[] params = parameters.substring(1, parameters.length() - 1).split(";");
         String[] inputs = params[0].split(",");
         String[] outputs = params[1].split(",");
-        memory.put("output", params[1]);
-        memory.put("outnum", outputs.length());
-        Pattern square = Pattern.compile("\\[[0-9]+:[0-9]+\\](.*)");
+        memory.put("outnum", Integer.toString(outputs.length));
+        Pattern square = Pattern.compile("\\[.*?\\]([A-Za-z]+)");
 
         String arg = new String("");
+        String output = new String("");
         Matcher m;
         for (String in : inputs) {
             m = square.matcher(in);
             if (m.find())
-                arg += m.group(0) + ", ";
+                arg += m.group(1) + ", ";
         }
         for (String out : outputs) {
             m = square.matcher(out);
-            if (m.find())
-                arg += m.group(0) + ", ";
+            if (m.find()) {
+                arg += m.group(1) + ", ";
+                output += m.group(1) + ",";
+            }
         }
         if (arg.length() > 2)
-            arg = arg.substring(0, arg.length() - 2);
+            arg = arg.substring(0, arg.length() - 1);
+        if (output.length() > 2)
+            output = output.substring(0, output.length() - 2);
+        memory.put("output", output);
 
         System.out.println("module " + ctx.NAME() + "(" + arg + ")");
         for (String in : inputs) {
