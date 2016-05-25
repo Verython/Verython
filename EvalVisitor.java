@@ -1,5 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EvalVisitor extends VerythonBaseVisitor<String> {
     /** "memory" for our calculator; variable/value pairs go here */
@@ -44,14 +46,34 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
     @Override
     public String visitFuncdef(VerythonParser.FuncdefContext ctx) {
         String parameters = ctx.parameters().getText();
-        String[] params = parameters.substring(1, parameters.length() - 1).split(",");
-        String arg = new String("");
-        for (String param : params) {
-        }
+        String[] params = parameters.substring(1, parameters.length() - 1).split(";");
+        String[] inputs = params[0].split(",");
+        String[] outputs = params[1].split(",");
+        memory.put("output", params[1]);
+        memory.put("outnum", outputs.length());
+        Pattern square = Pattern.compile("\\[[0-9]+:[0-9]+\\](.*)");
 
-        System.out.println("module " + ctx.NAME() + "("+")");
-        for (String param : params) {
-            System.out.println("    input wire "+param+";");
+        String arg = new String("");
+        Matcher m;
+        for (String in : inputs) {
+            m = square.matcher(in);
+            if (m.find())
+                arg += m.group(0) + ", ";
+        }
+        for (String out : outputs) {
+            m = square.matcher(out);
+            if (m.find())
+                arg += m.group(0) + ", ";
+        }
+        if (arg.length() > 2)
+            arg = arg.substring(0, arg.length() - 2);
+
+        System.out.println("module " + ctx.NAME() + "(" + arg + ")");
+        for (String in : inputs) {
+            System.out.println("    input wire " + in + ";");
+        }
+        for (String out : outputs) {
+            System.out.println("    ouput reg " + out + ";");
         }
         visit(ctx.blocks());
         System.out.println("endmodule");

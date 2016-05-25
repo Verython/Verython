@@ -46,6 +46,12 @@ public interface VerythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBlocks(VerythonParser.BlocksContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link VerythonParser#block_element}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBlock_element(VerythonParser.Block_elementContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link VerythonParser#parameters}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
