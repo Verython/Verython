@@ -22,7 +22,7 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
         System.out.println("begin");
         visit(ctx.suite());
         System.out.println("end");
-        return visitChildren(ctx);
+        return "";
     }
 
     /*
@@ -37,36 +37,28 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
         }
         return visitChildren(ctx);
     }
-
-    @Override
-    public String visitFuncdef(VerythonParser.FuncdefContext ctx) { return visitChildren(ctx); }
+    /*
+    funcdef: DEF NAME parameters ':' NEWLINE blocks;
+    */
+    public String visitFuncdef(VerythonParser.FuncdefContext ctx) {
+        System.out.println("module " + ctx.NAME() + "()");
+        visit(ctx.blocks());
+        System.out.println("endmodule");
+        return "";
+    }
 
     /*
-    switch_stmt
-     : SWITCH '(' NAME ')' ':' switch_suite
-     ;
-
-   */
+    switch_stmt: SWITCH '(' NAME ')' ':' switch_suite;
+    */
     @Override public String visitSwitch_stmt(VerythonParser.Switch_stmtContext ctx) {
         System.out.println("case(" + ctx.NAME() + ")");
         visit(ctx.switch_suite());
         System.out.println("endcase");
-        return visitChildren(ctx);
+        return "";
     }
+
     /*
-     switch_suite
-     : NEWLINE INDENT case_stmt DEDENT
-     ;
-
-    case_stmt
-     : CASE number ':' ( RETURN (NAME | number) | expr_stmt ) (NEWLINE CASE number ':' ( RETURN (NAME | number) | expr_stmt ))* NEWLINE DEFAULT  ':' ( RETURN (NAME | number) | expr_stmt ) NEWLINE DEDENT
-     ;
+    switch_suite: NEWLINE INDENT case_stmt DEDENT;
+    case_stmt: CASE number ':' ( RETURN (NAME | number) | expr_stmt ) (NEWLINE CASE number ':' ( RETURN (NAME | number) | expr_stmt ))* NEWLINE DEFAULT  ':' ( RETURN (NAME | number) | expr_stmt ) NEWLINE DEDENT;
     */
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.</p>
-     */
-
 }
