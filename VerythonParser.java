@@ -144,9 +144,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_initial; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitInitial(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterInitial(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitInitial(this);
 		}
 	}
 
@@ -213,9 +216,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_top; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTop(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTop(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTop(this);
 		}
 	}
 
@@ -283,9 +289,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_decorator; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitDecorator(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterDecorator(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitDecorator(this);
 		}
 	}
 
@@ -348,9 +357,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_block; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitBlock(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterBlock(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitBlock(this);
 		}
 	}
 
@@ -394,9 +406,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_funcdef; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitFuncdef(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterFuncdef(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitFuncdef(this);
 		}
 	}
 
@@ -447,9 +462,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_blocks; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitBlocks(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterBlocks(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitBlocks(this);
 		}
 	}
 
@@ -497,9 +515,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_parameters; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitParameters(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterParameters(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitParameters(this);
 		}
 	}
 
@@ -544,9 +565,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_typedargslist; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTypedargslist(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTypedargslist(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTypedargslist(this);
 		}
 	}
 
@@ -618,9 +642,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_tfpdef; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTfpdef(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTfpdef(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTfpdef(this);
 		}
 	}
 
@@ -669,9 +696,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitStmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterStmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitStmt(this);
 		}
 	}
 
@@ -747,9 +777,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_simple_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSimple_stmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterSimple_stmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitSimple_stmt(this);
 		}
 	}
 
@@ -823,9 +856,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_small_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSmall_stmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterSmall_stmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitSmall_stmt(this);
 		}
 	}
 
@@ -914,9 +950,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_expr_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitExpr_stmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterExpr_stmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitExpr_stmt(this);
 		}
 	}
 
@@ -1004,9 +1043,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_testlist_star_expr; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTestlist_star_expr(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTestlist_star_expr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTestlist_star_expr(this);
 		}
 	}
 
@@ -1104,9 +1146,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_augassign; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitAugassign(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterAugassign(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitAugassign(this);
 		}
 	}
 
@@ -1147,9 +1192,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_del_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitDel_stmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterDel_stmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitDel_stmt(this);
 		}
 	}
 
@@ -1183,9 +1231,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_pass_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitPass_stmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterPass_stmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitPass_stmt(this);
 		}
 	}
 
@@ -1225,9 +1276,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_flow_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitFlow_stmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterFlow_stmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitFlow_stmt(this);
 		}
 	}
 
@@ -1280,9 +1334,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_break_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitBreak_stmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterBreak_stmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitBreak_stmt(this);
 		}
 	}
 
@@ -1314,9 +1371,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_continue_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitContinue_stmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterContinue_stmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitContinue_stmt(this);
 		}
 	}
 
@@ -1351,9 +1411,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_return_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitReturn_stmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterReturn_stmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitReturn_stmt(this);
 		}
 	}
 
@@ -1406,9 +1469,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_compound_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitCompound_stmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterCompound_stmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitCompound_stmt(this);
 		}
 	}
 
@@ -1485,9 +1551,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_if_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitIf_stmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterIf_stmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitIf_stmt(this);
 		}
 	}
 
@@ -1563,9 +1632,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_switch_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSwitch_stmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterSwitch_stmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitSwitch_stmt(this);
 		}
 	}
 
@@ -1612,9 +1684,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_switch_suite; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSwitch_suite(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterSwitch_suite(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitSwitch_suite(this);
 		}
 	}
 
@@ -1681,9 +1756,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_case_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitCase_stmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterCase_stmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitCase_stmt(this);
 		}
 	}
 
@@ -1921,9 +1999,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_while_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitWhile_stmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterWhile_stmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitWhile_stmt(this);
 		}
 	}
 
@@ -1989,9 +2070,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_for_stmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitFor_stmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterFor_stmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitFor_stmt(this);
 		}
 	}
 
@@ -2058,9 +2142,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_suite; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSuite(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterSuite(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitSuite(this);
 		}
 	}
 
@@ -2156,9 +2243,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_test; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTest(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTest(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTest(this);
 		}
 	}
 
@@ -2215,9 +2305,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_or_test; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitOr_test(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterOr_test(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitOr_test(this);
 		}
 	}
 
@@ -2275,9 +2368,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_and_test; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitAnd_test(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterAnd_test(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitAnd_test(this);
 		}
 	}
 
@@ -2332,9 +2428,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_not_test; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitNot_test(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterNot_test(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitNot_test(this);
 		}
 	}
 
@@ -2408,9 +2507,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_comparison; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitComparison(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterComparison(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitComparison(this);
 		}
 	}
 
@@ -2468,9 +2570,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_comp_op; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitComp_op(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterComp_op(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitComp_op(this);
 		}
 	}
 
@@ -2584,9 +2689,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_star_expr; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitStar_expr(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterStar_expr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitStar_expr(this);
 		}
 	}
 
@@ -2633,9 +2741,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_expr; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitExpr(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitExpr(this);
 		}
 	}
 
@@ -2689,9 +2800,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_xor_expr; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitXor_expr(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterXor_expr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitXor_expr(this);
 		}
 	}
 
@@ -2745,9 +2859,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_and_expr; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitAnd_expr(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterAnd_expr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitAnd_expr(this);
 		}
 	}
 
@@ -2801,9 +2918,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_shift_expr; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitShift_expr(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterShift_expr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitShift_expr(this);
 		}
 	}
 
@@ -2872,9 +2992,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_arith_expr; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitArith_expr(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterArith_expr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitArith_expr(this);
 		}
 	}
 
@@ -2943,9 +3066,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_term; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTerm(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTerm(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTerm(this);
 		}
 	}
 
@@ -3022,9 +3148,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_factor; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitFactor(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterFactor(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitFactor(this);
 		}
 	}
 
@@ -3109,9 +3238,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_power; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitPower(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterPower(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitPower(this);
 		}
 	}
 
@@ -3170,9 +3302,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_atom; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitAtom(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterAtom(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitAtom(this);
 		}
 	}
 
@@ -3312,9 +3447,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_testlist_comp; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTestlist_comp(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTestlist_comp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTestlist_comp(this);
 		}
 	}
 
@@ -3398,9 +3536,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_trailer; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTrailer(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTrailer(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTrailer(this);
 		}
 	}
 
@@ -3476,9 +3617,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_subscriptlist; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSubscriptlist(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterSubscriptlist(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitSubscriptlist(this);
 		}
 	}
 
@@ -3547,9 +3691,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_subscript; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSubscript(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterSubscript(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitSubscript(this);
 		}
 	}
 
@@ -3624,9 +3771,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_sliceop; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSliceop(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterSliceop(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitSliceop(this);
 		}
 	}
 
@@ -3673,9 +3823,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_exprlist; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitExprlist(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterExprlist(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitExprlist(this);
 		}
 	}
 
@@ -3741,9 +3894,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_testlist; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTestlist(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTestlist(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTestlist(this);
 		}
 	}
 
@@ -3812,9 +3968,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_dictorsetmaker; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitDictorsetmaker(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterDictorsetmaker(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitDictorsetmaker(this);
 		}
 	}
 
@@ -3960,9 +4119,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_arglist; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitArglist(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterArglist(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitArglist(this);
 		}
 	}
 
@@ -4021,9 +4183,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_argument; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitArgument(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterArgument(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitArgument(this);
 		}
 	}
 
@@ -4087,9 +4252,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_comp_iter; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitComp_iter(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterComp_iter(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitComp_iter(this);
 		}
 	}
 
@@ -4145,9 +4313,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_comp_for; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitComp_for(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterComp_for(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitComp_for(this);
 		}
 	}
 
@@ -4201,9 +4372,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_comp_if; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitComp_if(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterComp_if(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitComp_if(this);
 		}
 	}
 
@@ -4250,9 +4424,12 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_number; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitNumber(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterNumber(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitNumber(this);
 		}
 	}
 

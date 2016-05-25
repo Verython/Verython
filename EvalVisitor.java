@@ -40,4 +40,33 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
 
     @Override
     public String visitFuncdef(VerythonParser.FuncdefContext ctx) { return visitChildren(ctx); }
+
+    /*
+    switch_stmt
+     : SWITCH '(' NAME ')' ':' switch_suite
+     ;
+
+   */
+    @Override public String visitSwitch_stmt(VerythonParser.Switch_stmtContext ctx) {
+        System.out.println("case(" + ctx.NAME() + ")");
+        visit(ctx.switch_suite());
+        System.out.println("endcase");
+        return visitChildren(ctx);
+    }
+    /*
+     switch_suite
+     : NEWLINE INDENT case_stmt DEDENT
+     ;
+
+    case_stmt
+     : CASE number ':' ( RETURN (NAME | number) | expr_stmt ) (NEWLINE CASE number ':' ( RETURN (NAME | number) | expr_stmt ))* NEWLINE DEFAULT  ':' ( RETURN (NAME | number) | expr_stmt ) NEWLINE DEDENT
+     ;
+    */
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+
 }
