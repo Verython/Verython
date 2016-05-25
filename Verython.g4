@@ -72,7 +72,7 @@ tokens { INDENT, DEDENT }
  */
 
 initial
- : NEWLINE* top EOF
+ : NEWLINE* top EOF?
  ;
 
 top
@@ -93,7 +93,7 @@ funcdef
  ;
 
 blocks
- : INDENT decorator NEWLINE block DEDENT
+ : INDENT decorator NEWLINE block (DEDENT | EOF)
  //| assign TODO
  ;
 
@@ -192,7 +192,7 @@ switch_suite
  ;
 
 case_stmt
- : CASE number ':' ( RETURN (NAME | number) | expr_stmt ) (NEWLINE CASE number ':' ( RETURN (NAME | number) | expr_stmt ))* NEWLINE DEFAULT  ':' ( RETURN (NAME | number) | expr_stmt ) DEDENT NEWLINE
+ : CASE number ':' ( RETURN (NAME | number) | expr_stmt ) (NEWLINE CASE number ':' ( RETURN (NAME | number) | expr_stmt ))* NEWLINE DEFAULT  ':' ( RETURN (NAME | number) | expr_stmt ) NEWLINE DEDENT
  ;
 
 while_stmt
