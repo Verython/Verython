@@ -72,25 +72,33 @@ tokens { INDENT, DEDENT }
  */
 
 initial
- : ( NEWLINE | stmt )* EOF
+ : NEWLINE* top EOF
  ;
 
-decorated
- : decorator NEWLINE funcdef
+top
+ : TOP NEWLINE funcdef ( NEWLINE | funcdef )*
  ;
 
 decorator
- : TOP
- | INITAL
+ : INITAL
  | ALWAYS '(' arglist? ')'
  ;
 
+block
+ : BLOCK ':' suite
+ ;
+
 funcdef
- : DEF NAME parameters ':' suite
+ : DEF NAME parameters ':' NEWLINE blocks
+ ;
+
+blocks
+ : INDENT decorator NEWLINE block DEDENT
+ //| assign TODO
  ;
 
 parameters
- : '(' typedargslist? ')'
+ : '(' typedargslist ')'
  ;
 
 typedargslist
@@ -169,8 +177,6 @@ compound_stmt
  | switch_stmt
  | while_stmt
  | for_stmt
- | funcdef
- | decorated
  ;
 
 if_stmt
@@ -338,9 +344,7 @@ dictorsetmaker
  ;
 
 arglist
- : ( argument ',' )* ( argument ','?
-                     | '*' test ( ',' argument )*
-                     )
+ : ( argument ',' )* argument
  ;
 
 argument
@@ -394,6 +398,7 @@ DEL : 'del';
 PASS : 'pass';
 CONTINUE : 'continue';
 BREAK : 'break';
+BLOCK: 'block';
 
 NEWLINE
  : ( {atStartOfInput()}?   SPACES
