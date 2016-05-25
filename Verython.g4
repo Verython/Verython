@@ -94,8 +94,7 @@ parameters
  ;
 
 typedargslist
- : tfpdef ( '=' test )? ( ',' tfpdef ( '=' test )? )* ( ',' ( '*' tfpdef? ( ',' tfpdef ( '=' test )? )* )?)?
- | '*' tfpdef? ( ',' tfpdef ( '=' test )? )*
+ : '[' DECIMAL_INTEGER ':' DECIMAL_INTEGER ']' tfpdef ( ',' '[' DECIMAL_INTEGER ':' DECIMAL_INTEGER ']' tfpdef  )*
  ;
 
 tfpdef
