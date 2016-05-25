@@ -11,6 +11,7 @@ This project translates from a pseudo-Python to Verilog, simplifying the notatio
 antlr4 Verython.g4 -visitor
 javac Verython*.java
 grun Verython initial -gui
+java VerythonMain test.vy
 ```
 
 ## License

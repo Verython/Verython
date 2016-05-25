@@ -16,23 +16,17 @@ public interface VerythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInitial(VerythonParser.InitialContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link VerythonParser#decorator}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDecorator(VerythonParser.DecoratorContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link VerythonParser#decorators}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDecorators(VerythonParser.DecoratorsContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link VerythonParser#decorated}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitDecorated(VerythonParser.DecoratedContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link VerythonParser#decorator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDecorator(VerythonParser.DecoratorContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link VerythonParser#funcdef}.
 	 * @param ctx the parse tree
@@ -130,18 +124,6 @@ public interface VerythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitReturn_stmt(VerythonParser.Return_stmtContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link VerythonParser#dotted_name}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDotted_name(VerythonParser.Dotted_nameContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link VerythonParser#nonlocal_stmt}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNonlocal_stmt(VerythonParser.Nonlocal_stmtContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link VerythonParser#compound_stmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -177,12 +159,6 @@ public interface VerythonVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitTest(VerythonParser.TestContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link VerythonParser#test_nocond}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTest_nocond(VerythonParser.Test_nocondContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link VerythonParser#or_test}.
 	 * @param ctx the parse tree
@@ -352,21 +328,9 @@ public interface VerythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitComp_if(VerythonParser.Comp_ifContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link VerythonParser#string}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitString(VerythonParser.StringContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link VerythonParser#number}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitNumber(VerythonParser.NumberContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link VerythonParser#integer}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInteger(VerythonParser.IntegerContext ctx);
 }
