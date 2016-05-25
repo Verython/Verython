@@ -24,4 +24,20 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
         System.out.println("end");
         return visitChildren(ctx);
     }
+
+    /*
+    decorator: INITAL | ALWAYS '(' arglist? ')';
+    */
+    @Override
+    public String visitDecorator(VerythonParser.DecoratorContext ctx) {
+        if (ctx.INITAL() == null) {
+            System.out.print("always @(");
+            System.out.print(ctx.arglist().getText().replaceAll(","," or "));
+            System.out.println(")");
+        }
+        return visitChildren(ctx);
+    }
+
+    @Override
+    public String visitFuncdef(VerythonParser.FuncdefContext ctx) { return visitChildren(ctx); }
 }
