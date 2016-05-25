@@ -7,10 +7,18 @@ This project translates from a pseudo-Python to Verilog, simplifying the notatio
   - [Python grammar](https://github.com/antlr/grammars-v4/tree/master/python3): Version 3.3.5 Python grammar specification.
 
 ## How to compile?
+
+### GUI
 ```
-antlr4 Verython.g4 -visitor
-javac Verython*.java
+antlr4 -visitor -no-listener Verython.g4
+javac Verython*.java EvalVisitor.java
 grun Verython initial -gui
+```
+
+### Main
+```
+antlr4 -visitor -no-listener Verython.g4
+javac Verython*.java EvalVisitor.java
 java VerythonMain test.vy
 ```
 
