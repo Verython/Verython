@@ -117,12 +117,17 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
     */
     @Override
     public String visitCase_stmt(VerythonParser.Case_stmtContext ctx) {
-        String index = "            " + visit(ctx.number(0));
-        String result_case = index + " : " ;
-        if (ctx.RETURN() != null){
-            result_case = result_case + memory.get("output").charAt(0) + " <= " + ctx.NAME(0) + ";";
+        for (int i=0 ; i<ctx.number().size() ; i++){
+            if (ctx.RETURN() != null){
+                if (ctx.NAME(i) != null){
+                    System.out.println("aaaaaaaaaa");
+                    System.out.println("            " + visit(ctx.number(i)) + ":" + memory.get("output").charAt(0) + " <= " + ctx.number(i+1).getText() );
+                    i = i+1;
+                }else{
+                    System.out.println("            " + visit(ctx.number(i)) + ":" + memory.get("output").charAt(0) + " <= " + visit(ctx.number(2)));
+                }
+            }
         }
-        System.out.println(result_case);
         return "";
     }
 
