@@ -69,6 +69,8 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
             m = square.matcher(in);
             if (m.find())
                 arg += m.group(1) + ", ";
+            else
+                arg += in + ", ";
         }
         for (String out : outputs) {
             m = square.matcher(out);
@@ -76,11 +78,15 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
                 arg += m.group(1) + ", ";
                 output += m.group(1) + ",";
             }
+            else {
+                arg += out + ", ";
+                output += out + ",";
+            }
         }
         if (arg.length() > 2)
-            arg = arg.substring(0, arg.length() - 1);
+            arg = arg.substring(0, arg.length() - 2);
         if (output.length() > 2)
-            output = output.substring(0, output.length() - 2);
+            output = output.substring(0, output.length() - 1);
         memory.put("output", output);
 
         System.out.println("module " + ctx.NAME() + "(" + arg + ")");
