@@ -205,6 +205,13 @@ public class VerythonBaseVisitor<T> extends AbstractParseTreeVisitor<T> implemen
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitCase_default(VerythonParser.Case_defaultContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitWhile_stmt(VerythonParser.While_stmtContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

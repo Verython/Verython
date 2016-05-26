@@ -192,11 +192,15 @@ switch_stmt
  ;
 
 switch_suite
- : NEWLINE INDENT case_stmt DEDENT
+ : NEWLINE INDENT case_stmt* case_default DEDENT
  ;
 
 case_stmt
- : CASE number ':' ( RETURN (NAME | number) | expr_stmt ) (NEWLINE CASE number ':' ( RETURN (NAME | number) | expr_stmt ))* NEWLINE DEFAULT  ':' ( RETURN (NAME | number) | expr_stmt ) NEWLINE
+ : CASE number ':' ( (RETURN (NAME | number)) | expr_stmt ) NEWLINE
+ ;
+
+case_default
+ : DEFAULT  ':' ( (RETURN (NAME | number)) | expr_stmt ) NEWLINE
  ;
 
 while_stmt

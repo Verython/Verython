@@ -172,6 +172,12 @@ public interface VerythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCase_stmt(VerythonParser.Case_stmtContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link VerythonParser#case_default}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCase_default(VerythonParser.Case_defaultContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link VerythonParser#while_stmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
