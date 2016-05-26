@@ -147,11 +147,18 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
         if (ctx.DECIMAL_INTEGER() == null) {
             if (ctx.OCT_INTEGER() == null) {
                 if (ctx.HEX_INTEGER() == null) {
-                    return ("'b" + ctx.BIN_INTEGER().getText());
+                    String bin = ctx.BIN_INTEGER().getText();
+                    return ("'" + bin.substring(1, bin.length()));
                 }
-                else return ("'h" + ctx.HEX_INTEGER().getText());
+                else {
+                    String hex = ctx.HEX_INTEGER().getText();
+                    return ("'h" + hex.substring(2, hex.length()));
+                }
             }
-            else return ("'o" + ctx.OCT_INTEGER().getText());
+            else {
+                String oct = ctx.OCT_INTEGER().getText();
+                return ("'o" + oct.substring(2, oct.length()));
+            }
         }
         else return ("'d" + ctx.DECIMAL_INTEGER().getText());
     }
