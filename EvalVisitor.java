@@ -80,7 +80,7 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
             System.out.println("    input wire " + in + ";");
         }
         for (String out : outputs) {
-            System.out.println("    ouput reg " + out + ";");
+            System.out.println("    output reg " + out + ";");
         }
         visit(ctx.blocks());
         System.out.println("endmodule");
