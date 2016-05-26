@@ -9,7 +9,9 @@ public class VerythonMain {
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             VerythonParser parser = new VerythonParser(tokens);
             ParseTree tree = parser.initial();
-            System.out.println(tree.toStringTree(parser));
+            EvalVisitor eval = new EvalVisitor();
+            eval.visit(tree);
+            //System.out.println(tree.toStringTree(parser));
         }
         catch (Exception e) {
             System.err.println("Error (Verython): "+e);

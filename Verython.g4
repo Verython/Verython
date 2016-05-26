@@ -72,30 +72,41 @@ tokens { INDENT, DEDENT }
  */
 
 initial
- : ( NEWLINE | stmt )* EOF
+ : NEWLINE* top EOF
  ;
 
-decorated
- : decorator NEWLINE funcdef
+top
+ : TOP NEWLINE funcdef ( NEWLINE | funcdef )*
  ;
 
 decorator
- : TOP
- | INITAL
+ : INITAL
  | ALWAYS '(' arglist? ')'
  ;
 
+block
+ : BLOCK ':' suite
+ ;
+
 funcdef
- : DEF NAME parameters ':' suite
+ : DEF NAME parameters ':' NEWLINE blocks
+ ;
+
+blocks
+ : INDENT block_element+ DEDENT
+ ;
+
+block_element
+ : decorator NEWLINE block
+ | expr_stmt NEWLINE
  ;
 
 parameters
- : '(' typedargslist? ')'
+ : '(' typedargslist ';' typedargslist  ')'
  ;
 
 typedargslist
- : tfpdef ( '=' test )? ( ',' tfpdef ( '=' test )? )* ( ',' ( '*' tfpdef? ( ',' tfpdef ( '=' test )? )* )?)?
- | '*' tfpdef? ( ',' tfpdef ( '=' test )? )*
+ : '[' DECIMAL_INTEGER ':' DECIMAL_INTEGER ']' tfpdef ( ',' '[' DECIMAL_INTEGER ':' DECIMAL_INTEGER ']' tfpdef  )*
  ;
 
 tfpdef
@@ -167,14 +178,29 @@ return_stmt
 
 compound_stmt
  : if_stmt
+ | switch_stmt
  | while_stmt
  | for_stmt
- | funcdef
- | decorated
  ;
 
 if_stmt
  : IF test ':' suite ( ELIF test ':' suite )* ( ELSE ':' suite )?
+ ;
+
+switch_stmt
+ : SWITCH '(' NAME ')' ':' switch_suite
+ ;
+
+switch_suite
+ : NEWLINE INDENT case_stmt* case_default DEDENT
+ ;
+
+case_stmt
+ : CASE number ':' ( (RETURN (NAME | number)) | expr_stmt ) NEWLINE
+ ;
+
+case_default
+ : DEFAULT  ':' ( (RETURN (NAME | number)) | expr_stmt ) NEWLINE
  ;
 
 while_stmt
@@ -326,9 +352,7 @@ dictorsetmaker
  ;
 
 arglist
- : ( argument ',' )* ( argument ','?
-                     | '*' test ( ',' argument )*
-                     )
+ : ( argument ',' )* argument
  ;
 
 argument
@@ -365,6 +389,9 @@ RETURN : 'return';
 IF : 'if';
 ELIF : 'elif';
 ELSE : 'else';
+SWITCH : 'switch';
+CASE : 'case';
+DEFAULT: 'default';
 WHILE : 'while';
 FOR : 'for';
 IN : 'in';
@@ -379,6 +406,7 @@ DEL : 'del';
 PASS : 'pass';
 CONTINUE : 'continue';
 BREAK : 'break';
+BLOCK: 'block';
 
 NEWLINE
  : ( {atStartOfInput()}?   SPACES

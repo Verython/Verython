@@ -16,66 +16,72 @@ public class VerythonParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, DEF=2, RETURN=3, IF=4, ELIF=5, ELSE=6, WHILE=7, FOR=8, IN=9, OR=10, 
-		AND=11, NOT=12, IS=13, NONE=14, TRUE=15, FALSE=16, DEL=17, PASS=18, CONTINUE=19, 
-		BREAK=20, NEWLINE=21, NAME=22, DECIMAL_INTEGER=23, OCT_INTEGER=24, HEX_INTEGER=25, 
-		BIN_INTEGER=26, DOT=27, STAR=28, OPEN_PAREN=29, CLOSE_PAREN=30, COMMA=31, 
-		COLON=32, SEMI_COLON=33, ASSIGN=34, OPEN_BRACK=35, CLOSE_BRACK=36, OR_OP=37, 
-		XOR=38, AND_OP=39, LEFT_SHIFT=40, RIGHT_SHIFT=41, ADD=42, MINUS=43, DIV=44, 
-		MOD=45, NOT_OP=46, OPEN_BRACE=47, CLOSE_BRACE=48, LESS_THAN=49, GREATER_THAN=50, 
-		EQUALS=51, GT_EQ=52, LT_EQ=53, NOT_EQ_1=54, NOT_EQ_2=55, ADD_ASSIGN=56, 
-		SUB_ASSIGN=57, MULT_ASSIGN=58, DIV_ASSIGN=59, MOD_ASSIGN=60, AND_ASSIGN=61, 
-		OR_ASSIGN=62, XOR_ASSIGN=63, LEFT_SHIFT_ASSIGN=64, RIGHT_SHIFT_ASSIGN=65, 
-		TOP=66, INITAL=67, ALWAYS=68, SKIP_=69, UNKNOWN_CHAR=70, INDENT=71, DEDENT=72;
+		T__0=1, DEF=2, RETURN=3, IF=4, ELIF=5, ELSE=6, SWITCH=7, CASE=8, DEFAULT=9, 
+		WHILE=10, FOR=11, IN=12, OR=13, AND=14, NOT=15, IS=16, NONE=17, TRUE=18, 
+		FALSE=19, DEL=20, PASS=21, CONTINUE=22, BREAK=23, BLOCK=24, NEWLINE=25, 
+		NAME=26, DECIMAL_INTEGER=27, OCT_INTEGER=28, HEX_INTEGER=29, BIN_INTEGER=30, 
+		DOT=31, STAR=32, OPEN_PAREN=33, CLOSE_PAREN=34, COMMA=35, COLON=36, SEMI_COLON=37, 
+		ASSIGN=38, OPEN_BRACK=39, CLOSE_BRACK=40, OR_OP=41, XOR=42, AND_OP=43, 
+		LEFT_SHIFT=44, RIGHT_SHIFT=45, ADD=46, MINUS=47, DIV=48, MOD=49, NOT_OP=50, 
+		OPEN_BRACE=51, CLOSE_BRACE=52, LESS_THAN=53, GREATER_THAN=54, EQUALS=55, 
+		GT_EQ=56, LT_EQ=57, NOT_EQ_1=58, NOT_EQ_2=59, ADD_ASSIGN=60, SUB_ASSIGN=61, 
+		MULT_ASSIGN=62, DIV_ASSIGN=63, MOD_ASSIGN=64, AND_ASSIGN=65, OR_ASSIGN=66, 
+		XOR_ASSIGN=67, LEFT_SHIFT_ASSIGN=68, RIGHT_SHIFT_ASSIGN=69, TOP=70, INITAL=71, 
+		ALWAYS=72, SKIP_=73, UNKNOWN_CHAR=74, INDENT=75, DEDENT=76;
 	public static final int
-		RULE_initial = 0, RULE_decorated = 1, RULE_decorator = 2, RULE_funcdef = 3, 
-		RULE_parameters = 4, RULE_typedargslist = 5, RULE_tfpdef = 6, RULE_stmt = 7, 
-		RULE_simple_stmt = 8, RULE_small_stmt = 9, RULE_expr_stmt = 10, RULE_testlist_star_expr = 11, 
-		RULE_augassign = 12, RULE_del_stmt = 13, RULE_pass_stmt = 14, RULE_flow_stmt = 15, 
-		RULE_break_stmt = 16, RULE_continue_stmt = 17, RULE_return_stmt = 18, 
-		RULE_compound_stmt = 19, RULE_if_stmt = 20, RULE_while_stmt = 21, RULE_for_stmt = 22, 
-		RULE_suite = 23, RULE_test = 24, RULE_or_test = 25, RULE_and_test = 26, 
-		RULE_not_test = 27, RULE_comparison = 28, RULE_comp_op = 29, RULE_star_expr = 30, 
-		RULE_expr = 31, RULE_xor_expr = 32, RULE_and_expr = 33, RULE_shift_expr = 34, 
-		RULE_arith_expr = 35, RULE_term = 36, RULE_factor = 37, RULE_power = 38, 
-		RULE_atom = 39, RULE_testlist_comp = 40, RULE_trailer = 41, RULE_subscriptlist = 42, 
-		RULE_subscript = 43, RULE_sliceop = 44, RULE_exprlist = 45, RULE_testlist = 46, 
-		RULE_dictorsetmaker = 47, RULE_arglist = 48, RULE_argument = 49, RULE_comp_iter = 50, 
-		RULE_comp_for = 51, RULE_comp_if = 52, RULE_number = 53;
+		RULE_initial = 0, RULE_top = 1, RULE_decorator = 2, RULE_block = 3, RULE_funcdef = 4, 
+		RULE_blocks = 5, RULE_block_element = 6, RULE_parameters = 7, RULE_typedargslist = 8, 
+		RULE_tfpdef = 9, RULE_stmt = 10, RULE_simple_stmt = 11, RULE_small_stmt = 12, 
+		RULE_expr_stmt = 13, RULE_testlist_star_expr = 14, RULE_augassign = 15, 
+		RULE_del_stmt = 16, RULE_pass_stmt = 17, RULE_flow_stmt = 18, RULE_break_stmt = 19, 
+		RULE_continue_stmt = 20, RULE_return_stmt = 21, RULE_compound_stmt = 22, 
+		RULE_if_stmt = 23, RULE_switch_stmt = 24, RULE_switch_suite = 25, RULE_case_stmt = 26, 
+		RULE_case_default = 27, RULE_while_stmt = 28, RULE_for_stmt = 29, RULE_suite = 30, 
+		RULE_test = 31, RULE_or_test = 32, RULE_and_test = 33, RULE_not_test = 34, 
+		RULE_comparison = 35, RULE_comp_op = 36, RULE_star_expr = 37, RULE_expr = 38, 
+		RULE_xor_expr = 39, RULE_and_expr = 40, RULE_shift_expr = 41, RULE_arith_expr = 42, 
+		RULE_term = 43, RULE_factor = 44, RULE_power = 45, RULE_atom = 46, RULE_testlist_comp = 47, 
+		RULE_trailer = 48, RULE_subscriptlist = 49, RULE_subscript = 50, RULE_sliceop = 51, 
+		RULE_exprlist = 52, RULE_testlist = 53, RULE_dictorsetmaker = 54, RULE_arglist = 55, 
+		RULE_argument = 56, RULE_comp_iter = 57, RULE_comp_for = 58, RULE_comp_if = 59, 
+		RULE_number = 60;
 	public static final String[] ruleNames = {
-		"initial", "decorated", "decorator", "funcdef", "parameters", "typedargslist", 
-		"tfpdef", "stmt", "simple_stmt", "small_stmt", "expr_stmt", "testlist_star_expr", 
-		"augassign", "del_stmt", "pass_stmt", "flow_stmt", "break_stmt", "continue_stmt", 
-		"return_stmt", "compound_stmt", "if_stmt", "while_stmt", "for_stmt", "suite", 
-		"test", "or_test", "and_test", "not_test", "comparison", "comp_op", "star_expr", 
-		"expr", "xor_expr", "and_expr", "shift_expr", "arith_expr", "term", "factor", 
-		"power", "atom", "testlist_comp", "trailer", "subscriptlist", "subscript", 
-		"sliceop", "exprlist", "testlist", "dictorsetmaker", "arglist", "argument", 
-		"comp_iter", "comp_for", "comp_if", "number"
+		"initial", "top", "decorator", "block", "funcdef", "blocks", "block_element", 
+		"parameters", "typedargslist", "tfpdef", "stmt", "simple_stmt", "small_stmt", 
+		"expr_stmt", "testlist_star_expr", "augassign", "del_stmt", "pass_stmt", 
+		"flow_stmt", "break_stmt", "continue_stmt", "return_stmt", "compound_stmt", 
+		"if_stmt", "switch_stmt", "switch_suite", "case_stmt", "case_default", 
+		"while_stmt", "for_stmt", "suite", "test", "or_test", "and_test", "not_test", 
+		"comparison", "comp_op", "star_expr", "expr", "xor_expr", "and_expr", 
+		"shift_expr", "arith_expr", "term", "factor", "power", "atom", "testlist_comp", 
+		"trailer", "subscriptlist", "subscript", "sliceop", "exprlist", "testlist", 
+		"dictorsetmaker", "arglist", "argument", "comp_iter", "comp_for", "comp_if", 
+		"number"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'...'", "'def'", "'return'", "'if'", "'elif'", "'else'", "'while'", 
-		"'for'", "'in'", "'or'", "'and'", "'not'", "'is'", "'None'", "'True'", 
-		"'False'", "'del'", "'pass'", "'continue'", "'break'", null, null, null, 
-		null, null, null, "'.'", "'*'", "'('", "')'", "','", "':'", "';'", "'='", 
-		"'['", "']'", "'|'", "'^'", "'&'", "'<<'", "'>>'", "'+'", "'-'", "'/'", 
-		"'%'", "'~'", "'{'", "'}'", "'<'", "'>'", "'=='", "'>='", "'<='", "'<>'", 
-		"'!='", "'+='", "'-='", "'*='", "'/='", "'%='", "'&='", "'|='", "'^='", 
-		"'<<='", "'>>='", "'@top'", "'@initial'", "'@always'"
+		null, "'...'", "'def'", "'return'", "'if'", "'elif'", "'else'", "'switch'", 
+		"'case'", "'default'", "'while'", "'for'", "'in'", "'or'", "'and'", "'not'", 
+		"'is'", "'None'", "'True'", "'False'", "'del'", "'pass'", "'continue'", 
+		"'break'", "'block'", null, null, null, null, null, null, "'.'", "'*'", 
+		"'('", "')'", "','", "':'", "';'", "'='", "'['", "']'", "'|'", "'^'", 
+		"'&'", "'<<'", "'>>'", "'+'", "'-'", "'/'", "'%'", "'~'", "'{'", "'}'", 
+		"'<'", "'>'", "'=='", "'>='", "'<='", "'<>'", "'!='", "'+='", "'-='", 
+		"'*='", "'/='", "'%='", "'&='", "'|='", "'^='", "'<<='", "'>>='", "'@top'", 
+		"'@initial'", "'@always'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, "DEF", "RETURN", "IF", "ELIF", "ELSE", "WHILE", "FOR", "IN", 
-		"OR", "AND", "NOT", "IS", "NONE", "TRUE", "FALSE", "DEL", "PASS", "CONTINUE", 
-		"BREAK", "NEWLINE", "NAME", "DECIMAL_INTEGER", "OCT_INTEGER", "HEX_INTEGER", 
-		"BIN_INTEGER", "DOT", "STAR", "OPEN_PAREN", "CLOSE_PAREN", "COMMA", "COLON", 
-		"SEMI_COLON", "ASSIGN", "OPEN_BRACK", "CLOSE_BRACK", "OR_OP", "XOR", "AND_OP", 
-		"LEFT_SHIFT", "RIGHT_SHIFT", "ADD", "MINUS", "DIV", "MOD", "NOT_OP", "OPEN_BRACE", 
-		"CLOSE_BRACE", "LESS_THAN", "GREATER_THAN", "EQUALS", "GT_EQ", "LT_EQ", 
-		"NOT_EQ_1", "NOT_EQ_2", "ADD_ASSIGN", "SUB_ASSIGN", "MULT_ASSIGN", "DIV_ASSIGN", 
-		"MOD_ASSIGN", "AND_ASSIGN", "OR_ASSIGN", "XOR_ASSIGN", "LEFT_SHIFT_ASSIGN", 
-		"RIGHT_SHIFT_ASSIGN", "TOP", "INITAL", "ALWAYS", "SKIP_", "UNKNOWN_CHAR", 
-		"INDENT", "DEDENT"
+		null, null, "DEF", "RETURN", "IF", "ELIF", "ELSE", "SWITCH", "CASE", "DEFAULT", 
+		"WHILE", "FOR", "IN", "OR", "AND", "NOT", "IS", "NONE", "TRUE", "FALSE", 
+		"DEL", "PASS", "CONTINUE", "BREAK", "BLOCK", "NEWLINE", "NAME", "DECIMAL_INTEGER", 
+		"OCT_INTEGER", "HEX_INTEGER", "BIN_INTEGER", "DOT", "STAR", "OPEN_PAREN", 
+		"CLOSE_PAREN", "COMMA", "COLON", "SEMI_COLON", "ASSIGN", "OPEN_BRACK", 
+		"CLOSE_BRACK", "OR_OP", "XOR", "AND_OP", "LEFT_SHIFT", "RIGHT_SHIFT", 
+		"ADD", "MINUS", "DIV", "MOD", "NOT_OP", "OPEN_BRACE", "CLOSE_BRACE", "LESS_THAN", 
+		"GREATER_THAN", "EQUALS", "GT_EQ", "LT_EQ", "NOT_EQ_1", "NOT_EQ_2", "ADD_ASSIGN", 
+		"SUB_ASSIGN", "MULT_ASSIGN", "DIV_ASSIGN", "MOD_ASSIGN", "AND_ASSIGN", 
+		"OR_ASSIGN", "XOR_ASSIGN", "LEFT_SHIFT_ASSIGN", "RIGHT_SHIFT_ASSIGN", 
+		"TOP", "INITAL", "ALWAYS", "SKIP_", "UNKNOWN_CHAR", "INDENT", "DEDENT"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -127,29 +133,18 @@ public class VerythonParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 	public static class InitialContext extends ParserRuleContext {
+		public TopContext top() {
+			return getRuleContext(TopContext.class,0);
+		}
 		public TerminalNode EOF() { return getToken(VerythonParser.EOF, 0); }
 		public List<TerminalNode> NEWLINE() { return getTokens(VerythonParser.NEWLINE); }
 		public TerminalNode NEWLINE(int i) {
 			return getToken(VerythonParser.NEWLINE, i);
 		}
-		public List<StmtContext> stmt() {
-			return getRuleContexts(StmtContext.class);
-		}
-		public StmtContext stmt(int i) {
-			return getRuleContext(StmtContext.class,i);
-		}
 		public InitialContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_initial; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterInitial(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitInitial(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitInitial(this);
@@ -164,62 +159,23 @@ public class VerythonParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(112);
+			setState(125);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << DEF) | (1L << RETURN) | (1L << IF) | (1L << WHILE) | (1L << FOR) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << DEL) | (1L << PASS) | (1L << CONTINUE) | (1L << BREAK) | (1L << NEWLINE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0) || ((((_la - 66)) & ~0x3f) == 0 && ((1L << (_la - 66)) & ((1L << (TOP - 66)) | (1L << (INITAL - 66)) | (1L << (ALWAYS - 66)))) != 0)) {
+			while (_la==NEWLINE) {
 				{
-				setState(110);
-				switch (_input.LA(1)) {
-				case NEWLINE:
-					{
-					setState(108);
-					match(NEWLINE);
-					}
-					break;
-				case T__0:
-				case DEF:
-				case RETURN:
-				case IF:
-				case WHILE:
-				case FOR:
-				case NOT:
-				case NONE:
-				case TRUE:
-				case FALSE:
-				case DEL:
-				case PASS:
-				case CONTINUE:
-				case BREAK:
-				case NAME:
-				case DECIMAL_INTEGER:
-				case OCT_INTEGER:
-				case HEX_INTEGER:
-				case BIN_INTEGER:
-				case STAR:
-				case OPEN_PAREN:
-				case OPEN_BRACK:
-				case ADD:
-				case MINUS:
-				case NOT_OP:
-				case OPEN_BRACE:
-				case TOP:
-				case INITAL:
-				case ALWAYS:
-					{
-					setState(109);
-					stmt();
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
+				{
+				setState(122);
+				match(NEWLINE);
 				}
 				}
-				setState(114);
+				setState(127);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(115);
+			setState(128);
+			top();
+			setState(129);
 			match(EOF);
 			}
 		}
@@ -234,45 +190,69 @@ public class VerythonParser extends Parser {
 		return _localctx;
 	}
 
-	public static class DecoratedContext extends ParserRuleContext {
-		public DecoratorContext decorator() {
-			return getRuleContext(DecoratorContext.class,0);
+	public static class TopContext extends ParserRuleContext {
+		public TerminalNode TOP() { return getToken(VerythonParser.TOP, 0); }
+		public List<TerminalNode> NEWLINE() { return getTokens(VerythonParser.NEWLINE); }
+		public TerminalNode NEWLINE(int i) {
+			return getToken(VerythonParser.NEWLINE, i);
 		}
-		public TerminalNode NEWLINE() { return getToken(VerythonParser.NEWLINE, 0); }
-		public FuncdefContext funcdef() {
-			return getRuleContext(FuncdefContext.class,0);
+		public List<FuncdefContext> funcdef() {
+			return getRuleContexts(FuncdefContext.class);
 		}
-		public DecoratedContext(ParserRuleContext parent, int invokingState) {
+		public FuncdefContext funcdef(int i) {
+			return getRuleContext(FuncdefContext.class,i);
+		}
+		public TopContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_decorated; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterDecorated(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitDecorated(this);
-		}
+		@Override public int getRuleIndex() { return RULE_top; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitDecorated(this);
+			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTop(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final DecoratedContext decorated() throws RecognitionException {
-		DecoratedContext _localctx = new DecoratedContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_decorated);
+	public final TopContext top() throws RecognitionException {
+		TopContext _localctx = new TopContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_top);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(117);
-			decorator();
-			setState(118);
+			setState(131);
+			match(TOP);
+			setState(132);
 			match(NEWLINE);
-			setState(119);
+			setState(133);
 			funcdef();
+			setState(138);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while (_la==DEF || _la==NEWLINE) {
+				{
+				setState(136);
+				switch (_input.LA(1)) {
+				case NEWLINE:
+					{
+					setState(134);
+					match(NEWLINE);
+					}
+					break;
+				case DEF:
+					{
+					setState(135);
+					funcdef();
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
+				}
+				}
+				setState(140);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -287,7 +267,6 @@ public class VerythonParser extends Parser {
 	}
 
 	public static class DecoratorContext extends ParserRuleContext {
-		public TerminalNode TOP() { return getToken(VerythonParser.TOP, 0); }
 		public TerminalNode INITAL() { return getToken(VerythonParser.INITAL, 0); }
 		public TerminalNode ALWAYS() { return getToken(VerythonParser.ALWAYS, 0); }
 		public ArglistContext arglist() {
@@ -297,14 +276,6 @@ public class VerythonParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_decorator; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterDecorator(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitDecorator(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitDecorator(this);
@@ -317,44 +288,78 @@ public class VerythonParser extends Parser {
 		enterRule(_localctx, 4, RULE_decorator);
 		int _la;
 		try {
-			setState(129);
+			setState(148);
 			switch (_input.LA(1)) {
-			case TOP:
+			case INITAL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(121);
-				match(TOP);
-				}
-				break;
-			case INITAL:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(122);
+				setState(141);
 				match(INITAL);
 				}
 				break;
 			case ALWAYS:
-				enterOuterAlt(_localctx, 3);
+				enterOuterAlt(_localctx, 2);
 				{
-				setState(123);
+				setState(142);
 				match(ALWAYS);
-				setState(124);
+				setState(143);
 				match(OPEN_PAREN);
-				setState(126);
+				setState(145);
 				_la = _input.LA(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 					{
-					setState(125);
+					setState(144);
 					arglist();
 					}
 				}
 
-				setState(128);
+				setState(147);
 				match(CLOSE_PAREN);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class BlockContext extends ParserRuleContext {
+		public TerminalNode BLOCK() { return getToken(VerythonParser.BLOCK, 0); }
+		public SuiteContext suite() {
+			return getRuleContext(SuiteContext.class,0);
+		}
+		public BlockContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_block; }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitBlock(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final BlockContext block() throws RecognitionException {
+		BlockContext _localctx = new BlockContext(_ctx, getState());
+		enterRule(_localctx, 6, RULE_block);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(150);
+			match(BLOCK);
+			setState(151);
+			match(COLON);
+			setState(152);
+			suite();
 			}
 		}
 		catch (RecognitionException re) {
@@ -374,21 +379,14 @@ public class VerythonParser extends Parser {
 		public ParametersContext parameters() {
 			return getRuleContext(ParametersContext.class,0);
 		}
-		public SuiteContext suite() {
-			return getRuleContext(SuiteContext.class,0);
+		public TerminalNode NEWLINE() { return getToken(VerythonParser.NEWLINE, 0); }
+		public BlocksContext blocks() {
+			return getRuleContext(BlocksContext.class,0);
 		}
 		public FuncdefContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_funcdef; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterFuncdef(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitFuncdef(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitFuncdef(this);
@@ -398,20 +396,160 @@ public class VerythonParser extends Parser {
 
 	public final FuncdefContext funcdef() throws RecognitionException {
 		FuncdefContext _localctx = new FuncdefContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_funcdef);
+		enterRule(_localctx, 8, RULE_funcdef);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(131);
+			setState(154);
 			match(DEF);
-			setState(132);
+			setState(155);
 			match(NAME);
-			setState(133);
+			setState(156);
 			parameters();
-			setState(134);
+			setState(157);
 			match(COLON);
-			setState(135);
-			suite();
+			setState(158);
+			match(NEWLINE);
+			setState(159);
+			blocks();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class BlocksContext extends ParserRuleContext {
+		public TerminalNode INDENT() { return getToken(VerythonParser.INDENT, 0); }
+		public TerminalNode DEDENT() { return getToken(VerythonParser.DEDENT, 0); }
+		public List<Block_elementContext> block_element() {
+			return getRuleContexts(Block_elementContext.class);
+		}
+		public Block_elementContext block_element(int i) {
+			return getRuleContext(Block_elementContext.class,i);
+		}
+		public BlocksContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_blocks; }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitBlocks(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final BlocksContext blocks() throws RecognitionException {
+		BlocksContext _localctx = new BlocksContext(_ctx, getState());
+		enterRule(_localctx, 10, RULE_blocks);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(161);
+			match(INDENT);
+			setState(163); 
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			do {
+				{
+				{
+				setState(162);
+				block_element();
+				}
+				}
+				setState(165); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0) || _la==INITAL || _la==ALWAYS );
+			setState(167);
+			match(DEDENT);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Block_elementContext extends ParserRuleContext {
+		public DecoratorContext decorator() {
+			return getRuleContext(DecoratorContext.class,0);
+		}
+		public TerminalNode NEWLINE() { return getToken(VerythonParser.NEWLINE, 0); }
+		public BlockContext block() {
+			return getRuleContext(BlockContext.class,0);
+		}
+		public Expr_stmtContext expr_stmt() {
+			return getRuleContext(Expr_stmtContext.class,0);
+		}
+		public Block_elementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_block_element; }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitBlock_element(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Block_elementContext block_element() throws RecognitionException {
+		Block_elementContext _localctx = new Block_elementContext(_ctx, getState());
+		enterRule(_localctx, 12, RULE_block_element);
+		try {
+			setState(176);
+			switch (_input.LA(1)) {
+			case INITAL:
+			case ALWAYS:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(169);
+				decorator();
+				setState(170);
+				match(NEWLINE);
+				setState(171);
+				block();
+				}
+				break;
+			case T__0:
+			case NOT:
+			case NONE:
+			case TRUE:
+			case FALSE:
+			case NAME:
+			case DECIMAL_INTEGER:
+			case OCT_INTEGER:
+			case HEX_INTEGER:
+			case BIN_INTEGER:
+			case STAR:
+			case OPEN_PAREN:
+			case OPEN_BRACK:
+			case ADD:
+			case MINUS:
+			case NOT_OP:
+			case OPEN_BRACE:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(173);
+				expr_stmt();
+				setState(174);
+				match(NEWLINE);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -426,21 +564,16 @@ public class VerythonParser extends Parser {
 	}
 
 	public static class ParametersContext extends ParserRuleContext {
-		public TypedargslistContext typedargslist() {
-			return getRuleContext(TypedargslistContext.class,0);
+		public List<TypedargslistContext> typedargslist() {
+			return getRuleContexts(TypedargslistContext.class);
+		}
+		public TypedargslistContext typedargslist(int i) {
+			return getRuleContext(TypedargslistContext.class,i);
 		}
 		public ParametersContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_parameters; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterParameters(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitParameters(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitParameters(this);
@@ -450,23 +583,19 @@ public class VerythonParser extends Parser {
 
 	public final ParametersContext parameters() throws RecognitionException {
 		ParametersContext _localctx = new ParametersContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_parameters);
-		int _la;
+		enterRule(_localctx, 14, RULE_parameters);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(137);
+			setState(178);
 			match(OPEN_PAREN);
-			setState(139);
-			_la = _input.LA(1);
-			if (_la==NAME || _la==STAR) {
-				{
-				setState(138);
-				typedargslist();
-				}
-			}
-
-			setState(141);
+			setState(179);
+			typedargslist();
+			setState(180);
+			match(SEMI_COLON);
+			setState(181);
+			typedargslist();
+			setState(182);
 			match(CLOSE_PAREN);
 			}
 		}
@@ -482,30 +611,20 @@ public class VerythonParser extends Parser {
 	}
 
 	public static class TypedargslistContext extends ParserRuleContext {
+		public List<TerminalNode> DECIMAL_INTEGER() { return getTokens(VerythonParser.DECIMAL_INTEGER); }
+		public TerminalNode DECIMAL_INTEGER(int i) {
+			return getToken(VerythonParser.DECIMAL_INTEGER, i);
+		}
 		public List<TfpdefContext> tfpdef() {
 			return getRuleContexts(TfpdefContext.class);
 		}
 		public TfpdefContext tfpdef(int i) {
 			return getRuleContext(TfpdefContext.class,i);
 		}
-		public List<TestContext> test() {
-			return getRuleContexts(TestContext.class);
-		}
-		public TestContext test(int i) {
-			return getRuleContext(TestContext.class,i);
-		}
 		public TypedargslistContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typedargslist; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTypedargslist(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTypedargslist(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTypedargslist(this);
@@ -515,158 +634,49 @@ public class VerythonParser extends Parser {
 
 	public final TypedargslistContext typedargslist() throws RecognitionException {
 		TypedargslistContext _localctx = new TypedargslistContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_typedargslist);
+		enterRule(_localctx, 16, RULE_typedargslist);
 		int _la;
 		try {
-			int _alt;
-			setState(194);
-			switch (_input.LA(1)) {
-			case NAME:
-				enterOuterAlt(_localctx, 1);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(184);
+			match(OPEN_BRACK);
+			setState(185);
+			match(DECIMAL_INTEGER);
+			setState(186);
+			match(COLON);
+			setState(187);
+			match(DECIMAL_INTEGER);
+			setState(188);
+			match(CLOSE_BRACK);
+			setState(189);
+			tfpdef();
+			setState(199);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while (_la==COMMA) {
 				{
-				setState(143);
-				tfpdef();
-				setState(146);
-				_la = _input.LA(1);
-				if (_la==ASSIGN) {
-					{
-					setState(144);
-					match(ASSIGN);
-					setState(145);
-					test();
-					}
-				}
-
-				setState(156);
-				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
-				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-					if ( _alt==1 ) {
-						{
-						{
-						setState(148);
-						match(COMMA);
-						setState(149);
-						tfpdef();
-						setState(152);
-						_la = _input.LA(1);
-						if (_la==ASSIGN) {
-							{
-							setState(150);
-							match(ASSIGN);
-							setState(151);
-							test();
-							}
-						}
-
-						}
-						} 
-					}
-					setState(158);
-					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
-				}
-				setState(177);
-				_la = _input.LA(1);
-				if (_la==COMMA) {
-					{
-					setState(159);
-					match(COMMA);
-					setState(175);
-					_la = _input.LA(1);
-					if (_la==STAR) {
-						{
-						setState(160);
-						match(STAR);
-						setState(162);
-						_la = _input.LA(1);
-						if (_la==NAME) {
-							{
-							setState(161);
-							tfpdef();
-							}
-						}
-
-						setState(172);
-						_errHandler.sync(this);
-						_la = _input.LA(1);
-						while (_la==COMMA) {
-							{
-							{
-							setState(164);
-							match(COMMA);
-							setState(165);
-							tfpdef();
-							setState(168);
-							_la = _input.LA(1);
-							if (_la==ASSIGN) {
-								{
-								setState(166);
-								match(ASSIGN);
-								setState(167);
-								test();
-								}
-							}
-
-							}
-							}
-							setState(174);
-							_errHandler.sync(this);
-							_la = _input.LA(1);
-						}
-						}
-					}
-
-					}
-				}
-
-				}
-				break;
-			case STAR:
-				enterOuterAlt(_localctx, 2);
 				{
-				setState(179);
-				match(STAR);
-				setState(181);
-				_la = _input.LA(1);
-				if (_la==NAME) {
-					{
-					setState(180);
-					tfpdef();
-					}
-				}
-
+				setState(190);
+				match(COMMA);
 				setState(191);
+				match(OPEN_BRACK);
+				setState(192);
+				match(DECIMAL_INTEGER);
+				setState(193);
+				match(COLON);
+				setState(194);
+				match(DECIMAL_INTEGER);
+				setState(195);
+				match(CLOSE_BRACK);
+				setState(196);
+				tfpdef();
+				}
+				}
+				setState(201);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				while (_la==COMMA) {
-					{
-					{
-					setState(183);
-					match(COMMA);
-					setState(184);
-					tfpdef();
-					setState(187);
-					_la = _input.LA(1);
-					if (_la==ASSIGN) {
-						{
-						setState(185);
-						match(ASSIGN);
-						setState(186);
-						test();
-						}
-					}
-
-					}
-					}
-					setState(193);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -690,14 +700,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_tfpdef; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTfpdef(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTfpdef(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTfpdef(this);
 			else return visitor.visitChildren(this);
@@ -706,20 +708,20 @@ public class VerythonParser extends Parser {
 
 	public final TfpdefContext tfpdef() throws RecognitionException {
 		TfpdefContext _localctx = new TfpdefContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_tfpdef);
+		enterRule(_localctx, 18, RULE_tfpdef);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(196);
+			setState(202);
 			match(NAME);
-			setState(199);
+			setState(205);
 			_la = _input.LA(1);
 			if (_la==COLON) {
 				{
-				setState(197);
+				setState(203);
 				match(COLON);
-				setState(198);
+				setState(204);
 				test();
 				}
 			}
@@ -749,14 +751,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_stmt; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterStmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitStmt(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitStmt(this);
 			else return visitor.visitChildren(this);
@@ -765,9 +759,9 @@ public class VerythonParser extends Parser {
 
 	public final StmtContext stmt() throws RecognitionException {
 		StmtContext _localctx = new StmtContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_stmt);
+		enterRule(_localctx, 20, RULE_stmt);
 		try {
-			setState(203);
+			setState(209);
 			switch (_input.LA(1)) {
 			case T__0:
 			case RETURN:
@@ -793,20 +787,17 @@ public class VerythonParser extends Parser {
 			case OPEN_BRACE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(201);
+				setState(207);
 				simple_stmt();
 				}
 				break;
-			case DEF:
 			case IF:
+			case SWITCH:
 			case WHILE:
 			case FOR:
-			case TOP:
-			case INITAL:
-			case ALWAYS:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(202);
+				setState(208);
 				compound_stmt();
 				}
 				break;
@@ -838,14 +829,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_simple_stmt; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterSimple_stmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitSimple_stmt(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSimple_stmt(this);
 			else return visitor.visitChildren(this);
@@ -854,42 +837,42 @@ public class VerythonParser extends Parser {
 
 	public final Simple_stmtContext simple_stmt() throws RecognitionException {
 		Simple_stmtContext _localctx = new Simple_stmtContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_simple_stmt);
+		enterRule(_localctx, 22, RULE_simple_stmt);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(205);
+			setState(211);
 			small_stmt();
-			setState(210);
+			setState(216);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,10,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(206);
+					setState(212);
 					match(SEMI_COLON);
-					setState(207);
+					setState(213);
 					small_stmt();
 					}
 					} 
 				}
-				setState(212);
+				setState(218);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,10,_ctx);
 			}
-			setState(214);
+			setState(220);
 			_la = _input.LA(1);
 			if (_la==SEMI_COLON) {
 				{
-				setState(213);
+				setState(219);
 				match(SEMI_COLON);
 				}
 			}
 
-			setState(216);
+			setState(222);
 			match(NEWLINE);
 			}
 		}
@@ -922,14 +905,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_small_stmt; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterSmall_stmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitSmall_stmt(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSmall_stmt(this);
 			else return visitor.visitChildren(this);
@@ -938,9 +913,9 @@ public class VerythonParser extends Parser {
 
 	public final Small_stmtContext small_stmt() throws RecognitionException {
 		Small_stmtContext _localctx = new Small_stmtContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_small_stmt);
+		enterRule(_localctx, 24, RULE_small_stmt);
 		try {
-			setState(222);
+			setState(228);
 			switch (_input.LA(1)) {
 			case T__0:
 			case NOT:
@@ -961,21 +936,21 @@ public class VerythonParser extends Parser {
 			case OPEN_BRACE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(218);
+				setState(224);
 				expr_stmt();
 				}
 				break;
 			case DEL:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(219);
+				setState(225);
 				del_stmt();
 				}
 				break;
 			case PASS:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(220);
+				setState(226);
 				pass_stmt();
 				}
 				break;
@@ -984,7 +959,7 @@ public class VerythonParser extends Parser {
 			case BREAK:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(221);
+				setState(227);
 				flow_stmt();
 				}
 				break;
@@ -1021,14 +996,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_expr_stmt; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterExpr_stmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitExpr_stmt(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitExpr_stmt(this);
 			else return visitor.visitChildren(this);
@@ -1037,14 +1004,14 @@ public class VerythonParser extends Parser {
 
 	public final Expr_stmtContext expr_stmt() throws RecognitionException {
 		Expr_stmtContext _localctx = new Expr_stmtContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_expr_stmt);
+		enterRule(_localctx, 26, RULE_expr_stmt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(224);
+			setState(230);
 			testlist_star_expr();
-			setState(235);
+			setState(241);
 			switch (_input.LA(1)) {
 			case ADD_ASSIGN:
 			case SUB_ASSIGN:
@@ -1057,9 +1024,9 @@ public class VerythonParser extends Parser {
 			case LEFT_SHIFT_ASSIGN:
 			case RIGHT_SHIFT_ASSIGN:
 				{
-				setState(225);
+				setState(231);
 				augassign();
-				setState(226);
+				setState(232);
 				testlist();
 				}
 				break;
@@ -1067,19 +1034,19 @@ public class VerythonParser extends Parser {
 			case SEMI_COLON:
 			case ASSIGN:
 				{
-				setState(232);
+				setState(238);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==ASSIGN) {
 					{
 					{
-					setState(228);
+					setState(234);
 					match(ASSIGN);
-					setState(229);
+					setState(235);
 					testlist_star_expr();
 					}
 					}
-					setState(234);
+					setState(240);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -1119,14 +1086,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_testlist_star_expr; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTestlist_star_expr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTestlist_star_expr(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTestlist_star_expr(this);
 			else return visitor.visitChildren(this);
@@ -1135,49 +1094,49 @@ public class VerythonParser extends Parser {
 
 	public final Testlist_star_exprContext testlist_star_expr() throws RecognitionException {
 		Testlist_star_exprContext _localctx = new Testlist_star_exprContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_testlist_star_expr);
+		enterRule(_localctx, 28, RULE_testlist_star_expr);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(239);
+			setState(245);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,24,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,15,_ctx) ) {
 			case 1:
 				{
-				setState(237);
+				setState(243);
 				test();
 				}
 				break;
 			case 2:
 				{
-				setState(238);
+				setState(244);
 				star_expr();
 				}
 				break;
 			}
-			setState(248);
+			setState(254);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,26,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(241);
+					setState(247);
 					match(COMMA);
-					setState(244);
+					setState(250);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,25,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,16,_ctx) ) {
 					case 1:
 						{
-						setState(242);
+						setState(248);
 						test();
 						}
 						break;
 					case 2:
 						{
-						setState(243);
+						setState(249);
 						star_expr();
 						}
 						break;
@@ -1185,15 +1144,15 @@ public class VerythonParser extends Parser {
 					}
 					} 
 				}
-				setState(250);
+				setState(256);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,26,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
 			}
-			setState(252);
+			setState(258);
 			_la = _input.LA(1);
 			if (_la==COMMA) {
 				{
-				setState(251);
+				setState(257);
 				match(COMMA);
 				}
 			}
@@ -1227,14 +1186,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_augassign; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterAugassign(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitAugassign(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitAugassign(this);
 			else return visitor.visitChildren(this);
@@ -1243,14 +1194,14 @@ public class VerythonParser extends Parser {
 
 	public final AugassignContext augassign() throws RecognitionException {
 		AugassignContext _localctx = new AugassignContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_augassign);
+		enterRule(_localctx, 30, RULE_augassign);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(254);
+			setState(260);
 			_la = _input.LA(1);
-			if ( !(((((_la - 56)) & ~0x3f) == 0 && ((1L << (_la - 56)) & ((1L << (ADD_ASSIGN - 56)) | (1L << (SUB_ASSIGN - 56)) | (1L << (MULT_ASSIGN - 56)) | (1L << (DIV_ASSIGN - 56)) | (1L << (MOD_ASSIGN - 56)) | (1L << (AND_ASSIGN - 56)) | (1L << (OR_ASSIGN - 56)) | (1L << (XOR_ASSIGN - 56)) | (1L << (LEFT_SHIFT_ASSIGN - 56)) | (1L << (RIGHT_SHIFT_ASSIGN - 56)))) != 0)) ) {
+			if ( !(((((_la - 60)) & ~0x3f) == 0 && ((1L << (_la - 60)) & ((1L << (ADD_ASSIGN - 60)) | (1L << (SUB_ASSIGN - 60)) | (1L << (MULT_ASSIGN - 60)) | (1L << (DIV_ASSIGN - 60)) | (1L << (MOD_ASSIGN - 60)) | (1L << (AND_ASSIGN - 60)) | (1L << (OR_ASSIGN - 60)) | (1L << (XOR_ASSIGN - 60)) | (1L << (LEFT_SHIFT_ASSIGN - 60)) | (1L << (RIGHT_SHIFT_ASSIGN - 60)))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			} else {
 				consume();
@@ -1278,14 +1229,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_del_stmt; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterDel_stmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitDel_stmt(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitDel_stmt(this);
 			else return visitor.visitChildren(this);
@@ -1294,13 +1237,13 @@ public class VerythonParser extends Parser {
 
 	public final Del_stmtContext del_stmt() throws RecognitionException {
 		Del_stmtContext _localctx = new Del_stmtContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_del_stmt);
+		enterRule(_localctx, 32, RULE_del_stmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(256);
+			setState(262);
 			match(DEL);
-			setState(257);
+			setState(263);
 			exprlist();
 			}
 		}
@@ -1322,14 +1265,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_pass_stmt; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterPass_stmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitPass_stmt(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitPass_stmt(this);
 			else return visitor.visitChildren(this);
@@ -1338,11 +1273,11 @@ public class VerythonParser extends Parser {
 
 	public final Pass_stmtContext pass_stmt() throws RecognitionException {
 		Pass_stmtContext _localctx = new Pass_stmtContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_pass_stmt);
+		enterRule(_localctx, 34, RULE_pass_stmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(259);
+			setState(265);
 			match(PASS);
 			}
 		}
@@ -1372,14 +1307,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_flow_stmt; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterFlow_stmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitFlow_stmt(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitFlow_stmt(this);
 			else return visitor.visitChildren(this);
@@ -1388,28 +1315,28 @@ public class VerythonParser extends Parser {
 
 	public final Flow_stmtContext flow_stmt() throws RecognitionException {
 		Flow_stmtContext _localctx = new Flow_stmtContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_flow_stmt);
+		enterRule(_localctx, 36, RULE_flow_stmt);
 		try {
-			setState(264);
+			setState(270);
 			switch (_input.LA(1)) {
 			case BREAK:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(261);
+				setState(267);
 				break_stmt();
 				}
 				break;
 			case CONTINUE:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(262);
+				setState(268);
 				continue_stmt();
 				}
 				break;
 			case RETURN:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(263);
+				setState(269);
 				return_stmt();
 				}
 				break;
@@ -1435,14 +1362,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_break_stmt; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterBreak_stmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitBreak_stmt(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitBreak_stmt(this);
 			else return visitor.visitChildren(this);
@@ -1451,11 +1370,11 @@ public class VerythonParser extends Parser {
 
 	public final Break_stmtContext break_stmt() throws RecognitionException {
 		Break_stmtContext _localctx = new Break_stmtContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_break_stmt);
+		enterRule(_localctx, 38, RULE_break_stmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(266);
+			setState(272);
 			match(BREAK);
 			}
 		}
@@ -1477,14 +1396,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_continue_stmt; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterContinue_stmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitContinue_stmt(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitContinue_stmt(this);
 			else return visitor.visitChildren(this);
@@ -1493,11 +1404,11 @@ public class VerythonParser extends Parser {
 
 	public final Continue_stmtContext continue_stmt() throws RecognitionException {
 		Continue_stmtContext _localctx = new Continue_stmtContext(_ctx, getState());
-		enterRule(_localctx, 34, RULE_continue_stmt);
+		enterRule(_localctx, 40, RULE_continue_stmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(268);
+			setState(274);
 			match(CONTINUE);
 			}
 		}
@@ -1522,14 +1433,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_return_stmt; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterReturn_stmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitReturn_stmt(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitReturn_stmt(this);
 			else return visitor.visitChildren(this);
@@ -1538,18 +1441,18 @@ public class VerythonParser extends Parser {
 
 	public final Return_stmtContext return_stmt() throws RecognitionException {
 		Return_stmtContext _localctx = new Return_stmtContext(_ctx, getState());
-		enterRule(_localctx, 36, RULE_return_stmt);
+		enterRule(_localctx, 42, RULE_return_stmt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(270);
+			setState(276);
 			match(RETURN);
-			setState(272);
+			setState(278);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 				{
-				setState(271);
+				setState(277);
 				testlist();
 				}
 			}
@@ -1571,30 +1474,19 @@ public class VerythonParser extends Parser {
 		public If_stmtContext if_stmt() {
 			return getRuleContext(If_stmtContext.class,0);
 		}
+		public Switch_stmtContext switch_stmt() {
+			return getRuleContext(Switch_stmtContext.class,0);
+		}
 		public While_stmtContext while_stmt() {
 			return getRuleContext(While_stmtContext.class,0);
 		}
 		public For_stmtContext for_stmt() {
 			return getRuleContext(For_stmtContext.class,0);
 		}
-		public FuncdefContext funcdef() {
-			return getRuleContext(FuncdefContext.class,0);
-		}
-		public DecoratedContext decorated() {
-			return getRuleContext(DecoratedContext.class,0);
-		}
 		public Compound_stmtContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_compound_stmt; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterCompound_stmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitCompound_stmt(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitCompound_stmt(this);
@@ -1604,45 +1496,36 @@ public class VerythonParser extends Parser {
 
 	public final Compound_stmtContext compound_stmt() throws RecognitionException {
 		Compound_stmtContext _localctx = new Compound_stmtContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_compound_stmt);
+		enterRule(_localctx, 44, RULE_compound_stmt);
 		try {
-			setState(279);
+			setState(284);
 			switch (_input.LA(1)) {
 			case IF:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(274);
+				setState(280);
 				if_stmt();
 				}
 				break;
-			case WHILE:
+			case SWITCH:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(275);
+				setState(281);
+				switch_stmt();
+				}
+				break;
+			case WHILE:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(282);
 				while_stmt();
 				}
 				break;
 			case FOR:
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(276);
-				for_stmt();
-				}
-				break;
-			case DEF:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(277);
-				funcdef();
-				}
-				break;
-			case TOP:
-			case INITAL:
-			case ALWAYS:
-				enterOuterAlt(_localctx, 5);
-				{
-				setState(278);
-				decorated();
+				setState(283);
+				for_stmt();
 				}
 				break;
 			default:
@@ -1684,14 +1567,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_if_stmt; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterIf_stmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitIf_stmt(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitIf_stmt(this);
 			else return visitor.visitChildren(this);
@@ -1700,52 +1575,375 @@ public class VerythonParser extends Parser {
 
 	public final If_stmtContext if_stmt() throws RecognitionException {
 		If_stmtContext _localctx = new If_stmtContext(_ctx, getState());
-		enterRule(_localctx, 40, RULE_if_stmt);
+		enterRule(_localctx, 46, RULE_if_stmt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(281);
+			setState(286);
 			match(IF);
-			setState(282);
+			setState(287);
 			test();
-			setState(283);
+			setState(288);
 			match(COLON);
-			setState(284);
+			setState(289);
 			suite();
-			setState(292);
+			setState(297);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==ELIF) {
 				{
 				{
-				setState(285);
+				setState(290);
 				match(ELIF);
-				setState(286);
+				setState(291);
 				test();
-				setState(287);
+				setState(292);
 				match(COLON);
-				setState(288);
+				setState(293);
 				suite();
 				}
 				}
-				setState(294);
+				setState(299);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(298);
+			setState(303);
 			_la = _input.LA(1);
 			if (_la==ELSE) {
 				{
-				setState(295);
+				setState(300);
 				match(ELSE);
-				setState(296);
+				setState(301);
 				match(COLON);
-				setState(297);
+				setState(302);
 				suite();
 				}
 			}
 
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Switch_stmtContext extends ParserRuleContext {
+		public TerminalNode SWITCH() { return getToken(VerythonParser.SWITCH, 0); }
+		public TerminalNode NAME() { return getToken(VerythonParser.NAME, 0); }
+		public Switch_suiteContext switch_suite() {
+			return getRuleContext(Switch_suiteContext.class,0);
+		}
+		public Switch_stmtContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_switch_stmt; }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSwitch_stmt(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Switch_stmtContext switch_stmt() throws RecognitionException {
+		Switch_stmtContext _localctx = new Switch_stmtContext(_ctx, getState());
+		enterRule(_localctx, 48, RULE_switch_stmt);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(305);
+			match(SWITCH);
+			setState(306);
+			match(OPEN_PAREN);
+			setState(307);
+			match(NAME);
+			setState(308);
+			match(CLOSE_PAREN);
+			setState(309);
+			match(COLON);
+			setState(310);
+			switch_suite();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Switch_suiteContext extends ParserRuleContext {
+		public TerminalNode NEWLINE() { return getToken(VerythonParser.NEWLINE, 0); }
+		public TerminalNode INDENT() { return getToken(VerythonParser.INDENT, 0); }
+		public Case_defaultContext case_default() {
+			return getRuleContext(Case_defaultContext.class,0);
+		}
+		public TerminalNode DEDENT() { return getToken(VerythonParser.DEDENT, 0); }
+		public List<Case_stmtContext> case_stmt() {
+			return getRuleContexts(Case_stmtContext.class);
+		}
+		public Case_stmtContext case_stmt(int i) {
+			return getRuleContext(Case_stmtContext.class,i);
+		}
+		public Switch_suiteContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_switch_suite; }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSwitch_suite(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Switch_suiteContext switch_suite() throws RecognitionException {
+		Switch_suiteContext _localctx = new Switch_suiteContext(_ctx, getState());
+		enterRule(_localctx, 50, RULE_switch_suite);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(312);
+			match(NEWLINE);
+			setState(313);
+			match(INDENT);
+			setState(317);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while (_la==CASE) {
+				{
+				{
+				setState(314);
+				case_stmt();
+				}
+				}
+				setState(319);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			}
+			setState(320);
+			case_default();
+			setState(321);
+			match(DEDENT);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Case_stmtContext extends ParserRuleContext {
+		public TerminalNode CASE() { return getToken(VerythonParser.CASE, 0); }
+		public List<NumberContext> number() {
+			return getRuleContexts(NumberContext.class);
+		}
+		public NumberContext number(int i) {
+			return getRuleContext(NumberContext.class,i);
+		}
+		public TerminalNode NEWLINE() { return getToken(VerythonParser.NEWLINE, 0); }
+		public Expr_stmtContext expr_stmt() {
+			return getRuleContext(Expr_stmtContext.class,0);
+		}
+		public TerminalNode RETURN() { return getToken(VerythonParser.RETURN, 0); }
+		public TerminalNode NAME() { return getToken(VerythonParser.NAME, 0); }
+		public Case_stmtContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_case_stmt; }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitCase_stmt(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Case_stmtContext case_stmt() throws RecognitionException {
+		Case_stmtContext _localctx = new Case_stmtContext(_ctx, getState());
+		enterRule(_localctx, 52, RULE_case_stmt);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(323);
+			match(CASE);
+			setState(324);
+			number();
+			setState(325);
+			match(COLON);
+			setState(332);
+			switch (_input.LA(1)) {
+			case RETURN:
+				{
+				{
+				setState(326);
+				match(RETURN);
+				setState(329);
+				switch (_input.LA(1)) {
+				case NAME:
+					{
+					setState(327);
+					match(NAME);
+					}
+					break;
+				case DECIMAL_INTEGER:
+				case OCT_INTEGER:
+				case HEX_INTEGER:
+				case BIN_INTEGER:
+					{
+					setState(328);
+					number();
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
+				}
+				}
+				}
+				break;
+			case T__0:
+			case NOT:
+			case NONE:
+			case TRUE:
+			case FALSE:
+			case NAME:
+			case DECIMAL_INTEGER:
+			case OCT_INTEGER:
+			case HEX_INTEGER:
+			case BIN_INTEGER:
+			case STAR:
+			case OPEN_PAREN:
+			case OPEN_BRACK:
+			case ADD:
+			case MINUS:
+			case NOT_OP:
+			case OPEN_BRACE:
+				{
+				setState(331);
+				expr_stmt();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+			setState(334);
+			match(NEWLINE);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Case_defaultContext extends ParserRuleContext {
+		public TerminalNode DEFAULT() { return getToken(VerythonParser.DEFAULT, 0); }
+		public TerminalNode NEWLINE() { return getToken(VerythonParser.NEWLINE, 0); }
+		public Expr_stmtContext expr_stmt() {
+			return getRuleContext(Expr_stmtContext.class,0);
+		}
+		public TerminalNode RETURN() { return getToken(VerythonParser.RETURN, 0); }
+		public TerminalNode NAME() { return getToken(VerythonParser.NAME, 0); }
+		public NumberContext number() {
+			return getRuleContext(NumberContext.class,0);
+		}
+		public Case_defaultContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_case_default; }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitCase_default(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Case_defaultContext case_default() throws RecognitionException {
+		Case_defaultContext _localctx = new Case_defaultContext(_ctx, getState());
+		enterRule(_localctx, 54, RULE_case_default);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(336);
+			match(DEFAULT);
+			setState(337);
+			match(COLON);
+			setState(344);
+			switch (_input.LA(1)) {
+			case RETURN:
+				{
+				{
+				setState(338);
+				match(RETURN);
+				setState(341);
+				switch (_input.LA(1)) {
+				case NAME:
+					{
+					setState(339);
+					match(NAME);
+					}
+					break;
+				case DECIMAL_INTEGER:
+				case OCT_INTEGER:
+				case HEX_INTEGER:
+				case BIN_INTEGER:
+					{
+					setState(340);
+					number();
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
+				}
+				}
+				}
+				break;
+			case T__0:
+			case NOT:
+			case NONE:
+			case TRUE:
+			case FALSE:
+			case NAME:
+			case DECIMAL_INTEGER:
+			case OCT_INTEGER:
+			case HEX_INTEGER:
+			case BIN_INTEGER:
+			case STAR:
+			case OPEN_PAREN:
+			case OPEN_BRACK:
+			case ADD:
+			case MINUS:
+			case NOT_OP:
+			case OPEN_BRACE:
+				{
+				setState(343);
+				expr_stmt();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+			setState(346);
+			match(NEWLINE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1776,14 +1974,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_while_stmt; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterWhile_stmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitWhile_stmt(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitWhile_stmt(this);
 			else return visitor.visitChildren(this);
@@ -1792,28 +1982,28 @@ public class VerythonParser extends Parser {
 
 	public final While_stmtContext while_stmt() throws RecognitionException {
 		While_stmtContext _localctx = new While_stmtContext(_ctx, getState());
-		enterRule(_localctx, 42, RULE_while_stmt);
+		enterRule(_localctx, 56, RULE_while_stmt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(300);
+			setState(348);
 			match(WHILE);
-			setState(301);
+			setState(349);
 			test();
-			setState(302);
+			setState(350);
 			match(COLON);
-			setState(303);
+			setState(351);
 			suite();
-			setState(307);
+			setState(355);
 			_la = _input.LA(1);
 			if (_la==ELSE) {
 				{
-				setState(304);
+				setState(352);
 				match(ELSE);
-				setState(305);
+				setState(353);
 				match(COLON);
-				setState(306);
+				setState(354);
 				suite();
 				}
 			}
@@ -1852,14 +2042,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_for_stmt; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterFor_stmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitFor_stmt(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitFor_stmt(this);
 			else return visitor.visitChildren(this);
@@ -1868,32 +2050,32 @@ public class VerythonParser extends Parser {
 
 	public final For_stmtContext for_stmt() throws RecognitionException {
 		For_stmtContext _localctx = new For_stmtContext(_ctx, getState());
-		enterRule(_localctx, 44, RULE_for_stmt);
+		enterRule(_localctx, 58, RULE_for_stmt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(309);
+			setState(357);
 			match(FOR);
-			setState(310);
+			setState(358);
 			exprlist();
-			setState(311);
+			setState(359);
 			match(IN);
-			setState(312);
+			setState(360);
 			testlist();
-			setState(313);
+			setState(361);
 			match(COLON);
-			setState(314);
+			setState(362);
 			suite();
-			setState(318);
+			setState(366);
 			_la = _input.LA(1);
 			if (_la==ELSE) {
 				{
-				setState(315);
+				setState(363);
 				match(ELSE);
-				setState(316);
+				setState(364);
 				match(COLON);
-				setState(317);
+				setState(365);
 				suite();
 				}
 			}
@@ -1929,14 +2111,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_suite; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterSuite(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitSuite(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSuite(this);
 			else return visitor.visitChildren(this);
@@ -1945,10 +2119,10 @@ public class VerythonParser extends Parser {
 
 	public final SuiteContext suite() throws RecognitionException {
 		SuiteContext _localctx = new SuiteContext(_ctx, getState());
-		enterRule(_localctx, 46, RULE_suite);
+		enterRule(_localctx, 60, RULE_suite);
 		int _la;
 		try {
-			setState(330);
+			setState(378);
 			switch (_input.LA(1)) {
 			case T__0:
 			case RETURN:
@@ -1974,32 +2148,32 @@ public class VerythonParser extends Parser {
 			case OPEN_BRACE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(320);
+				setState(368);
 				simple_stmt();
 				}
 				break;
 			case NEWLINE:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(321);
+				setState(369);
 				match(NEWLINE);
-				setState(322);
+				setState(370);
 				match(INDENT);
-				setState(324); 
+				setState(372); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(323);
+					setState(371);
 					stmt();
 					}
 					}
-					setState(326); 
+					setState(374); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << DEF) | (1L << RETURN) | (1L << IF) | (1L << WHILE) | (1L << FOR) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << DEL) | (1L << PASS) | (1L << CONTINUE) | (1L << BREAK) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0) || ((((_la - 66)) & ~0x3f) == 0 && ((1L << (_la - 66)) & ((1L << (TOP - 66)) | (1L << (INITAL - 66)) | (1L << (ALWAYS - 66)))) != 0) );
-				setState(328);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << RETURN) | (1L << IF) | (1L << SWITCH) | (1L << WHILE) | (1L << FOR) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << DEL) | (1L << PASS) | (1L << CONTINUE) | (1L << BREAK) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0) );
+				setState(376);
 				match(DEDENT);
 				}
 				break;
@@ -2035,14 +2209,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_test; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTest(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTest(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTest(this);
 			else return visitor.visitChildren(this);
@@ -2051,24 +2217,24 @@ public class VerythonParser extends Parser {
 
 	public final TestContext test() throws RecognitionException {
 		TestContext _localctx = new TestContext(_ctx, getState());
-		enterRule(_localctx, 48, RULE_test);
+		enterRule(_localctx, 62, RULE_test);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(332);
+			setState(380);
 			or_test();
-			setState(338);
+			setState(386);
 			_la = _input.LA(1);
 			if (_la==IF) {
 				{
-				setState(333);
+				setState(381);
 				match(IF);
-				setState(334);
+				setState(382);
 				or_test();
-				setState(335);
+				setState(383);
 				match(ELSE);
-				setState(336);
+				setState(384);
 				test();
 				}
 			}
@@ -2102,14 +2268,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_or_test; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterOr_test(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitOr_test(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitOr_test(this);
 			else return visitor.visitChildren(this);
@@ -2118,26 +2276,26 @@ public class VerythonParser extends Parser {
 
 	public final Or_testContext or_test() throws RecognitionException {
 		Or_testContext _localctx = new Or_testContext(_ctx, getState());
-		enterRule(_localctx, 50, RULE_or_test);
+		enterRule(_localctx, 64, RULE_or_test);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(340);
+			setState(388);
 			and_test();
-			setState(345);
+			setState(393);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==OR) {
 				{
 				{
-				setState(341);
+				setState(389);
 				match(OR);
-				setState(342);
+				setState(390);
 				and_test();
 				}
 				}
-				setState(347);
+				setState(395);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2170,14 +2328,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_and_test; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterAnd_test(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitAnd_test(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitAnd_test(this);
 			else return visitor.visitChildren(this);
@@ -2186,26 +2336,26 @@ public class VerythonParser extends Parser {
 
 	public final And_testContext and_test() throws RecognitionException {
 		And_testContext _localctx = new And_testContext(_ctx, getState());
-		enterRule(_localctx, 52, RULE_and_test);
+		enterRule(_localctx, 66, RULE_and_test);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(348);
+			setState(396);
 			not_test();
-			setState(353);
+			setState(401);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==AND) {
 				{
 				{
-				setState(349);
+				setState(397);
 				match(AND);
-				setState(350);
+				setState(398);
 				not_test();
 				}
 				}
-				setState(355);
+				setState(403);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2235,14 +2385,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_not_test; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterNot_test(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitNot_test(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitNot_test(this);
 			else return visitor.visitChildren(this);
@@ -2251,16 +2393,16 @@ public class VerythonParser extends Parser {
 
 	public final Not_testContext not_test() throws RecognitionException {
 		Not_testContext _localctx = new Not_testContext(_ctx, getState());
-		enterRule(_localctx, 54, RULE_not_test);
+		enterRule(_localctx, 68, RULE_not_test);
 		try {
-			setState(359);
+			setState(407);
 			switch (_input.LA(1)) {
 			case NOT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(356);
+				setState(404);
 				match(NOT);
-				setState(357);
+				setState(405);
 				not_test();
 				}
 				break;
@@ -2282,7 +2424,7 @@ public class VerythonParser extends Parser {
 			case OPEN_BRACE:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(358);
+				setState(406);
 				comparison();
 				}
 				break;
@@ -2319,14 +2461,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_comparison; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterComparison(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitComparison(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitComparison(this);
 			else return visitor.visitChildren(this);
@@ -2335,26 +2469,26 @@ public class VerythonParser extends Parser {
 
 	public final ComparisonContext comparison() throws RecognitionException {
 		ComparisonContext _localctx = new ComparisonContext(_ctx, getState());
-		enterRule(_localctx, 56, RULE_comparison);
+		enterRule(_localctx, 70, RULE_comparison);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(361);
+			setState(409);
 			star_expr();
-			setState(367);
+			setState(415);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IN) | (1L << NOT) | (1L << IS) | (1L << LESS_THAN) | (1L << GREATER_THAN) | (1L << EQUALS) | (1L << GT_EQ) | (1L << LT_EQ) | (1L << NOT_EQ_1) | (1L << NOT_EQ_2))) != 0)) {
 				{
 				{
-				setState(362);
+				setState(410);
 				comp_op();
-				setState(363);
+				setState(411);
 				star_expr();
 				}
 				}
-				setState(369);
+				setState(417);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2387,14 +2521,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_comp_op; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterComp_op(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitComp_op(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitComp_op(this);
 			else return visitor.visitChildren(this);
@@ -2403,89 +2529,89 @@ public class VerythonParser extends Parser {
 
 	public final Comp_opContext comp_op() throws RecognitionException {
 		Comp_opContext _localctx = new Comp_opContext(_ctx, getState());
-		enterRule(_localctx, 58, RULE_comp_op);
+		enterRule(_localctx, 72, RULE_comp_op);
 		try {
-			setState(383);
+			setState(431);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,42,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,38,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(370);
+				setState(418);
 				match(LESS_THAN);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(371);
+				setState(419);
 				match(GREATER_THAN);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(372);
+				setState(420);
 				match(EQUALS);
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(373);
+				setState(421);
 				match(GT_EQ);
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(374);
+				setState(422);
 				match(LT_EQ);
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(375);
+				setState(423);
 				match(NOT_EQ_1);
 				}
 				break;
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(376);
+				setState(424);
 				match(NOT_EQ_2);
 				}
 				break;
 			case 8:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(377);
+				setState(425);
 				match(IN);
 				}
 				break;
 			case 9:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(378);
+				setState(426);
 				match(NOT);
-				setState(379);
+				setState(427);
 				match(IN);
 				}
 				break;
 			case 10:
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(380);
+				setState(428);
 				match(IS);
 				}
 				break;
 			case 11:
 				enterOuterAlt(_localctx, 11);
 				{
-				setState(381);
+				setState(429);
 				match(IS);
-				setState(382);
+				setState(430);
 				match(NOT);
 				}
 				break;
@@ -2511,14 +2637,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_star_expr; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterStar_expr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitStar_expr(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitStar_expr(this);
 			else return visitor.visitChildren(this);
@@ -2527,21 +2645,21 @@ public class VerythonParser extends Parser {
 
 	public final Star_exprContext star_expr() throws RecognitionException {
 		Star_exprContext _localctx = new Star_exprContext(_ctx, getState());
-		enterRule(_localctx, 60, RULE_star_expr);
+		enterRule(_localctx, 74, RULE_star_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(386);
+			setState(434);
 			_la = _input.LA(1);
 			if (_la==STAR) {
 				{
-				setState(385);
+				setState(433);
 				match(STAR);
 				}
 			}
 
-			setState(388);
+			setState(436);
 			expr();
 			}
 		}
@@ -2568,14 +2686,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_expr; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitExpr(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitExpr(this);
 			else return visitor.visitChildren(this);
@@ -2584,26 +2694,26 @@ public class VerythonParser extends Parser {
 
 	public final ExprContext expr() throws RecognitionException {
 		ExprContext _localctx = new ExprContext(_ctx, getState());
-		enterRule(_localctx, 62, RULE_expr);
+		enterRule(_localctx, 76, RULE_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(390);
+			setState(438);
 			xor_expr();
-			setState(395);
+			setState(443);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==OR_OP) {
 				{
 				{
-				setState(391);
+				setState(439);
 				match(OR_OP);
-				setState(392);
+				setState(440);
 				xor_expr();
 				}
 				}
-				setState(397);
+				setState(445);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2632,14 +2742,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_xor_expr; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterXor_expr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitXor_expr(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitXor_expr(this);
 			else return visitor.visitChildren(this);
@@ -2648,26 +2750,26 @@ public class VerythonParser extends Parser {
 
 	public final Xor_exprContext xor_expr() throws RecognitionException {
 		Xor_exprContext _localctx = new Xor_exprContext(_ctx, getState());
-		enterRule(_localctx, 64, RULE_xor_expr);
+		enterRule(_localctx, 78, RULE_xor_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(398);
+			setState(446);
 			and_expr();
-			setState(403);
+			setState(451);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==XOR) {
 				{
 				{
-				setState(399);
+				setState(447);
 				match(XOR);
-				setState(400);
+				setState(448);
 				and_expr();
 				}
 				}
-				setState(405);
+				setState(453);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2696,14 +2798,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_and_expr; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterAnd_expr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitAnd_expr(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitAnd_expr(this);
 			else return visitor.visitChildren(this);
@@ -2712,26 +2806,26 @@ public class VerythonParser extends Parser {
 
 	public final And_exprContext and_expr() throws RecognitionException {
 		And_exprContext _localctx = new And_exprContext(_ctx, getState());
-		enterRule(_localctx, 66, RULE_and_expr);
+		enterRule(_localctx, 80, RULE_and_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(406);
+			setState(454);
 			shift_expr();
-			setState(411);
+			setState(459);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==AND_OP) {
 				{
 				{
-				setState(407);
+				setState(455);
 				match(AND_OP);
-				setState(408);
+				setState(456);
 				shift_expr();
 				}
 				}
-				setState(413);
+				setState(461);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2760,14 +2854,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_shift_expr; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterShift_expr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitShift_expr(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitShift_expr(this);
 			else return visitor.visitChildren(this);
@@ -2776,33 +2862,33 @@ public class VerythonParser extends Parser {
 
 	public final Shift_exprContext shift_expr() throws RecognitionException {
 		Shift_exprContext _localctx = new Shift_exprContext(_ctx, getState());
-		enterRule(_localctx, 68, RULE_shift_expr);
+		enterRule(_localctx, 82, RULE_shift_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(414);
+			setState(462);
 			arith_expr();
-			setState(421);
+			setState(469);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==LEFT_SHIFT || _la==RIGHT_SHIFT) {
 				{
-				setState(419);
+				setState(467);
 				switch (_input.LA(1)) {
 				case LEFT_SHIFT:
 					{
-					setState(415);
+					setState(463);
 					match(LEFT_SHIFT);
-					setState(416);
+					setState(464);
 					arith_expr();
 					}
 					break;
 				case RIGHT_SHIFT:
 					{
-					setState(417);
+					setState(465);
 					match(RIGHT_SHIFT);
-					setState(418);
+					setState(466);
 					arith_expr();
 					}
 					break;
@@ -2810,7 +2896,7 @@ public class VerythonParser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(423);
+				setState(471);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2839,14 +2925,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_arith_expr; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterArith_expr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitArith_expr(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitArith_expr(this);
 			else return visitor.visitChildren(this);
@@ -2855,33 +2933,33 @@ public class VerythonParser extends Parser {
 
 	public final Arith_exprContext arith_expr() throws RecognitionException {
 		Arith_exprContext _localctx = new Arith_exprContext(_ctx, getState());
-		enterRule(_localctx, 70, RULE_arith_expr);
+		enterRule(_localctx, 84, RULE_arith_expr);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(424);
+			setState(472);
 			term();
-			setState(431);
+			setState(479);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==ADD || _la==MINUS) {
 				{
-				setState(429);
+				setState(477);
 				switch (_input.LA(1)) {
 				case ADD:
 					{
-					setState(425);
+					setState(473);
 					match(ADD);
-					setState(426);
+					setState(474);
 					term();
 					}
 					break;
 				case MINUS:
 					{
-					setState(427);
+					setState(475);
 					match(MINUS);
-					setState(428);
+					setState(476);
 					term();
 					}
 					break;
@@ -2889,7 +2967,7 @@ public class VerythonParser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(433);
+				setState(481);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2918,14 +2996,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_term; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTerm(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTerm(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTerm(this);
 			else return visitor.visitChildren(this);
@@ -2934,41 +3004,41 @@ public class VerythonParser extends Parser {
 
 	public final TermContext term() throws RecognitionException {
 		TermContext _localctx = new TermContext(_ctx, getState());
-		enterRule(_localctx, 72, RULE_term);
+		enterRule(_localctx, 86, RULE_term);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(434);
+			setState(482);
 			factor();
-			setState(443);
+			setState(491);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << STAR) | (1L << DIV) | (1L << MOD))) != 0)) {
 				{
-				setState(441);
+				setState(489);
 				switch (_input.LA(1)) {
 				case STAR:
 					{
-					setState(435);
+					setState(483);
 					match(STAR);
-					setState(436);
+					setState(484);
 					factor();
 					}
 					break;
 				case DIV:
 					{
-					setState(437);
+					setState(485);
 					match(DIV);
-					setState(438);
+					setState(486);
 					factor();
 					}
 					break;
 				case MOD:
 					{
-					setState(439);
+					setState(487);
 					match(MOD);
-					setState(440);
+					setState(488);
 					factor();
 					}
 					break;
@@ -2976,7 +3046,7 @@ public class VerythonParser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(445);
+				setState(493);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -3005,14 +3075,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_factor; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterFactor(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitFactor(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitFactor(this);
 			else return visitor.visitChildren(this);
@@ -3021,34 +3083,34 @@ public class VerythonParser extends Parser {
 
 	public final FactorContext factor() throws RecognitionException {
 		FactorContext _localctx = new FactorContext(_ctx, getState());
-		enterRule(_localctx, 74, RULE_factor);
+		enterRule(_localctx, 88, RULE_factor);
 		try {
-			setState(453);
+			setState(501);
 			switch (_input.LA(1)) {
 			case ADD:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(446);
+				setState(494);
 				match(ADD);
-				setState(447);
+				setState(495);
 				factor();
 				}
 				break;
 			case MINUS:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(448);
+				setState(496);
 				match(MINUS);
-				setState(449);
+				setState(497);
 				factor();
 				}
 				break;
 			case NOT_OP:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(450);
+				setState(498);
 				match(NOT_OP);
-				setState(451);
+				setState(499);
 				factor();
 				}
 				break;
@@ -3066,7 +3128,7 @@ public class VerythonParser extends Parser {
 			case OPEN_BRACE:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(452);
+				setState(500);
 				power();
 				}
 				break;
@@ -3100,14 +3162,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_power; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterPower(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitPower(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitPower(this);
 			else return visitor.visitChildren(this);
@@ -3116,24 +3170,24 @@ public class VerythonParser extends Parser {
 
 	public final PowerContext power() throws RecognitionException {
 		PowerContext _localctx = new PowerContext(_ctx, getState());
-		enterRule(_localctx, 76, RULE_power);
+		enterRule(_localctx, 90, RULE_power);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(455);
+			setState(503);
 			atom();
-			setState(459);
+			setState(507);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << DOT) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK))) != 0)) {
 				{
 				{
-				setState(456);
+				setState(504);
 				trailer();
 				}
 				}
-				setState(461);
+				setState(509);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -3169,14 +3223,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_atom; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterAtom(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitAtom(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitAtom(this);
 			else return visitor.visitChildren(this);
@@ -3185,69 +3231,69 @@ public class VerythonParser extends Parser {
 
 	public final AtomContext atom() throws RecognitionException {
 		AtomContext _localctx = new AtomContext(_ctx, getState());
-		enterRule(_localctx, 78, RULE_atom);
+		enterRule(_localctx, 92, RULE_atom);
 		int _la;
 		try {
-			setState(483);
+			setState(531);
 			switch (_input.LA(1)) {
 			case OPEN_PAREN:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(462);
+				setState(510);
 				match(OPEN_PAREN);
-				setState(464);
+				setState(512);
 				_la = _input.LA(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 					{
-					setState(463);
+					setState(511);
 					testlist_comp();
 					}
 				}
 
-				setState(466);
+				setState(514);
 				match(CLOSE_PAREN);
 				}
 				break;
 			case OPEN_BRACK:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(467);
+				setState(515);
 				match(OPEN_BRACK);
-				setState(469);
+				setState(517);
 				_la = _input.LA(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 					{
-					setState(468);
+					setState(516);
 					testlist_comp();
 					}
 				}
 
-				setState(471);
+				setState(519);
 				match(CLOSE_BRACK);
 				}
 				break;
 			case OPEN_BRACE:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(472);
+				setState(520);
 				match(OPEN_BRACE);
-				setState(474);
+				setState(522);
 				_la = _input.LA(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 					{
-					setState(473);
+					setState(521);
 					dictorsetmaker();
 					}
 				}
 
-				setState(476);
+				setState(524);
 				match(CLOSE_BRACE);
 				}
 				break;
 			case NAME:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(477);
+				setState(525);
 				match(NAME);
 				}
 				break;
@@ -3257,35 +3303,35 @@ public class VerythonParser extends Parser {
 			case BIN_INTEGER:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(478);
+				setState(526);
 				number();
 				}
 				break;
 			case T__0:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(479);
+				setState(527);
 				match(T__0);
 				}
 				break;
 			case NONE:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(480);
+				setState(528);
 				match(NONE);
 				}
 				break;
 			case TRUE:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(481);
+				setState(529);
 				match(TRUE);
 				}
 				break;
 			case FALSE:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(482);
+				setState(530);
 				match(FALSE);
 				}
 				break;
@@ -3319,14 +3365,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_testlist_comp; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTestlist_comp(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTestlist_comp(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTestlist_comp(this);
 			else return visitor.visitChildren(this);
@@ -3335,19 +3373,19 @@ public class VerythonParser extends Parser {
 
 	public final Testlist_compContext testlist_comp() throws RecognitionException {
 		Testlist_compContext _localctx = new Testlist_compContext(_ctx, getState());
-		enterRule(_localctx, 80, RULE_testlist_comp);
+		enterRule(_localctx, 94, RULE_testlist_comp);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(485);
+			setState(533);
 			test();
-			setState(497);
+			setState(545);
 			switch (_input.LA(1)) {
 			case FOR:
 				{
-				setState(486);
+				setState(534);
 				comp_for();
 				}
 				break;
@@ -3355,29 +3393,29 @@ public class VerythonParser extends Parser {
 			case COMMA:
 			case CLOSE_BRACK:
 				{
-				setState(491);
+				setState(539);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,59,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,55,_ctx);
 				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
-						setState(487);
+						setState(535);
 						match(COMMA);
-						setState(488);
+						setState(536);
 						test();
 						}
 						} 
 					}
-					setState(493);
+					setState(541);
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,59,_ctx);
+					_alt = getInterpreter().adaptivePredict(_input,55,_ctx);
 				}
-				setState(495);
+				setState(543);
 				_la = _input.LA(1);
 				if (_la==COMMA) {
 					{
-					setState(494);
+					setState(542);
 					match(COMMA);
 					}
 				}
@@ -3413,14 +3451,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_trailer; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTrailer(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTrailer(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTrailer(this);
 			else return visitor.visitChildren(this);
@@ -3429,46 +3459,46 @@ public class VerythonParser extends Parser {
 
 	public final TrailerContext trailer() throws RecognitionException {
 		TrailerContext _localctx = new TrailerContext(_ctx, getState());
-		enterRule(_localctx, 82, RULE_trailer);
+		enterRule(_localctx, 96, RULE_trailer);
 		int _la;
 		try {
-			setState(510);
+			setState(558);
 			switch (_input.LA(1)) {
 			case OPEN_PAREN:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(499);
+				setState(547);
 				match(OPEN_PAREN);
-				setState(501);
+				setState(549);
 				_la = _input.LA(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 					{
-					setState(500);
+					setState(548);
 					arglist();
 					}
 				}
 
-				setState(503);
+				setState(551);
 				match(CLOSE_PAREN);
 				}
 				break;
 			case OPEN_BRACK:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(504);
+				setState(552);
 				match(OPEN_BRACK);
-				setState(505);
+				setState(553);
 				subscriptlist();
-				setState(506);
+				setState(554);
 				match(CLOSE_BRACK);
 				}
 				break;
 			case DOT:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(508);
+				setState(556);
 				match(DOT);
-				setState(509);
+				setState(557);
 				match(NAME);
 				}
 				break;
@@ -3499,14 +3529,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_subscriptlist; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterSubscriptlist(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitSubscriptlist(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSubscriptlist(this);
 			else return visitor.visitChildren(this);
@@ -3515,37 +3537,37 @@ public class VerythonParser extends Parser {
 
 	public final SubscriptlistContext subscriptlist() throws RecognitionException {
 		SubscriptlistContext _localctx = new SubscriptlistContext(_ctx, getState());
-		enterRule(_localctx, 84, RULE_subscriptlist);
+		enterRule(_localctx, 98, RULE_subscriptlist);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(512);
+			setState(560);
 			subscript();
-			setState(517);
+			setState(565);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,64,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,60,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(513);
+					setState(561);
 					match(COMMA);
-					setState(514);
+					setState(562);
 					subscript();
 					}
 					} 
 				}
-				setState(519);
+				setState(567);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,64,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,60,_ctx);
 			}
-			setState(521);
+			setState(569);
 			_la = _input.LA(1);
 			if (_la==COMMA) {
 				{
-				setState(520);
+				setState(568);
 				match(COMMA);
 				}
 			}
@@ -3578,14 +3600,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_subscript; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterSubscript(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitSubscript(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSubscript(this);
 			else return visitor.visitChildren(this);
@@ -3594,47 +3608,47 @@ public class VerythonParser extends Parser {
 
 	public final SubscriptContext subscript() throws RecognitionException {
 		SubscriptContext _localctx = new SubscriptContext(_ctx, getState());
-		enterRule(_localctx, 86, RULE_subscript);
+		enterRule(_localctx, 100, RULE_subscript);
 		int _la;
 		try {
-			setState(534);
+			setState(582);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,69,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,65,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(523);
+				setState(571);
 				test();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(525);
+				setState(573);
 				_la = _input.LA(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 					{
-					setState(524);
+					setState(572);
 					test();
 					}
 				}
 
-				setState(527);
+				setState(575);
 				match(COLON);
-				setState(529);
+				setState(577);
 				_la = _input.LA(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 					{
-					setState(528);
+					setState(576);
 					test();
 					}
 				}
 
-				setState(532);
+				setState(580);
 				_la = _input.LA(1);
 				if (_la==COLON) {
 					{
-					setState(531);
+					setState(579);
 					sliceop();
 					}
 				}
@@ -3663,14 +3677,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_sliceop; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterSliceop(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitSliceop(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitSliceop(this);
 			else return visitor.visitChildren(this);
@@ -3679,18 +3685,18 @@ public class VerythonParser extends Parser {
 
 	public final SliceopContext sliceop() throws RecognitionException {
 		SliceopContext _localctx = new SliceopContext(_ctx, getState());
-		enterRule(_localctx, 88, RULE_sliceop);
+		enterRule(_localctx, 102, RULE_sliceop);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(536);
+			setState(584);
 			match(COLON);
-			setState(538);
+			setState(586);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NOT) | (1L << NONE) | (1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER) | (1L << STAR) | (1L << OPEN_PAREN) | (1L << OPEN_BRACK) | (1L << ADD) | (1L << MINUS) | (1L << NOT_OP) | (1L << OPEN_BRACE))) != 0)) {
 				{
-				setState(537);
+				setState(585);
 				test();
 				}
 			}
@@ -3720,14 +3726,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_exprlist; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterExprlist(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitExprlist(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitExprlist(this);
 			else return visitor.visitChildren(this);
@@ -3736,37 +3734,37 @@ public class VerythonParser extends Parser {
 
 	public final ExprlistContext exprlist() throws RecognitionException {
 		ExprlistContext _localctx = new ExprlistContext(_ctx, getState());
-		enterRule(_localctx, 90, RULE_exprlist);
+		enterRule(_localctx, 104, RULE_exprlist);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(540);
+			setState(588);
 			star_expr();
-			setState(545);
+			setState(593);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,71,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,67,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(541);
+					setState(589);
 					match(COMMA);
-					setState(542);
+					setState(590);
 					star_expr();
 					}
 					} 
 				}
-				setState(547);
+				setState(595);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,71,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,67,_ctx);
 			}
-			setState(549);
+			setState(597);
 			_la = _input.LA(1);
 			if (_la==COMMA) {
 				{
-				setState(548);
+				setState(596);
 				match(COMMA);
 				}
 			}
@@ -3796,14 +3794,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_testlist; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterTestlist(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitTestlist(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitTestlist(this);
 			else return visitor.visitChildren(this);
@@ -3812,37 +3802,37 @@ public class VerythonParser extends Parser {
 
 	public final TestlistContext testlist() throws RecognitionException {
 		TestlistContext _localctx = new TestlistContext(_ctx, getState());
-		enterRule(_localctx, 92, RULE_testlist);
+		enterRule(_localctx, 106, RULE_testlist);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(551);
+			setState(599);
 			test();
-			setState(556);
+			setState(604);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,73,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,69,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(552);
+					setState(600);
 					match(COMMA);
-					setState(553);
+					setState(601);
 					test();
 					}
 					} 
 				}
-				setState(558);
+				setState(606);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,73,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,69,_ctx);
 			}
-			setState(560);
+			setState(608);
 			_la = _input.LA(1);
 			if (_la==COMMA) {
 				{
-				setState(559);
+				setState(607);
 				match(COMMA);
 				}
 			}
@@ -3875,14 +3865,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_dictorsetmaker; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterDictorsetmaker(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitDictorsetmaker(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitDictorsetmaker(this);
 			else return visitor.visitChildren(this);
@@ -3891,60 +3873,60 @@ public class VerythonParser extends Parser {
 
 	public final DictorsetmakerContext dictorsetmaker() throws RecognitionException {
 		DictorsetmakerContext _localctx = new DictorsetmakerContext(_ctx, getState());
-		enterRule(_localctx, 94, RULE_dictorsetmaker);
+		enterRule(_localctx, 108, RULE_dictorsetmaker);
 		int _la;
 		try {
 			int _alt;
-			setState(595);
+			setState(643);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,81,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,77,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(562);
+				setState(610);
 				test();
-				setState(563);
+				setState(611);
 				match(COLON);
-				setState(564);
+				setState(612);
 				test();
-				setState(579);
+				setState(627);
 				switch (_input.LA(1)) {
 				case FOR:
 					{
-					setState(565);
+					setState(613);
 					comp_for();
 					}
 					break;
 				case COMMA:
 				case CLOSE_BRACE:
 					{
-					setState(573);
+					setState(621);
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,75,_ctx);
+					_alt = getInterpreter().adaptivePredict(_input,71,_ctx);
 					while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 						if ( _alt==1 ) {
 							{
 							{
-							setState(566);
+							setState(614);
 							match(COMMA);
-							setState(567);
+							setState(615);
 							test();
-							setState(568);
+							setState(616);
 							match(COLON);
-							setState(569);
+							setState(617);
 							test();
 							}
 							} 
 						}
-						setState(575);
+						setState(623);
 						_errHandler.sync(this);
-						_alt = getInterpreter().adaptivePredict(_input,75,_ctx);
+						_alt = getInterpreter().adaptivePredict(_input,71,_ctx);
 					}
-					setState(577);
+					setState(625);
 					_la = _input.LA(1);
 					if (_la==COMMA) {
 						{
-						setState(576);
+						setState(624);
 						match(COMMA);
 						}
 					}
@@ -3959,42 +3941,42 @@ public class VerythonParser extends Parser {
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(581);
+				setState(629);
 				test();
-				setState(593);
+				setState(641);
 				switch (_input.LA(1)) {
 				case FOR:
 					{
-					setState(582);
+					setState(630);
 					comp_for();
 					}
 					break;
 				case COMMA:
 				case CLOSE_BRACE:
 					{
-					setState(587);
+					setState(635);
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,78,_ctx);
+					_alt = getInterpreter().adaptivePredict(_input,74,_ctx);
 					while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 						if ( _alt==1 ) {
 							{
 							{
-							setState(583);
+							setState(631);
 							match(COMMA);
-							setState(584);
+							setState(632);
 							test();
 							}
 							} 
 						}
-						setState(589);
+						setState(637);
 						_errHandler.sync(this);
-						_alt = getInterpreter().adaptivePredict(_input,78,_ctx);
+						_alt = getInterpreter().adaptivePredict(_input,74,_ctx);
 					}
-					setState(591);
+					setState(639);
 					_la = _input.LA(1);
 					if (_la==COMMA) {
 						{
-						setState(590);
+						setState(638);
 						match(COMMA);
 						}
 					}
@@ -4026,21 +4008,10 @@ public class VerythonParser extends Parser {
 		public ArgumentContext argument(int i) {
 			return getRuleContext(ArgumentContext.class,i);
 		}
-		public TestContext test() {
-			return getRuleContext(TestContext.class,0);
-		}
 		public ArglistContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_arglist; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterArglist(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitArglist(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitArglist(this);
@@ -4050,73 +4021,31 @@ public class VerythonParser extends Parser {
 
 	public final ArglistContext arglist() throws RecognitionException {
 		ArglistContext _localctx = new ArglistContext(_ctx, getState());
-		enterRule(_localctx, 96, RULE_arglist);
-		int _la;
+		enterRule(_localctx, 110, RULE_arglist);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(602);
+			setState(650);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,82,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,78,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(597);
+					setState(645);
 					argument();
-					setState(598);
+					setState(646);
 					match(COMMA);
 					}
 					} 
 				}
-				setState(604);
+				setState(652);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,82,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,78,_ctx);
 			}
-			setState(618);
-			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,85,_ctx) ) {
-			case 1:
-				{
-				setState(605);
-				argument();
-				setState(607);
-				_la = _input.LA(1);
-				if (_la==COMMA) {
-					{
-					setState(606);
-					match(COMMA);
-					}
-				}
-
-				}
-				break;
-			case 2:
-				{
-				setState(609);
-				match(STAR);
-				setState(610);
-				test();
-				setState(615);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==COMMA) {
-					{
-					{
-					setState(611);
-					match(COMMA);
-					setState(612);
-					argument();
-					}
-					}
-					setState(617);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				}
-				break;
-			}
+			setState(653);
+			argument();
 			}
 		}
 		catch (RecognitionException re) {
@@ -4145,14 +4074,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_argument; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterArgument(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitArgument(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitArgument(this);
 			else return visitor.visitChildren(this);
@@ -4161,22 +4082,22 @@ public class VerythonParser extends Parser {
 
 	public final ArgumentContext argument() throws RecognitionException {
 		ArgumentContext _localctx = new ArgumentContext(_ctx, getState());
-		enterRule(_localctx, 98, RULE_argument);
+		enterRule(_localctx, 112, RULE_argument);
 		int _la;
 		try {
-			setState(628);
+			setState(663);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,87,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,80,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(620);
+				setState(655);
 				test();
-				setState(622);
+				setState(657);
 				_la = _input.LA(1);
 				if (_la==FOR) {
 					{
-					setState(621);
+					setState(656);
 					comp_for();
 					}
 				}
@@ -4186,11 +4107,11 @@ public class VerythonParser extends Parser {
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(624);
+				setState(659);
 				test();
-				setState(625);
+				setState(660);
 				match(ASSIGN);
-				setState(626);
+				setState(661);
 				test();
 				}
 				break;
@@ -4219,14 +4140,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_comp_iter; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterComp_iter(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitComp_iter(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitComp_iter(this);
 			else return visitor.visitChildren(this);
@@ -4235,21 +4148,21 @@ public class VerythonParser extends Parser {
 
 	public final Comp_iterContext comp_iter() throws RecognitionException {
 		Comp_iterContext _localctx = new Comp_iterContext(_ctx, getState());
-		enterRule(_localctx, 100, RULE_comp_iter);
+		enterRule(_localctx, 114, RULE_comp_iter);
 		try {
-			setState(632);
+			setState(667);
 			switch (_input.LA(1)) {
 			case FOR:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(630);
+				setState(665);
 				comp_for();
 				}
 				break;
 			case IF:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(631);
+				setState(666);
 				comp_if();
 				}
 				break;
@@ -4285,14 +4198,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_comp_for; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterComp_for(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitComp_for(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitComp_for(this);
 			else return visitor.visitChildren(this);
@@ -4301,24 +4206,24 @@ public class VerythonParser extends Parser {
 
 	public final Comp_forContext comp_for() throws RecognitionException {
 		Comp_forContext _localctx = new Comp_forContext(_ctx, getState());
-		enterRule(_localctx, 102, RULE_comp_for);
+		enterRule(_localctx, 116, RULE_comp_for);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(634);
+			setState(669);
 			match(FOR);
-			setState(635);
+			setState(670);
 			exprlist();
-			setState(636);
+			setState(671);
 			match(IN);
-			setState(637);
+			setState(672);
 			or_test();
-			setState(639);
+			setState(674);
 			_la = _input.LA(1);
 			if (_la==IF || _la==FOR) {
 				{
-				setState(638);
+				setState(673);
 				comp_iter();
 				}
 			}
@@ -4349,14 +4254,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_comp_if; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterComp_if(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitComp_if(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitComp_if(this);
 			else return visitor.visitChildren(this);
@@ -4365,20 +4262,20 @@ public class VerythonParser extends Parser {
 
 	public final Comp_ifContext comp_if() throws RecognitionException {
 		Comp_ifContext _localctx = new Comp_ifContext(_ctx, getState());
-		enterRule(_localctx, 104, RULE_comp_if);
+		enterRule(_localctx, 118, RULE_comp_if);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(641);
+			setState(676);
 			match(IF);
-			setState(642);
+			setState(677);
 			or_test();
-			setState(644);
+			setState(679);
 			_la = _input.LA(1);
 			if (_la==IF || _la==FOR) {
 				{
-				setState(643);
+				setState(678);
 				comp_iter();
 				}
 			}
@@ -4406,14 +4303,6 @@ public class VerythonParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_number; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).enterNumber(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VerythonListener ) ((VerythonListener)listener).exitNumber(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof VerythonVisitor ) return ((VerythonVisitor<? extends T>)visitor).visitNumber(this);
 			else return visitor.visitChildren(this);
@@ -4422,12 +4311,12 @@ public class VerythonParser extends Parser {
 
 	public final NumberContext number() throws RecognitionException {
 		NumberContext _localctx = new NumberContext(_ctx, getState());
-		enterRule(_localctx, 106, RULE_number);
+		enterRule(_localctx, 120, RULE_number);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(646);
+			setState(681);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << DECIMAL_INTEGER) | (1L << OCT_INTEGER) | (1L << HEX_INTEGER) | (1L << BIN_INTEGER))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -4448,258 +4337,262 @@ public class VerythonParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3J\u028b\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3N\u02ae\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
 		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\4\37\t\37\4 \t \4!"+
 		"\t!\4\"\t\"\4#\t#\4$\t$\4%\t%\4&\t&\4\'\t\'\4(\t(\4)\t)\4*\t*\4+\t+\4"+
 		",\t,\4-\t-\4.\t.\4/\t/\4\60\t\60\4\61\t\61\4\62\t\62\4\63\t\63\4\64\t"+
-		"\64\4\65\t\65\4\66\t\66\4\67\t\67\3\2\3\2\7\2q\n\2\f\2\16\2t\13\2\3\2"+
-		"\3\2\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\5\4\u0081\n\4\3\4\5\4\u0084\n"+
-		"\4\3\5\3\5\3\5\3\5\3\5\3\5\3\6\3\6\5\6\u008e\n\6\3\6\3\6\3\7\3\7\3\7\5"+
-		"\7\u0095\n\7\3\7\3\7\3\7\3\7\5\7\u009b\n\7\7\7\u009d\n\7\f\7\16\7\u00a0"+
-		"\13\7\3\7\3\7\3\7\5\7\u00a5\n\7\3\7\3\7\3\7\3\7\5\7\u00ab\n\7\7\7\u00ad"+
-		"\n\7\f\7\16\7\u00b0\13\7\5\7\u00b2\n\7\5\7\u00b4\n\7\3\7\3\7\5\7\u00b8"+
-		"\n\7\3\7\3\7\3\7\3\7\5\7\u00be\n\7\7\7\u00c0\n\7\f\7\16\7\u00c3\13\7\5"+
-		"\7\u00c5\n\7\3\b\3\b\3\b\5\b\u00ca\n\b\3\t\3\t\5\t\u00ce\n\t\3\n\3\n\3"+
-		"\n\7\n\u00d3\n\n\f\n\16\n\u00d6\13\n\3\n\5\n\u00d9\n\n\3\n\3\n\3\13\3"+
-		"\13\3\13\3\13\5\13\u00e1\n\13\3\f\3\f\3\f\3\f\3\f\3\f\7\f\u00e9\n\f\f"+
-		"\f\16\f\u00ec\13\f\5\f\u00ee\n\f\3\r\3\r\5\r\u00f2\n\r\3\r\3\r\3\r\5\r"+
-		"\u00f7\n\r\7\r\u00f9\n\r\f\r\16\r\u00fc\13\r\3\r\5\r\u00ff\n\r\3\16\3"+
-		"\16\3\17\3\17\3\17\3\20\3\20\3\21\3\21\3\21\5\21\u010b\n\21\3\22\3\22"+
-		"\3\23\3\23\3\24\3\24\5\24\u0113\n\24\3\25\3\25\3\25\3\25\3\25\5\25\u011a"+
-		"\n\25\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\7\26\u0125\n\26\f\26"+
-		"\16\26\u0128\13\26\3\26\3\26\3\26\5\26\u012d\n\26\3\27\3\27\3\27\3\27"+
-		"\3\27\3\27\3\27\5\27\u0136\n\27\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30"+
-		"\3\30\5\30\u0141\n\30\3\31\3\31\3\31\3\31\6\31\u0147\n\31\r\31\16\31\u0148"+
-		"\3\31\3\31\5\31\u014d\n\31\3\32\3\32\3\32\3\32\3\32\3\32\5\32\u0155\n"+
-		"\32\3\33\3\33\3\33\7\33\u015a\n\33\f\33\16\33\u015d\13\33\3\34\3\34\3"+
-		"\34\7\34\u0162\n\34\f\34\16\34\u0165\13\34\3\35\3\35\3\35\5\35\u016a\n"+
-		"\35\3\36\3\36\3\36\3\36\7\36\u0170\n\36\f\36\16\36\u0173\13\36\3\37\3"+
-		"\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37\5\37\u0182"+
-		"\n\37\3 \5 \u0185\n \3 \3 \3!\3!\3!\7!\u018c\n!\f!\16!\u018f\13!\3\"\3"+
-		"\"\3\"\7\"\u0194\n\"\f\"\16\"\u0197\13\"\3#\3#\3#\7#\u019c\n#\f#\16#\u019f"+
-		"\13#\3$\3$\3$\3$\3$\7$\u01a6\n$\f$\16$\u01a9\13$\3%\3%\3%\3%\3%\7%\u01b0"+
-		"\n%\f%\16%\u01b3\13%\3&\3&\3&\3&\3&\3&\3&\7&\u01bc\n&\f&\16&\u01bf\13"+
-		"&\3\'\3\'\3\'\3\'\3\'\3\'\3\'\5\'\u01c8\n\'\3(\3(\7(\u01cc\n(\f(\16(\u01cf"+
-		"\13(\3)\3)\5)\u01d3\n)\3)\3)\3)\5)\u01d8\n)\3)\3)\3)\5)\u01dd\n)\3)\3"+
-		")\3)\3)\3)\3)\3)\5)\u01e6\n)\3*\3*\3*\3*\7*\u01ec\n*\f*\16*\u01ef\13*"+
-		"\3*\5*\u01f2\n*\5*\u01f4\n*\3+\3+\5+\u01f8\n+\3+\3+\3+\3+\3+\3+\3+\5+"+
-		"\u0201\n+\3,\3,\3,\7,\u0206\n,\f,\16,\u0209\13,\3,\5,\u020c\n,\3-\3-\5"+
-		"-\u0210\n-\3-\3-\5-\u0214\n-\3-\5-\u0217\n-\5-\u0219\n-\3.\3.\5.\u021d"+
-		"\n.\3/\3/\3/\7/\u0222\n/\f/\16/\u0225\13/\3/\5/\u0228\n/\3\60\3\60\3\60"+
-		"\7\60\u022d\n\60\f\60\16\60\u0230\13\60\3\60\5\60\u0233\n\60\3\61\3\61"+
-		"\3\61\3\61\3\61\3\61\3\61\3\61\3\61\7\61\u023e\n\61\f\61\16\61\u0241\13"+
-		"\61\3\61\5\61\u0244\n\61\5\61\u0246\n\61\3\61\3\61\3\61\3\61\7\61\u024c"+
-		"\n\61\f\61\16\61\u024f\13\61\3\61\5\61\u0252\n\61\5\61\u0254\n\61\5\61"+
-		"\u0256\n\61\3\62\3\62\3\62\7\62\u025b\n\62\f\62\16\62\u025e\13\62\3\62"+
-		"\3\62\5\62\u0262\n\62\3\62\3\62\3\62\3\62\7\62\u0268\n\62\f\62\16\62\u026b"+
-		"\13\62\5\62\u026d\n\62\3\63\3\63\5\63\u0271\n\63\3\63\3\63\3\63\3\63\5"+
-		"\63\u0277\n\63\3\64\3\64\5\64\u027b\n\64\3\65\3\65\3\65\3\65\3\65\5\65"+
-		"\u0282\n\65\3\66\3\66\3\66\5\66\u0287\n\66\3\67\3\67\3\67\2\28\2\4\6\b"+
-		"\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNPRTVX"+
-		"Z\\^`bdfhjl\2\4\3\2:C\3\2\31\34\u02ca\2r\3\2\2\2\4w\3\2\2\2\6\u0083\3"+
-		"\2\2\2\b\u0085\3\2\2\2\n\u008b\3\2\2\2\f\u00c4\3\2\2\2\16\u00c6\3\2\2"+
-		"\2\20\u00cd\3\2\2\2\22\u00cf\3\2\2\2\24\u00e0\3\2\2\2\26\u00e2\3\2\2\2"+
-		"\30\u00f1\3\2\2\2\32\u0100\3\2\2\2\34\u0102\3\2\2\2\36\u0105\3\2\2\2 "+
-		"\u010a\3\2\2\2\"\u010c\3\2\2\2$\u010e\3\2\2\2&\u0110\3\2\2\2(\u0119\3"+
-		"\2\2\2*\u011b\3\2\2\2,\u012e\3\2\2\2.\u0137\3\2\2\2\60\u014c\3\2\2\2\62"+
-		"\u014e\3\2\2\2\64\u0156\3\2\2\2\66\u015e\3\2\2\28\u0169\3\2\2\2:\u016b"+
-		"\3\2\2\2<\u0181\3\2\2\2>\u0184\3\2\2\2@\u0188\3\2\2\2B\u0190\3\2\2\2D"+
-		"\u0198\3\2\2\2F\u01a0\3\2\2\2H\u01aa\3\2\2\2J\u01b4\3\2\2\2L\u01c7\3\2"+
-		"\2\2N\u01c9\3\2\2\2P\u01e5\3\2\2\2R\u01e7\3\2\2\2T\u0200\3\2\2\2V\u0202"+
-		"\3\2\2\2X\u0218\3\2\2\2Z\u021a\3\2\2\2\\\u021e\3\2\2\2^\u0229\3\2\2\2"+
-		"`\u0255\3\2\2\2b\u025c\3\2\2\2d\u0276\3\2\2\2f\u027a\3\2\2\2h\u027c\3"+
-		"\2\2\2j\u0283\3\2\2\2l\u0288\3\2\2\2nq\7\27\2\2oq\5\20\t\2pn\3\2\2\2p"+
-		"o\3\2\2\2qt\3\2\2\2rp\3\2\2\2rs\3\2\2\2su\3\2\2\2tr\3\2\2\2uv\7\2\2\3"+
-		"v\3\3\2\2\2wx\5\6\4\2xy\7\27\2\2yz\5\b\5\2z\5\3\2\2\2{\u0084\7D\2\2|\u0084"+
-		"\7E\2\2}~\7F\2\2~\u0080\7\37\2\2\177\u0081\5b\62\2\u0080\177\3\2\2\2\u0080"+
-		"\u0081\3\2\2\2\u0081\u0082\3\2\2\2\u0082\u0084\7 \2\2\u0083{\3\2\2\2\u0083"+
-		"|\3\2\2\2\u0083}\3\2\2\2\u0084\7\3\2\2\2\u0085\u0086\7\4\2\2\u0086\u0087"+
-		"\7\30\2\2\u0087\u0088\5\n\6\2\u0088\u0089\7\"\2\2\u0089\u008a\5\60\31"+
-		"\2\u008a\t\3\2\2\2\u008b\u008d\7\37\2\2\u008c\u008e\5\f\7\2\u008d\u008c"+
-		"\3\2\2\2\u008d\u008e\3\2\2\2\u008e\u008f\3\2\2\2\u008f\u0090\7 \2\2\u0090"+
-		"\13\3\2\2\2\u0091\u0094\5\16\b\2\u0092\u0093\7$\2\2\u0093\u0095\5\62\32"+
-		"\2\u0094\u0092\3\2\2\2\u0094\u0095\3\2\2\2\u0095\u009e\3\2\2\2\u0096\u0097"+
-		"\7!\2\2\u0097\u009a\5\16\b\2\u0098\u0099\7$\2\2\u0099\u009b\5\62\32\2"+
-		"\u009a\u0098\3\2\2\2\u009a\u009b\3\2\2\2\u009b\u009d\3\2\2\2\u009c\u0096"+
-		"\3\2\2\2\u009d\u00a0\3\2\2\2\u009e\u009c\3\2\2\2\u009e\u009f\3\2\2\2\u009f"+
-		"\u00b3\3\2\2\2\u00a0\u009e\3\2\2\2\u00a1\u00b1\7!\2\2\u00a2\u00a4\7\36"+
-		"\2\2\u00a3\u00a5\5\16\b\2\u00a4\u00a3\3\2\2\2\u00a4\u00a5\3\2\2\2\u00a5"+
-		"\u00ae\3\2\2\2\u00a6\u00a7\7!\2\2\u00a7\u00aa\5\16\b\2\u00a8\u00a9\7$"+
-		"\2\2\u00a9\u00ab\5\62\32\2\u00aa\u00a8\3\2\2\2\u00aa\u00ab\3\2\2\2\u00ab"+
-		"\u00ad\3\2\2\2\u00ac\u00a6\3\2\2\2\u00ad\u00b0\3\2\2\2\u00ae\u00ac\3\2"+
-		"\2\2\u00ae\u00af\3\2\2\2\u00af\u00b2\3\2\2\2\u00b0\u00ae\3\2\2\2\u00b1"+
-		"\u00a2\3\2\2\2\u00b1\u00b2\3\2\2\2\u00b2\u00b4\3\2\2\2\u00b3\u00a1\3\2"+
-		"\2\2\u00b3\u00b4\3\2\2\2\u00b4\u00c5\3\2\2\2\u00b5\u00b7\7\36\2\2\u00b6"+
-		"\u00b8\5\16\b\2\u00b7\u00b6\3\2\2\2\u00b7\u00b8\3\2\2\2\u00b8\u00c1\3"+
-		"\2\2\2\u00b9\u00ba\7!\2\2\u00ba\u00bd\5\16\b\2\u00bb\u00bc\7$\2\2\u00bc"+
-		"\u00be\5\62\32\2\u00bd\u00bb\3\2\2\2\u00bd\u00be\3\2\2\2\u00be\u00c0\3"+
-		"\2\2\2\u00bf\u00b9\3\2\2\2\u00c0\u00c3\3\2\2\2\u00c1\u00bf\3\2\2\2\u00c1"+
-		"\u00c2\3\2\2\2\u00c2\u00c5\3\2\2\2\u00c3\u00c1\3\2\2\2\u00c4\u0091\3\2"+
-		"\2\2\u00c4\u00b5\3\2\2\2\u00c5\r\3\2\2\2\u00c6\u00c9\7\30\2\2\u00c7\u00c8"+
-		"\7\"\2\2\u00c8\u00ca\5\62\32\2\u00c9\u00c7\3\2\2\2\u00c9\u00ca\3\2\2\2"+
-		"\u00ca\17\3\2\2\2\u00cb\u00ce\5\22\n\2\u00cc\u00ce\5(\25\2\u00cd\u00cb"+
-		"\3\2\2\2\u00cd\u00cc\3\2\2\2\u00ce\21\3\2\2\2\u00cf\u00d4\5\24\13\2\u00d0"+
-		"\u00d1\7#\2\2\u00d1\u00d3\5\24\13\2\u00d2\u00d0\3\2\2\2\u00d3\u00d6\3"+
-		"\2\2\2\u00d4\u00d2\3\2\2\2\u00d4\u00d5\3\2\2\2\u00d5\u00d8\3\2\2\2\u00d6"+
-		"\u00d4\3\2\2\2\u00d7\u00d9\7#\2\2\u00d8\u00d7\3\2\2\2\u00d8\u00d9\3\2"+
-		"\2\2\u00d9\u00da\3\2\2\2\u00da\u00db\7\27\2\2\u00db\23\3\2\2\2\u00dc\u00e1"+
-		"\5\26\f\2\u00dd\u00e1\5\34\17\2\u00de\u00e1\5\36\20\2\u00df\u00e1\5 \21"+
-		"\2\u00e0\u00dc\3\2\2\2\u00e0\u00dd\3\2\2\2\u00e0\u00de\3\2\2\2\u00e0\u00df"+
-		"\3\2\2\2\u00e1\25\3\2\2\2\u00e2\u00ed\5\30\r\2\u00e3\u00e4\5\32\16\2\u00e4"+
-		"\u00e5\5^\60\2\u00e5\u00ee\3\2\2\2\u00e6\u00e7\7$\2\2\u00e7\u00e9\5\30"+
-		"\r\2\u00e8\u00e6\3\2\2\2\u00e9\u00ec\3\2\2\2\u00ea\u00e8\3\2\2\2\u00ea"+
-		"\u00eb\3\2\2\2\u00eb\u00ee\3\2\2\2\u00ec\u00ea\3\2\2\2\u00ed\u00e3\3\2"+
-		"\2\2\u00ed\u00ea\3\2\2\2\u00ee\27\3\2\2\2\u00ef\u00f2\5\62\32\2\u00f0"+
-		"\u00f2\5> \2\u00f1\u00ef\3\2\2\2\u00f1\u00f0\3\2\2\2\u00f2\u00fa\3\2\2"+
-		"\2\u00f3\u00f6\7!\2\2\u00f4\u00f7\5\62\32\2\u00f5\u00f7\5> \2\u00f6\u00f4"+
-		"\3\2\2\2\u00f6\u00f5\3\2\2\2\u00f7\u00f9\3\2\2\2\u00f8\u00f3\3\2\2\2\u00f9"+
-		"\u00fc\3\2\2\2\u00fa\u00f8\3\2\2\2\u00fa\u00fb\3\2\2\2\u00fb\u00fe\3\2"+
-		"\2\2\u00fc\u00fa\3\2\2\2\u00fd\u00ff\7!\2\2\u00fe\u00fd\3\2\2\2\u00fe"+
-		"\u00ff\3\2\2\2\u00ff\31\3\2\2\2\u0100\u0101\t\2\2\2\u0101\33\3\2\2\2\u0102"+
-		"\u0103\7\23\2\2\u0103\u0104\5\\/\2\u0104\35\3\2\2\2\u0105\u0106\7\24\2"+
-		"\2\u0106\37\3\2\2\2\u0107\u010b\5\"\22\2\u0108\u010b\5$\23\2\u0109\u010b"+
-		"\5&\24\2\u010a\u0107\3\2\2\2\u010a\u0108\3\2\2\2\u010a\u0109\3\2\2\2\u010b"+
-		"!\3\2\2\2\u010c\u010d\7\26\2\2\u010d#\3\2\2\2\u010e\u010f\7\25\2\2\u010f"+
-		"%\3\2\2\2\u0110\u0112\7\5\2\2\u0111\u0113\5^\60\2\u0112\u0111\3\2\2\2"+
-		"\u0112\u0113\3\2\2\2\u0113\'\3\2\2\2\u0114\u011a\5*\26\2\u0115\u011a\5"+
-		",\27\2\u0116\u011a\5.\30\2\u0117\u011a\5\b\5\2\u0118\u011a\5\4\3\2\u0119"+
-		"\u0114\3\2\2\2\u0119\u0115\3\2\2\2\u0119\u0116\3\2\2\2\u0119\u0117\3\2"+
-		"\2\2\u0119\u0118\3\2\2\2\u011a)\3\2\2\2\u011b\u011c\7\6\2\2\u011c\u011d"+
-		"\5\62\32\2\u011d\u011e\7\"\2\2\u011e\u0126\5\60\31\2\u011f\u0120\7\7\2"+
-		"\2\u0120\u0121\5\62\32\2\u0121\u0122\7\"\2\2\u0122\u0123\5\60\31\2\u0123"+
-		"\u0125\3\2\2\2\u0124\u011f\3\2\2\2\u0125\u0128\3\2\2\2\u0126\u0124\3\2"+
-		"\2\2\u0126\u0127\3\2\2\2\u0127\u012c\3\2\2\2\u0128\u0126\3\2\2\2\u0129"+
-		"\u012a\7\b\2\2\u012a\u012b\7\"\2\2\u012b\u012d\5\60\31\2\u012c\u0129\3"+
-		"\2\2\2\u012c\u012d\3\2\2\2\u012d+\3\2\2\2\u012e\u012f\7\t\2\2\u012f\u0130"+
-		"\5\62\32\2\u0130\u0131\7\"\2\2\u0131\u0135\5\60\31\2\u0132\u0133\7\b\2"+
-		"\2\u0133\u0134\7\"\2\2\u0134\u0136\5\60\31\2\u0135\u0132\3\2\2\2\u0135"+
-		"\u0136\3\2\2\2\u0136-\3\2\2\2\u0137\u0138\7\n\2\2\u0138\u0139\5\\/\2\u0139"+
-		"\u013a\7\13\2\2\u013a\u013b\5^\60\2\u013b\u013c\7\"\2\2\u013c\u0140\5"+
-		"\60\31\2\u013d\u013e\7\b\2\2\u013e\u013f\7\"\2\2\u013f\u0141\5\60\31\2"+
-		"\u0140\u013d\3\2\2\2\u0140\u0141\3\2\2\2\u0141/\3\2\2\2\u0142\u014d\5"+
-		"\22\n\2\u0143\u0144\7\27\2\2\u0144\u0146\7I\2\2\u0145\u0147\5\20\t\2\u0146"+
-		"\u0145\3\2\2\2\u0147\u0148\3\2\2\2\u0148\u0146\3\2\2\2\u0148\u0149\3\2"+
-		"\2\2\u0149\u014a\3\2\2\2\u014a\u014b\7J\2\2\u014b\u014d\3\2\2\2\u014c"+
-		"\u0142\3\2\2\2\u014c\u0143\3\2\2\2\u014d\61\3\2\2\2\u014e\u0154\5\64\33"+
-		"\2\u014f\u0150\7\6\2\2\u0150\u0151\5\64\33\2\u0151\u0152\7\b\2\2\u0152"+
-		"\u0153\5\62\32\2\u0153\u0155\3\2\2\2\u0154\u014f\3\2\2\2\u0154\u0155\3"+
-		"\2\2\2\u0155\63\3\2\2\2\u0156\u015b\5\66\34\2\u0157\u0158\7\f\2\2\u0158"+
-		"\u015a\5\66\34\2\u0159\u0157\3\2\2\2\u015a\u015d\3\2\2\2\u015b\u0159\3"+
-		"\2\2\2\u015b\u015c\3\2\2\2\u015c\65\3\2\2\2\u015d\u015b\3\2\2\2\u015e"+
-		"\u0163\58\35\2\u015f\u0160\7\r\2\2\u0160\u0162\58\35\2\u0161\u015f\3\2"+
-		"\2\2\u0162\u0165\3\2\2\2\u0163\u0161\3\2\2\2\u0163\u0164\3\2\2\2\u0164"+
-		"\67\3\2\2\2\u0165\u0163\3\2\2\2\u0166\u0167\7\16\2\2\u0167\u016a\58\35"+
-		"\2\u0168\u016a\5:\36\2\u0169\u0166\3\2\2\2\u0169\u0168\3\2\2\2\u016a9"+
-		"\3\2\2\2\u016b\u0171\5> \2\u016c\u016d\5<\37\2\u016d\u016e\5> \2\u016e"+
-		"\u0170\3\2\2\2\u016f\u016c\3\2\2\2\u0170\u0173\3\2\2\2\u0171\u016f\3\2"+
-		"\2\2\u0171\u0172\3\2\2\2\u0172;\3\2\2\2\u0173\u0171\3\2\2\2\u0174\u0182"+
-		"\7\63\2\2\u0175\u0182\7\64\2\2\u0176\u0182\7\65\2\2\u0177\u0182\7\66\2"+
-		"\2\u0178\u0182\7\67\2\2\u0179\u0182\78\2\2\u017a\u0182\79\2\2\u017b\u0182"+
-		"\7\13\2\2\u017c\u017d\7\16\2\2\u017d\u0182\7\13\2\2\u017e\u0182\7\17\2"+
-		"\2\u017f\u0180\7\17\2\2\u0180\u0182\7\16\2\2\u0181\u0174\3\2\2\2\u0181"+
-		"\u0175\3\2\2\2\u0181\u0176\3\2\2\2\u0181\u0177\3\2\2\2\u0181\u0178\3\2"+
-		"\2\2\u0181\u0179\3\2\2\2\u0181\u017a\3\2\2\2\u0181\u017b\3\2\2\2\u0181"+
-		"\u017c\3\2\2\2\u0181\u017e\3\2\2\2\u0181\u017f\3\2\2\2\u0182=\3\2\2\2"+
-		"\u0183\u0185\7\36\2\2\u0184\u0183\3\2\2\2\u0184\u0185\3\2\2\2\u0185\u0186"+
-		"\3\2\2\2\u0186\u0187\5@!\2\u0187?\3\2\2\2\u0188\u018d\5B\"\2\u0189\u018a"+
-		"\7\'\2\2\u018a\u018c\5B\"\2\u018b\u0189\3\2\2\2\u018c\u018f\3\2\2\2\u018d"+
-		"\u018b\3\2\2\2\u018d\u018e\3\2\2\2\u018eA\3\2\2\2\u018f\u018d\3\2\2\2"+
-		"\u0190\u0195\5D#\2\u0191\u0192\7(\2\2\u0192\u0194\5D#\2\u0193\u0191\3"+
-		"\2\2\2\u0194\u0197\3\2\2\2\u0195\u0193\3\2\2\2\u0195\u0196\3\2\2\2\u0196"+
-		"C\3\2\2\2\u0197\u0195\3\2\2\2\u0198\u019d\5F$\2\u0199\u019a\7)\2\2\u019a"+
-		"\u019c\5F$\2\u019b\u0199\3\2\2\2\u019c\u019f\3\2\2\2\u019d\u019b\3\2\2"+
-		"\2\u019d\u019e\3\2\2\2\u019eE\3\2\2\2\u019f\u019d\3\2\2\2\u01a0\u01a7"+
-		"\5H%\2\u01a1\u01a2\7*\2\2\u01a2\u01a6\5H%\2\u01a3\u01a4\7+\2\2\u01a4\u01a6"+
-		"\5H%\2\u01a5\u01a1\3\2\2\2\u01a5\u01a3\3\2\2\2\u01a6\u01a9\3\2\2\2\u01a7"+
-		"\u01a5\3\2\2\2\u01a7\u01a8\3\2\2\2\u01a8G\3\2\2\2\u01a9\u01a7\3\2\2\2"+
-		"\u01aa\u01b1\5J&\2\u01ab\u01ac\7,\2\2\u01ac\u01b0\5J&\2\u01ad\u01ae\7"+
-		"-\2\2\u01ae\u01b0\5J&\2\u01af\u01ab\3\2\2\2\u01af\u01ad\3\2\2\2\u01b0"+
-		"\u01b3\3\2\2\2\u01b1\u01af\3\2\2\2\u01b1\u01b2\3\2\2\2\u01b2I\3\2\2\2"+
-		"\u01b3\u01b1\3\2\2\2\u01b4\u01bd\5L\'\2\u01b5\u01b6\7\36\2\2\u01b6\u01bc"+
-		"\5L\'\2\u01b7\u01b8\7.\2\2\u01b8\u01bc\5L\'\2\u01b9\u01ba\7/\2\2\u01ba"+
-		"\u01bc\5L\'\2\u01bb\u01b5\3\2\2\2\u01bb\u01b7\3\2\2\2\u01bb\u01b9\3\2"+
-		"\2\2\u01bc\u01bf\3\2\2\2\u01bd\u01bb\3\2\2\2\u01bd\u01be\3\2\2\2\u01be"+
-		"K\3\2\2\2\u01bf\u01bd\3\2\2\2\u01c0\u01c1\7,\2\2\u01c1\u01c8\5L\'\2\u01c2"+
-		"\u01c3\7-\2\2\u01c3\u01c8\5L\'\2\u01c4\u01c5\7\60\2\2\u01c5\u01c8\5L\'"+
-		"\2\u01c6\u01c8\5N(\2\u01c7\u01c0\3\2\2\2\u01c7\u01c2\3\2\2\2\u01c7\u01c4"+
-		"\3\2\2\2\u01c7\u01c6\3\2\2\2\u01c8M\3\2\2\2\u01c9\u01cd\5P)\2\u01ca\u01cc"+
-		"\5T+\2\u01cb\u01ca\3\2\2\2\u01cc\u01cf\3\2\2\2\u01cd\u01cb\3\2\2\2\u01cd"+
-		"\u01ce\3\2\2\2\u01ceO\3\2\2\2\u01cf\u01cd\3\2\2\2\u01d0\u01d2\7\37\2\2"+
-		"\u01d1\u01d3\5R*\2\u01d2\u01d1\3\2\2\2\u01d2\u01d3\3\2\2\2\u01d3\u01d4"+
-		"\3\2\2\2\u01d4\u01e6\7 \2\2\u01d5\u01d7\7%\2\2\u01d6\u01d8\5R*\2\u01d7"+
-		"\u01d6\3\2\2\2\u01d7\u01d8\3\2\2\2\u01d8\u01d9\3\2\2\2\u01d9\u01e6\7&"+
-		"\2\2\u01da\u01dc\7\61\2\2\u01db\u01dd\5`\61\2\u01dc\u01db\3\2\2\2\u01dc"+
-		"\u01dd\3\2\2\2\u01dd\u01de\3\2\2\2\u01de\u01e6\7\62\2\2\u01df\u01e6\7"+
-		"\30\2\2\u01e0\u01e6\5l\67\2\u01e1\u01e6\7\3\2\2\u01e2\u01e6\7\20\2\2\u01e3"+
-		"\u01e6\7\21\2\2\u01e4\u01e6\7\22\2\2\u01e5\u01d0\3\2\2\2\u01e5\u01d5\3"+
-		"\2\2\2\u01e5\u01da\3\2\2\2\u01e5\u01df\3\2\2\2\u01e5\u01e0\3\2\2\2\u01e5"+
-		"\u01e1\3\2\2\2\u01e5\u01e2\3\2\2\2\u01e5\u01e3\3\2\2\2\u01e5\u01e4\3\2"+
-		"\2\2\u01e6Q\3\2\2\2\u01e7\u01f3\5\62\32\2\u01e8\u01f4\5h\65\2\u01e9\u01ea"+
-		"\7!\2\2\u01ea\u01ec\5\62\32\2\u01eb\u01e9\3\2\2\2\u01ec\u01ef\3\2\2\2"+
-		"\u01ed\u01eb\3\2\2\2\u01ed\u01ee\3\2\2\2\u01ee\u01f1\3\2\2\2\u01ef\u01ed"+
-		"\3\2\2\2\u01f0\u01f2\7!\2\2\u01f1\u01f0\3\2\2\2\u01f1\u01f2\3\2\2\2\u01f2"+
-		"\u01f4\3\2\2\2\u01f3\u01e8\3\2\2\2\u01f3\u01ed\3\2\2\2\u01f4S\3\2\2\2"+
-		"\u01f5\u01f7\7\37\2\2\u01f6\u01f8\5b\62\2\u01f7\u01f6\3\2\2\2\u01f7\u01f8"+
-		"\3\2\2\2\u01f8\u01f9\3\2\2\2\u01f9\u0201\7 \2\2\u01fa\u01fb\7%\2\2\u01fb"+
-		"\u01fc\5V,\2\u01fc\u01fd\7&\2\2\u01fd\u0201\3\2\2\2\u01fe\u01ff\7\35\2"+
-		"\2\u01ff\u0201\7\30\2\2\u0200\u01f5\3\2\2\2\u0200\u01fa\3\2\2\2\u0200"+
-		"\u01fe\3\2\2\2\u0201U\3\2\2\2\u0202\u0207\5X-\2\u0203\u0204\7!\2\2\u0204"+
-		"\u0206\5X-\2\u0205\u0203\3\2\2\2\u0206\u0209\3\2\2\2\u0207\u0205\3\2\2"+
-		"\2\u0207\u0208\3\2\2\2\u0208\u020b\3\2\2\2\u0209\u0207\3\2\2\2\u020a\u020c"+
-		"\7!\2\2\u020b\u020a\3\2\2\2\u020b\u020c\3\2\2\2\u020cW\3\2\2\2\u020d\u0219"+
-		"\5\62\32\2\u020e\u0210\5\62\32\2\u020f\u020e\3\2\2\2\u020f\u0210\3\2\2"+
-		"\2\u0210\u0211\3\2\2\2\u0211\u0213\7\"\2\2\u0212\u0214\5\62\32\2\u0213"+
-		"\u0212\3\2\2\2\u0213\u0214\3\2\2\2\u0214\u0216\3\2\2\2\u0215\u0217\5Z"+
-		".\2\u0216\u0215\3\2\2\2\u0216\u0217\3\2\2\2\u0217\u0219\3\2\2\2\u0218"+
-		"\u020d\3\2\2\2\u0218\u020f\3\2\2\2\u0219Y\3\2\2\2\u021a\u021c\7\"\2\2"+
-		"\u021b\u021d\5\62\32\2\u021c\u021b\3\2\2\2\u021c\u021d\3\2\2\2\u021d["+
-		"\3\2\2\2\u021e\u0223\5> \2\u021f\u0220\7!\2\2\u0220\u0222\5> \2\u0221"+
-		"\u021f\3\2\2\2\u0222\u0225\3\2\2\2\u0223\u0221\3\2\2\2\u0223\u0224\3\2"+
-		"\2\2\u0224\u0227\3\2\2\2\u0225\u0223\3\2\2\2\u0226\u0228\7!\2\2\u0227"+
-		"\u0226\3\2\2\2\u0227\u0228\3\2\2\2\u0228]\3\2\2\2\u0229\u022e\5\62\32"+
-		"\2\u022a\u022b\7!\2\2\u022b\u022d\5\62\32\2\u022c\u022a\3\2\2\2\u022d"+
-		"\u0230\3\2\2\2\u022e\u022c\3\2\2\2\u022e\u022f\3\2\2\2\u022f\u0232\3\2"+
-		"\2\2\u0230\u022e\3\2\2\2\u0231\u0233\7!\2\2\u0232\u0231\3\2\2\2\u0232"+
-		"\u0233\3\2\2\2\u0233_\3\2\2\2\u0234\u0235\5\62\32\2\u0235\u0236\7\"\2"+
-		"\2\u0236\u0245\5\62\32\2\u0237\u0246\5h\65\2\u0238\u0239\7!\2\2\u0239"+
-		"\u023a\5\62\32\2\u023a\u023b\7\"\2\2\u023b\u023c\5\62\32\2\u023c\u023e"+
-		"\3\2\2\2\u023d\u0238\3\2\2\2\u023e\u0241\3\2\2\2\u023f\u023d\3\2\2\2\u023f"+
-		"\u0240\3\2\2\2\u0240\u0243\3\2\2\2\u0241\u023f\3\2\2\2\u0242\u0244\7!"+
-		"\2\2\u0243\u0242\3\2\2\2\u0243\u0244\3\2\2\2\u0244\u0246\3\2\2\2\u0245"+
-		"\u0237\3\2\2\2\u0245\u023f\3\2\2\2\u0246\u0256\3\2\2\2\u0247\u0253\5\62"+
-		"\32\2\u0248\u0254\5h\65\2\u0249\u024a\7!\2\2\u024a\u024c\5\62\32\2\u024b"+
-		"\u0249\3\2\2\2\u024c\u024f\3\2\2\2\u024d\u024b\3\2\2\2\u024d\u024e\3\2"+
-		"\2\2\u024e\u0251\3\2\2\2\u024f\u024d\3\2\2\2\u0250\u0252\7!\2\2\u0251"+
-		"\u0250\3\2\2\2\u0251\u0252\3\2\2\2\u0252\u0254\3\2\2\2\u0253\u0248\3\2"+
-		"\2\2\u0253\u024d\3\2\2\2\u0254\u0256\3\2\2\2\u0255\u0234\3\2\2\2\u0255"+
-		"\u0247\3\2\2\2\u0256a\3\2\2\2\u0257\u0258\5d\63\2\u0258\u0259\7!\2\2\u0259"+
-		"\u025b\3\2\2\2\u025a\u0257\3\2\2\2\u025b\u025e\3\2\2\2\u025c\u025a\3\2"+
-		"\2\2\u025c\u025d\3\2\2\2\u025d\u026c\3\2\2\2\u025e\u025c\3\2\2\2\u025f"+
-		"\u0261\5d\63\2\u0260\u0262\7!\2\2\u0261\u0260\3\2\2\2\u0261\u0262\3\2"+
-		"\2\2\u0262\u026d\3\2\2\2\u0263\u0264\7\36\2\2\u0264\u0269\5\62\32\2\u0265"+
-		"\u0266\7!\2\2\u0266\u0268\5d\63\2\u0267\u0265\3\2\2\2\u0268\u026b\3\2"+
-		"\2\2\u0269\u0267\3\2\2\2\u0269\u026a\3\2\2\2\u026a\u026d\3\2\2\2\u026b"+
-		"\u0269\3\2\2\2\u026c\u025f\3\2\2\2\u026c\u0263\3\2\2\2\u026dc\3\2\2\2"+
-		"\u026e\u0270\5\62\32\2\u026f\u0271\5h\65\2\u0270\u026f\3\2\2\2\u0270\u0271"+
-		"\3\2\2\2\u0271\u0277\3\2\2\2\u0272\u0273\5\62\32\2\u0273\u0274\7$\2\2"+
-		"\u0274\u0275\5\62\32\2\u0275\u0277\3\2\2\2\u0276\u026e\3\2\2\2\u0276\u0272"+
-		"\3\2\2\2\u0277e\3\2\2\2\u0278\u027b\5h\65\2\u0279\u027b\5j\66\2\u027a"+
-		"\u0278\3\2\2\2\u027a\u0279\3\2\2\2\u027bg\3\2\2\2\u027c\u027d\7\n\2\2"+
-		"\u027d\u027e\5\\/\2\u027e\u027f\7\13\2\2\u027f\u0281\5\64\33\2\u0280\u0282"+
-		"\5f\64\2\u0281\u0280\3\2\2\2\u0281\u0282\3\2\2\2\u0282i\3\2\2\2\u0283"+
-		"\u0284\7\6\2\2\u0284\u0286\5\64\33\2\u0285\u0287\5f\64\2\u0286\u0285\3"+
-		"\2\2\2\u0286\u0287\3\2\2\2\u0287k\3\2\2\2\u0288\u0289\t\3\2\2\u0289m\3"+
-		"\2\2\2]pr\u0080\u0083\u008d\u0094\u009a\u009e\u00a4\u00aa\u00ae\u00b1"+
-		"\u00b3\u00b7\u00bd\u00c1\u00c4\u00c9\u00cd\u00d4\u00d8\u00e0\u00ea\u00ed"+
-		"\u00f1\u00f6\u00fa\u00fe\u010a\u0112\u0119\u0126\u012c\u0135\u0140\u0148"+
-		"\u014c\u0154\u015b\u0163\u0169\u0171\u0181\u0184\u018d\u0195\u019d\u01a5"+
-		"\u01a7\u01af\u01b1\u01bb\u01bd\u01c7\u01cd\u01d2\u01d7\u01dc\u01e5\u01ed"+
-		"\u01f1\u01f3\u01f7\u0200\u0207\u020b\u020f\u0213\u0216\u0218\u021c\u0223"+
-		"\u0227\u022e\u0232\u023f\u0243\u0245\u024d\u0251\u0253\u0255\u025c\u0261"+
-		"\u0269\u026c\u0270\u0276\u027a\u0281\u0286";
+		"\64\4\65\t\65\4\66\t\66\4\67\t\67\48\t8\49\t9\4:\t:\4;\t;\4<\t<\4=\t="+
+		"\4>\t>\3\2\7\2~\n\2\f\2\16\2\u0081\13\2\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3"+
+		"\3\7\3\u008b\n\3\f\3\16\3\u008e\13\3\3\4\3\4\3\4\3\4\5\4\u0094\n\4\3\4"+
+		"\5\4\u0097\n\4\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7\6\7"+
+		"\u00a6\n\7\r\7\16\7\u00a7\3\7\3\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\5\b\u00b3"+
+		"\n\b\3\t\3\t\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3"+
+		"\n\3\n\3\n\7\n\u00c8\n\n\f\n\16\n\u00cb\13\n\3\13\3\13\3\13\5\13\u00d0"+
+		"\n\13\3\f\3\f\5\f\u00d4\n\f\3\r\3\r\3\r\7\r\u00d9\n\r\f\r\16\r\u00dc\13"+
+		"\r\3\r\5\r\u00df\n\r\3\r\3\r\3\16\3\16\3\16\3\16\5\16\u00e7\n\16\3\17"+
+		"\3\17\3\17\3\17\3\17\3\17\7\17\u00ef\n\17\f\17\16\17\u00f2\13\17\5\17"+
+		"\u00f4\n\17\3\20\3\20\5\20\u00f8\n\20\3\20\3\20\3\20\5\20\u00fd\n\20\7"+
+		"\20\u00ff\n\20\f\20\16\20\u0102\13\20\3\20\5\20\u0105\n\20\3\21\3\21\3"+
+		"\22\3\22\3\22\3\23\3\23\3\24\3\24\3\24\5\24\u0111\n\24\3\25\3\25\3\26"+
+		"\3\26\3\27\3\27\5\27\u0119\n\27\3\30\3\30\3\30\3\30\5\30\u011f\n\30\3"+
+		"\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\7\31\u012a\n\31\f\31\16\31"+
+		"\u012d\13\31\3\31\3\31\3\31\5\31\u0132\n\31\3\32\3\32\3\32\3\32\3\32\3"+
+		"\32\3\32\3\33\3\33\3\33\7\33\u013e\n\33\f\33\16\33\u0141\13\33\3\33\3"+
+		"\33\3\33\3\34\3\34\3\34\3\34\3\34\3\34\5\34\u014c\n\34\3\34\5\34\u014f"+
+		"\n\34\3\34\3\34\3\35\3\35\3\35\3\35\3\35\5\35\u0158\n\35\3\35\5\35\u015b"+
+		"\n\35\3\35\3\35\3\36\3\36\3\36\3\36\3\36\3\36\3\36\5\36\u0166\n\36\3\37"+
+		"\3\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37\5\37\u0171\n\37\3 \3 \3 \3 \6"+
+		" \u0177\n \r \16 \u0178\3 \3 \5 \u017d\n \3!\3!\3!\3!\3!\3!\5!\u0185\n"+
+		"!\3\"\3\"\3\"\7\"\u018a\n\"\f\"\16\"\u018d\13\"\3#\3#\3#\7#\u0192\n#\f"+
+		"#\16#\u0195\13#\3$\3$\3$\5$\u019a\n$\3%\3%\3%\3%\7%\u01a0\n%\f%\16%\u01a3"+
+		"\13%\3&\3&\3&\3&\3&\3&\3&\3&\3&\3&\3&\3&\3&\5&\u01b2\n&\3\'\5\'\u01b5"+
+		"\n\'\3\'\3\'\3(\3(\3(\7(\u01bc\n(\f(\16(\u01bf\13(\3)\3)\3)\7)\u01c4\n"+
+		")\f)\16)\u01c7\13)\3*\3*\3*\7*\u01cc\n*\f*\16*\u01cf\13*\3+\3+\3+\3+\3"+
+		"+\7+\u01d6\n+\f+\16+\u01d9\13+\3,\3,\3,\3,\3,\7,\u01e0\n,\f,\16,\u01e3"+
+		"\13,\3-\3-\3-\3-\3-\3-\3-\7-\u01ec\n-\f-\16-\u01ef\13-\3.\3.\3.\3.\3."+
+		"\3.\3.\5.\u01f8\n.\3/\3/\7/\u01fc\n/\f/\16/\u01ff\13/\3\60\3\60\5\60\u0203"+
+		"\n\60\3\60\3\60\3\60\5\60\u0208\n\60\3\60\3\60\3\60\5\60\u020d\n\60\3"+
+		"\60\3\60\3\60\3\60\3\60\3\60\3\60\5\60\u0216\n\60\3\61\3\61\3\61\3\61"+
+		"\7\61\u021c\n\61\f\61\16\61\u021f\13\61\3\61\5\61\u0222\n\61\5\61\u0224"+
+		"\n\61\3\62\3\62\5\62\u0228\n\62\3\62\3\62\3\62\3\62\3\62\3\62\3\62\5\62"+
+		"\u0231\n\62\3\63\3\63\3\63\7\63\u0236\n\63\f\63\16\63\u0239\13\63\3\63"+
+		"\5\63\u023c\n\63\3\64\3\64\5\64\u0240\n\64\3\64\3\64\5\64\u0244\n\64\3"+
+		"\64\5\64\u0247\n\64\5\64\u0249\n\64\3\65\3\65\5\65\u024d\n\65\3\66\3\66"+
+		"\3\66\7\66\u0252\n\66\f\66\16\66\u0255\13\66\3\66\5\66\u0258\n\66\3\67"+
+		"\3\67\3\67\7\67\u025d\n\67\f\67\16\67\u0260\13\67\3\67\5\67\u0263\n\67"+
+		"\38\38\38\38\38\38\38\38\38\78\u026e\n8\f8\168\u0271\138\38\58\u0274\n"+
+		"8\58\u0276\n8\38\38\38\38\78\u027c\n8\f8\168\u027f\138\38\58\u0282\n8"+
+		"\58\u0284\n8\58\u0286\n8\39\39\39\79\u028b\n9\f9\169\u028e\139\39\39\3"+
+		":\3:\5:\u0294\n:\3:\3:\3:\3:\5:\u029a\n:\3;\3;\5;\u029e\n;\3<\3<\3<\3"+
+		"<\3<\5<\u02a5\n<\3=\3=\3=\5=\u02aa\n=\3>\3>\3>\2\2?\2\4\6\b\n\f\16\20"+
+		"\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNPRTVXZ\\^`bdfhj"+
+		"lnprtvxz\2\4\3\2>G\3\2\35 \u02dd\2\177\3\2\2\2\4\u0085\3\2\2\2\6\u0096"+
+		"\3\2\2\2\b\u0098\3\2\2\2\n\u009c\3\2\2\2\f\u00a3\3\2\2\2\16\u00b2\3\2"+
+		"\2\2\20\u00b4\3\2\2\2\22\u00ba\3\2\2\2\24\u00cc\3\2\2\2\26\u00d3\3\2\2"+
+		"\2\30\u00d5\3\2\2\2\32\u00e6\3\2\2\2\34\u00e8\3\2\2\2\36\u00f7\3\2\2\2"+
+		" \u0106\3\2\2\2\"\u0108\3\2\2\2$\u010b\3\2\2\2&\u0110\3\2\2\2(\u0112\3"+
+		"\2\2\2*\u0114\3\2\2\2,\u0116\3\2\2\2.\u011e\3\2\2\2\60\u0120\3\2\2\2\62"+
+		"\u0133\3\2\2\2\64\u013a\3\2\2\2\66\u0145\3\2\2\28\u0152\3\2\2\2:\u015e"+
+		"\3\2\2\2<\u0167\3\2\2\2>\u017c\3\2\2\2@\u017e\3\2\2\2B\u0186\3\2\2\2D"+
+		"\u018e\3\2\2\2F\u0199\3\2\2\2H\u019b\3\2\2\2J\u01b1\3\2\2\2L\u01b4\3\2"+
+		"\2\2N\u01b8\3\2\2\2P\u01c0\3\2\2\2R\u01c8\3\2\2\2T\u01d0\3\2\2\2V\u01da"+
+		"\3\2\2\2X\u01e4\3\2\2\2Z\u01f7\3\2\2\2\\\u01f9\3\2\2\2^\u0215\3\2\2\2"+
+		"`\u0217\3\2\2\2b\u0230\3\2\2\2d\u0232\3\2\2\2f\u0248\3\2\2\2h\u024a\3"+
+		"\2\2\2j\u024e\3\2\2\2l\u0259\3\2\2\2n\u0285\3\2\2\2p\u028c\3\2\2\2r\u0299"+
+		"\3\2\2\2t\u029d\3\2\2\2v\u029f\3\2\2\2x\u02a6\3\2\2\2z\u02ab\3\2\2\2|"+
+		"~\7\33\2\2}|\3\2\2\2~\u0081\3\2\2\2\177}\3\2\2\2\177\u0080\3\2\2\2\u0080"+
+		"\u0082\3\2\2\2\u0081\177\3\2\2\2\u0082\u0083\5\4\3\2\u0083\u0084\7\2\2"+
+		"\3\u0084\3\3\2\2\2\u0085\u0086\7H\2\2\u0086\u0087\7\33\2\2\u0087\u008c"+
+		"\5\n\6\2\u0088\u008b\7\33\2\2\u0089\u008b\5\n\6\2\u008a\u0088\3\2\2\2"+
+		"\u008a\u0089\3\2\2\2\u008b\u008e\3\2\2\2\u008c\u008a\3\2\2\2\u008c\u008d"+
+		"\3\2\2\2\u008d\5\3\2\2\2\u008e\u008c\3\2\2\2\u008f\u0097\7I\2\2\u0090"+
+		"\u0091\7J\2\2\u0091\u0093\7#\2\2\u0092\u0094\5p9\2\u0093\u0092\3\2\2\2"+
+		"\u0093\u0094\3\2\2\2\u0094\u0095\3\2\2\2\u0095\u0097\7$\2\2\u0096\u008f"+
+		"\3\2\2\2\u0096\u0090\3\2\2\2\u0097\7\3\2\2\2\u0098\u0099\7\32\2\2\u0099"+
+		"\u009a\7&\2\2\u009a\u009b\5> \2\u009b\t\3\2\2\2\u009c\u009d\7\4\2\2\u009d"+
+		"\u009e\7\34\2\2\u009e\u009f\5\20\t\2\u009f\u00a0\7&\2\2\u00a0\u00a1\7"+
+		"\33\2\2\u00a1\u00a2\5\f\7\2\u00a2\13\3\2\2\2\u00a3\u00a5\7M\2\2\u00a4"+
+		"\u00a6\5\16\b\2\u00a5\u00a4\3\2\2\2\u00a6\u00a7\3\2\2\2\u00a7\u00a5\3"+
+		"\2\2\2\u00a7\u00a8\3\2\2\2\u00a8\u00a9\3\2\2\2\u00a9\u00aa\7N\2\2\u00aa"+
+		"\r\3\2\2\2\u00ab\u00ac\5\6\4\2\u00ac\u00ad\7\33\2\2\u00ad\u00ae\5\b\5"+
+		"\2\u00ae\u00b3\3\2\2\2\u00af\u00b0\5\34\17\2\u00b0\u00b1\7\33\2\2\u00b1"+
+		"\u00b3\3\2\2\2\u00b2\u00ab\3\2\2\2\u00b2\u00af\3\2\2\2\u00b3\17\3\2\2"+
+		"\2\u00b4\u00b5\7#\2\2\u00b5\u00b6\5\22\n\2\u00b6\u00b7\7\'\2\2\u00b7\u00b8"+
+		"\5\22\n\2\u00b8\u00b9\7$\2\2\u00b9\21\3\2\2\2\u00ba\u00bb\7)\2\2\u00bb"+
+		"\u00bc\7\35\2\2\u00bc\u00bd\7&\2\2\u00bd\u00be\7\35\2\2\u00be\u00bf\7"+
+		"*\2\2\u00bf\u00c9\5\24\13\2\u00c0\u00c1\7%\2\2\u00c1\u00c2\7)\2\2\u00c2"+
+		"\u00c3\7\35\2\2\u00c3\u00c4\7&\2\2\u00c4\u00c5\7\35\2\2\u00c5\u00c6\7"+
+		"*\2\2\u00c6\u00c8\5\24\13\2\u00c7\u00c0\3\2\2\2\u00c8\u00cb\3\2\2\2\u00c9"+
+		"\u00c7\3\2\2\2\u00c9\u00ca\3\2\2\2\u00ca\23\3\2\2\2\u00cb\u00c9\3\2\2"+
+		"\2\u00cc\u00cf\7\34\2\2\u00cd\u00ce\7&\2\2\u00ce\u00d0\5@!\2\u00cf\u00cd"+
+		"\3\2\2\2\u00cf\u00d0\3\2\2\2\u00d0\25\3\2\2\2\u00d1\u00d4\5\30\r\2\u00d2"+
+		"\u00d4\5.\30\2\u00d3\u00d1\3\2\2\2\u00d3\u00d2\3\2\2\2\u00d4\27\3\2\2"+
+		"\2\u00d5\u00da\5\32\16\2\u00d6\u00d7\7\'\2\2\u00d7\u00d9\5\32\16\2\u00d8"+
+		"\u00d6\3\2\2\2\u00d9\u00dc\3\2\2\2\u00da\u00d8\3\2\2\2\u00da\u00db\3\2"+
+		"\2\2\u00db\u00de\3\2\2\2\u00dc\u00da\3\2\2\2\u00dd\u00df\7\'\2\2\u00de"+
+		"\u00dd\3\2\2\2\u00de\u00df\3\2\2\2\u00df\u00e0\3\2\2\2\u00e0\u00e1\7\33"+
+		"\2\2\u00e1\31\3\2\2\2\u00e2\u00e7\5\34\17\2\u00e3\u00e7\5\"\22\2\u00e4"+
+		"\u00e7\5$\23\2\u00e5\u00e7\5&\24\2\u00e6\u00e2\3\2\2\2\u00e6\u00e3\3\2"+
+		"\2\2\u00e6\u00e4\3\2\2\2\u00e6\u00e5\3\2\2\2\u00e7\33\3\2\2\2\u00e8\u00f3"+
+		"\5\36\20\2\u00e9\u00ea\5 \21\2\u00ea\u00eb\5l\67\2\u00eb\u00f4\3\2\2\2"+
+		"\u00ec\u00ed\7(\2\2\u00ed\u00ef\5\36\20\2\u00ee\u00ec\3\2\2\2\u00ef\u00f2"+
+		"\3\2\2\2\u00f0\u00ee\3\2\2\2\u00f0\u00f1\3\2\2\2\u00f1\u00f4\3\2\2\2\u00f2"+
+		"\u00f0\3\2\2\2\u00f3\u00e9\3\2\2\2\u00f3\u00f0\3\2\2\2\u00f4\35\3\2\2"+
+		"\2\u00f5\u00f8\5@!\2\u00f6\u00f8\5L\'\2\u00f7\u00f5\3\2\2\2\u00f7\u00f6"+
+		"\3\2\2\2\u00f8\u0100\3\2\2\2\u00f9\u00fc\7%\2\2\u00fa\u00fd\5@!\2\u00fb"+
+		"\u00fd\5L\'\2\u00fc\u00fa\3\2\2\2\u00fc\u00fb\3\2\2\2\u00fd\u00ff\3\2"+
+		"\2\2\u00fe\u00f9\3\2\2\2\u00ff\u0102\3\2\2\2\u0100\u00fe\3\2\2\2\u0100"+
+		"\u0101\3\2\2\2\u0101\u0104\3\2\2\2\u0102\u0100\3\2\2\2\u0103\u0105\7%"+
+		"\2\2\u0104\u0103\3\2\2\2\u0104\u0105\3\2\2\2\u0105\37\3\2\2\2\u0106\u0107"+
+		"\t\2\2\2\u0107!\3\2\2\2\u0108\u0109\7\26\2\2\u0109\u010a\5j\66\2\u010a"+
+		"#\3\2\2\2\u010b\u010c\7\27\2\2\u010c%\3\2\2\2\u010d\u0111\5(\25\2\u010e"+
+		"\u0111\5*\26\2\u010f\u0111\5,\27\2\u0110\u010d\3\2\2\2\u0110\u010e\3\2"+
+		"\2\2\u0110\u010f\3\2\2\2\u0111\'\3\2\2\2\u0112\u0113\7\31\2\2\u0113)\3"+
+		"\2\2\2\u0114\u0115\7\30\2\2\u0115+\3\2\2\2\u0116\u0118\7\5\2\2\u0117\u0119"+
+		"\5l\67\2\u0118\u0117\3\2\2\2\u0118\u0119\3\2\2\2\u0119-\3\2\2\2\u011a"+
+		"\u011f\5\60\31\2\u011b\u011f\5\62\32\2\u011c\u011f\5:\36\2\u011d\u011f"+
+		"\5<\37\2\u011e\u011a\3\2\2\2\u011e\u011b\3\2\2\2\u011e\u011c\3\2\2\2\u011e"+
+		"\u011d\3\2\2\2\u011f/\3\2\2\2\u0120\u0121\7\6\2\2\u0121\u0122\5@!\2\u0122"+
+		"\u0123\7&\2\2\u0123\u012b\5> \2\u0124\u0125\7\7\2\2\u0125\u0126\5@!\2"+
+		"\u0126\u0127\7&\2\2\u0127\u0128\5> \2\u0128\u012a\3\2\2\2\u0129\u0124"+
+		"\3\2\2\2\u012a\u012d\3\2\2\2\u012b\u0129\3\2\2\2\u012b\u012c\3\2\2\2\u012c"+
+		"\u0131\3\2\2\2\u012d\u012b\3\2\2\2\u012e\u012f\7\b\2\2\u012f\u0130\7&"+
+		"\2\2\u0130\u0132\5> \2\u0131\u012e\3\2\2\2\u0131\u0132\3\2\2\2\u0132\61"+
+		"\3\2\2\2\u0133\u0134\7\t\2\2\u0134\u0135\7#\2\2\u0135\u0136\7\34\2\2\u0136"+
+		"\u0137\7$\2\2\u0137\u0138\7&\2\2\u0138\u0139\5\64\33\2\u0139\63\3\2\2"+
+		"\2\u013a\u013b\7\33\2\2\u013b\u013f\7M\2\2\u013c\u013e\5\66\34\2\u013d"+
+		"\u013c\3\2\2\2\u013e\u0141\3\2\2\2\u013f\u013d\3\2\2\2\u013f\u0140\3\2"+
+		"\2\2\u0140\u0142\3\2\2\2\u0141\u013f\3\2\2\2\u0142\u0143\58\35\2\u0143"+
+		"\u0144\7N\2\2\u0144\65\3\2\2\2\u0145\u0146\7\n\2\2\u0146\u0147\5z>\2\u0147"+
+		"\u014e\7&\2\2\u0148\u014b\7\5\2\2\u0149\u014c\7\34\2\2\u014a\u014c\5z"+
+		">\2\u014b\u0149\3\2\2\2\u014b\u014a\3\2\2\2\u014c\u014f\3\2\2\2\u014d"+
+		"\u014f\5\34\17\2\u014e\u0148\3\2\2\2\u014e\u014d\3\2\2\2\u014f\u0150\3"+
+		"\2\2\2\u0150\u0151\7\33\2\2\u0151\67\3\2\2\2\u0152\u0153\7\13\2\2\u0153"+
+		"\u015a\7&\2\2\u0154\u0157\7\5\2\2\u0155\u0158\7\34\2\2\u0156\u0158\5z"+
+		">\2\u0157\u0155\3\2\2\2\u0157\u0156\3\2\2\2\u0158\u015b\3\2\2\2\u0159"+
+		"\u015b\5\34\17\2\u015a\u0154\3\2\2\2\u015a\u0159\3\2\2\2\u015b\u015c\3"+
+		"\2\2\2\u015c\u015d\7\33\2\2\u015d9\3\2\2\2\u015e\u015f\7\f\2\2\u015f\u0160"+
+		"\5@!\2\u0160\u0161\7&\2\2\u0161\u0165\5> \2\u0162\u0163\7\b\2\2\u0163"+
+		"\u0164\7&\2\2\u0164\u0166\5> \2\u0165\u0162\3\2\2\2\u0165\u0166\3\2\2"+
+		"\2\u0166;\3\2\2\2\u0167\u0168\7\r\2\2\u0168\u0169\5j\66\2\u0169\u016a"+
+		"\7\16\2\2\u016a\u016b\5l\67\2\u016b\u016c\7&\2\2\u016c\u0170\5> \2\u016d"+
+		"\u016e\7\b\2\2\u016e\u016f\7&\2\2\u016f\u0171\5> \2\u0170\u016d\3\2\2"+
+		"\2\u0170\u0171\3\2\2\2\u0171=\3\2\2\2\u0172\u017d\5\30\r\2\u0173\u0174"+
+		"\7\33\2\2\u0174\u0176\7M\2\2\u0175\u0177\5\26\f\2\u0176\u0175\3\2\2\2"+
+		"\u0177\u0178\3\2\2\2\u0178\u0176\3\2\2\2\u0178\u0179\3\2\2\2\u0179\u017a"+
+		"\3\2\2\2\u017a\u017b\7N\2\2\u017b\u017d\3\2\2\2\u017c\u0172\3\2\2\2\u017c"+
+		"\u0173\3\2\2\2\u017d?\3\2\2\2\u017e\u0184\5B\"\2\u017f\u0180\7\6\2\2\u0180"+
+		"\u0181\5B\"\2\u0181\u0182\7\b\2\2\u0182\u0183\5@!\2\u0183\u0185\3\2\2"+
+		"\2\u0184\u017f\3\2\2\2\u0184\u0185\3\2\2\2\u0185A\3\2\2\2\u0186\u018b"+
+		"\5D#\2\u0187\u0188\7\17\2\2\u0188\u018a\5D#\2\u0189\u0187\3\2\2\2\u018a"+
+		"\u018d\3\2\2\2\u018b\u0189\3\2\2\2\u018b\u018c\3\2\2\2\u018cC\3\2\2\2"+
+		"\u018d\u018b\3\2\2\2\u018e\u0193\5F$\2\u018f\u0190\7\20\2\2\u0190\u0192"+
+		"\5F$\2\u0191\u018f\3\2\2\2\u0192\u0195\3\2\2\2\u0193\u0191\3\2\2\2\u0193"+
+		"\u0194\3\2\2\2\u0194E\3\2\2\2\u0195\u0193\3\2\2\2\u0196\u0197\7\21\2\2"+
+		"\u0197\u019a\5F$\2\u0198\u019a\5H%\2\u0199\u0196\3\2\2\2\u0199\u0198\3"+
+		"\2\2\2\u019aG\3\2\2\2\u019b\u01a1\5L\'\2\u019c\u019d\5J&\2\u019d\u019e"+
+		"\5L\'\2\u019e\u01a0\3\2\2\2\u019f\u019c\3\2\2\2\u01a0\u01a3\3\2\2\2\u01a1"+
+		"\u019f\3\2\2\2\u01a1\u01a2\3\2\2\2\u01a2I\3\2\2\2\u01a3\u01a1\3\2\2\2"+
+		"\u01a4\u01b2\7\67\2\2\u01a5\u01b2\78\2\2\u01a6\u01b2\79\2\2\u01a7\u01b2"+
+		"\7:\2\2\u01a8\u01b2\7;\2\2\u01a9\u01b2\7<\2\2\u01aa\u01b2\7=\2\2\u01ab"+
+		"\u01b2\7\16\2\2\u01ac\u01ad\7\21\2\2\u01ad\u01b2\7\16\2\2\u01ae\u01b2"+
+		"\7\22\2\2\u01af\u01b0\7\22\2\2\u01b0\u01b2\7\21\2\2\u01b1\u01a4\3\2\2"+
+		"\2\u01b1\u01a5\3\2\2\2\u01b1\u01a6\3\2\2\2\u01b1\u01a7\3\2\2\2\u01b1\u01a8"+
+		"\3\2\2\2\u01b1\u01a9\3\2\2\2\u01b1\u01aa\3\2\2\2\u01b1\u01ab\3\2\2\2\u01b1"+
+		"\u01ac\3\2\2\2\u01b1\u01ae\3\2\2\2\u01b1\u01af\3\2\2\2\u01b2K\3\2\2\2"+
+		"\u01b3\u01b5\7\"\2\2\u01b4\u01b3\3\2\2\2\u01b4\u01b5\3\2\2\2\u01b5\u01b6"+
+		"\3\2\2\2\u01b6\u01b7\5N(\2\u01b7M\3\2\2\2\u01b8\u01bd\5P)\2\u01b9\u01ba"+
+		"\7+\2\2\u01ba\u01bc\5P)\2\u01bb\u01b9\3\2\2\2\u01bc\u01bf\3\2\2\2\u01bd"+
+		"\u01bb\3\2\2\2\u01bd\u01be\3\2\2\2\u01beO\3\2\2\2\u01bf\u01bd\3\2\2\2"+
+		"\u01c0\u01c5\5R*\2\u01c1\u01c2\7,\2\2\u01c2\u01c4\5R*\2\u01c3\u01c1\3"+
+		"\2\2\2\u01c4\u01c7\3\2\2\2\u01c5\u01c3\3\2\2\2\u01c5\u01c6\3\2\2\2\u01c6"+
+		"Q\3\2\2\2\u01c7\u01c5\3\2\2\2\u01c8\u01cd\5T+\2\u01c9\u01ca\7-\2\2\u01ca"+
+		"\u01cc\5T+\2\u01cb\u01c9\3\2\2\2\u01cc\u01cf\3\2\2\2\u01cd\u01cb\3\2\2"+
+		"\2\u01cd\u01ce\3\2\2\2\u01ceS\3\2\2\2\u01cf\u01cd\3\2\2\2\u01d0\u01d7"+
+		"\5V,\2\u01d1\u01d2\7.\2\2\u01d2\u01d6\5V,\2\u01d3\u01d4\7/\2\2\u01d4\u01d6"+
+		"\5V,\2\u01d5\u01d1\3\2\2\2\u01d5\u01d3\3\2\2\2\u01d6\u01d9\3\2\2\2\u01d7"+
+		"\u01d5\3\2\2\2\u01d7\u01d8\3\2\2\2\u01d8U\3\2\2\2\u01d9\u01d7\3\2\2\2"+
+		"\u01da\u01e1\5X-\2\u01db\u01dc\7\60\2\2\u01dc\u01e0\5X-\2\u01dd\u01de"+
+		"\7\61\2\2\u01de\u01e0\5X-\2\u01df\u01db\3\2\2\2\u01df\u01dd\3\2\2\2\u01e0"+
+		"\u01e3\3\2\2\2\u01e1\u01df\3\2\2\2\u01e1\u01e2\3\2\2\2\u01e2W\3\2\2\2"+
+		"\u01e3\u01e1\3\2\2\2\u01e4\u01ed\5Z.\2\u01e5\u01e6\7\"\2\2\u01e6\u01ec"+
+		"\5Z.\2\u01e7\u01e8\7\62\2\2\u01e8\u01ec\5Z.\2\u01e9\u01ea\7\63\2\2\u01ea"+
+		"\u01ec\5Z.\2\u01eb\u01e5\3\2\2\2\u01eb\u01e7\3\2\2\2\u01eb\u01e9\3\2\2"+
+		"\2\u01ec\u01ef\3\2\2\2\u01ed\u01eb\3\2\2\2\u01ed\u01ee\3\2\2\2\u01eeY"+
+		"\3\2\2\2\u01ef\u01ed\3\2\2\2\u01f0\u01f1\7\60\2\2\u01f1\u01f8\5Z.\2\u01f2"+
+		"\u01f3\7\61\2\2\u01f3\u01f8\5Z.\2\u01f4\u01f5\7\64\2\2\u01f5\u01f8\5Z"+
+		".\2\u01f6\u01f8\5\\/\2\u01f7\u01f0\3\2\2\2\u01f7\u01f2\3\2\2\2\u01f7\u01f4"+
+		"\3\2\2\2\u01f7\u01f6\3\2\2\2\u01f8[\3\2\2\2\u01f9\u01fd\5^\60\2\u01fa"+
+		"\u01fc\5b\62\2\u01fb\u01fa\3\2\2\2\u01fc\u01ff\3\2\2\2\u01fd\u01fb\3\2"+
+		"\2\2\u01fd\u01fe\3\2\2\2\u01fe]\3\2\2\2\u01ff\u01fd\3\2\2\2\u0200\u0202"+
+		"\7#\2\2\u0201\u0203\5`\61\2\u0202\u0201\3\2\2\2\u0202\u0203\3\2\2\2\u0203"+
+		"\u0204\3\2\2\2\u0204\u0216\7$\2\2\u0205\u0207\7)\2\2\u0206\u0208\5`\61"+
+		"\2\u0207\u0206\3\2\2\2\u0207\u0208\3\2\2\2\u0208\u0209\3\2\2\2\u0209\u0216"+
+		"\7*\2\2\u020a\u020c\7\65\2\2\u020b\u020d\5n8\2\u020c\u020b\3\2\2\2\u020c"+
+		"\u020d\3\2\2\2\u020d\u020e\3\2\2\2\u020e\u0216\7\66\2\2\u020f\u0216\7"+
+		"\34\2\2\u0210\u0216\5z>\2\u0211\u0216\7\3\2\2\u0212\u0216\7\23\2\2\u0213"+
+		"\u0216\7\24\2\2\u0214\u0216\7\25\2\2\u0215\u0200\3\2\2\2\u0215\u0205\3"+
+		"\2\2\2\u0215\u020a\3\2\2\2\u0215\u020f\3\2\2\2\u0215\u0210\3\2\2\2\u0215"+
+		"\u0211\3\2\2\2\u0215\u0212\3\2\2\2\u0215\u0213\3\2\2\2\u0215\u0214\3\2"+
+		"\2\2\u0216_\3\2\2\2\u0217\u0223\5@!\2\u0218\u0224\5v<\2\u0219\u021a\7"+
+		"%\2\2\u021a\u021c\5@!\2\u021b\u0219\3\2\2\2\u021c\u021f\3\2\2\2\u021d"+
+		"\u021b\3\2\2\2\u021d\u021e\3\2\2\2\u021e\u0221\3\2\2\2\u021f\u021d\3\2"+
+		"\2\2\u0220\u0222\7%\2\2\u0221\u0220\3\2\2\2\u0221\u0222\3\2\2\2\u0222"+
+		"\u0224\3\2\2\2\u0223\u0218\3\2\2\2\u0223\u021d\3\2\2\2\u0224a\3\2\2\2"+
+		"\u0225\u0227\7#\2\2\u0226\u0228\5p9\2\u0227\u0226\3\2\2\2\u0227\u0228"+
+		"\3\2\2\2\u0228\u0229\3\2\2\2\u0229\u0231\7$\2\2\u022a\u022b\7)\2\2\u022b"+
+		"\u022c\5d\63\2\u022c\u022d\7*\2\2\u022d\u0231\3\2\2\2\u022e\u022f\7!\2"+
+		"\2\u022f\u0231\7\34\2\2\u0230\u0225\3\2\2\2\u0230\u022a\3\2\2\2\u0230"+
+		"\u022e\3\2\2\2\u0231c\3\2\2\2\u0232\u0237\5f\64\2\u0233\u0234\7%\2\2\u0234"+
+		"\u0236\5f\64\2\u0235\u0233\3\2\2\2\u0236\u0239\3\2\2\2\u0237\u0235\3\2"+
+		"\2\2\u0237\u0238\3\2\2\2\u0238\u023b\3\2\2\2\u0239\u0237\3\2\2\2\u023a"+
+		"\u023c\7%\2\2\u023b\u023a\3\2\2\2\u023b\u023c\3\2\2\2\u023ce\3\2\2\2\u023d"+
+		"\u0249\5@!\2\u023e\u0240\5@!\2\u023f\u023e\3\2\2\2\u023f\u0240\3\2\2\2"+
+		"\u0240\u0241\3\2\2\2\u0241\u0243\7&\2\2\u0242\u0244\5@!\2\u0243\u0242"+
+		"\3\2\2\2\u0243\u0244\3\2\2\2\u0244\u0246\3\2\2\2\u0245\u0247\5h\65\2\u0246"+
+		"\u0245\3\2\2\2\u0246\u0247\3\2\2\2\u0247\u0249\3\2\2\2\u0248\u023d\3\2"+
+		"\2\2\u0248\u023f\3\2\2\2\u0249g\3\2\2\2\u024a\u024c\7&\2\2\u024b\u024d"+
+		"\5@!\2\u024c\u024b\3\2\2\2\u024c\u024d\3\2\2\2\u024di\3\2\2\2\u024e\u0253"+
+		"\5L\'\2\u024f\u0250\7%\2\2\u0250\u0252\5L\'\2\u0251\u024f\3\2\2\2\u0252"+
+		"\u0255\3\2\2\2\u0253\u0251\3\2\2\2\u0253\u0254\3\2\2\2\u0254\u0257\3\2"+
+		"\2\2\u0255\u0253\3\2\2\2\u0256\u0258\7%\2\2\u0257\u0256\3\2\2\2\u0257"+
+		"\u0258\3\2\2\2\u0258k\3\2\2\2\u0259\u025e\5@!\2\u025a\u025b\7%\2\2\u025b"+
+		"\u025d\5@!\2\u025c\u025a\3\2\2\2\u025d\u0260\3\2\2\2\u025e\u025c\3\2\2"+
+		"\2\u025e\u025f\3\2\2\2\u025f\u0262\3\2\2\2\u0260\u025e\3\2\2\2\u0261\u0263"+
+		"\7%\2\2\u0262\u0261\3\2\2\2\u0262\u0263\3\2\2\2\u0263m\3\2\2\2\u0264\u0265"+
+		"\5@!\2\u0265\u0266\7&\2\2\u0266\u0275\5@!\2\u0267\u0276\5v<\2\u0268\u0269"+
+		"\7%\2\2\u0269\u026a\5@!\2\u026a\u026b\7&\2\2\u026b\u026c\5@!\2\u026c\u026e"+
+		"\3\2\2\2\u026d\u0268\3\2\2\2\u026e\u0271\3\2\2\2\u026f\u026d\3\2\2\2\u026f"+
+		"\u0270\3\2\2\2\u0270\u0273\3\2\2\2\u0271\u026f\3\2\2\2\u0272\u0274\7%"+
+		"\2\2\u0273\u0272\3\2\2\2\u0273\u0274\3\2\2\2\u0274\u0276\3\2\2\2\u0275"+
+		"\u0267\3\2\2\2\u0275\u026f\3\2\2\2\u0276\u0286\3\2\2\2\u0277\u0283\5@"+
+		"!\2\u0278\u0284\5v<\2\u0279\u027a\7%\2\2\u027a\u027c\5@!\2\u027b\u0279"+
+		"\3\2\2\2\u027c\u027f\3\2\2\2\u027d\u027b\3\2\2\2\u027d\u027e\3\2\2\2\u027e"+
+		"\u0281\3\2\2\2\u027f\u027d\3\2\2\2\u0280\u0282\7%\2\2\u0281\u0280\3\2"+
+		"\2\2\u0281\u0282\3\2\2\2\u0282\u0284\3\2\2\2\u0283\u0278\3\2\2\2\u0283"+
+		"\u027d\3\2\2\2\u0284\u0286\3\2\2\2\u0285\u0264\3\2\2\2\u0285\u0277\3\2"+
+		"\2\2\u0286o\3\2\2\2\u0287\u0288\5r:\2\u0288\u0289\7%\2\2\u0289\u028b\3"+
+		"\2\2\2\u028a\u0287\3\2\2\2\u028b\u028e\3\2\2\2\u028c\u028a\3\2\2\2\u028c"+
+		"\u028d\3\2\2\2\u028d\u028f\3\2\2\2\u028e\u028c\3\2\2\2\u028f\u0290\5r"+
+		":\2\u0290q\3\2\2\2\u0291\u0293\5@!\2\u0292\u0294\5v<\2\u0293\u0292\3\2"+
+		"\2\2\u0293\u0294\3\2\2\2\u0294\u029a\3\2\2\2\u0295\u0296\5@!\2\u0296\u0297"+
+		"\7(\2\2\u0297\u0298\5@!\2\u0298\u029a\3\2\2\2\u0299\u0291\3\2\2\2\u0299"+
+		"\u0295\3\2\2\2\u029as\3\2\2\2\u029b\u029e\5v<\2\u029c\u029e\5x=\2\u029d"+
+		"\u029b\3\2\2\2\u029d\u029c\3\2\2\2\u029eu\3\2\2\2\u029f\u02a0\7\r\2\2"+
+		"\u02a0\u02a1\5j\66\2\u02a1\u02a2\7\16\2\2\u02a2\u02a4\5B\"\2\u02a3\u02a5"+
+		"\5t;\2\u02a4\u02a3\3\2\2\2\u02a4\u02a5\3\2\2\2\u02a5w\3\2\2\2\u02a6\u02a7"+
+		"\7\6\2\2\u02a7\u02a9\5B\"\2\u02a8\u02aa\5t;\2\u02a9\u02a8\3\2\2\2\u02a9"+
+		"\u02aa\3\2\2\2\u02aay\3\2\2\2\u02ab\u02ac\t\3\2\2\u02ac{\3\2\2\2V\177"+
+		"\u008a\u008c\u0093\u0096\u00a7\u00b2\u00c9\u00cf\u00d3\u00da\u00de\u00e6"+
+		"\u00f0\u00f3\u00f7\u00fc\u0100\u0104\u0110\u0118\u011e\u012b\u0131\u013f"+
+		"\u014b\u014e\u0157\u015a\u0165\u0170\u0178\u017c\u0184\u018b\u0193\u0199"+
+		"\u01a1\u01b1\u01b4\u01bd\u01c5\u01cd\u01d5\u01d7\u01df\u01e1\u01eb\u01ed"+
+		"\u01f7\u01fd\u0202\u0207\u020c\u0215\u021d\u0221\u0223\u0227\u0230\u0237"+
+		"\u023b\u023f\u0243\u0246\u0248\u024c\u0253\u0257\u025e\u0262\u026f\u0273"+
+		"\u0275\u027d\u0281\u0283\u0285\u028c\u0293\u0299\u029d\u02a4\u02a9";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -16,11 +16,11 @@ public interface VerythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInitial(VerythonParser.InitialContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link VerythonParser#decorated}.
+	 * Visit a parse tree produced by {@link VerythonParser#top}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDecorated(VerythonParser.DecoratedContext ctx);
+	T visitTop(VerythonParser.TopContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link VerythonParser#decorator}.
 	 * @param ctx the parse tree
@@ -28,11 +28,29 @@ public interface VerythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDecorator(VerythonParser.DecoratorContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link VerythonParser#block}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBlock(VerythonParser.BlockContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link VerythonParser#funcdef}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitFuncdef(VerythonParser.FuncdefContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link VerythonParser#blocks}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBlocks(VerythonParser.BlocksContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link VerythonParser#block_element}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBlock_element(VerythonParser.Block_elementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link VerythonParser#parameters}.
 	 * @param ctx the parse tree
@@ -135,6 +153,30 @@ public interface VerythonVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitIf_stmt(VerythonParser.If_stmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link VerythonParser#switch_stmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSwitch_stmt(VerythonParser.Switch_stmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link VerythonParser#switch_suite}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSwitch_suite(VerythonParser.Switch_suiteContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link VerythonParser#case_stmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCase_stmt(VerythonParser.Case_stmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link VerythonParser#case_default}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCase_default(VerythonParser.Case_defaultContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link VerythonParser#while_stmt}.
 	 * @param ctx the parse tree
