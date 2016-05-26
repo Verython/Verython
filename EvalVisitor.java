@@ -30,15 +30,23 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
     }
 
     /*
-    decorator: INITAL | ALWAYS '(' arglist? ')';
+    decorator: INITAL | ALWAYS '(' arg_decs? ')';
     */
     @Override
     public String visitDecorator(VerythonParser.DecoratorContext ctx) {
         if (ctx.INITAL() == null) {
             System.out.print("    always @(");
-            System.out.print(ctx.arglist().getText().replaceAll(",", " or "));
+            System.out.print(ctx.arg_decs().getText().replaceAll(",", " or "));
             System.out.println(")");
         }
+        return visitChildren(ctx);
+    }
+
+    /*
+    arg_decs: (arg_dec ',')* arg_dec;
+    */
+    @Override
+    public String visitArg_decs(VerythonParser.Arg_decsContext ctx) {
         return visitChildren(ctx);
     }
 

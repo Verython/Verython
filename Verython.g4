@@ -81,7 +81,15 @@ top
 
 decorator
  : INITAL
- | ALWAYS '(' arglist? ')'
+ | ALWAYS '(' arg_decs? ')'
+ ;
+
+arg_decs
+ : (arg_dec ',')* arg_dec
+ ;
+
+arg_dec
+ : NAME (POSEDGE | NEGEDGE)?
  ;
 
 block
@@ -510,6 +518,8 @@ RIGHT_SHIFT_ASSIGN : '>>=';
 TOP: '@top';
 INITAL: '@initial';
 ALWAYS: '@always';
+POSEDGE: '.posedge';
+NEGEDGE: '.negedge';
 
 SKIP_
  : ( SPACES | COMMENT | LINE_JOINING ) -> skip

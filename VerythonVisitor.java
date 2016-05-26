@@ -28,6 +28,18 @@ public interface VerythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDecorator(VerythonParser.DecoratorContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link VerythonParser#arg_decs}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArg_decs(VerythonParser.Arg_decsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link VerythonParser#arg_dec}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArg_dec(VerythonParser.Arg_decContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link VerythonParser#block}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
