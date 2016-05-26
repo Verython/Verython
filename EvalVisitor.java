@@ -36,7 +36,7 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
     public String visitDecorator(VerythonParser.DecoratorContext ctx) {
         if (ctx.INITAL() == null) {
             System.out.print("    always @(");
-            System.out.print(ctx.arg_decs().getText().replaceAll(",", " or "));
+            System.out.print(visit(ctx.arg_decs()).replaceAll(",", " or "));
             System.out.println(")");
         }
         return visitChildren(ctx);
@@ -47,8 +47,25 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
     */
     @Override
     public String visitArg_decs(VerythonParser.Arg_decsContext ctx) {
-        return visitChildren(ctx);
+        return visit(ctx.arg_dec(0));
     }
+
+    /*
+    arg_dec
+     : NAME (POSEDGE | NEGEDGE)?
+     ;
+    */
+    @Override
+    public String visitArg_dec(VerythonParser.Arg_decContext ctx) {
+        if ( (ctx.POSEDGE() == null) && (ctx.NEGEDGE() == null) ){
+            return ctx.NAME().getText();
+        }else if ( (ctx.POSEDGE() == null) && (ctx.NEGEDGE() != null) ){
+            return "negedge " + ctx.NAME().getText();
+        }
+        else return "posedge " + ctx.NAME().getText();
+    }
+
+
 
     /*
     funcdef: DEF NAME parameters ':' NEWLINE blocks;
