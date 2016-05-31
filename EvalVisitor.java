@@ -43,17 +43,7 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
     }
 
     /*
-    arg_decs: (arg_dec ',')* arg_dec;
-    */
-    @Override
-    public String visitArg_decs(VerythonParser.Arg_decsContext ctx) {
-        return visit(ctx.arg_dec(0));
-    }
-
-    /*
-    arg_dec
-     : NAME (POSEDGE | NEGEDGE)?
-     ;
+    arg_dec: NAME (POSEDGE | NEGEDGE)?;
     */
     @Override
     public String visitArg_dec(VerythonParser.Arg_decContext ctx) {
@@ -64,8 +54,6 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
         }
         else return "posedge " + ctx.NAME().getText();
     }
-
-
 
     /*
     funcdef: DEF NAME parameters ':' NEWLINE blocks;
@@ -192,5 +180,21 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
             }
         }
         else return ("'d" + ctx.DECIMAL_INTEGER().getText());
+    }
+
+    /*
+    if_stmt: IF test ':' suite ( ELIF test ':' suite )* ( ELSE ':' suite )?;
+    */
+    @Override
+    public String visitIf_stmt(VerythonParser.If_stmtContext ctx) {
+        System.out.println("        if " + ctx.test(0).getText() + " begin");
+        visit(ctx.suite(0));
+        System.out.println("        end");
+        if (ctx.ELSE() != null) {
+            System.out.println("        else begin");
+            visit(ctx.suite(1));
+            System.out.println("        end");
+        }
+        return "";
     }
 }

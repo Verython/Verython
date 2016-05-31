@@ -5,7 +5,7 @@ module counter(clk, reset, count);
 	output reg [21:0]count;
 	always @(posedge clk)
     begin
-    	if (reset || print) begin
+    	if (reset) begin
     		count <= 'd0;
     		finish <= 'd0;
     	end
