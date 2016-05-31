@@ -43,7 +43,27 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
     }
 
     /*
-    arg_dec: NAME (POSEDGE | NEGEDGE)?;
+    arg_decs: (arg_dec ',')* arg_dec;
+    */
+    @Override
+    public String visitArg_decs(VerythonParser.Arg_decsContext ctx) {
+        int i = 1;
+        String args = visit(ctx.arg_dec(0));
+        while ( i > 0 ){
+            try {
+                args = args + "," + visit(ctx.arg_dec(i));
+            }catch (NullPointerException e) {
+                break;
+            }
+            i++;
+        }
+        return args;
+    }
+
+    /*
+    arg_dec
+     : NAME (POSEDGE | NEGEDGE)?
+     ;
     */
     @Override
     public String visitArg_dec(VerythonParser.Arg_decContext ctx) {
