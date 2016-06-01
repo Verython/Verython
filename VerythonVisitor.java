@@ -250,12 +250,6 @@ public interface VerythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStar_expr(VerythonParser.Star_exprContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link VerythonParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitExpr(VerythonParser.ExprContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link VerythonParser#xor_expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

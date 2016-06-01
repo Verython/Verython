@@ -260,10 +260,6 @@ comp_op
  ;
 
 star_expr
- : '*'? expr
- ;
-
-expr
  : xor_expr ( '|' xor_expr )*
  ;
 

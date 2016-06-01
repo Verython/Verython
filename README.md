@@ -8,14 +8,14 @@ This project translates from a pseudo-Python to Verilog, simplifying the notatio
 
 ## How to compile?
 
-### GUI
+### ANTLR4 GUI
 ```
 antlr4 -visitor -no-listener Verython.g4
 javac Verython*.java EvalVisitor.java
 grun Verython initial -gui
 ```
 
-### Main
+### Main running code
 ```
 antlr4 -visitor -no-listener Verython.g4
 javac Verython*.java EvalVisitor.java
