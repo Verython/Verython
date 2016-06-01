@@ -8,14 +8,16 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
      * "memory" for our calculator; variable/value pairs go here
      */
     Map<String, String> memory = new HashMap<String, String>();
+    String output = "";
 
     /*
-    initial: NEWLINE* top EOF?;
+    initial: NEWLINE* top EOF;
     */
     @Override
     public String visitInitial(VerythonParser.InitialContext ctx) {
-        System.out.println("`timescale 1ns/1ps");
-        return visitChildren(ctx);
+        output += "`timescale 1ns/1ps\n";
+        visit(ctx.top());
+        return output;
     }
 
     /*
@@ -23,23 +25,54 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
     */
     @Override
     public String visitBlock(VerythonParser.BlockContext ctx) {
-        System.out.println("    begin");
+        output += "    begin\n";
         visit(ctx.suite());
-        System.out.println("    end");
+        output += "    end\n";
         return "";
     }
 
     /*
-    decorator: INITAL | ALWAYS '(' arglist? ')';
+    decorator: INITAL | ALWAYS '(' arg_decs? ')';
     */
     @Override
     public String visitDecorator(VerythonParser.DecoratorContext ctx) {
         if (ctx.INITAL() == null) {
-            System.out.print("    always @(");
-            System.out.print(ctx.arglist().getText().replaceAll(",", " or "));
-            System.out.println(")");
+            output += "    always @(";
+            output += visit(ctx.arg_decs()).replaceAll(",", " or ");
+            output += ")\n";
         }
         return visitChildren(ctx);
+    }
+
+    /*
+    arg_decs: (arg_dec ',')* arg_dec;
+    */
+    @Override
+    public String visitArg_decs(VerythonParser.Arg_decsContext ctx) {
+        int i = 1;
+        String args = visit(ctx.arg_dec(0));
+        while ( i > 0 ){
+            try {
+                args = args + "," + visit(ctx.arg_dec(i));
+            }catch (NullPointerException e) {
+                break;
+            }
+            i++;
+        }
+        return args;
+    }
+
+    /*
+    arg_dec: NAME (POSEDGE | NEGEDGE)?;
+    */
+    @Override
+    public String visitArg_dec(VerythonParser.Arg_decContext ctx) {
+        if ( (ctx.POSEDGE() == null) && (ctx.NEGEDGE() == null) ){
+            return ctx.NAME().getText();
+        }else if ( (ctx.POSEDGE() == null) && (ctx.NEGEDGE() != null) ){
+            return "negedge " + ctx.NAME().getText();
+        }
+        else return "posedge " + ctx.NAME().getText();
     }
 
     /*
@@ -55,35 +88,41 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
         Pattern square = Pattern.compile("\\[.*?\\]([A-Za-z]+)");
 
         String arg = new String("");
-        String output = new String("");
+        String outputSignal = new String("");
         Matcher m;
         for (String in : inputs) {
             m = square.matcher(in);
             if (m.find())
                 arg += m.group(1) + ", ";
+            else
+                arg += in + ", ";
         }
         for (String out : outputs) {
             m = square.matcher(out);
             if (m.find()) {
                 arg += m.group(1) + ", ";
-                output += m.group(1) + ",";
+                outputSignal += m.group(1) + ",";
+            }
+            else {
+                arg += out + ", ";
+                outputSignal += out + ",";
             }
         }
         if (arg.length() > 2)
-            arg = arg.substring(0, arg.length() - 1);
-        if (output.length() > 2)
-            output = output.substring(0, output.length() - 2);
-        memory.put("output", output);
+            arg = arg.substring(0, arg.length() - 2);
+        if (outputSignal.length() > 2)
+            outputSignal = outputSignal.substring(0, outputSignal.length() - 1);
+        memory.put("output", outputSignal);
 
-        System.out.println("module " + ctx.NAME() + "(" + arg + ")");
+        output += "module " + ctx.NAME() + "(" + arg + ")\n";
         for (String in : inputs) {
-            System.out.println("    input wire " + in + ";");
+            output += "    input wire " + in + ";\n";
         }
         for (String out : outputs) {
-            System.out.println("    ouput reg " + out + ";");
+            output += "    output reg " + out + ";\n";
         }
         visit(ctx.blocks());
-        System.out.println("endmodule");
+        output += "endmodule\n";
         return "";
     }
 
@@ -92,9 +131,9 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
     */
     @Override
     public String visitSwitch_stmt(VerythonParser.Switch_stmtContext ctx) {
-        System.out.println("        case(" + ctx.NAME() + ")");
+        output += "        case(" + ctx.NAME() + ")\n";
         visit(ctx.switch_suite());
-        System.out.println("        endcase");
+        output += "        endcase\n";
         return "";
     }
 
@@ -105,10 +144,10 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
     public String visitCase_stmt(VerythonParser.Case_stmtContext ctx) {
         if (ctx.RETURN() != null) {
             if (ctx.NAME() != null) {
-                System.out.println("            " + visit(ctx.number(0)) + ": " + memory.get("output").charAt(0) + " <= " + ctx.NAME() + ";");
+                output += "            " + visit(ctx.number(0)) + ": " + memory.get("output").charAt(0) + " <= " + ctx.NAME() + ";\n";
             }
             else {
-                System.out.println("            " + visit(ctx.number(0)) + ": " + memory.get("output").charAt(0) + " <= " + visit(ctx.number(1)) + ";");
+                output += "            " + visit(ctx.number(0)) + ": " + memory.get("output").charAt(0) + " <= " + visit(ctx.number(1)) + ";\n";
             }
         }
         return "";
@@ -121,21 +160,12 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
     public String visitCase_default(VerythonParser.Case_defaultContext ctx) {
         if (ctx.RETURN() != null) {
             if (ctx.NAME() != null) {
-                System.out.println("            default: " + memory.get("output").charAt(0) + " <= " + ctx.NAME() + ";");
+                output += "            default: " + memory.get("output").charAt(0) + " <= " + ctx.NAME() + ";\n";
             }
             else {
-                System.out.println("            default: " + memory.get("output").charAt(0) + " <= " + visit(ctx.number()) + ";");
+                output += "            default: " + memory.get("output").charAt(0) + " <= " + visit(ctx.number()) + ";\n";
             }
         }
-        return "";
-    }
-
-    /*
-    expr_stmt : testlist_star_expr ( augassign testlist | ( '=' testlist_star_expr )*);
-    */
-    @Override
-    public String visitExpr_stmt(VerythonParser.Expr_stmtContext ctx) {
-        //System.out.println(ctx.testlist_star_expr().toString() + ctx.augassign().getText() + ctx.testlist().getText());
         return "";
     }
 
@@ -161,5 +191,38 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
             }
         }
         else return ("'d" + ctx.DECIMAL_INTEGER().getText());
+    }
+
+    /*
+    if_stmt: IF test ':' suite ( ELIF test ':' suite )* ( ELSE ':' suite )?;
+    */
+    @Override
+    public String visitIf_stmt(VerythonParser.If_stmtContext ctx) {
+        output += "        if " + ctx.test(0).getText() + " begin\n";
+        visit(ctx.suite(0));
+        output += "        end\n";
+        if (ctx.ELSE() != null) {
+            output += "        else begin\n";
+            visit(ctx.suite(1));
+            output += "        end\n";
+        }
+        return "";
+    }
+
+    /*
+    expr_stmt: testlist_star_expr ( augassign testlist | '=' testlist_star_expr );
+    */
+    @Override
+    public String visitExpr_stmt(VerythonParser.Expr_stmtContext ctx) {
+        if (ctx.augassign() != null) {
+            output += ctx.testlist_star_expr(0).getText() + " <= " + ctx.testlist_star_expr(0).getText();
+            String operator = ctx.augassign().getText();
+            operator = operator.substring(0, operator.length() - 1);
+            output += " " + operator + " " + visit(ctx.testlist()) + ";\n";
+        }
+        else {
+            output += ctx.testlist_star_expr(0).getText() + " <= " + visit(ctx.testlist_star_expr(1)) + ";\n";
+        }
+        return "";
     }
 }

@@ -81,7 +81,15 @@ top
 
 decorator
  : INITAL
- | ALWAYS '(' arglist? ')'
+ | ALWAYS '(' arg_decs? ')'
+ ;
+
+arg_decs
+ : (arg_dec ',')* arg_dec
+ ;
+
+arg_dec
+ : NAME (POSEDGE | NEGEDGE)?
  ;
 
 block
@@ -106,7 +114,7 @@ parameters
  ;
 
 typedargslist
- : '[' DECIMAL_INTEGER ':' DECIMAL_INTEGER ']' tfpdef ( ',' '[' DECIMAL_INTEGER ':' DECIMAL_INTEGER ']' tfpdef  )*
+ : ('[' DECIMAL_INTEGER ':' DECIMAL_INTEGER ']')? tfpdef ( ',' ('[' DECIMAL_INTEGER ':' DECIMAL_INTEGER ']')? tfpdef  )*
  ;
 
 tfpdef
@@ -130,7 +138,7 @@ small_stmt
  ;
 
 expr_stmt
- : testlist_star_expr ( augassign testlist | ( '=' testlist_star_expr )*)
+ : testlist_star_expr ( augassign testlist | '=' testlist_star_expr)
  ;
 
 testlist_star_expr
@@ -510,6 +518,8 @@ RIGHT_SHIFT_ASSIGN : '>>=';
 TOP: '@top';
 INITAL: '@initial';
 ALWAYS: '@always';
+POSEDGE: '.posedge';
+NEGEDGE: '.negedge';
 
 SKIP_
  : ( SPACES | COMMENT | LINE_JOINING ) -> skip

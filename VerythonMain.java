@@ -10,8 +10,8 @@ public class VerythonMain {
             VerythonParser parser = new VerythonParser(tokens);
             ParseTree tree = parser.initial();
             EvalVisitor eval = new EvalVisitor();
-            eval.visit(tree);
-            //System.out.println(tree.toStringTree(parser));
+            String out = eval.visit(tree);
+            System.out.println(out);
         }
         catch (Exception e) {
             System.err.println("Error (Verython): "+e);
