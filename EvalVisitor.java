@@ -170,15 +170,6 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
     }
 
     /*
-    expr_stmt : testlist_star_expr ( augassign testlist | ( '=' testlist_star_expr )*);
-    */
-    @Override
-    public String visitExpr_stmt(VerythonParser.Expr_stmtContext ctx) {
-        //System.out.println(ctx.testlist_star_expr().toString() + ctx.augassign().getText() + ctx.testlist().getText());
-        return "";
-    }
-
-    /*
     number : DECIMAL_INTEGER | OCT_INTEGER | HEX_INTEGER | BIN_INTEGER;
     */
     @Override
@@ -214,6 +205,23 @@ public class EvalVisitor extends VerythonBaseVisitor<String> {
             output += "        else begin\n";
             visit(ctx.suite(1));
             output += "        end\n";
+        }
+        return "";
+    }
+
+    /*
+    expr_stmt: testlist_star_expr ( augassign testlist | '=' testlist_star_expr );
+    */
+    @Override
+    public String visitExpr_stmt(VerythonParser.Expr_stmtContext ctx) {
+        if (ctx.augassign() != null) {
+            output += ctx.testlist_star_expr(0).getText() + " <= " + ctx.testlist_star_expr(0).getText();
+            String operator = ctx.augassign().getText();
+            operator = operator.substring(0, operator.length() - 1);
+            output += " " + operator + " " + visit(ctx.testlist()) + ";\n";
+        }
+        else {
+            output += ctx.testlist_star_expr(0).getText() + " <= " + visit(ctx.testlist_star_expr(1)) + ";\n";
         }
         return "";
     }

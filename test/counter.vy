@@ -1,6 +1,6 @@
 @top
 def counter (clk, reset; [21:0]count):
-    @always(clk.posedge, A, B, C)
+    @always(clk.posedge, reset)
     block:
         if (reset):
             count = 0

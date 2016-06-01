@@ -138,7 +138,7 @@ small_stmt
  ;
 
 expr_stmt
- : testlist_star_expr ( augassign testlist | ( '=' testlist_star_expr )*)
+ : testlist_star_expr ( augassign testlist | '=' testlist_star_expr)
  ;
 
 testlist_star_expr
